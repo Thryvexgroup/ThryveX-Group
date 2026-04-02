@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "nano-banana-2": "file:../../nano-banana-2",
     "resend": "^3.2.0"
   }
 }
