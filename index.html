@@ -103,23 +103,38 @@
     .cursor.clicking{transform:translate(-50%,-50%) scale(.6)}
 
     /* ── NAVBAR ─────────────────────────────────────── */
-    .navbar{position:fixed;top:0;left:0;right:0;z-index:var(--zn);padding:20px 0;border-bottom:1px solid transparent;transition:padding .35s ease,background .35s ease,backdrop-filter .35s ease,border-color .35s ease}
-    .navbar.scrolled{padding:12px 0;background:rgba(5,5,8,.88);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom-color:rgba(255,255,255,.07)}
-    .nav-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:var(--zn);padding:16px 0;transition:padding .4s ease}
+    .navbar.scrolled{padding:10px 0}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px}
+
+    /* Logo — no bubble */
     .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:none}
-    .nav-logo-icon{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:#fff}
+    .nav-logo-icon{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
     .nav-logo-text{font-family:var(--fh);font-size:17px;font-weight:600;color:var(--t0);letter-spacing:-.02em}
-    .nav-links{display:flex;align-items:center;gap:2px;justify-content:center}
-    .nav-links a{padding:8px 16px;border-radius:var(--r-s);font-size:14px;font-weight:500;color:var(--t3);transition:color var(--t),background var(--t);white-space:nowrap}
-    .nav-links a:hover,.nav-links a.active{color:var(--t0);background:rgba(255,255,255,.06)}
-    .nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-    .nav-contact{padding:8px 16px;border-radius:var(--r-s);font-size:14px;font-weight:500;color:var(--t3);transition:color var(--t),background var(--t);cursor:none}
-    .nav-contact:hover{color:var(--t0);background:rgba(255,255,255,.06)}
-    .lang-sw{display:flex;align-items:center;border-radius:var(--r-s);border:1px solid var(--cbr);background:var(--cb);overflow:hidden}
-    .lang-opt{padding:7px 12px;font-size:12px;font-weight:700;color:var(--tm);letter-spacing:.06em;transition:all var(--t);cursor:none;border:none;background:none}
+
+    /* Center — glass pill */
+    .nav-links-wrap{display:flex;justify-content:center}
+    .nav-links{display:inline-flex;align-items:center;gap:2px;background:rgba(10,10,20,.82);backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);border:1px solid rgba(255,255,255,.11);border-radius:var(--r-f);padding:5px;transition:background .55s ease,border-color .55s ease}
+    .nav-links a{padding:7px 14px;border-radius:var(--r-f);font-size:13.5px;font-weight:500;color:var(--t3);transition:color var(--t),background var(--t);white-space:nowrap;cursor:none}
+    .nav-links a:hover,.nav-links a.active{color:var(--t0);background:rgba(255,255,255,.08)}
+
+    /* Right — CTA pill + lang pill */
+    .nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .nav-cta-pill{display:inline-flex;align-items:center;background:rgba(10,10,20,.82);backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);border:1px solid rgba(255,255,255,.11);border-radius:var(--r-f);padding:5px;transition:background .55s ease,border-color .55s ease}
+    .nav-book{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:var(--r-f);background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;font-family:var(--fb);font-size:13px;font-weight:600;letter-spacing:-.01em;cursor:none;transition:opacity var(--t),transform var(--t);white-space:nowrap}
+    .nav-book:hover{opacity:.85;transform:scale(.97)}
+    .nav-book svg{width:13px;height:13px;flex-shrink:0}
+    .lang-sw{display:inline-flex;align-items:center;background:rgba(10,10,20,.82);backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);border:1px solid rgba(255,255,255,.11);border-radius:var(--r-f);padding:5px 6px;transition:background .55s ease,border-color .55s ease}
+    .lang-opt{padding:6px 11px;font-size:12px;font-weight:700;color:var(--tm);letter-spacing:.06em;transition:all var(--t);cursor:none;border:none;background:none;border-radius:var(--r-f)}
     .lang-opt:hover{color:var(--t2)}
-    .lang-opt.on{color:var(--blue);background:rgba(14,165,233,.1)}
+    .lang-opt.on{color:var(--blue);background:rgba(14,165,233,.12)}
     .lang-sep{font-size:11px;color:var(--tdim);pointer-events:none;padding:0 1px}
+
+    /* Scroll: bubbles fade to transparent */
+    .navbar.scrolled .nav-links{background:rgba(10,10,20,.26);border-color:rgba(255,255,255,.05)}
+    .navbar.scrolled .nav-cta-pill{background:rgba(10,10,20,.26);border-color:rgba(255,255,255,.05)}
+    .navbar.scrolled .lang-sw{background:rgba(10,10,20,.26);border-color:rgba(255,255,255,.05)}
+
     .hamburger{display:none;flex-direction:column;gap:5px;padding:8px;cursor:none}
     .hamburger span{display:block;width:22px;height:2px;background:var(--t2);border-radius:2px;transition:all var(--t)}
     .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -217,18 +232,74 @@
     .w-title{font-family:var(--fh);font-size:1.15rem;font-weight:700;color:var(--t0);margin-bottom:10px;letter-spacing:-.02em}
     .w-desc{font-size:14px;color:var(--tm);line-height:1.72}
 
-    /* ── STACK / TOOLS ───────────────────────────────── */
-    .stack{padding:130px 0;background:var(--bg-3)}
-    .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .t-cat{padding:28px 28px 24px;border-radius:var(--r-l);border:1px solid var(--cbr);background:var(--bg-4);transition:border-color var(--t),transform var(--ts);cursor:none}
-    .t-cat:hover{border-color:rgba(14,165,233,.2);transform:translateY(-2px)}
-    .t-cat-head{display:flex;align-items:center;gap:10px;margin-bottom:18px}
-    .t-cat-ico{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .t-cat-ico svg{width:17px;height:17px}
-    .t-cat-name{font-family:var(--fh);font-size:.95rem;font-weight:600;color:var(--t0);letter-spacing:-.01em}
-    .t-badges{display:flex;flex-wrap:wrap;gap:7px}
-    .t-badge{padding:5px 12px;border-radius:var(--r-f);background:rgba(255,255,255,.04);border:1px solid var(--cbr);font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.02em;transition:all var(--t)}
-    .t-cat:hover .t-badge{border-color:rgba(14,165,233,.18);color:var(--t2)}
+    /* ── PIPELINE ────────────────────────────────────── */
+    .pipeline{padding:130px 0;background:var(--bg-3);overflow:hidden}
+    .pipe-track{display:flex;align-items:flex-start}
+    .pipe-step{flex:1;display:flex;flex-direction:column;align-items:center;padding:0 10px;opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+    .pipe-step.in{opacity:1;transform:translateY(0)}
+    .pipe-icon{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid;margin-bottom:20px;flex-shrink:0;transition:transform .3s ease,box-shadow .35s ease;cursor:none}
+    .pipe-icon:hover{transform:scale(1.1)}
+    .pipe-icon svg{width:27px;height:27px}
+    .pi-1{background:rgba(14,165,233,.1);border-color:rgba(14,165,233,.32);box-shadow:0 0 28px rgba(14,165,233,.14),inset 0 0 22px rgba(14,165,233,.06)}.pi-1 svg{color:var(--blue)}
+    .pi-2{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.32);box-shadow:0 0 28px rgba(124,58,237,.14),inset 0 0 22px rgba(124,58,237,.06)}.pi-2 svg{color:var(--purple)}
+    .pi-3{background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.32);box-shadow:0 0 28px rgba(6,182,212,.14),inset 0 0 22px rgba(6,182,212,.06)}.pi-3 svg{color:var(--cyan)}
+    .pi-4{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.32);box-shadow:0 0 28px rgba(16,185,129,.14),inset 0 0 22px rgba(16,185,129,.06)}.pi-4 svg{color:var(--green)}
+    .pi-5{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.32);box-shadow:0 0 28px rgba(245,158,11,.14),inset 0 0 22px rgba(245,158,11,.06)}.pi-5 svg{color:#F59E0B}
+    .pipe-num{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--tm);text-transform:uppercase;margin-bottom:6px;text-align:center}
+    .pipe-title{font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--t0);margin-bottom:8px;text-align:center;letter-spacing:-.02em}
+    .pipe-desc{font-size:12.5px;color:var(--tm);line-height:1.62;text-align:center;margin:0 auto 14px}
+    /* Connectors */
+    .pipe-conn{flex:0 0 40px;display:flex;align-items:center;position:relative;padding-top:34px}
+    .pipe-conn-line{width:100%;height:1px;background:linear-gradient(90deg,rgba(14,165,233,.38),rgba(124,58,237,.38))}
+    .pipe-conn-dot{position:absolute;top:34px;left:0;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--blue);box-shadow:0 0 9px rgba(14,165,233,.75)}
+    .pipe-conn:nth-child(2) .pipe-conn-dot{animation:pipe-dot-move 2.8s ease-in-out infinite 0s}
+    .pipe-conn:nth-child(4) .pipe-conn-dot{animation:pipe-dot-move 2.8s ease-in-out infinite .7s}
+    .pipe-conn:nth-child(6) .pipe-conn-dot{animation:pipe-dot-move 2.8s ease-in-out infinite 1.4s}
+    .pipe-conn:nth-child(8) .pipe-conn-dot{animation:pipe-dot-move 2.8s ease-in-out infinite 2.1s}
+    @keyframes pipe-dot-move{0%{transform:translateX(0);opacity:0}8%{opacity:1}92%{opacity:1}100%{transform:translateX(40px);opacity:0}}
+    /* Mock mini UI */
+    .pipe-mock{width:100%;border-radius:var(--r);border:1px solid rgba(255,255,255,.07);background:rgba(4,4,10,.96);overflow:hidden;margin-top:14px}
+    .pm-head{display:flex;align-items:center;gap:7px;padding:9px 11px;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.025)}
+    .pm-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+    .pm-dot-g{background:#22c55e;box-shadow:0 0 4px rgba(34,197,94,.6)}
+    .pm-dot-b{background:var(--blue);box-shadow:0 0 4px rgba(14,165,233,.6)}
+    .pm-dot-p{background:var(--purple)}
+    .pm-head-lbl{font-size:10px;font-weight:600;color:var(--t3);letter-spacing:.05em}
+    .pm-row{display:flex;align-items:center;justify-content:space-between;padding:5px 11px;font-size:10px}
+    .pm-row:last-child{padding-bottom:9px}
+    .pm-k{color:var(--tm)}.pm-v{color:var(--t2);font-weight:600}
+    .pm-tag{padding:2px 8px;border-radius:var(--r-f);font-size:9px;font-weight:700;letter-spacing:.03em}
+    .pm-tag-blue{background:rgba(14,165,233,.12);color:var(--blue-l);border:1px solid rgba(14,165,233,.2)}
+    .pm-tag-green{background:rgba(16,185,129,.12);color:#4ade80;border:1px solid rgba(16,185,129,.2)}
+    .pm-score{padding:8px 11px 4px}
+    .pm-score-lbl{font-size:9px;color:var(--tm);margin-bottom:4px}
+    .pm-score-track{height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;margin-bottom:5px}
+    .pm-score-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:2px;transition:width 1.7s cubic-bezier(.4,0,.2,1) .4s}
+    .pm-score-fill.go{width:87%}
+    .pm-score-num{font-size:11px;font-weight:700;color:var(--t0)}
+    .pm-checks{padding:5px 11px 9px;display:flex;flex-direction:column;gap:3px}
+    .pm-chk{display:flex;align-items:center;gap:5px;font-size:9.5px;color:var(--t3)}
+    .pm-chk-ico{width:11px;height:11px;border-radius:50%;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:6px;color:#4ade80}
+    .pm-msgs{padding:8px 10px 5px;display:flex;flex-direction:column;gap:4px}
+    .pm-msg{padding:4px 8px;border-radius:8px;font-size:9.5px;color:var(--t2);max-width:90%}
+    .pm-msg-out{background:rgba(14,165,233,.15);border-radius:8px 8px 2px 8px;align-self:flex-end}
+    .pm-msg-in{background:rgba(255,255,255,.07);border-radius:8px 8px 8px 2px;align-self:flex-start}
+    .pm-via{padding:2px 11px 9px;font-size:9px;color:var(--tm);display:flex;gap:5px}
+    .pm-cal{padding:8px 11px 4px}
+    .pm-cal-mo{font-size:9px;font-weight:600;color:var(--tm);text-align:center;margin-bottom:6px;letter-spacing:.05em;text-transform:uppercase}
+    .pm-slots{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:2px}
+    .pm-slot{padding:4px;border-radius:4px;font-size:9px;font-weight:600;text-align:center}
+    .pm-slot-dis{color:rgba(255,255,255,.22);background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04)}
+    .pm-slot-act{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;box-shadow:0 1px 6px rgba(14,165,233,.3)}
+    .pm-cal-conf{padding:5px 11px 9px;display:flex;align-items:center;gap:5px;font-size:9px;color:#4ade80}
+    .pm-cal-conf-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;flex-shrink:0}
+    .pipe-tools{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin-top:10px}
+    .pipe-tool{padding:2px 9px;border-radius:var(--r-f);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);font-size:10px;font-weight:600;color:var(--tm)}
+    .pipe-note{text-align:center;margin-top:56px}
+    .pipe-note-inner{display:inline-flex;align-items:center;gap:14px;padding:14px 30px;border:1px solid rgba(255,255,255,.07);border-radius:var(--r-f);background:rgba(255,255,255,.025)}
+    .pipe-note-inner span{font-size:13px;color:var(--tm)}
+    .pipe-note-inner strong{font-size:13px;color:var(--t1);font-weight:600}
+    .pipe-note-sep{width:1px;height:16px;background:rgba(255,255,255,.1)}
 
     /* ── CONTACT ─────────────────────────────────────── */
     .contact{padding:130px 0;background:var(--bg-2);position:relative;overflow:hidden}
@@ -300,23 +371,34 @@
     .f-legal a:hover{color:var(--t2)}
 
     /* ── RESPONSIVE ──────────────────────────────────── */
+    @media(max-width:1100px){
+      .pipe-track{flex-wrap:wrap;justify-content:center;gap:20px}
+      .pipe-step{flex:0 0 calc(33% - 14px);max-width:220px}
+      .pipe-conn{display:none}
+    }
     @media(max-width:1024px){
-      .nav-inner{grid-template-columns:auto auto auto}
       .services-grid{grid-template-columns:repeat(2,1fr)}
       .process-grid,.why-grid{grid-template-columns:1fr}
-      .tools-grid{grid-template-columns:repeat(2,1fr)}
       .contact-grid{grid-template-columns:1fr;gap:48px}
       .footer-top{grid-template-columns:1fr 1fr;gap:36px}
     }
     @media(max-width:768px){
-      .nav-links,.nav-contact,.lang-sw{display:none}
+      .nav-links-wrap{display:none}
       .hamburger{display:flex}
+      .nav-book span{display:none}
+      .nav-book{padding:9px 12px}
       .services-grid{grid-template-columns:1fr;gap:0}
-      .tools-grid{grid-template-columns:1fr}
+      .pipe-step{flex:0 0 calc(50% - 10px)}
       .f-row{grid-template-columns:1fr}
       .footer-top{grid-template-columns:1fr;gap:28px}
       .footer-bottom{flex-direction:column;align-items:flex-start}
       .cta-btns{flex-direction:column;align-items:stretch}
+      .pipe-note-inner{flex-direction:column;gap:8px;text-align:center}
+      .pipe-note-sep{display:none}
+    }
+    @media(max-width:580px){
+      .pipe-step{flex:0 0 100%;max-width:360px}
+      .pipe-track{align-items:center}
     }
     @media(max-width:480px){
       .container{padding:0 16px}
@@ -360,17 +442,22 @@
       <div class="nav-logo-icon" aria-hidden="true">TX</div>
       <span class="nav-logo-text">ThryveX Group</span>
     </a>
-    <div class="nav-links" role="menubar">
-      <a href="#hero" role="menuitem" data-en="Home" data-es="Inicio">Home</a>
-      <a href="#services" role="menuitem" data-en="Services" data-es="Servicios">Services</a>
-      <a href="#process" role="menuitem" data-en="Process" data-es="Proceso">Process</a>
+    <div class="nav-links-wrap">
+      <div class="nav-links" role="menubar">
+        <a href="#hero" role="menuitem" data-en="Home" data-es="Inicio">Home</a>
+        <a href="#services" role="menuitem" data-en="Services" data-es="Servicios">Services</a>
+        <a href="#pipeline" role="menuitem" data-en="How It Works" data-es="Cómo Funciona">How It Works</a>
+        <a href="#why" role="menuitem" data-en="Why ThryveX" data-es="Por Qué ThryveX">Why ThryveX</a>
+        <a href="#contact" role="menuitem" data-en="Contact" data-es="Contacto">Contact</a>
+      </div>
     </div>
     <div class="nav-right">
-      <a href="#contact" class="nav-contact" data-en="Contact" data-es="Contacto">Contact</a>
-      <a href="#contact" class="btn btn-primary magnetic">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
-        <span data-en="Book a Call" data-es="Agendar Llamada">Book a Call</span>
-      </a>
+      <div class="nav-cta-pill">
+        <a href="#contact" class="nav-book magnetic" aria-label="Book a Call">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+          <span data-en="Book a Call" data-es="Agendar Llamada">Book a Call</span>
+        </a>
+      </div>
       <div class="lang-sw" aria-label="Language switcher">
         <button class="lang-opt on" data-lang="en" aria-label="English">EN</button>
         <span class="lang-sep" aria-hidden="true">|</span>
@@ -387,7 +474,8 @@
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile menu">
   <a href="#hero" data-en="Home" data-es="Inicio">Home</a>
   <a href="#services" data-en="Services" data-es="Servicios">Services</a>
-  <a href="#process" data-en="Process" data-es="Proceso">Process</a>
+  <a href="#pipeline" data-en="How It Works" data-es="Cómo Funciona">How It Works</a>
+  <a href="#why" data-en="Why ThryveX" data-es="Por Qué ThryveX">Why ThryveX</a>
   <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
   <a href="#contact" class="btn btn-primary" style="margin-top:20px" data-en="Book a Strategy Call" data-es="Agendar una Llamada">Book a Strategy Call</a>
 </div>
@@ -409,8 +497,8 @@
       <span data-en="Scale Without" data-es="Escala Sin">Scale Without</span>
       <span class="line2"><span id="typewriter">Limits.</span><span class="tw-cursor" aria-hidden="true"></span></span>
     </h1>
-    <p class="hero-sub" data-en="I build AI-powered systems that capture leads, qualify prospects, automate your workflows, and help your business operate at full capacity — so you can focus on what matters." data-es="Construyo sistemas impulsados por IA que capturan leads, califican prospectos, automatizan tus flujos de trabajo y ayudan a tu negocio a operar a plena capacidad — para que puedas enfocarte en lo que importa.">
-      I build AI-powered systems that capture leads, qualify prospects, automate your workflows, and help your business operate at full capacity — so you can focus on what matters.
+    <p class="hero-sub" data-en="ThryveX builds AI-powered systems that capture leads, qualify prospects, automate workflows, and help businesses run at full capacity — so clients can focus on what matters." data-es="ThryveX construye sistemas impulsados por IA que capturan leads, califican prospectos, automatizan flujos de trabajo y ayudan a los negocios a operar a plena capacidad — para que los clientes puedan enfocarse en lo que importa.">
+      ThryveX builds AI-powered systems that capture leads, qualify prospects, automate workflows, and help businesses run at full capacity — so clients can focus on what matters.
     </p>
     <div class="hero-ctas">
       <a href="#contact" class="btn btn-primary btn-lg magnetic">
@@ -419,7 +507,7 @@
       </a>
       <a href="#services" class="btn btn-outline btn-lg magnetic">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        <span data-en="See What I Build" data-es="Ver Qué Construyo">See What I Build</span>
+        <span data-en="Explore What ThryveX Builds" data-es="Ver Qué Construye ThryveX">Explore What ThryveX Builds</span>
       </a>
     </div>
   </div>
@@ -435,9 +523,9 @@
 <section id="services" class="services">
   <div class="container">
     <div class="sec-header">
-      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="What I Build" data-es="Lo Que Construyo">What I Build</span></div>
+      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="What ThryveX Builds" data-es="Lo Que Construye ThryveX">What ThryveX Builds</span></div>
       <h2 class="sec-h reveal d1"><span data-en="Everything Your Business Needs to" data-es="Todo Lo Que Tu Negocio Necesita Para">Everything Your Business Needs to</span><br><span class="g" data-en="Operate Without Limits" data-es="Operar Sin Límites">Operate Without Limits</span></h2>
-      <p class="sec-sub reveal d2" data-en="From AI automation to full CRM implementation — I handle the technical complexity so you can focus on growth." data-es="Desde automatización IA hasta implementación completa de CRM — manejo la complejidad técnica para que puedas enfocarte en el crecimiento.">From AI automation to full CRM implementation — I handle the technical complexity so you can focus on growth.</p>
+      <p class="sec-sub reveal d2" data-en="From AI automation to full CRM implementation — ThryveX handles the technical complexity so clients can focus on growth." data-es="Desde automatización IA hasta implementación completa de CRM — ThryveX maneja la complejidad técnica para que los clientes puedan enfocarse en el crecimiento.">From AI automation to full CRM implementation — ThryveX handles the technical complexity so clients can focus on growth.</p>
     </div>
     <div class="services-grid reveal d2">
       <div class="s-card" role="article">
@@ -485,28 +573,28 @@
       <p class="sec-sub reveal d2" data-en="A structured, hands-on process that turns your existing tools and workflows into a connected, intelligent system." data-es="Un proceso estructurado y práctico que convierte tus herramientas y flujos de trabajo existentes en un sistema conectado e inteligente.">A structured, hands-on process that turns your existing tools and workflows into a connected, intelligent system.</p>
     </div>
     <div class="process-grid">
-      <div class="p-card reveal d1" role="article">
+      <div class="p-card" role="article">
         <span class="p-num" aria-hidden="true">01</span>
         <h3 class="p-title" data-en="Discovery & Audit" data-es="Descubrimiento y Auditoría">Discovery & Audit</h3>
-        <p class="p-desc" data-en="I map your current workflows, tools, and pain points — identifying exactly where manual work is slowing you down and where automation will deliver the highest return." data-es="Mapeo tus flujos de trabajo, herramientas y puntos de dolor actuales — identificando exactamente dónde el trabajo manual te frena y dónde la automatización entregará el mayor retorno.">I map your current workflows, tools, and pain points — identifying exactly where manual work is slowing you down and where automation will deliver the highest return.</p>
+        <p class="p-desc" data-en="ThryveX maps existing workflows, tools, and pain points — identifying exactly where manual work is creating drag and where automation will deliver the highest return." data-es="ThryveX mapea los flujos de trabajo, herramientas y puntos de dolor existentes — identificando exactamente dónde el trabajo manual crea fricción y dónde la automatización entregará el mayor retorno.">ThryveX maps existing workflows, tools, and pain points — identifying exactly where manual work is creating drag and where automation will deliver the highest return.</p>
         <div class="p-tags"><span class="p-tag">Workflow Mapping</span><span class="p-tag">Gap Analysis</span><span class="p-tag">Tool Audit</span></div>
       </div>
-      <div class="p-card reveal d2" role="article">
+      <div class="p-card" role="article">
         <span class="p-num" aria-hidden="true">02</span>
         <h3 class="p-title" data-en="Strategy & Blueprint" data-es="Estrategia y Plan">Strategy & Blueprint</h3>
-        <p class="p-desc" data-en="I design a custom automation architecture — mapping every system, integration, data flow, and AI layer before a single line of code is written. You see the full picture before we build." data-es="Diseño una arquitectura de automatización personalizada — mapeando cada sistema, integración, flujo de datos y capa de IA antes de que se escriba una sola línea de código. Ves el panorama completo antes de construir.">I design a custom automation architecture — mapping every system, integration, data flow, and AI layer before a single line of code is written. You see the full picture before we build.</p>
+        <p class="p-desc" data-en="ThryveX designs a custom automation architecture — mapping every system, integration, data flow, and AI layer before a single line of code is written. Clients see the full picture before building begins." data-es="ThryveX diseña una arquitectura de automatización personalizada — mapeando cada sistema, integración, flujo de datos y capa de IA antes de que se escriba una sola línea de código. Los clientes ven el panorama completo antes de que comience la construcción.">ThryveX designs a custom automation architecture — mapping every system, integration, data flow, and AI layer before a single line of code is written. Clients see the full picture before building begins.</p>
         <div class="p-tags"><span class="p-tag">System Design</span><span class="p-tag">Integration Map</span><span class="p-tag">AI Architecture</span></div>
       </div>
-      <div class="p-card reveal d3" role="article">
+      <div class="p-card" role="article">
         <span class="p-num" aria-hidden="true">03</span>
         <h3 class="p-title" data-en="Build & Integrate" data-es="Construcción e Integración">Build & Integrate</h3>
-        <p class="p-desc" data-en="I implement your full automation stack — connecting tools, configuring CRM pipelines, building AI agents, and integrating everything into a unified system that works the way your business actually operates." data-es="Implemento tu stack de automatización completo — conectando herramientas, configurando pipelines CRM, construyendo agentes de IA e integrando todo en un sistema unificado que funciona como tu negocio realmente opera.">I implement your full automation stack — connecting tools, configuring CRM pipelines, building AI agents, and integrating everything into a unified system that works the way your business actually operates.</p>
+        <p class="p-desc" data-en="ThryveX implements the full automation stack — connecting tools, configuring CRM pipelines, building AI agents, and integrating everything into a unified system that works the way the business actually operates." data-es="ThryveX implementa el stack de automatización completo — conectando herramientas, configurando pipelines CRM, construyendo agentes de IA e integrando todo en un sistema unificado que funciona como el negocio realmente opera.">ThryveX implements the full automation stack — connecting tools, configuring CRM pipelines, building AI agents, and integrating everything into a unified system that works the way the business actually operates.</p>
         <div class="p-tags"><span class="p-tag">CRM Setup</span><span class="p-tag">AI Agents</span><span class="p-tag">API Integration</span></div>
       </div>
-      <div class="p-card reveal d4" role="article">
+      <div class="p-card" role="article">
         <span class="p-num" aria-hidden="true">04</span>
         <h3 class="p-title" data-en="Launch & Optimize" data-es="Lanzamiento y Optimización">Launch & Optimize</h3>
-        <p class="p-desc" data-en="Every system is tested against real scenarios before going live. After launch, I monitor performance, fine-tune automations, and ensure everything scales cleanly as your business grows." data-es="Cada sistema se prueba en escenarios reales antes del lanzamiento. Después, monitoreo el rendimiento, afino las automatizaciones y aseguro que todo escale limpiamente a medida que tu negocio crece.">Every system is tested against real scenarios before going live. After launch, I monitor performance, fine-tune automations, and ensure everything scales cleanly as your business grows.</p>
+        <p class="p-desc" data-en="Every system is tested against real scenarios before going live. After launch, ThryveX monitors performance, fine-tunes automations, and ensures everything scales cleanly as the business grows." data-es="Cada sistema se prueba en escenarios reales antes del lanzamiento. Después, ThryveX monitorea el rendimiento, afina las automatizaciones y asegura que todo escale limpiamente a medida que el negocio crece.">Every system is tested against real scenarios before going live. After launch, ThryveX monitors performance, fine-tunes automations, and ensures everything scales cleanly as the business grows.</p>
         <div class="p-tags"><span class="p-tag">QA Testing</span><span class="p-tag">Live Monitoring</span><span class="p-tag">Ongoing Tuning</span></div>
       </div>
     </div>
@@ -522,28 +610,28 @@
     <div class="sec-header">
       <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="Why ThryveX" data-es="Por Qué ThryveX">Why ThryveX</span></div>
       <h2 class="sec-h reveal d1"><span data-en="Built Different." data-es="Construido Diferente.">Built Different.</span><br><span class="g" data-en="Driven by Results." data-es="Impulsado por Resultados.">Driven by Results.</span></h2>
-      <p class="sec-sub reveal d2" data-en="Every hour your team spends on manual work is revenue leaking through the cracks. I close those leaks — permanently." data-es="Cada hora que tu equipo pasa en trabajo manual es ingreso que se escapa. Cierro esas fugas — permanentemente.">Every hour your team spends on manual work is revenue leaking through the cracks. I close those leaks — permanently.</p>
+      <p class="sec-sub reveal d2" data-en="Every hour a team spends on manual work is revenue leaking through the cracks. ThryveX closes those leaks — permanently." data-es="Cada hora que un equipo pasa en trabajo manual es ingreso que se escapa. ThryveX cierra esas fugas — permanentemente.">Every hour a team spends on manual work is revenue leaking through the cracks. ThryveX closes those leaks — permanently.</p>
     </div>
     <div class="why-grid">
-      <div class="w-card reveal d1" role="article">
+      <div class="w-card" role="article">
         <span class="w-num" aria-hidden="true">01</span>
         <h3 class="w-title" data-en="Zero Bloat. Pure Results." data-es="Sin Relleno. Solo Resultados.">Zero Bloat. Pure Results.</h3>
-        <p class="w-desc" data-en="I build only what drives measurable outcomes. No unnecessary complexity, no shelf-ware — every system earns its place with real numbers from day one." data-es="Construyo solo lo que genera resultados medibles. Sin complejidad innecesaria — cada sistema justifica su lugar con números reales desde el primer día.">I build only what drives measurable outcomes. No unnecessary complexity, no shelf-ware — every system earns its place with real numbers from day one.</p>
+        <p class="w-desc" data-en="ThryveX builds only what drives measurable outcomes. No unnecessary complexity, no shelf-ware — every system earns its place with real numbers from day one." data-es="ThryveX construye solo lo que genera resultados medibles. Sin complejidad innecesaria — cada sistema justifica su lugar con números reales desde el primer día.">ThryveX builds only what drives measurable outcomes. No unnecessary complexity, no shelf-ware — every system earns its place with real numbers from day one.</p>
       </div>
-      <div class="w-card reveal d2" role="article">
+      <div class="w-card" role="article">
         <span class="w-num" aria-hidden="true">02</span>
         <h3 class="w-title" data-en="Operator Mindset" data-es="Mentalidad de Operador">Operator Mindset</h3>
-        <p class="w-desc" data-en="I've built and operated real businesses. I know what it costs to lose a deal to slow follow-up, or to miss a lead because data wasn't captured. Every decision is driven by business logic, not technical preference." data-es="He construido y operado negocios reales. Sé lo que cuesta perder un trato por seguimiento lento, o perder un lead por datos no capturados. Cada decisión está impulsada por lógica de negocio, no preferencia técnica.">I've built and operated real businesses. I know what it costs to lose a deal to slow follow-up, or to miss a lead because data wasn't captured. Every decision is driven by business logic, not technical preference.</p>
+        <p class="w-desc" data-en="Built by someone who has run real businesses — the cost of slow follow-up, missed leads, and uncaptured data is deeply understood. Every decision is driven by business logic, not technical preference." data-es="Construido por alguien que ha operado negocios reales — el costo del seguimiento lento, los leads perdidos y los datos no capturados se entiende profundamente. Cada decisión está impulsada por lógica de negocio, no preferencia técnica.">Built by someone who has run real businesses — the cost of slow follow-up, missed leads, and uncaptured data is deeply understood. Every decision is driven by business logic, not technical preference.</p>
       </div>
-      <div class="w-card reveal d3" role="article">
+      <div class="w-card" role="article">
         <span class="w-num" aria-hidden="true">03</span>
         <h3 class="w-title" data-en="End-to-End Ownership" data-es="Responsabilidad de Principio a Fin">End-to-End Ownership</h3>
-        <p class="w-desc" data-en="I handle everything — from strategy to build to go-live. No handoffs between teams, no gaps in accountability. One person who understands your entire system and is responsible for making it work." data-es="Me encargo de todo — desde la estrategia hasta la construcción y el lanzamiento. Sin transferencias entre equipos, sin brechas de responsabilidad. Una persona que entiende todo tu sistema y es responsable de hacerlo funcionar.">I handle everything — from strategy to build to go-live. No handoffs between teams, no gaps in accountability. One person who understands your entire system and is responsible for making it work.</p>
+        <p class="w-desc" data-en="ThryveX handles everything — from strategy to build to go-live. No handoffs, no gaps in accountability. One point of contact who understands the entire system and is responsible for making it work." data-es="ThryveX se encarga de todo — desde la estrategia hasta la construcción y el lanzamiento. Sin transferencias, sin brechas de responsabilidad. Un solo punto de contacto que entiende todo el sistema y es responsable de hacerlo funcionar.">ThryveX handles everything — from strategy to build to go-live. No handoffs, no gaps in accountability. One point of contact who understands the entire system and is responsible for making it work.</p>
       </div>
-      <div class="w-card reveal d4" role="article">
+      <div class="w-card" role="article">
         <span class="w-num" aria-hidden="true">04</span>
         <h3 class="w-title" data-en="Systems That Compound" data-es="Sistemas Que Se Acumulan">Systems That Compound</h3>
-        <p class="w-desc" data-en="The automations I build don't just solve today's problem. They're architected to grow with your business — adding more intelligence, more integrations, and more efficiency over time without starting over." data-es="Las automatizaciones que construyo no solo resuelven el problema de hoy. Están diseñadas para crecer con tu negocio — añadiendo más inteligencia, más integraciones y más eficiencia con el tiempo sin empezar de cero.">The automations I build don't just solve today's problem. They're architected to grow with your business — adding more intelligence, more integrations, and more efficiency over time without starting over.</p>
+        <p class="w-desc" data-en="The systems ThryveX builds don't just solve today's problem. They're architected to grow with the business — adding more intelligence, more integrations, and more efficiency over time without starting over." data-es="Los sistemas que ThryveX construye no solo resuelven el problema de hoy. Están diseñados para crecer con el negocio — añadiendo más inteligencia, más integraciones y más eficiencia con el tiempo sin empezar de cero.">The systems ThryveX builds don't just solve today's problem. They're architected to grow with the business — adding more intelligence, more integrations, and more efficiency over time without starting over.</p>
       </div>
     </div>
   </div>
@@ -551,58 +639,146 @@
 
 <div class="s-div"></div>
 
-<!-- STACK -->
-<section id="stack" class="stack">
+<!-- PIPELINE -->
+<section id="pipeline" class="pipeline">
   <div class="container">
     <div class="sec-header">
-      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="Tools & Integrations" data-es="Herramientas e Integraciones">Tools & Integrations</span></div>
-      <h2 class="sec-h reveal d1"><span data-en="Connect Anything." data-es="Conecta Todo.">Connect Anything.</span><br><span class="g" data-en="Automate Everything." data-es="Automatiza Todo.">Automate Everything.</span></h2>
-      <p class="sec-sub reveal d2" data-en="I work with the leading platforms across every category — if your business uses it, I can integrate it." data-es="Trabajo con las plataformas líderes en cada categoría — si tu negocio lo usa, puedo integrarlo.">I work with the leading platforms across every category — if your business uses it, I can integrate it.</p>
+      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="The Automation Pipeline" data-es="El Pipeline de Automatización">The Automation Pipeline</span></div>
+      <h2 class="sec-h reveal d1">
+        <span data-en="Every Lead Captured." data-es="Cada Lead Capturado.">Every Lead Captured.</span><br>
+        <span class="g" data-en="Every Step, Automated." data-es="Cada Paso, Automatizado.">Every Step, Automated.</span>
+      </h2>
+      <p class="sec-sub reveal d2" data-en="From the moment a prospect discovers your business, ThryveX's system takes over — qualifying, nurturing, and booking — without any manual effort." data-es="Desde el momento en que un prospecto descubre tu negocio, el sistema de ThryveX toma el control — calificando, nutriendo y agendando — sin ningún esfuerzo manual.">From the moment a prospect discovers your business, ThryveX's system takes over — qualifying, nurturing, and booking — without any manual effort.</p>
     </div>
-    <div class="tools-grid">
-      <div class="t-cat reveal d1">
-        <div class="t-cat-head">
-          <div class="t-cat-ico" style="background:rgba(14,165,233,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:var(--blue)"><path d="M12 2a5 5 0 0 1 5 5c0 1-.3 2-.8 2.8M12 2a5 5 0 0 0-5 5c0 1 .3 2 .8 2.8"/><path d="M9 9.5c-2 .5-3 2-3 3.5a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4c0-1.5-1-3-3-3.5"/></svg></div>
-          <span class="t-cat-name" data-en="AI & Language Models" data-es="IA y Modelos de Lenguaje">AI & Language Models</span>
+
+    <div class="pipe-track" id="pipeTrack">
+
+      <!-- Step 1: Capture -->
+      <div class="pipe-step">
+        <div class="pipe-icon pi-1" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
         </div>
-        <div class="t-badges"><span class="t-badge">OpenAI GPT-4</span><span class="t-badge">Anthropic Claude</span><span class="t-badge">Google Gemini</span><span class="t-badge">Meta Llama</span><span class="t-badge">Mistral</span></div>
+        <span class="pipe-num" data-en="STEP 01" data-es="PASO 01">STEP 01</span>
+        <h3 class="pipe-title" data-en="Lead Captured" data-es="Lead Capturado">Lead Captured</h3>
+        <p class="pipe-desc" data-en="Every touchpoint — website, ads, WhatsApp, social — feeds into one unified pipeline the instant a prospect engages." data-es="Cada punto de contacto — sitio web, anuncios, WhatsApp, redes sociales — alimenta un pipeline unificado al instante en que un prospecto interactúa.">Every touchpoint — website, ads, WhatsApp, social — feeds into one unified pipeline the instant a prospect engages.</p>
+        <div class="pipe-mock" role="img" aria-label="Lead capture notification">
+          <div class="pm-head"><div class="pm-dot pm-dot-g"></div><span class="pm-head-lbl" data-en="New Lead" data-es="Nuevo Lead">New Lead</span></div>
+          <div class="pm-row"><span class="pm-k" data-en="Name" data-es="Nombre">Name</span><span class="pm-v">Maria Rodriguez</span></div>
+          <div class="pm-row"><span class="pm-k" data-en="Source" data-es="Fuente">Source</span><span class="pm-tag pm-tag-blue" data-en="Website Form" data-es="Formulario Web">Website Form</span></div>
+          <div class="pm-row"><span class="pm-k" data-en="Time" data-es="Hora">Time</span><span class="pm-v" data-en="Just now" data-es="Ahora mismo">Just now</span></div>
+        </div>
+        <div class="pipe-tools"><span class="pipe-tool">Website</span><span class="pipe-tool">Meta Ads</span><span class="pipe-tool">WhatsApp</span></div>
       </div>
-      <div class="t-cat reveal d2">
-        <div class="t-cat-head">
-          <div class="t-cat-ico" style="background:rgba(124,58,237,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:var(--purple)"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <span class="t-cat-name" data-en="CRM & Sales" data-es="CRM y Ventas">CRM & Sales</span>
+
+      <!-- Connector 1 -->
+      <div class="pipe-conn" aria-hidden="true"><div class="pipe-conn-line"></div><div class="pipe-conn-dot"></div></div>
+
+      <!-- Step 2: Store -->
+      <div class="pipe-step">
+        <div class="pipe-icon pi-2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
         </div>
-        <div class="t-badges"><span class="t-badge">HubSpot</span><span class="t-badge">Salesforce</span><span class="t-badge">Pipedrive</span><span class="t-badge">Close</span><span class="t-badge">GoHighLevel</span></div>
+        <span class="pipe-num" data-en="STEP 02" data-es="PASO 02">STEP 02</span>
+        <h3 class="pipe-title" data-en="Stored in CRM" data-es="Guardado en CRM">Stored in CRM</h3>
+        <p class="pipe-desc" data-en="Contact data is automatically structured, tagged, and stored in the CRM — zero manual entry, zero data loss." data-es="Los datos de contacto se estructuran, etiquetan y almacenan automáticamente en el CRM — sin entrada manual, sin pérdida de datos.">Contact data is automatically structured, tagged, and stored in the CRM — zero manual entry, zero data loss.</p>
+        <div class="pipe-mock" role="img" aria-label="CRM record creation">
+          <div class="pm-head"><div class="pm-dot pm-dot-p"></div><span class="pm-head-lbl">CRM</span></div>
+          <div class="pm-row"><span class="pm-k" data-en="Pipeline" data-es="Pipeline">Pipeline</span><span class="pm-tag pm-tag-blue" data-en="New Lead" data-es="Nuevo Lead">New Lead</span></div>
+          <div class="pm-row"><span class="pm-k" data-en="Status" data-es="Estado">Status</span><span class="pm-v" data-en="Unqualified" data-es="Sin Calificar">Unqualified</span></div>
+          <div class="pm-row"><span class="pm-k" data-en="Owner" data-es="Responsable">Owner</span><span class="pm-v" data-en="Automation" data-es="Automatización">Automation</span></div>
+        </div>
+        <div class="pipe-tools"><span class="pipe-tool">HubSpot</span><span class="pipe-tool">Salesforce</span><span class="pipe-tool">Airtable</span></div>
       </div>
-      <div class="t-cat reveal d3">
-        <div class="t-cat-head">
-          <div class="t-cat-ico" style="background:rgba(6,182,212,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:var(--cyan)"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
-          <span class="t-cat-name" data-en="Workflow Automation" data-es="Automatización de Flujos">Workflow Automation</span>
+
+      <!-- Connector 2 -->
+      <div class="pipe-conn" aria-hidden="true"><div class="pipe-conn-line"></div><div class="pipe-conn-dot"></div></div>
+
+      <!-- Step 3: Qualify -->
+      <div class="pipe-step">
+        <div class="pipe-icon pi-3" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="12" r="10"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
-        <div class="t-badges"><span class="t-badge">n8n</span><span class="t-badge">Make</span><span class="t-badge">Zapier</span><span class="t-badge">Activepieces</span><span class="t-badge">Relay.app</span></div>
+        <span class="pipe-num" data-en="STEP 03" data-es="PASO 03">STEP 03</span>
+        <h3 class="pipe-title" data-en="AI Qualification" data-es="Calificación IA">AI Qualification</h3>
+        <p class="pipe-desc" data-en="AI scores each lead on budget, intent, and ICP fit — routing high-value prospects forward and filtering out poor fits." data-es="La IA puntúa cada lead según presupuesto, intención y ajuste al ICP — enviando prospectos de alto valor al frente y filtrando los que no encajan.">AI scores each lead on budget, intent, and ICP fit — routing high-value prospects forward and filtering out poor fits.</p>
+        <div class="pipe-mock" role="img" aria-label="AI lead scoring">
+          <div class="pm-head"><div class="pm-dot pm-dot-b"></div><span class="pm-head-lbl" data-en="AI Score" data-es="Puntuación IA">AI Score</span></div>
+          <div class="pm-score">
+            <div class="pm-score-lbl" data-en="Lead Quality" data-es="Calidad del Lead">Lead Quality</div>
+            <div class="pm-score-track"><div class="pm-score-fill" id="pipeScoreFill"></div></div>
+            <div class="pm-score-num">87 / 100</div>
+          </div>
+          <div class="pm-checks">
+            <div class="pm-chk"><div class="pm-chk-ico">✓</div><span data-en="Budget confirmed" data-es="Presupuesto confirmado">Budget confirmed</span></div>
+            <div class="pm-chk"><div class="pm-chk-ico">✓</div><span data-en="ICP match" data-es="Coincide con ICP">ICP match</span></div>
+            <div class="pm-chk"><div class="pm-chk-ico">✓</div><span data-en="High intent" data-es="Alta intención">High intent</span></div>
+          </div>
+        </div>
+        <div class="pipe-tools"><span class="pipe-tool">OpenAI</span><span class="pipe-tool">Claude</span><span class="pipe-tool">n8n</span></div>
       </div>
-      <div class="t-cat reveal d4">
-        <div class="t-cat-head">
-          <div class="t-cat-ico" style="background:rgba(16,185,129,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:var(--green)"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-          <span class="t-cat-name" data-en="Communication" data-es="Comunicación">Communication</span>
+
+      <!-- Connector 3 -->
+      <div class="pipe-conn" aria-hidden="true"><div class="pipe-conn-line"></div><div class="pipe-conn-dot"></div></div>
+
+      <!-- Step 4: Nurture -->
+      <div class="pipe-step">
+        <div class="pipe-icon pi-4" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-        <div class="t-badges"><span class="t-badge">WhatsApp Business</span><span class="t-badge">Slack</span><span class="t-badge">Twilio</span><span class="t-badge">SendGrid</span><span class="t-badge">Resend</span></div>
+        <span class="pipe-num" data-en="STEP 04" data-es="PASO 04">STEP 04</span>
+        <h3 class="pipe-title" data-en="Automated Follow-up" data-es="Seguimiento Automático">Automated Follow-up</h3>
+        <p class="pipe-desc" data-en="Personalized emails and WhatsApp messages go out automatically — at the right moment, on the right channel, every time." data-es="Emails personalizados y mensajes de WhatsApp se envían automáticamente — en el momento correcto, por el canal correcto, siempre.">Personalized emails and WhatsApp messages go out automatically — at the right moment, on the right channel, every time.</p>
+        <div class="pipe-mock" role="img" aria-label="Automated messages">
+          <div class="pm-head"><div class="pm-dot pm-dot-g"></div><span class="pm-head-lbl" data-en="Messages Sent" data-es="Mensajes Enviados">Messages Sent</span></div>
+          <div class="pm-msgs">
+            <div class="pm-msg pm-msg-out" data-en="Hi Maria! Thanks for reaching out..." data-es="¡Hola Maria! Gracias por contactar...">Hi Maria! Thanks for reaching out...</div>
+            <div class="pm-msg pm-msg-in" data-en="Sounds great, when can we..." data-es="Suena bien, ¿cuándo podemos...">Sounds great, when can we...</div>
+            <div class="pm-msg pm-msg-out" data-en="Let's lock in a time →" data-es="Bloqueemos un horario →">Let's lock in a time →</div>
+          </div>
+          <div class="pm-via"><span>Email</span><span>·</span><span>WhatsApp</span><span>·</span><span>SMS</span></div>
+        </div>
+        <div class="pipe-tools"><span class="pipe-tool">WhatsApp</span><span class="pipe-tool">Email</span><span class="pipe-tool">Make</span></div>
       </div>
-      <div class="t-cat reveal d5">
-        <div class="t-cat-head">
-          <div class="t-cat-ico" style="background:rgba(245,158,11,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:#F59E0B"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
-          <span class="t-cat-name" data-en="Data & Analytics" data-es="Datos y Analítica">Data & Analytics</span>
+
+      <!-- Connector 4 -->
+      <div class="pipe-conn" aria-hidden="true"><div class="pipe-conn-line"></div><div class="pipe-conn-dot"></div></div>
+
+      <!-- Step 5: Book -->
+      <div class="pipe-step">
+        <div class="pipe-icon pi-5" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
         </div>
-        <div class="t-badges"><span class="t-badge">Airtable</span><span class="t-badge">Notion</span><span class="t-badge">Google Sheets</span><span class="t-badge">BigQuery</span><span class="t-badge">Looker Studio</span></div>
+        <span class="pipe-num" data-en="STEP 05" data-es="PASO 05">STEP 05</span>
+        <h3 class="pipe-title" data-en="Appointment Booked" data-es="Cita Agendada">Appointment Booked</h3>
+        <p class="pipe-desc" data-en="Qualified leads book directly into the calendar. No back-and-forth, no manual scheduling — it just happens." data-es="Los leads calificados reservan directamente en el calendario. Sin ir y venir, sin programación manual — simplemente sucede.">Qualified leads book directly into the calendar. No back-and-forth, no manual scheduling — it just happens.</p>
+        <div class="pipe-mock" role="img" aria-label="Appointment confirmed">
+          <div class="pm-head"><div class="pm-dot pm-dot-g"></div><span class="pm-head-lbl" data-en="Confirmed" data-es="Confirmado">Confirmed</span></div>
+          <div class="pm-cal">
+            <div class="pm-cal-mo" data-en="April 2026" data-es="Abril 2026">April 2026</div>
+            <div class="pm-slots">
+              <div class="pm-slot pm-slot-dis">10:00</div>
+              <div class="pm-slot pm-slot-dis">11:00</div>
+              <div class="pm-slot pm-slot-act">2:00 PM</div>
+              <div class="pm-slot pm-slot-dis">3:00 PM</div>
+            </div>
+          </div>
+          <div class="pm-cal-conf"><div class="pm-cal-conf-dot"></div><span data-en="Appointment confirmed" data-es="Cita confirmada">Appointment confirmed</span></div>
+        </div>
+        <div class="pipe-tools"><span class="pipe-tool">Calendly</span><span class="pipe-tool">Cal.com</span><span class="pipe-tool">Google Cal</span></div>
       </div>
-      <div class="t-cat reveal d6">
-        <div class="t-cat-head">
-          <div class="t-cat-ico" style="background:rgba(239,68,68,.1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:#EF4444"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <span class="t-cat-name" data-en="Web & Commerce" data-es="Web y Comercio">Web & Commerce</span>
-        </div>
-        <div class="t-badges"><span class="t-badge">Webflow</span><span class="t-badge">WordPress</span><span class="t-badge">Shopify</span><span class="t-badge">Stripe</span><span class="t-badge">Framer</span></div>
+
+    </div><!-- /pipe-track -->
+
+    <div class="pipe-note reveal d1">
+      <div class="pipe-note-inner">
+        <span data-en="Zero manual effort." data-es="Cero esfuerzo manual.">Zero manual effort.</span>
+        <div class="pipe-note-sep"></div>
+        <strong data-en="Fully automated." data-es="Completamente automatizado.">Fully automated.</strong>
+        <div class="pipe-note-sep"></div>
+        <span data-en="Running 24 / 7 across every channel." data-es="Funcionando 24/7 en cada canal.">Running 24 / 7 across every channel.</span>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -615,7 +791,7 @@
     <div class="sec-header">
       <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="Get In Touch" data-es="Contáctame">Get In Touch</span></div>
       <h2 class="sec-h reveal d1"><span data-en="Let's Build Something" data-es="Construyamos Algo">Let's Build Something</span><br><span class="g" data-en="That Actually Works." data-es="Que Realmente Funcione.">That Actually Works.</span></h2>
-      <p class="sec-sub reveal d2" data-en="Book a free strategy call. I'll map your biggest automation opportunities and show you exactly where to start." data-es="Agenda una llamada de estrategia gratuita. Mapearé tus mayores oportunidades de automatización y te mostraré exactamente dónde comenzar.">Book a free strategy call. I'll map your biggest automation opportunities and show you exactly where to start.</p>
+      <p class="sec-sub reveal d2" data-en="Book a free strategy call. ThryveX maps the biggest automation opportunities and shows exactly where to start." data-es="Agenda una llamada de estrategia gratuita. ThryveX mapea las mayores oportunidades de automatización y muestra exactamente dónde comenzar.">Book a free strategy call. ThryveX maps the biggest automation opportunities and shows exactly where to start.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info reveal">
@@ -869,7 +1045,7 @@
             </div>
           </div>
           <div class="f-group">
-            <label class="f-label" for="fmessage" data-en="Tell Me About Your Business" data-es="Cuéntame Sobre Tu Negocio">Tell Me About Your Business</label>
+            <label class="f-label" for="fmessage" data-en="Tell Us About Your Business" data-es="Cuéntanos Sobre Tu Negocio">Tell Us About Your Business</label>
             <textarea class="f-textarea" id="fmessage" name="message" placeholder="Tell us about your business..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-lg f-submit magnetic">
@@ -880,7 +1056,7 @@
         <div class="f-success" id="formSuccess" role="alert" aria-live="polite">
           <div class="f-success-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
           <h3 data-en="Message Sent!" data-es="¡Mensaje Enviado!">Message Sent!</h3>
-          <p data-en="Thank you. I'll review your message and be in touch soon." data-es="Gracias. Revisaré tu mensaje y me pondré en contacto pronto.">Thank you. I'll review your message and be in touch soon.</p>
+          <p data-en="Message received. ThryveX will review it and be in touch shortly." data-es="Mensaje recibido. ThryveX lo revisará y se pondrá en contacto pronto.">Message received. ThryveX will review it and be in touch shortly.</p>
         </div>
       </div>
     </div>
@@ -897,7 +1073,7 @@
         <span data-en="Ready to Scale" data-es="¿Listo Para Escalar">Ready to Scale</span><br>
         <span class="g" data-en="Without Limits?" data-es="Sin Límites?">Without Limits?</span>
       </h2>
-      <p class="cta-sub reveal d1" data-en="Book a free 30-minute strategy call. I'll map your biggest automation opportunities and show you exactly where to start — no pressure, just clarity." data-es="Agenda una llamada de estrategia gratuita de 30 minutos. Mapearé tus mayores oportunidades de automatización y te mostraré exactamente dónde comenzar — sin presión, solo claridad.">Book a free 30-minute strategy call. I'll map your biggest automation opportunities and show you exactly where to start — no pressure, just clarity.</p>
+      <p class="cta-sub reveal d1" data-en="Book a free 30-minute strategy call. ThryveX maps the biggest automation opportunities and shows exactly where to start — no pressure, just clarity." data-es="Agenda una llamada de estrategia gratuita de 30 minutos. ThryveX mapea las mayores oportunidades de automatización y muestra exactamente dónde comenzar — sin presión, solo claridad.">Book a free 30-minute strategy call. ThryveX maps the biggest automation opportunities and shows exactly where to start — no pressure, just clarity.</p>
       <div class="cta-btns reveal d2">
         <a href="#contact" class="btn btn-primary btn-lg magnetic">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
@@ -956,7 +1132,7 @@
           <li><a href="#hero" data-en="Home" data-es="Inicio">Home</a></li>
           <li><a href="#process" data-en="Process" data-es="Proceso">Process</a></li>
           <li><a href="#why" data-en="Why ThryveX" data-es="Por Qué ThryveX">Why ThryveX</a></li>
-          <li><a href="#stack" data-en="Tools" data-es="Herramientas">Tools</a></li>
+          <li><a href="#pipeline" data-en="How It Works" data-es="Cómo Funciona">Tools</a></li>
           <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
         </ul>
       </div>
@@ -1001,7 +1177,7 @@ const ring=document.getElementById('cursorRing');
 let cX=-100,cY=-100,rX=-100,rY=-100;
 document.addEventListener('mousemove',e=>{cX=e.clientX;cY=e.clientY;if(cur){cur.style.left=cX+'px';cur.style.top=cY+'px';}});
 (function ar(){rX+=(cX-rX)*.12;rY+=(cY-rY)*.12;if(ring){ring.style.left=rX+'px';ring.style.top=rY+'px';}requestAnimationFrame(ar);})();
-document.querySelectorAll('a,button,.s-card,.p-card,.w-card,.t-cat,.f-soc').forEach(el=>{
+document.querySelectorAll('a,button,.s-card,.p-card,.w-card,.pipe-icon,.f-soc').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur&&cur.classList.add('on-hover');ring&&ring.classList.add('on-hover');});
   el.addEventListener('mouseleave',()=>{cur&&cur.classList.remove('on-hover');ring&&ring.classList.remove('on-hover');});
 });
@@ -1071,7 +1247,7 @@ window.addEventListener('scroll',()=>{
 /* ─ 6. TILT CARDS ─────────────────────────────────────── */
 const pRM2=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 if(!pRM2){
-  document.querySelectorAll('.s-card,.p-card,.w-card,.t-cat').forEach(card=>{
+  document.querySelectorAll('.s-card,.p-card,.w-card').forEach(card=>{
     card.addEventListener('mousemove',e=>{
       const r=card.getBoundingClientRect();
       const x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
@@ -1175,10 +1351,51 @@ if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
   gsap.utils.toArray('.s-card').forEach((el,i)=>{
     gsap.from(el,{scrollTrigger:{trigger:el,start:'top 88%',once:true},y:40,opacity:0,duration:.75,delay:i*.06,ease:'power3.out'});
   });
-  gsap.utils.toArray('.p-card,.w-card').forEach((el,i)=>{
-    gsap.from(el,{scrollTrigger:{trigger:el,start:'top 86%',once:true},y:40,opacity:0,duration:.75,delay:i*.08,ease:'power3.out'});
-  });
+  /* NOTE: .p-card and .w-card are animated by the IO observer below — do NOT add GSAP here
+     as gsap.from() would animate opacity:0→0 (CSS class sets computed opacity:0 as "to" target) */
 }
+
+/* ─ 14. PROCESS & WHY CARD REVEAL ────────────────────── */
+(function(){
+  const cards=document.querySelectorAll('.p-card,.w-card');
+  if(!cards.length)return;
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.opacity='1';
+        e.target.style.transform='translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+  cards.forEach((c,i)=>{
+    c.style.opacity='0';
+    c.style.transform='translateY(32px)';
+    c.style.transition=`opacity .7s ease ${i*.1}s,transform .7s ease ${i*.1}s`;
+    io.observe(c);
+  });
+})();
+
+/* ─ 15. PIPELINE ANIMATION ───────────────────────────── */
+(function(){
+  const track=document.getElementById('pipeTrack');
+  const scoreBar=document.getElementById('pipeScoreFill');
+  if(!track)return;
+  const steps=track.querySelectorAll('.pipe-step');
+  const trackIO=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      steps.forEach((s,i)=>setTimeout(()=>s.classList.add('in'),i*140));
+      trackIO.disconnect();
+    }
+  },{threshold:0.1});
+  trackIO.observe(track);
+  if(scoreBar){
+    const sIO=new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting){scoreBar.classList.add('go');sIO.disconnect();}
+    },{threshold:0.5});
+    sIO.observe(scoreBar);
+  }
+})();
 
 })();
 </script>
