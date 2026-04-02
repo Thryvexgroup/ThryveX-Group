@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ThryveX Group — AI Automation Agency. Scale your business with intelligent automation, CRM implementation, AI chatbots, and workflow automation. Based in Panama, serving clients globally.">
+  <meta name="keywords" content="AI automation, CRM implementation, workflow automation, business automation, AI chatbots, ThryveX, Panama automation agency">
+  <meta name="author" content="ThryveX Group">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="ThryveX Group — AI Automation Agency | Scale Without Limits">
+  <meta property="og:description" content="We build AI automation infrastructure that transforms how modern businesses operate. Scale without limits.">
+  <meta property="og:image" content="https://thryvexgroup.com/images/og-image.png">
+  <meta property="og:url" content="https://www.thryvexgroup.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ThryveX Group — AI Automation Agency">
+  <meta name="twitter:description" content="Scale Without Limits. AI automation infrastructure for modern businesses.">
+  <meta name="theme-color" content="#050508">
+  <link rel="canonical" href="https://www.thryvexgroup.com">
+  <title>ThryveX Group — AI Automation Agency | Scale Without Limits</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230EA5E9'/%3E%3Cstop offset='1' stop-color='%237C3AED'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-weight='800' font-size='15' fill='white' text-anchor='middle'%3ETX%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"ThryveX Group","url":"https://www.thryvexgroup.com","description":"AI Automation Agency — Scale Without Limits","contactPoint":{"@type":"ContactPoint","email":"glucas@thryvexgroup.com","telephone":"+50765693716"},"sameAs":["https://www.instagram.com/thryvexgroup"]}
+  </script>
+
+  <style>
+    /* ── TOKENS ───────────────────────────────────────────── */
+    :root {
+      --bg-0:#020204; --bg-1:#050508; --bg-2:#09090f; --bg-3:#0e0e1a; --bg-4:#141428;
+      --blue:#0EA5E9; --blue-l:#38BDF8; --blue-d:#0284C7;
+      --blue-glow:rgba(14,165,233,0.22); --blue-gs:rgba(14,165,233,0.5);
+      --purple:#7C3AED; --purple-l:#A78BFA; --purple-glow:rgba(124,58,237,0.22);
+      --cyan:#06B6D4; --cyan-l:#67E8F9; --cyan-glow:rgba(6,182,212,0.2);
+      --green:#10B981; --green-glow:rgba(16,185,129,0.2);
+      --t0:#FFFFFF; --t1:#F8FAFC; --t2:#E2E8F0; --t3:#CBD5E1;
+      --tm:#64748B; --tf:#2D3748;
+      --cb:rgba(255,255,255,0.022); --cbr:rgba(255,255,255,0.06);
+      --cbh:rgba(255,255,255,0.04); --cbhb:rgba(14,165,233,0.28);
+      --fh:'Space Grotesk',-apple-system,sans-serif;
+      --fb:'Inter',-apple-system,sans-serif;
+      --r-s:8px; --r:12px; --r-l:20px; --r-xl:28px; --r-f:9999px;
+      --sc:0 4px 32px rgba(0,0,0,0.5);
+      --tf:150ms ease; --t:250ms ease; --ts:400ms ease;
+      --zc:10000; --zl:9999; --zn:1000;
+    }
+
+    /* ── RESET ────────────────────────────────────────────── */
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:80px}
+    body{font-family:var(--fb);background:var(--bg-1);color:var(--t2);line-height:1.6;overflow-x:hidden;cursor:none}
+    body.loading{overflow:hidden}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit;cursor:none}
+    button{border:none;background:none;cursor:none;font-family:inherit}
+    ul,ol{list-style:none}
+    input,textarea,select{cursor:auto}
+    .container{width:100%;max-width:1200px;margin:0 auto;padding:0 28px}
+
+    /* ── KEYFRAMES ────────────────────────────────────────── */
+    @keyframes blob-1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-70px) scale(1.15)}66%{transform:translate(-35px,35px) scale(0.9)}}
+    @keyframes blob-2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-60px,45px) scale(1.1)}66%{transform:translate(70px,-25px) scale(0.95)}}
+    @keyframes blob-3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.2)}}
+    @keyframes float-y{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.75)}}
+    @keyframes pulse-glow{0%,100%{box-shadow:0 0 20px var(--blue-glow)}50%{box-shadow:0 0 50px var(--blue-gs),0 0 90px var(--blue-glow)}}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    @keyframes scroll-line{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+    @keyframes shine{0%{left:-100%}100%{left:200%}}
+    @keyframes fade-up{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    @keyframes aurora-move{0%,100%{transform:translate(0,0) rotate(0deg) scale(1)}25%{transform:translate(4%,3%) rotate(40deg) scale(1.08)}50%{transform:translate(2%,-4%) rotate(80deg) scale(0.95)}75%{transform:translate(-3%,2%) rotate(120deg) scale(1.04)}}
+    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    @keyframes live-pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.7)}70%{box-shadow:0 0 0 6px rgba(16,185,129,0)}}
+    @keyframes flow-pulse{0%,100%{opacity:0.3;transform:scaleX(1)}50%{opacity:1;transform:scaleX(1.02)}}
+    @keyframes node-breathe{0%,100%{box-shadow:0 0 30px var(--blue-glow)}50%{box-shadow:0 0 60px var(--blue-gs),0 0 100px var(--blue-glow)}}
+    @keyframes float-node{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+    /* ── SCROLL REVEAL (BIDIRECTIONAL) ────────────────────── */
+    .reveal{opacity:0;transform:translateY(44px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
+    .reveal.in{opacity:1;transform:translateY(0)}
+    .reveal-d1{transition-delay:.07s}.reveal-d2{transition-delay:.14s}.reveal-d3{transition-delay:.21s}
+    .reveal-d4{transition-delay:.28s}.reveal-d5{transition-delay:.35s}.reveal-d6{transition-delay:.42s}
+
+    /* ── LOADER ───────────────────────────────────────────── */
+    .loader{position:fixed;inset:0;z-index:var(--zl);background:var(--bg-0);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .7s ease,visibility .7s ease}
+    .loader.out{opacity:0;visibility:hidden;pointer-events:none}
+    .loader-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(14,165,233,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black,transparent)}
+    .loader-content{position:relative;display:flex;flex-direction:column;align-items:center;gap:36px;animation:fade-up .8s ease both}
+    .loader-icon-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+    .loader-ring{position:absolute;width:120px;height:120px;border-radius:50%;border:1px solid rgba(14,165,233,0.15);animation:spin-slow 8s linear infinite}
+    .loader-ring::before{content:'';position:absolute;top:-3px;left:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px var(--blue)}
+    .loader-icon{width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:28px;font-weight:800;color:#fff;animation:pulse-glow 2.5s ease infinite;letter-spacing:-1px}
+    .loader-brand{font-family:var(--fh);font-size:22px;font-weight:600;color:var(--t1);letter-spacing:-0.02em}
+    .loader-bar-wrap{width:280px;display:flex;flex-direction:column;align-items:center;gap:14px}
+    .loader-bar{width:100%;height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
+    .loader-progress{height:100%;background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan));border-radius:2px;width:0;transition:width .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+    .loader-progress::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.45),transparent);animation:shine 1.4s ease infinite}
+    .loader-label{font-size:11px;font-weight:600;color:var(--tm);letter-spacing:.12em;text-transform:uppercase}
+
+    /* ── CUSTOM CURSOR ────────────────────────────────────── */
+    .cursor{position:fixed;width:8px;height:8px;background:var(--blue);border-radius:50%;pointer-events:none;z-index:var(--zc);transform:translate(-50%,-50%);transition:width .2s ease,height .2s ease,background .2s ease;will-change:left,top}
+    .cursor-ring{position:fixed;width:38px;height:38px;border:1.5px solid rgba(14,165,233,0.55);border-radius:50%;pointer-events:none;z-index:var(--zc);transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease,width .25s ease,height .25s ease,border-color .25s ease,opacity .2s ease;will-change:left,top}
+    .cursor.on-hover{width:14px;height:14px;background:var(--purple)}
+    .cursor-ring.on-hover{width:54px;height:54px;border-color:rgba(124,58,237,0.45)}
+    .cursor.clicking{transform:translate(-50%,-50%) scale(0.55)}
+
+    /* ── NAVBAR ───────────────────────────────────────────── */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:var(--zn);padding:20px 0;border-bottom:1px solid transparent;transition:padding .35s ease,background .35s ease,backdrop-filter .35s ease,border-color .35s ease}
+    .navbar.scrolled{padding:13px 0;background:rgba(5,5,8,0.85);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom-color:rgba(255,255,255,0.06)}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px}
+    .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:none}
+    .nav-logo-icon{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:#fff}
+    .nav-logo-text{font-family:var(--fh);font-size:18px;font-weight:600;color:var(--t0);letter-spacing:-0.02em}
+    .nav-links{display:flex;align-items:center;gap:2px;justify-content:center}
+    .nav-links a{padding:8px 16px;border-radius:var(--r-s);font-size:14px;font-weight:500;color:var(--t3);transition:color var(--t),background var(--t);white-space:nowrap}
+    .nav-links a:hover,.nav-links a.active{color:var(--t0);background:rgba(255,255,255,0.055)}
+    .nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+    .nav-contact{padding:8px 16px;border-radius:var(--r-s);font-size:14px;font-weight:500;color:var(--t3);transition:color var(--t),background var(--t);cursor:none;white-space:nowrap}
+    .nav-contact:hover{color:var(--t0);background:rgba(255,255,255,0.055)}
+    .lang-sw{display:flex;align-items:center;gap:0;border-radius:var(--r-s);border:1px solid var(--cbr);background:var(--cb);overflow:hidden}
+    .lang-opt{padding:7px 11px;font-size:12px;font-weight:700;color:var(--tm);letter-spacing:.06em;transition:all var(--t);cursor:none;border:none;background:none}
+    .lang-opt:hover{color:var(--t2)}
+    .lang-opt.on{color:var(--blue);background:rgba(14,165,233,0.1)}
+    .lang-sep{font-size:11px;color:var(--tf);pointer-events:none;padding:0 1px}
+    .hamburger{display:none;flex-direction:column;gap:5px;padding:8px;cursor:none}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--t2);border-radius:2px;transition:all var(--t)}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-nav{position:fixed;inset:0;z-index:calc(var(--zn) - 1);background:rgba(2,2,4,0.97);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:100px 24px 40px;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+    .mobile-nav.open{opacity:1;visibility:visible}
+    .mobile-nav a{font-family:var(--fh);font-size:2rem;font-weight:600;color:var(--t2);padding:12px 32px;transition:color var(--t);border-radius:var(--r)}
+    .mobile-nav a:hover{color:var(--blue)}
+
+    /* ── BUTTONS ──────────────────────────────────────────── */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 28px;border-radius:var(--r);font-family:var(--fb);font-size:15px;font-weight:600;letter-spacing:-.01em;transition:all var(--t);cursor:none;position:relative;overflow:hidden;white-space:nowrap}
+    .btn::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,0));opacity:0;transition:opacity var(--t)}
+    .btn:hover::after{opacity:1}
+    .btn-primary{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;box-shadow:0 4px 24px var(--blue-glow),0 0 0 1px rgba(14,165,233,0.18)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 40px var(--blue-gs),0 0 0 1px rgba(14,165,233,0.38)}
+    .btn-outline{background:rgba(255,255,255,0.03);color:var(--t2);border:1px solid var(--cbr)}
+    .btn-outline:hover{background:rgba(255,255,255,0.06);border-color:rgba(14,165,233,0.3);color:var(--t0);transform:translateY(-2px)}
+    .btn-lg{padding:15px 36px;font-size:16px}
+    .btn svg{width:18px;height:18px;flex-shrink:0}
+
+    /* ── SECTION COMMONS ──────────────────────────────────── */
+    .sec-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--r-f);border:1px solid var(--cbr);background:var(--cb);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:20px}
+    .sec-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse-dot 2s ease infinite}
+    .sec-h{font-family:var(--fh);font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:700;line-height:1.04;letter-spacing:-.04em;color:var(--t0);margin-bottom:20px}
+    .sec-h .g{background:linear-gradient(135deg,var(--blue) 0%,var(--purple) 50%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .sec-sub{font-size:1.15rem;color:var(--tm);max-width:600px;line-height:1.75}
+    .sec-header{text-align:center;margin-bottom:72px}
+    .sec-header .sec-sub{margin:0 auto}
+    .s-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--cbr) 20%,var(--cbr) 80%,transparent)}
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0 100px;overflow:hidden}
+    #particleCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+    .hero-bg{position:absolute;inset:0;z-index:1;pointer-events:none}
+    .hero-blob{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform}
+    .hero-blob-1{width:750px;height:750px;background:radial-gradient(circle,rgba(14,165,233,0.17) 0%,transparent 70%);top:-200px;left:-120px;animation:blob-1 18s ease-in-out infinite}
+    .hero-blob-2{width:650px;height:650px;background:radial-gradient(circle,rgba(124,58,237,0.17) 0%,transparent 70%);bottom:-180px;right:-80px;animation:blob-2 22s ease-in-out infinite}
+    .hero-blob-3{width:500px;height:500px;background:radial-gradient(circle,rgba(6,182,212,0.11) 0%,transparent 70%);top:50%;left:65%;transform:translate(-50%,-50%);animation:blob-3 14s ease-in-out infinite}
+    .hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 85% 85% at 50% 50%,black 0%,transparent 100%)}
+    .floating-els{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+    .float-el{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.035)}
+    .float-el-1{width:320px;height:320px;top:18%;right:8%;animation:float-y 9s ease-in-out infinite;border-color:rgba(14,165,233,0.06)}
+    .float-el-2{width:200px;height:200px;bottom:28%;left:4%;animation:float-y 13s ease-in-out infinite reverse;border-color:rgba(124,58,237,0.07)}
+    .float-el-3{width:140px;height:140px;top:58%;right:22%;animation:float-y 11s ease-in-out infinite 2s}
+    .hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start}
+
+    /* Hero live bar */
+    .hero-live{display:inline-flex;align-items:center;gap:16px;margin-bottom:36px;padding:10px 20px;border-radius:var(--r-f);border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.03);animation:fade-up .9s ease both}
+    .live-dot-wrap{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--t2)}
+    .live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:live-pulse 2s ease infinite;flex-shrink:0}
+    .hero-live-sep{width:1px;height:14px;background:var(--cbr);flex-shrink:0}
+    .hero-live-text{font-size:13px;color:var(--tm);font-weight:500}
+
+    .hero-title{font-family:var(--fh);font-size:clamp(3.2rem,8vw,6.5rem);font-weight:700;line-height:.98;letter-spacing:-.04em;color:var(--t0);margin-bottom:28px;animation:fade-up .9s ease .18s both}
+    .hero-title .line2{display:block;background:linear-gradient(135deg,var(--blue) 0%,var(--purple) 50%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .tw-cursor{display:inline-block;width:3px;height:.88em;background:var(--blue);margin-left:3px;vertical-align:middle;animation:blink .85s ease infinite}
+    .hero-sub{font-size:clamp(1rem,2vw,1.22rem);color:var(--tm);max-width:560px;line-height:1.75;margin-bottom:44px;animation:fade-up .9s ease .36s both}
+    .hero-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:64px;animation:fade-up .9s ease .54s both}
+    .hero-stats{display:flex;align-items:center;animation:fade-up .9s ease .72s both}
+    .h-stat{display:flex;flex-direction:column;gap:4px;padding:0 28px}
+    .h-stat:first-child{padding-left:0}
+    .h-stat-num{font-family:var(--fh);font-size:2.1rem;font-weight:700;color:var(--t0);letter-spacing:-.04em;line-height:1}
+    .h-stat-num sup{color:var(--blue);font-size:.65em}
+    .h-stat-label{font-size:13px;color:var(--tm);font-weight:500}
+    .h-stat-div{width:1px;height:36px;background:var(--cbr);flex-shrink:0}
+    .hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px}
+    .scroll-lbl{font-size:10px;color:var(--tm);letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+    .scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--blue),transparent);animation:scroll-line 2.2s ease infinite}
+
+    /* ── SERVICES ─────────────────────────────────────────── */
+    .services{padding:130px 0;position:relative}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .s-card{position:relative;padding:40px 34px;border-radius:var(--r-l);border:1px solid var(--cbr);background:var(--cb);transition:all .35s ease;cursor:none;overflow:hidden;transform-style:preserve-3d;will-change:transform}
+    .s-card::before{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(14,165,233,.07) 0%,transparent 60%);opacity:0;transition:opacity .3s ease}
+    .s-card:hover::before{opacity:1}
+    .s-card:hover{border-color:var(--cbhb);background:var(--cbh);box-shadow:0 8px 48px rgba(14,165,233,.09),0 0 0 1px rgba(14,165,233,.1)}
+    .s-icon{width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;margin-bottom:26px}
+    .s-icon svg{width:27px;height:27px}
+    .s-icon-1{background:rgba(14,165,233,.1)}.s-icon-1 svg{color:var(--blue)}
+    .s-icon-2{background:rgba(124,58,237,.1)}.s-icon-2 svg{color:var(--purple)}
+    .s-icon-3{background:rgba(6,182,212,.1)}.s-icon-3 svg{color:var(--cyan)}
+    .s-icon-4{background:rgba(16,185,129,.1)}.s-icon-4 svg{color:var(--green)}
+    .s-icon-5{background:rgba(245,158,11,.1)}.s-icon-5 svg{color:#F59E0B}
+    .s-icon-6{background:rgba(239,68,68,.08)}.s-icon-6 svg{color:#EF4444}
+    .s-title{font-family:var(--fh);font-size:1.25rem;font-weight:600;color:var(--t0);margin-bottom:14px;letter-spacing:-.02em}
+    .s-desc{font-size:14px;color:var(--tm);line-height:1.75}
+
+    /* ── WHY THRYVEX ──────────────────────────────────────── */
+    .why{padding:130px 0;position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--bg-1),var(--bg-2))}
+    .why-aurora{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse at center,rgba(124,58,237,.12) 0%,rgba(14,165,233,.06) 50%,transparent 75%);filter:blur(70px);pointer-events:none;animation:aurora-move 20s ease infinite}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--cbr);border-radius:var(--r-l);overflow:hidden;margin-bottom:88px}
+    .stat-box{background:var(--bg-2);padding:44px 28px;text-align:center;position:relative;overflow:hidden;transition:background var(--t)}
+    .stat-box::before{content:'';position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:0;transition:opacity var(--t)}
+    .stat-box:hover::before{opacity:1}
+    .stat-box:hover{background:var(--bg-3)}
+    .stat-num{font-family:var(--fh);font-size:3.5rem;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:8px;color:var(--t0)}
+    .stat-num .s{color:var(--blue)}
+    .stat-lbl{font-size:14px;color:var(--tm);font-weight:500}
+    .diffs{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .diff{padding:32px;border-radius:var(--r-l);border:1px solid var(--cbr);background:var(--cb);transition:all .35s ease;position:relative;overflow:hidden}
+    .diff::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--purple));opacity:0;transition:opacity var(--t)}
+    .diff:hover::before{opacity:1}
+    .diff:hover{border-color:var(--cbhb);background:var(--cbh);transform:translateY(-3px);box-shadow:0 12px 40px rgba(14,165,233,.08)}
+    .diff-num{font-family:var(--fh);font-size:3rem;font-weight:800;letter-spacing:-.05em;line-height:1;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;opacity:.35}
+    .diff-t{font-family:var(--fh);font-size:1.2rem;font-weight:700;color:var(--t0);margin-bottom:10px;letter-spacing:-.02em}
+    .diff-d{font-size:14px;color:var(--tm);line-height:1.72}
+
+    /* ── PROCESS ──────────────────────────────────────────── */
+    .process{padding:130px 0;position:relative;overflow:hidden}
+    .process-aurora{position:absolute;bottom:-80px;right:-80px;width:600px;height:600px;background:radial-gradient(circle,rgba(14,165,233,.07) 0%,transparent 70%);filter:blur(80px);pointer-events:none}
+    .process-steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative}
+    .process-track{position:absolute;top:28px;left:calc(10%);right:calc(10%);height:1px;background:linear-gradient(90deg,var(--blue) 0%,var(--purple) 50%,var(--cyan) 100%);opacity:.22;z-index:0}
+    .p-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px;position:relative;z-index:1}
+    .p-num{width:56px;height:56px;border-radius:50%;background:var(--bg-3);border:1px solid var(--cbr);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:18px;font-weight:700;color:var(--tm);margin-bottom:24px;transition:all .35s ease;flex-shrink:0}
+    .p-step:hover .p-num,.p-step.active .p-num{background:linear-gradient(135deg,var(--blue),var(--purple));border-color:transparent;color:#fff;box-shadow:0 0 30px var(--blue-glow)}
+    .p-title{font-family:var(--fh);font-size:1rem;font-weight:600;color:var(--t0);margin-bottom:8px;letter-spacing:-.01em}
+    .p-desc{font-size:13px;color:var(--tm);line-height:1.65}
+
+    /* ── INTEGRATIONS (replaces tech) ─────────────────────── */
+    .integrations{padding:130px 0;position:relative;background:linear-gradient(to bottom,var(--bg-2),var(--bg-1))}
+    .int-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .int-card{padding:32px;border-radius:var(--r-l);border:1px solid var(--cbr);background:var(--cb);transition:all .35s ease;cursor:none;position:relative;overflow:hidden}
+    .int-card::before{content:'';position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity .3s ease}
+    .int-card:hover::before{opacity:1}
+    .int-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+    .int-card-1:hover{border-color:rgba(14,165,233,0.3)}.int-card-1::before{background:radial-gradient(circle at 20% 20%,rgba(14,165,233,.05),transparent 60%)}
+    .int-card-2:hover{border-color:rgba(124,58,237,0.3)}.int-card-2::before{background:radial-gradient(circle at 20% 20%,rgba(124,58,237,.05),transparent 60%)}
+    .int-card-3:hover{border-color:rgba(6,182,212,0.3)}.int-card-3::before{background:radial-gradient(circle at 20% 20%,rgba(6,182,212,.05),transparent 60%)}
+    .int-card-4:hover{border-color:rgba(16,185,129,0.3)}.int-card-4::before{background:radial-gradient(circle at 20% 20%,rgba(16,185,129,.05),transparent 60%)}
+    .int-card-5:hover{border-color:rgba(245,158,11,0.3)}.int-card-5::before{background:radial-gradient(circle at 20% 20%,rgba(245,158,11,.05),transparent 60%)}
+    .int-card-6:hover{border-color:rgba(239,68,68,0.3)}.int-card-6::before{background:radial-gradient(circle at 20% 20%,rgba(239,68,68,.05),transparent 60%)}
+    .int-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+    .int-icon svg{width:24px;height:24px}
+    .int-title{font-family:var(--fh);font-size:1.05rem;font-weight:600;color:var(--t0);margin-bottom:10px;letter-spacing:-.01em}
+    .int-desc{font-size:13px;color:var(--tm);line-height:1.65;margin-bottom:18px}
+    .int-tags{display:flex;flex-wrap:wrap;gap:6px}
+    .int-tag{padding:4px 10px;border-radius:var(--r-f);background:rgba(255,255,255,.04);border:1px solid var(--cbr);font-size:11px;font-weight:600;color:var(--tm);letter-spacing:.02em}
+
+    /* ── HOW THRYVEX POWERS YOUR GROWTH ───────────────────── */
+    .growth{padding:130px 0;position:relative;overflow:hidden}
+    .growth-aurora{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:600px;background:radial-gradient(ellipse at center,rgba(14,165,233,.07) 0%,rgba(124,58,237,.05) 50%,transparent 80%);filter:blur(100px);pointer-events:none;animation:aurora-move 25s ease infinite}
+    .growth-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+    .growth-steps{display:flex;flex-direction:column;gap:0;margin-top:44px}
+    .g-step{display:flex;align-items:flex-start;gap:20px;padding:24px 0;border-bottom:1px solid var(--cbr)}
+    .g-step:last-child{border-bottom:none}
+    .g-step-num{font-family:var(--fh);font-size:1.5rem;font-weight:800;color:var(--blue);opacity:.5;letter-spacing:-.04em;line-height:1;flex-shrink:0;min-width:36px}
+    .g-step-title{font-family:var(--fh);font-size:1.05rem;font-weight:600;color:var(--t0);margin-bottom:6px;letter-spacing:-.01em}
+    .g-step-desc{font-size:14px;color:var(--tm);line-height:1.68}
+    /* Visual flow */
+    .growth-visual{display:flex;flex-direction:column;align-items:center;gap:0;padding:48px 40px;border-radius:var(--r-xl);border:1px solid var(--cbr);background:var(--cb);position:relative}
+    .growth-visual::before{content:'';position:absolute;inset:-1px;border-radius:inherit;background:linear-gradient(135deg,rgba(14,165,233,0.12),rgba(124,58,237,0.12),rgba(6,182,212,0.12));z-index:-1}
+    .gv-node{width:100%;padding:18px 24px;border-radius:var(--r);border:1px solid var(--cbr);background:var(--bg-3);display:flex;align-items:center;gap:14px;animation:float-node 5s ease-in-out infinite}
+    .gv-node-center{background:linear-gradient(135deg,rgba(14,165,233,0.12),rgba(124,58,237,0.12));border-color:rgba(14,165,233,0.25);animation:node-breathe 3s ease infinite,float-node 5s ease-in-out infinite 0.5s}
+    .gv-node-ico{width:36px;height:36px;border-radius:9px;background:rgba(14,165,233,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .gv-node-ico svg{width:18px;height:18px;color:var(--blue)}
+    .gv-node-center .gv-node-ico{background:linear-gradient(135deg,var(--blue),var(--purple))}
+    .gv-node-center .gv-node-ico svg{color:#fff}
+    .gv-node-label{font-family:var(--fh);font-size:14px;font-weight:600;color:var(--t0);letter-spacing:-.01em}
+    .gv-node-sub{font-size:12px;color:var(--tm);margin-top:2px}
+    .gv-arrow{display:flex;flex-direction:column;align-items:center;gap:0;padding:12px 0}
+    .gv-arrow-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--blue),var(--purple));animation:flow-pulse 2s ease infinite}
+    .gv-arrow-head{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:8px solid var(--purple)}
+    .gv-outputs{width:100%;display:flex;flex-direction:column;gap:10px;margin-top:0}
+    .gv-out{width:100%;padding:12px 16px;border-radius:var(--r-s);border:1px solid rgba(16,185,129,0.15);background:rgba(16,185,129,0.05);display:flex;align-items:center;gap:10px}
+    .gv-out-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);flex-shrink:0}
+    .gv-out-txt{font-size:13px;font-weight:600;color:var(--t2)}
+
+    /* ── RESULTS ──────────────────────────────────────────── */
+    .results{padding:130px 0;position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--bg-1),var(--bg-2))}
+    .results-aurora{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:1000px;height:600px;background:radial-gradient(ellipse at center,rgba(124,58,237,.07) 0%,rgba(6,182,212,.04) 50%,transparent 80%);filter:blur(90px);pointer-events:none}
+    .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .r-card{padding:36px 30px;border-radius:var(--r-l);border:1px solid var(--cbr);background:var(--cb);position:relative;overflow:hidden;transition:all .35s ease;cursor:none}
+    .r-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--purple));opacity:0;transition:opacity var(--t)}
+    .r-card:hover::before{opacity:1}
+    .r-card:hover{border-color:var(--cbhb);transform:translateY(-5px);box-shadow:var(--sc),0 0 40px rgba(14,165,233,.06)}
+    .r-tag{display:inline-block;padding:4px 12px;border-radius:var(--r-f);background:rgba(14,165,233,.08);border:1px solid rgba(14,165,233,.15);font-size:11px;font-weight:700;color:var(--blue-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+    .r-company{font-family:var(--fh);font-size:1.1rem;font-weight:600;color:var(--t0);margin-bottom:14px;letter-spacing:-.02em}
+    .r-desc{font-size:14px;color:var(--tm);line-height:1.72;margin-bottom:28px}
+    .r-metrics{display:flex;gap:28px}
+    .r-metric{display:flex;flex-direction:column;gap:4px}
+    .r-val{font-family:var(--fh);font-size:2.2rem;font-weight:700;letter-spacing:-.04em;line-height:1;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .r-label{font-size:12px;color:var(--tm);font-weight:500}
+
+    /* ── TESTIMONIALS ─────────────────────────────────────── */
+    .testimonials{padding:130px 0;position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--bg-2),var(--bg-1))}
+    .t-aurora{position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:350px;background:linear-gradient(to bottom,rgba(14,165,233,.05) 0%,transparent 100%);pointer-events:none}
+    .carousel-wrap{position:relative}
+    .carousel-track{display:flex;transition:transform .65s cubic-bezier(.4,0,.2,1);overflow:hidden;border-radius:var(--r-xl)}
+    .t-card{flex:0 0 100%;padding:56px;background:var(--cb);border:1px solid var(--cbr);border-radius:var(--r-xl)}
+    .t-stars{display:flex;gap:4px;margin-bottom:24px;color:#FBBF24;font-size:16px}
+    .t-quote{font-size:1.18rem;color:var(--t2);line-height:1.82;font-style:italic;margin-bottom:32px}
+    .t-quote-mark{font-family:var(--fh);font-size:3.5rem;color:var(--blue);line-height:0;vertical-align:-.5em;margin-right:2px;font-style:normal}
+    .t-author{display:flex;align-items:center;gap:16px}
+    .t-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:18px;font-weight:700;color:#fff;flex-shrink:0}
+    .t-name{font-family:var(--fh);font-size:1rem;font-weight:600;color:var(--t0);letter-spacing:-.01em}
+    .t-role{font-size:13px;color:var(--tm);margin-top:2px}
+    .carousel-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:40px}
+    .car-btn{width:48px;height:48px;border-radius:50%;border:1px solid var(--cbr);background:var(--cb);display:flex;align-items:center;justify-content:center;cursor:none;transition:all var(--t)}
+    .car-btn:hover{border-color:var(--cbhb);background:rgba(14,165,233,.07)}
+    .car-btn svg{width:20px;height:20px;color:var(--t2)}
+    .car-dots{display:flex;gap:8px;align-items:center}
+    .car-dot{width:8px;height:8px;border-radius:4px;background:var(--tf);cursor:none;transition:all var(--t);border:none}
+    .car-dot.on{width:24px;background:var(--blue)}
+
+    /* ── CONTACT ──────────────────────────────────────────── */
+    .contact{padding:130px 0;position:relative;overflow:hidden}
+    .contact-aurora{position:absolute;bottom:-120px;left:50%;transform:translateX(-50%);width:900px;height:700px;background:radial-gradient(ellipse at center,rgba(124,58,237,.1) 0%,rgba(14,165,233,.05) 50%,transparent 80%);filter:blur(90px);pointer-events:none}
+    .contact-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
+    .contact-info{display:flex;flex-direction:column;gap:0}
+    .c-detail{display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid var(--cbr)}
+    .c-detail:first-of-type{padding-top:0}
+    .c-detail:last-of-type{border-bottom:none}
+    .c-ico{width:44px;height:44px;border-radius:12px;background:rgba(14,165,233,.08);border:1px solid rgba(14,165,233,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .c-ico svg{width:20px;height:20px;color:var(--blue)}
+    .c-lbl{font-size:11px;color:var(--tm);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+    .c-val{font-size:15px;color:var(--t2);font-weight:500}
+    .c-val a{color:var(--blue);transition:color var(--t);cursor:none}
+    .c-val a:hover{color:var(--blue-l)}
+    .contact-form-wrap{display:flex;flex-direction:column;gap:20px}
+    .f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .f-group{display:flex;flex-direction:column;gap:8px}
+    .f-label{font-size:13px;font-weight:600;color:var(--t3)}
+    .f-input,.f-select,.f-textarea{padding:13px 16px;border-radius:var(--r);border:1px solid var(--cbr);background:rgba(255,255,255,.02);color:var(--t1);font-size:14px;font-family:var(--fb);transition:all var(--t);outline:none;width:100%;-webkit-appearance:none}
+    .f-input::placeholder,.f-textarea::placeholder{color:var(--tf)}
+    .f-input:focus,.f-select:focus,.f-textarea:focus{border-color:rgba(14,165,233,.4);background:rgba(14,165,233,.03);box-shadow:0 0 0 3px rgba(14,165,233,.08)}
+    .f-select option{background:var(--bg-3);color:var(--t1)}
+    .f-textarea{resize:vertical;min-height:130px;line-height:1.6}
+    .f-submit{width:100%;justify-content:center}
+    .f-success{display:none;text-align:center;padding:40px 32px;border-radius:var(--r-l);border:1px solid rgba(16,185,129,.2);background:rgba(16,185,129,.05)}
+    .f-success.show{display:block}
+    .f-success-ico{width:52px;height:52px;border-radius:50%;background:rgba(16,185,129,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+    .f-success-ico svg{width:26px;height:26px;color:var(--green)}
+    .f-success h3{font-family:var(--fh);font-size:1.3rem;font-weight:600;color:var(--t0);margin-bottom:8px}
+    .f-success p{font-size:14px;color:var(--tm)}
+
+    /* ── FINAL CTA ────────────────────────────────────────── */
+    .cta-final{padding:160px 0;position:relative;overflow:hidden;text-align:center;background:var(--bg-2)}
+    .cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(14,165,233,.08) 0%,rgba(124,58,237,.06) 40%,transparent 70%);pointer-events:none}
+    .cta-bg::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:80px 80px}
+    .cta-inner{position:relative;z-index:1;max-width:900px;margin:0 auto}
+    .cta-h{font-family:var(--fh);font-size:clamp(3rem,7vw,6rem);font-weight:700;line-height:1.0;letter-spacing:-.05em;color:var(--t0);margin-bottom:24px}
+    .cta-h .g{background:linear-gradient(135deg,var(--blue) 0%,var(--purple) 50%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .cta-sub{font-size:1.2rem;color:var(--tm);max-width:560px;margin:0 auto 48px;line-height:1.7}
+    .cta-btns{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:40px}
+    .cta-trust{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+    .cta-trust span{font-size:13px;color:var(--tm);font-weight:500}
+    .cta-trust-dot{width:4px;height:4px;border-radius:50%;background:var(--tf);flex-shrink:0}
+
+    /* ── FOOTER ───────────────────────────────────────────── */
+    .footer{padding:80px 0 40px;border-top:1px solid var(--cbr);background:var(--bg-0)}
+    .footer-top{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:60px;margin-bottom:60px}
+    .footer-brand{display:flex;flex-direction:column;gap:16px}
+    .f-logo{display:flex;align-items:center;gap:10px;cursor:none}
+    .f-logo-ico{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:#fff}
+    .f-logo-text{font-family:var(--fh);font-size:18px;font-weight:600;color:var(--t0);letter-spacing:-.02em}
+    .f-tagline{font-size:14px;color:var(--tm);line-height:1.65;max-width:250px}
+    .f-socials{display:flex;gap:10px}
+    .f-social{width:36px;height:36px;border-radius:8px;border:1px solid var(--cbr);background:var(--cb);display:flex;align-items:center;justify-content:center;transition:all var(--t);cursor:none}
+    .f-social:hover{border-color:var(--cbhb);background:rgba(14,165,233,.07)}
+    .f-social svg{width:16px;height:16px;color:var(--tm);transition:color var(--t)}
+    .f-social:hover svg{color:var(--t2)}
+    .f-col-h{font-family:var(--fh);font-size:14px;font-weight:600;color:var(--t0);margin-bottom:20px;letter-spacing:-.01em}
+    .f-links{display:flex;flex-direction:column;gap:12px}
+    .f-links a{font-size:14px;color:var(--tm);transition:color var(--t);cursor:none}
+    .f-links a:hover{color:var(--t2)}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px;border-top:1px solid var(--cbr);gap:16px;flex-wrap:wrap}
+    .f-copy{font-size:13px;color:var(--tm)}
+    .f-legal{display:flex;gap:20px}
+    .f-legal a{font-size:13px;color:var(--tm);transition:color var(--t);cursor:none}
+    .f-legal a:hover{color:var(--t2)}
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media(max-width:1024px){
+      .nav-inner{grid-template-columns:auto auto auto}
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .process-steps{grid-template-columns:repeat(3,1fr);gap:24px 0}
+      .process-track{display:none}
+      .int-grid{grid-template-columns:repeat(2,1fr)}
+      .growth-grid{grid-template-columns:1fr;gap:48px}
+      .results-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr;gap:48px}
+      .footer-top{grid-template-columns:1fr 1fr;gap:40px}
+      .diffs{grid-template-columns:1fr}
+    }
+    @media(max-width:768px){
+      .nav-links,.nav-contact,.lang-sw{display:none}
+      .hamburger{display:flex}
+      .hero-title{font-size:clamp(2.8rem,9vw,4.5rem)}
+      .hero-stats{flex-wrap:wrap;gap:16px}
+      .h-stat{padding:0 14px}
+      .h-stat-div{display:none}
+      .services-grid,.int-grid{grid-template-columns:1fr}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .process-steps{grid-template-columns:1fr 1fr}
+      .results-grid{grid-template-columns:1fr}
+      .t-card{padding:32px 24px}
+      .f-row{grid-template-columns:1fr}
+      .footer-top{grid-template-columns:1fr;gap:32px}
+      .footer-bottom{flex-direction:column;align-items:flex-start}
+      .cta-btns{flex-direction:column;align-items:stretch}
+    }
+    @media(max-width:480px){
+      .container{padding:0 16px}
+      .hero{padding:120px 0 80px}
+      .hero-ctas{flex-direction:column;align-items:stretch}
+      .process-steps{grid-template-columns:1fr}
+      .sec-h{font-size:2.4rem}
+      .stat-num{font-size:2.6rem}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+      .reveal{opacity:1;transform:none}
+      .hero-blob-1,.hero-blob-2,.hero-blob-3,.float-el-1,.float-el-2,.float-el-3{animation:none}
+    }
+  </style>
+</head>
+<body class="loading">
+<noscript><p style="color:white;padding:40px;font-family:sans-serif;">Please enable JavaScript to view ThryveX Group.</p></noscript>
+
+<!-- LOADER -->
+<div id="loader" class="loader" aria-hidden="true">
+  <div class="loader-grid"></div>
+  <div class="loader-content">
+    <div class="loader-icon-wrap">
+      <div class="loader-ring"></div>
+      <div class="loader-icon">TX</div>
+    </div>
+    <div><span class="loader-brand">ThryveX Group</span></div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
+      <span class="loader-label" id="loaderLabel">Initializing AI Systems...</span>
+    </div>
+  </div>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <!-- LEFT: Logo -->
+    <a href="#hero" class="nav-logo" aria-label="ThryveX Group home">
+      <div class="nav-logo-icon" aria-hidden="true">TX</div>
+      <span class="nav-logo-text">ThryveX</span>
+    </a>
+    <!-- CENTER: Home, Services, Process -->
+    <div class="nav-links" role="menubar">
+      <a href="#hero" role="menuitem" data-en="Home" data-es="Inicio">Home</a>
+      <a href="#services" role="menuitem" data-en="Services" data-es="Servicios">Services</a>
+      <a href="#process" role="menuitem" data-en="Process" data-es="Proceso">Process</a>
+    </div>
+    <!-- RIGHT: Contact + Book a Call + EN/ES -->
+    <div class="nav-right">
+      <a href="#contact" class="nav-contact" data-en="Contact" data-es="Contacto">Contact</a>
+      <a href="#contact" class="btn btn-primary magnetic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+        <span data-en="Book a Call" data-es="Agendar Llamada">Book a Call</span>
+      </a>
+      <div class="lang-sw" aria-label="Language switcher">
+        <button class="lang-opt on" data-lang="en" aria-label="English">EN</button>
+        <span class="lang-sep" aria-hidden="true">|</span>
+        <button class="lang-opt" data-lang="es" aria-label="Español">ES</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile menu">
+  <a href="#hero" data-en="Home" data-es="Inicio">Home</a>
+  <a href="#services" data-en="Services" data-es="Servicios">Services</a>
+  <a href="#process" data-en="Process" data-es="Proceso">Process</a>
+  <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+  <a href="#contact" class="btn btn-primary" style="margin-top:24px" data-en="Book a Strategy Call" data-es="Agendar una Llamada">Book a Strategy Call</a>
+</div>
+
+<!-- HERO -->
+<section id="hero" class="hero" aria-label="Hero">
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+  </div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="floating-els" aria-hidden="true">
+    <div class="float-el float-el-1"></div>
+    <div class="float-el float-el-2"></div>
+    <div class="float-el float-el-3"></div>
+  </div>
+  <div class="container hero-content">
+
+    <!-- Powerful live indicator replacing old badge -->
+    <div class="hero-live">
+      <div class="live-dot-wrap">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span data-en="500+ automations running live" data-es="500+ automatizaciones activas">500+ automations running live</span>
+      </div>
+      <div class="hero-live-sep" aria-hidden="true"></div>
+      <span class="hero-live-text" data-en="50+ businesses worldwide" data-es="50+ empresas a nivel global">50+ businesses worldwide</span>
+      <div class="hero-live-sep" aria-hidden="true"></div>
+      <span class="hero-live-text" data-en="Built in Panama · Deployed globally" data-es="Hecho en Panamá · Desplegado globalmente">Built in Panama · Deployed globally</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span data-en="Scale Without" data-es="Escala Sin">Scale Without</span>
+      <span class="line2"><span id="typewriter">Limits.</span><span class="tw-cursor" aria-hidden="true"></span></span>
+    </h1>
+
+    <p class="hero-sub"
+       data-en="We build AI automation infrastructure that transforms how modern businesses operate — eliminating manual work, accelerating growth, and unlocking unlimited scale."
+       data-es="Construimos infraestructura de automatización IA que transforma cómo operan los negocios modernos — eliminando trabajo manual, acelerando el crecimiento y desbloqueando escala ilimitada.">
+      We build AI automation infrastructure that transforms how modern businesses operate — eliminating manual work, accelerating growth, and unlocking unlimited scale.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary btn-lg magnetic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+        <span data-en="Book a Strategy Call" data-es="Agendar una Llamada">Book a Strategy Call</span>
+      </a>
+      <a href="#services" class="btn btn-outline btn-lg magnetic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <span data-en="Explore Services" data-es="Ver Servicios">Explore Services</span>
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="h-stat">
+        <span class="h-stat-num">500<sup>+</sup></span>
+        <span class="h-stat-label" data-en="Automations Built" data-es="Automatizaciones">Automations Built</span>
+      </div>
+      <div class="h-stat-div"></div>
+      <div class="h-stat">
+        <span class="h-stat-num">98<sup>%</sup></span>
+        <span class="h-stat-label" data-en="Client Satisfaction" data-es="Satisfacción">Client Satisfaction</span>
+      </div>
+      <div class="h-stat-div"></div>
+      <div class="h-stat">
+        <span class="h-stat-num">10<sup>x</sup></span>
+        <span class="h-stat-label" data-en="Average ROI" data-es="ROI Promedio">Average ROI</span>
+      </div>
+      <div class="h-stat-div"></div>
+      <div class="h-stat">
+        <span class="h-stat-num">50<sup>+</sup></span>
+        <span class="h-stat-label" data-en="Global Clients" data-es="Clientes Globales">Global Clients</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span class="scroll-lbl">Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="s-divider"></div>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="What We Build" data-es="Lo Que Construimos">What We Build</span></div>
+      <h2 class="sec-h reveal reveal-d1"><span data-en="Everything You Need to" data-es="Todo Lo Que Necesitas Para">Everything You Need to</span><br><span class="g" data-en="Grow Without Limits" data-es="Crecer Sin Límites">Grow Without Limits</span></h2>
+      <p class="sec-sub reveal reveal-d2" data-en="From AI-powered automation to full CRM implementation — we handle the technical complexity so you can focus on what matters." data-es="Desde automatización con IA hasta implementación completa de CRM — manejamos la complejidad técnica para que puedas enfocarte en lo que importa.">From AI-powered automation to full CRM implementation — we handle the technical complexity so you can focus on what matters.</p>
+    </div>
+    <div class="services-grid">
+      <div class="s-card reveal reveal-d1" role="article">
+        <div class="s-icon s-icon-1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 1 5 5c0 1-.3 2-.8 2.8M12 2a5 5 0 0 0-5 5c0 1 .3 2 .8 2.8M12 2v2"/><path d="M9 9.5c-2 .5-3 2-3 3.5a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4c0-1.5-1-3-3-3.5"/><circle cx="9" cy="14" r="1" fill="currentColor"/><circle cx="15" cy="14" r="1" fill="currentColor"/><path d="M9 17.5s.8 1.5 3 1.5 3-1.5 3-1.5"/><path d="M12 17v4M9 21h6"/></svg></div>
+        <h3 class="s-title" data-en="AI Automation" data-es="Automatización IA">AI Automation</h3>
+        <p class="s-desc" data-en="Deploy intelligent AI agents that handle complex business tasks autonomously — from data processing to decision-making — running 24/7 without human intervention." data-es="Despliega agentes IA inteligentes que manejan tareas empresariales complejas de forma autónoma, disponibles 24/7 sin intervención humana.">Deploy intelligent AI agents that handle complex business tasks autonomously — from data processing to decision-making — running 24/7 without human intervention.</p>
+      </div>
+      <div class="s-card reveal reveal-d2" role="article">
+        <div class="s-icon s-icon-2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3 class="s-title" data-en="CRM Implementation" data-es="Implementación de CRM">CRM Implementation</h3>
+        <p class="s-desc" data-en="Full HubSpot, Salesforce, and custom CRM setup tailored to your exact sales process — with automations, pipelines, and dashboards configured from day one." data-es="Configuración completa de HubSpot, Salesforce y CRMs personalizados adaptados a tu proceso de ventas exacto, con automatizaciones y dashboards desde el primer día.">Full HubSpot, Salesforce, and custom CRM setup tailored to your exact sales process — with automations, pipelines, and dashboards configured from day one.</p>
+      </div>
+      <div class="s-card reveal reveal-d3" role="article">
+        <div class="s-icon s-icon-3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3 class="s-title" data-en="Website Development" data-es="Desarrollo Web">Website Development</h3>
+        <p class="s-desc" data-en="High-performance, conversion-optimized websites built with premium design. From landing pages to full web applications — fast, accessible, and built to convert." data-es="Sitios web de alto rendimiento y optimizados para conversión. Desde landing pages hasta aplicaciones web completas — rápidos, accesibles y diseñados para convertir.">High-performance, conversion-optimized websites built with premium design. From landing pages to full web applications — fast, accessible, and built to convert.</p>
+      </div>
+      <div class="s-card reveal reveal-d4" role="article">
+        <div class="s-icon s-icon-4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="12" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg></div>
+        <h3 class="s-title" data-en="AI Chatbots" data-es="Chatbots de IA">AI Chatbots</h3>
+        <p class="s-desc" data-en="Custom GPT-powered chatbots trained on your business data — handling customer support, lead qualification, appointment booking, and sales conversations at scale." data-es="Chatbots personalizados con GPT entrenados en los datos de tu negocio — manejando soporte, calificación de leads, agendamiento y conversaciones de ventas a escala.">Custom GPT-powered chatbots trained on your business data — handling customer support, lead qualification, appointment booking, and sales conversations at scale.</p>
+      </div>
+      <div class="s-card reveal reveal-d5" role="article">
+        <div class="s-icon s-icon-5" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
+        <h3 class="s-title" data-en="Workflow Automation" data-es="Automatización de Flujos">Workflow Automation</h3>
+        <p class="s-desc" data-en="Connect your entire tech stack with intelligent workflows using n8n, Make, and Zapier. Eliminate repetitive tasks and let your team focus on high-value work." data-es="Conecta todo tu stack tecnológico con flujos de trabajo inteligentes usando n8n, Make y Zapier. Elimina tareas repetitivas y deja que tu equipo se enfoque en trabajo de alto valor.">Connect your entire tech stack with intelligent workflows using n8n, Make, and Zapier. Eliminate repetitive tasks and let your team focus on high-value work.</p>
+      </div>
+      <div class="s-card reveal reveal-d6" role="article">
+        <div class="s-icon s-icon-6" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+        <h3 class="s-title" data-en="Data Analytics & BI" data-es="Analítica de Datos e BI">Data Analytics & BI</h3>
+        <p class="s-desc" data-en="Real-time dashboards and business intelligence systems that give you full visibility into performance metrics, pipeline data, and operational KPIs — all automated." data-es="Dashboards en tiempo real y sistemas de inteligencia de negocio que te dan visibilidad completa de métricas de rendimiento, datos de pipeline y KPIs operacionales.">Real-time dashboards and business intelligence systems that give you full visibility into performance metrics, pipeline data, and operational KPIs — all automated.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="s-divider"></div>
+
+<!-- WHY THRYVEX -->
+<section id="why" class="why">
+  <div class="why-aurora" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="sec-header">
+      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="Why ThryveX" data-es="Por Qué ThryveX">Why ThryveX</span></div>
+      <h2 class="sec-h reveal reveal-d1"><span data-en="Proof That" data-es="La Prueba de Que">Proof That</span><br><span class="g" data-en="Limits Don't Exist" data-es="Los Límites No Existen">Limits Don't Exist</span></h2>
+      <p class="sec-sub reveal reveal-d2" data-en="Every hour your team spends on manual work is revenue leaking through the cracks. We close those leaks — permanently." data-es="Cada hora que tu equipo pasa en trabajo manual es ingreso que se escapa. Cerramos esas fugas — permanentemente.">Every hour your team spends on manual work is revenue leaking through the cracks. We close those leaks — permanently.</p>
+    </div>
+
+    <div class="stats-grid reveal">
+      <div class="stat-box"><div class="stat-num"><span class="count" data-target="500">0</span><span class="s">+</span></div><div class="stat-lbl" data-en="Automations Deployed" data-es="Automatizaciones">Automations Deployed</div></div>
+      <div class="stat-box"><div class="stat-num"><span class="count" data-target="50">0</span><span class="s">+</span></div><div class="stat-lbl" data-en="Clients Worldwide" data-es="Clientes Globales">Clients Worldwide</div></div>
+      <div class="stat-box"><div class="stat-num"><span class="count" data-target="10">0</span><span class="s">x</span></div><div class="stat-lbl" data-en="Average ROI" data-es="ROI Promedio">Average ROI</div></div>
+      <div class="stat-box"><div class="stat-num"><span class="count" data-target="98">0</span><span class="s">%</span></div><div class="stat-lbl" data-en="Satisfaction Rate" data-es="Satisfacción">Satisfaction Rate</div></div>
+    </div>
+
+    <div class="diffs">
+      <div class="diff reveal reveal-d1">
+        <div class="diff-num" aria-hidden="true">01</div>
+        <div class="diff-t" data-en="Zero Bloat. Pure Results." data-es="Sin Relleno. Solo Resultados.">Zero Bloat. Pure Results.</div>
+        <div class="diff-d" data-en="We build only what drives measurable outcomes. No unnecessary complexity, no shelfware — every system we deploy earns its place with real numbers, tracked from day one." data-es="Construimos solo lo que genera resultados medibles. Sin complejidad innecesaria — cada sistema que desplegamos justifica su lugar con números reales, rastreados desde el primer día.">We build only what drives measurable outcomes. No unnecessary complexity, no shelfware — every system we deploy earns its place with real numbers, tracked from day one.</div>
+      </div>
+      <div class="diff reveal reveal-d2">
+        <div class="diff-num" aria-hidden="true">02</div>
+        <div class="diff-t" data-en="Live in 14 Days or Less" data-es="En Vivo en 14 Días o Menos">Live in 14 Days or Less</div>
+        <div class="diff-d" data-en="We've engineered our process to move at the speed of modern business — not agency timelines. From kickoff call to running automation in two weeks, guaranteed." data-es="Hemos diseñado nuestro proceso para moverse a la velocidad del negocio moderno. Desde la llamada inicial hasta automatización funcionando en dos semanas, garantizado.">We've engineered our process to move at the speed of modern business — not agency timelines. From kickoff call to running automation in two weeks, guaranteed.</div>
+      </div>
+      <div class="diff reveal reveal-d3">
+        <div class="diff-num" aria-hidden="true">03</div>
+        <div class="diff-t" data-en="We Think Like Operators" data-es="Pensamos Como Operadores">We Think Like Operators</div>
+        <div class="diff-d" data-en="Our team has built and scaled real businesses. We know what it costs to lose a deal to slow follow-up. Every decision we make is driven by business outcomes, not technical elegance." data-es="Nuestro equipo ha construido y escalado negocios reales. Sabemos lo que cuesta perder un trato por seguimiento lento. Cada decisión está impulsada por resultados de negocio.">Our team has built and scaled real businesses. We know what it costs to lose a deal to slow follow-up. Every decision we make is driven by business outcomes, not technical elegance.</div>
+      </div>
+      <div class="diff reveal reveal-d4">
+        <div class="diff-num" aria-hidden="true">04</div>
+        <div class="diff-t" data-en="AI That Gets Smarter Over Time" data-es="IA Que Mejora Con el Tiempo">AI That Gets Smarter Over Time</div>
+        <div class="diff-d" data-en="Our systems don't just automate — they learn. Every interaction, every data point makes your stack more intelligent. You compound while your competitors stagnate." data-es="Nuestros sistemas no solo automatizan — aprenden. Cada interacción, cada dato hace tu stack más inteligente. Tú creces mientras tu competencia se estanca.">Our systems don't just automate — they learn. Every interaction, every data point makes your stack more intelligent. You compound while your competitors stagnate.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="s-divider"></div>
+
+<!-- PROCESS -->
+<section id="process" class="process">
+  <div class="process-aurora" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="sec-header">
+      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="How We Work" data-es="Cómo Trabajamos">How We Work</span></div>
+      <h2 class="sec-h reveal reveal-d1"><span data-en="The Blueprint for" data-es="El Plan Para">The Blueprint for</span><br><span class="g" data-en="Limitless Scale" data-es="Escala Sin Límites">Limitless Scale</span></h2>
+      <p class="sec-sub reveal reveal-d2" data-en="From discovery to ongoing optimization — a structured approach that delivers results every single time." data-es="Desde el descubrimiento hasta la optimización continua — un enfoque estructurado que entrega resultados cada vez.">From discovery to ongoing optimization — a structured approach that delivers results every single time.</p>
+    </div>
+    <div class="process-steps reveal">
+      <div class="process-track" aria-hidden="true"></div>
+      <div class="p-step"><div class="p-num" aria-hidden="true">01</div><div class="p-title" data-en="Discovery" data-es="Descubrimiento">Discovery</div><div class="p-desc" data-en="We audit your workflows and identify the highest-impact automation opportunities in your business." data-es="Auditamos tus flujos de trabajo e identificamos las oportunidades de automatización de mayor impacto.">We audit your workflows and identify the highest-impact automation opportunities in your business.</div></div>
+      <div class="p-step"><div class="p-num" aria-hidden="true">02</div><div class="p-title" data-en="Strategy" data-es="Estrategia">Strategy</div><div class="p-desc" data-en="We design your custom automation blueprint — mapping every system, integration, and AI workflow." data-es="Diseñamos tu plan de automatización personalizado, mapeando cada sistema, integración y flujo de IA.">We design your custom automation blueprint — mapping every system, integration, and AI workflow.</div></div>
+      <div class="p-step active"><div class="p-num" aria-hidden="true">03</div><div class="p-title" data-en="Build" data-es="Construcción">Build</div><div class="p-desc" data-en="Our engineers implement and integrate your full automation stack — connecting tools and training AI models." data-es="Nuestros ingenieros implementan e integran tu stack de automatización completo, conectando herramientas y entrenando modelos de IA.">Our engineers implement and integrate your full automation stack — connecting tools and training AI models.</div></div>
+      <div class="p-step"><div class="p-num" aria-hidden="true">04</div><div class="p-title" data-en="Test & QA" data-es="Pruebas y QA">Test & QA</div><div class="p-desc" data-en="Every automation is rigorously tested across real-world scenarios before going live in your business." data-es="Cada automatización se prueba rigurosamente en escenarios del mundo real antes del lanzamiento.">Every automation is rigorously tested across real-world scenarios before going live in your business.</div></div>
+      <div class="p-step"><div class="p-num" aria-hidden="true">05</div><div class="p-title" data-en="Scale & Optimize" data-es="Escalar y Optimizar">Scale & Optimize</div><div class="p-desc" data-en="We deploy, monitor in real-time, and continuously optimize to maximize your ROI as you grow." data-es="Desplegamos, monitoreamos en tiempo real y optimizamos continuamente para maximizar tu ROI.">We deploy, monitor in real-time, and continuously optimize to maximize your ROI as you grow.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="s-divider"></div>
+
+<!-- INTEGRATIONS -->
+<section id="integrations" class="integrations">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="Integrations" data-es="Integraciones">Integrations</span></div>
+      <h2 class="sec-h reveal reveal-d1"><span data-en="Connect Anything." data-es="Conecta Todo.">Connect Anything.</span><br><span class="g" data-en="Automate Everything." data-es="Automatiza Todo.">Automate Everything.</span></h2>
+      <p class="sec-sub reveal reveal-d2" data-en="ThryveX integrates with 100+ tools out of the box. If your business uses it, we can connect it — and make it work smarter." data-es="ThryveX se integra con 100+ herramientas. Si tu negocio lo usa, podemos conectarlo y hacerlo trabajar más inteligentemente.">ThryveX integrates with 100+ tools out of the box. If your business uses it, we can connect it — and make it work smarter.</p>
+    </div>
+    <div class="int-grid">
+      <div class="int-card int-card-1 reveal reveal-d1">
+        <div class="int-icon" style="background:rgba(14,165,233,.1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:var(--blue)"><path d="M12 2a5 5 0 0 1 5 5c0 1-.3 2-.8 2.8M12 2a5 5 0 0 0-5 5c0 1 .3 2 .8 2.8M12 2v2"/><path d="M9 9.5c-2 .5-3 2-3 3.5a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4c0-1.5-1-3-3-3.5"/></svg></div>
+        <div class="int-title" data-en="AI & Language Models" data-es="IA y Modelos de Lenguaje">AI & Language Models</div>
+        <div class="int-desc" data-en="Deploy cutting-edge AI that thinks, responds, and makes decisions like your best employee." data-es="Despliega IA de vanguardia que piensa, responde y toma decisiones como tu mejor empleado.">Deploy cutting-edge AI that thinks, responds, and makes decisions like your best employee.</div>
+        <div class="int-tags"><span class="int-tag">OpenAI</span><span class="int-tag">Anthropic</span><span class="int-tag">Gemini</span><span class="int-tag">Llama</span></div>
+      </div>
+      <div class="int-card int-card-2 reveal reveal-d2">
+        <div class="int-icon" style="background:rgba(124,58,237,.1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:var(--purple)"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="int-title" data-en="CRM & Sales" data-es="CRM y Ventas">CRM & Sales</div>
+        <div class="int-desc" data-en="Unify your pipeline, automate follow-ups, and never lose a lead again across your entire sales motion." data-es="Unifica tu pipeline, automatiza seguimientos y nunca pierdas un lead de nuevo en todo tu proceso de ventas.">Unify your pipeline, automate follow-ups, and never lose a lead again across your entire sales motion.</div>
+        <div class="int-tags"><span class="int-tag">HubSpot</span><span class="int-tag">Salesforce</span><span class="int-tag">Pipedrive</span><span class="int-tag">Close</span></div>
+      </div>
+      <div class="int-card int-card-3 reveal reveal-d3">
+        <div class="int-icon" style="background:rgba(6,182,212,.1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:var(--cyan)"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
+        <div class="int-title" data-en="Workflow Automation" data-es="Automatización de Flujos">Workflow Automation</div>
+        <div class="int-desc" data-en="Connect your entire stack through intelligent, event-driven workflows that run without supervision." data-es="Conecta todo tu stack a través de flujos de trabajo inteligentes y orientados por eventos que funcionan sin supervisión.">Connect your entire stack through intelligent, event-driven workflows that run without supervision.</div>
+        <div class="int-tags"><span class="int-tag">n8n</span><span class="int-tag">Make</span><span class="int-tag">Zapier</span><span class="int-tag">Activepieces</span></div>
+      </div>
+      <div class="int-card int-card-4 reveal reveal-d4">
+        <div class="int-icon" style="background:rgba(16,185,129,.1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:var(--green)"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="int-title" data-en="Communication" data-es="Comunicación">Communication</div>
+        <div class="int-desc" data-en="Automate messages, alerts, and follow-ups across every channel your customers and team already use." data-es="Automatiza mensajes, alertas y seguimientos en cada canal que tus clientes y equipo ya usan.">Automate messages, alerts, and follow-ups across every channel your customers and team already use.</div>
+        <div class="int-tags"><span class="int-tag">Slack</span><span class="int-tag">WhatsApp</span><span class="int-tag">Teams</span><span class="int-tag">Email</span></div>
+      </div>
+      <div class="int-card int-card-5 reveal reveal-d5">
+        <div class="int-icon" style="background:rgba(245,158,11,.1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:#F59E0B"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+        <div class="int-title" data-en="Data & Analytics" data-es="Datos y Analítica">Data & Analytics</div>
+        <div class="int-desc" data-en="Pull data from everywhere, process it in real-time, and push insights to the people who need them most." data-es="Extrae datos de cualquier lugar, procésalos en tiempo real y lleva insights a las personas que más los necesitan.">Pull data from everywhere, process it in real-time, and push insights to the people who need them most.</div>
+        <div class="int-tags"><span class="int-tag">Airtable</span><span class="int-tag">BigQuery</span><span class="int-tag">Sheets</span><span class="int-tag">Notion</span></div>
+      </div>
+      <div class="int-card int-card-6 reveal reveal-d6">
+        <div class="int-icon" style="background:rgba(239,68,68,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:#EF4444"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="int-title" data-en="Web & Commerce" data-es="Web y Comercio">Web & Commerce</div>
+        <div class="int-desc" data-en="Connect your website, store, and payment infrastructure into a single automated revenue engine." data-es="Conecta tu sitio web, tienda e infraestructura de pago en un único motor de ingresos automatizado.">Connect your website, store, and payment infrastructure into a single automated revenue engine.</div>
+        <div class="int-tags"><span class="int-tag">Webflow</span><span class="int-tag">Shopify</span><span class="int-tag">Stripe</span><span class="int-tag">WordPress</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="s-divider"></div>
+
+<!-- HOW THRYVEX POWERS YOUR GROWTH -->
+<section id="growth" class="growth">
+  <div class="growth-aurora" aria-hidden="true"></div>
+  <div class="container">
+    <div class="growth-grid">
+      <div>
+        <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="How It Works" data-es="Cómo Funciona">How It Works</span></div>
+        <h2 class="sec-h reveal reveal-d1"><span data-en="How ThryveX" data-es="Cómo ThryveX">How ThryveX</span><br><span class="g" data-en="Powers Your Growth" data-es="Impulsa Tu Crecimiento">Powers Your Growth</span></h2>
+        <p class="sec-sub reveal reveal-d2" data-en="We don't sell software. We engineer growth systems — connecting your tools, training AI on your data, and deploying automation that compounds over time." data-es="No vendemos software. Diseñamos sistemas de crecimiento — conectando tus herramientas, entrenando IA con tus datos y desplegando automatización que se acumula con el tiempo.">We don't sell software. We engineer growth systems — connecting your tools, training AI on your data, and deploying automation that compounds over time.</p>
+        <div class="growth-steps reveal reveal-d3">
+          <div class="g-step">
+            <div class="g-step-num">01</div>
+            <div>
+              <div class="g-step-title" data-en="Capture Every Opportunity" data-es="Captura Cada Oportunidad">Capture Every Opportunity</div>
+              <div class="g-step-desc" data-en="AI monitors every channel — email, CRM, web forms, social — and ensures nothing falls through the cracks, 24 hours a day." data-es="La IA monitorea cada canal — email, CRM, formularios web, redes sociales — y asegura que nada se escape, las 24 horas del día.">AI monitors every channel — email, CRM, web forms, social — and ensures nothing falls through the cracks, 24 hours a day.</div>
+            </div>
+          </div>
+          <div class="g-step">
+            <div class="g-step-num">02</div>
+            <div>
+              <div class="g-step-title" data-en="Qualify and Route Instantly" data-es="Califica y Enruta al Instante">Qualify and Route Instantly</div>
+              <div class="g-step-desc" data-en="Our AI engine scores, enriches, and routes every lead or task to the right person or system in milliseconds — no manual triage." data-es="Nuestro motor IA puntúa, enriquece y enruta cada lead o tarea a la persona o sistema correcto en milisegundos — sin clasificación manual.">Our AI engine scores, enriches, and routes every lead or task to the right person or system in milliseconds — no manual triage.</div>
+            </div>
+          </div>
+          <div class="g-step">
+            <div class="g-step-num">03</div>
+            <div>
+              <div class="g-step-title" data-en="Close and Scale on Autopilot" data-es="Cierra y Escala en Piloto Automático">Close and Scale on Autopilot</div>
+              <div class="g-step-desc" data-en="Follow-ups, confirmations, onboarding, reporting — fully automated. Your team only steps in when their expertise is what closes the deal." data-es="Seguimientos, confirmaciones, onboarding, reportes — completamente automatizados. Tu equipo solo interviene cuando su experiencia es lo que cierra el trato.">Follow-ups, confirmations, onboarding, reporting — fully automated. Your team only steps in when their expertise is what closes the deal.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="growth-visual">
+          <!-- Node: Input -->
+          <div class="gv-node">
+            <div class="gv-node-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg></div>
+            <div><div class="gv-node-label" data-en="New Lead Comes In" data-es="Nuevo Lead Entra">New Lead Comes In</div><div class="gv-node-sub" data-en="From any channel" data-es="Desde cualquier canal">From any channel</div></div>
+          </div>
+          <!-- Arrow -->
+          <div class="gv-arrow"><div class="gv-arrow-line"></div><div class="gv-arrow-head"></div></div>
+          <!-- Node: AI Engine -->
+          <div class="gv-node gv-node-center">
+            <div class="gv-node-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 2a5 5 0 0 1 5 5c0 1-.3 2-.8 2.8M12 2a5 5 0 0 0-5 5c0 1 .3 2 .8 2.8M12 2v2"/><path d="M9 9.5c-2 .5-3 2-3 3.5a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4c0-1.5-1-3-3-3.5"/></svg></div>
+            <div><div class="gv-node-label">ThryveX AI Engine</div><div class="gv-node-sub" data-en="Qualifying · Routing · Acting" data-es="Calificando · Enrutando · Actuando">Qualifying · Routing · Acting</div></div>
+          </div>
+          <!-- Arrow -->
+          <div class="gv-arrow"><div class="gv-arrow-line"></div><div class="gv-arrow-head"></div></div>
+          <!-- Outputs -->
+          <div class="gv-outputs">
+            <div class="gv-out"><div class="gv-out-dot"></div><span class="gv-out-txt" data-en="Meeting booked automatically" data-es="Reunión agendada automáticamente">Meeting booked automatically</span></div>
+            <div class="gv-out"><div class="gv-out-dot"></div><span class="gv-out-txt" data-en="CRM updated in real-time" data-es="CRM actualizado en tiempo real">CRM updated in real-time</span></div>
+            <div class="gv-out"><div class="gv-out-dot"></div><span class="gv-out-txt" data-en="Team notified instantly" data-es="Equipo notificado al instante">Team notified instantly</span></div>
+            <div class="gv-out"><div class="gv-out-dot"></div><span class="gv-out-txt" data-en="Follow-up sequence triggered" data-es="Secuencia de seguimiento iniciada">Follow-up sequence triggered</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="s-divider"></div>
+
+<!-- RESULTS -->
+<section id="results" class="results">
+  <div class="results-aurora" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="sec-header">
+      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="Case Studies" data-es="Casos de Éxito">Case Studies</span></div>
+      <h2 class="sec-h reveal reveal-d1"><span data-en="Real Businesses." data-es="Negocios Reales.">Real Businesses.</span><br><span class="g" data-en="Real Scale." data-es="Escala Real.">Real Scale.</span></h2>
+      <p class="sec-sub reveal reveal-d2" data-en="See how we've helped companies across industries remove their ceilings and operate at a level they never thought possible." data-es="Mira cómo hemos ayudado a empresas de diversas industrias a eliminar sus techos y operar a un nivel que nunca creyeron posible.">See how we've helped companies across industries remove their ceilings and operate at a level they never thought possible.</p>
+    </div>
+    <div class="results-grid">
+      <div class="r-card reveal reveal-d1" role="article">
+        <div class="r-tag" data-en="Real Estate" data-es="Bienes Raíces">Real Estate</div>
+        <h3 class="r-company">Pacific Prime Brokerage</h3>
+        <p class="r-desc" data-en="Full AI lead management system — automating capture, qualification, follow-up, and meeting booking across 6 lead sources simultaneously." data-es="Sistema completo de gestión de leads con IA — automatizando captura, calificación, seguimiento y agendamiento en 6 fuentes de leads simultáneamente.">Full AI lead management system — automating capture, qualification, follow-up, and meeting booking across 6 lead sources simultaneously.</p>
+        <div class="r-metrics"><div class="r-metric"><span class="r-val">40%</span><span class="r-label" data-en="More Meetings" data-es="Más Reuniones">More Meetings</span></div><div class="r-metric"><span class="r-val">3x</span><span class="r-label" data-en="Faster Response" data-es="Respuesta Más Rápida">Faster Response</span></div></div>
+      </div>
+      <div class="r-card reveal reveal-d2" role="article">
+        <div class="r-tag" data-en="Financial Services" data-es="Servicios Financieros">Financial Services</div>
+        <h3 class="r-company">Vertex Capital Markets</h3>
+        <p class="r-desc" data-en="End-to-end data automation — eliminating 2,000+ hours of annual manual data entry with AI-powered pipelines and real-time reporting." data-es="Automatización de datos de principio a fin — eliminando 2,000+ horas anuales de entrada manual con pipelines impulsados por IA y reportes en tiempo real.">End-to-end data automation — eliminating 2,000+ hours of annual manual data entry with AI-powered pipelines and real-time reporting.</p>
+        <div class="r-metrics"><div class="r-metric"><span class="r-val">60%</span><span class="r-label" data-en="Less Manual Work" data-es="Menos Trabajo Manual">Less Manual Work</span></div><div class="r-metric"><span class="r-val">$120K</span><span class="r-label" data-en="Saved Annually" data-es="Ahorrado Anualmente">Saved Annually</span></div></div>
+      </div>
+      <div class="r-card reveal reveal-d3" role="article">
+        <div class="r-tag" data-en="Sales & Trading" data-es="Ventas y Trading">Sales & Trading</div>
+        <h3 class="r-company">Atlantic Trading Group</h3>
+        <p class="r-desc" data-en="Rebuilt their entire sales infrastructure with AI-powered CRM, automated outreach sequences, and real-time pipeline visibility across the team." data-es="Reconstruimos toda su infraestructura de ventas con CRM impulsado por IA, secuencias de alcance automatizadas y visibilidad del pipeline en tiempo real.">Rebuilt their entire sales infrastructure with AI-powered CRM, automated outreach sequences, and real-time pipeline visibility across the team.</p>
+        <div class="r-metrics"><div class="r-metric"><span class="r-val">2x</span><span class="r-label" data-en="Team Productivity" data-es="Productividad del Equipo">Team Productivity</span></div><div class="r-metric"><span class="r-val">85%</span><span class="r-label" data-en="Automation Coverage" data-es="Cobertura Automatizada">Automation Coverage</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="s-divider"></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials">
+  <div class="t-aurora" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="sec-header">
+      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="Client Testimonials" data-es="Testimonios de Clientes">Client Testimonials</span></div>
+      <h2 class="sec-h reveal reveal-d1"><span data-en="What Our Clients" data-es="Lo Que Dicen">What Our Clients</span><br><span class="g" data-en="Are Saying" data-es="Nuestros Clientes">Are Saying</span></h2>
+    </div>
+    <div class="carousel-wrap reveal">
+      <div class="carousel-track" id="carouselTrack" role="list">
+        <div class="t-card" role="listitem">
+          <div class="t-stars" aria-label="5 stars">★★★★★</div>
+          <p class="t-quote"><span class="t-quote-mark" aria-hidden="true">"</span><span data-en="ThryveX transformed our lead management completely. We went from losing leads in spreadsheets to having every opportunity automatically tracked, followed up, and converted. Our booking rate increased by 40% in the first month — the ROI was immediate and undeniable." data-es="ThryveX transformó completamente nuestra gestión de leads. Pasamos de perder leads en hojas de cálculo a tener cada oportunidad rastreada, seguida y convertida automáticamente. Nuestra tasa de reservas aumentó un 40% en el primer mes.">ThryveX transformed our lead management completely. We went from losing leads in spreadsheets to having every opportunity automatically tracked, followed up, and converted. Our booking rate increased by 40% in the first month — the ROI was immediate and undeniable.</span></p>
+          <div class="t-author"><div class="t-avatar" aria-hidden="true">MC</div><div><div class="t-name">Marcus Chen</div><div class="t-role" data-en="Head of Operations · Pacific Prime Brokerage" data-es="Jefe de Operaciones · Pacific Prime Brokerage">Head of Operations · Pacific Prime Brokerage</div></div></div>
+        </div>
+        <div class="t-card" role="listitem">
+          <div class="t-stars" aria-label="5 stars">★★★★★</div>
+          <p class="t-quote"><span class="t-quote-mark" aria-hidden="true">"</span><span data-en="The AI automation systems ThryveX built saved us over 2,000 hours of manual work in the first year alone. Their team understood the complexity of our workflows immediately and delivered a solution that exceeded every expectation we had going in." data-es="Los sistemas de automatización IA que construyó ThryveX nos ahorraron más de 2,000 horas de trabajo manual en el primer año. Su equipo entendió la complejidad de nuestros flujos de trabajo de inmediato y entregó una solución que superó todas nuestras expectativas.">The AI automation systems ThryveX built saved us over 2,000 hours of manual work in the first year alone. Their team understood the complexity of our workflows immediately and delivered a solution that exceeded every expectation we had going in.</span></p>
+          <div class="t-author"><div class="t-avatar" aria-hidden="true">ER</div><div><div class="t-name">Elena Rodriguez</div><div class="t-role" data-en="Chief Technology Officer · Vertex Capital Markets" data-es="Directora de Tecnología · Vertex Capital Markets">Chief Technology Officer · Vertex Capital Markets</div></div></div>
+        </div>
+        <div class="t-card" role="listitem">
+          <div class="t-stars" aria-label="5 stars">★★★★★</div>
+          <p class="t-quote"><span class="t-quote-mark" aria-hidden="true">"</span><span data-en="In 10 years of working with agencies, ThryveX is by far the best. They don't just build automation — they think strategically about your entire operation. Our sales team is now 3x more productive and we've completely eliminated the manual work that was slowing us down." data-es="En 10 años de trabajar con agencias, ThryveX es con diferencia la mejor. No solo construyen automatización — piensan estratégicamente sobre toda tu operación. Nuestro equipo de ventas ahora es 3 veces más productivo.">In 10 years of working with agencies, ThryveX is by far the best. They don't just build automation — they think strategically about your entire operation. Our sales team is now 3x more productive and we've completely eliminated the manual work that was slowing us down.</span></p>
+          <div class="t-author"><div class="t-avatar" aria-hidden="true">JT</div><div><div class="t-name">James Thornton</div><div class="t-role" data-en="VP of Sales · Atlantic Trading Group" data-es="VP de Ventas · Atlantic Trading Group">VP of Sales · Atlantic Trading Group</div></div></div>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="car-btn" id="carPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="car-dots" role="tablist"><button class="car-dot on" aria-label="1" role="tab"></button><button class="car-dot" aria-label="2" role="tab"></button><button class="car-dot" aria-label="3" role="tab"></button></div>
+        <button class="car-btn" id="carNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="s-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="contact-aurora" aria-hidden="true"></div>
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="Get In Touch" data-es="Contáctanos">Get In Touch</span></div>
+      <h2 class="sec-h reveal reveal-d1"><span data-en="Start Your Growth." data-es="Comienza Tu Crecimiento.">Start Your Growth.</span><br><span class="g" data-en="Today." data-es="Hoy.">Today.</span></h2>
+      <p class="sec-sub reveal reveal-d2" data-en="Book a free strategy call. We'll map your biggest automation opportunities and show you exactly how to eliminate manual work in as little as 2 weeks." data-es="Agenda una llamada de estrategia gratuita. Mapearemos tus mayores oportunidades de automatización y te mostraremos cómo eliminar el trabajo manual en tan solo 2 semanas.">Book a free strategy call. We'll map your biggest automation opportunities and show you exactly how to eliminate manual work in as little as 2 weeks.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="c-detail"><div class="c-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="c-lbl" data-en="Email" data-es="Correo">Email</div><div class="c-val"><a href="mailto:glucas@thryvexgroup.com">glucas@thryvexgroup.com</a></div></div></div>
+        <div class="c-detail"><div class="c-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg></div><div><div class="c-lbl">WhatsApp</div><div class="c-val"><a href="https://wa.me/50765693716" target="_blank" rel="noopener">+507 6569-3716</a></div></div></div>
+        <div class="c-detail"><div class="c-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="c-lbl" data-en="Location" data-es="Ubicación">Location</div><div class="c-val" data-en="Panama City · Global Remote" data-es="Ciudad de Panamá · Remoto Global">Panama City · Global Remote</div></div></div>
+        <div class="c-detail"><div class="c-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="c-lbl" data-en="Response Time" data-es="Tiempo de Respuesta">Response Time</div><div class="c-val" data-en="Within 24 hours" data-es="Dentro de 24 horas">Within 24 hours</div></div></div>
+      </div>
+      <div class="reveal reveal-d2">
+        <form id="contactForm" class="contact-form-wrap" novalidate aria-label="Contact form">
+          <div class="f-row">
+            <div class="f-group"><label class="f-label" for="fname" data-en="Full Name" data-es="Nombre Completo">Full Name</label><input class="f-input" type="text" id="fname" name="name" placeholder="John Smith" required autocomplete="name"></div>
+            <div class="f-group"><label class="f-label" for="femail" data-en="Work Email" data-es="Correo Laboral">Work Email</label><input class="f-input" type="email" id="femail" name="email" placeholder="john@company.com" required autocomplete="email"></div>
+          </div>
+          <div class="f-row">
+            <div class="f-group"><label class="f-label" for="fcompany" data-en="Company" data-es="Empresa">Company</label><input class="f-input" type="text" id="fcompany" name="company" placeholder="Acme Corp" autocomplete="organization"></div>
+            <div class="f-group"><label class="f-label" for="fservice" data-en="Service Needed" data-es="Servicio Requerido">Service Needed</label>
+              <select class="f-select" id="fservice" name="service">
+                <option value="">Select a service...</option>
+                <option value="ai-automation">AI Automation</option>
+                <option value="crm">CRM Implementation</option>
+                <option value="website">Website Development</option>
+                <option value="chatbot">AI Chatbot</option>
+                <option value="workflow">Workflow Automation</option>
+                <option value="analytics">Data Analytics</option>
+                <option value="other">Full Package</option>
+              </select>
+            </div>
+          </div>
+          <div class="f-group"><label class="f-label" for="fmessage" data-en="Tell Us About Your Business" data-es="Cuéntanos Sobre Tu Negocio">Tell Us About Your Business</label><textarea class="f-textarea" id="fmessage" name="message" placeholder="Describe your current challenges and what you're looking to automate..."></textarea></div>
+          <button type="submit" class="btn btn-primary btn-lg f-submit magnetic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <span data-en="Send Message" data-es="Enviar Mensaje">Send Message</span>
+          </button>
+        </form>
+        <div class="f-success" id="formSuccess" role="alert" aria-live="polite">
+          <div class="f-success-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h3 data-en="Message Sent!" data-es="¡Mensaje Enviado!">Message Sent!</h3>
+          <p data-en="Thank you. We'll get back to you within 24 hours." data-es="Gracias. Te responderemos dentro de 24 horas.">Thank you. We'll get back to you within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-final">
+  <div class="cta-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="cta-h reveal">
+        <span data-en="Ready to Scale" data-es="¿Listo Para Escalar">Ready to Scale</span><br>
+        <span class="g" data-en="Without Limits?" data-es="Sin Límites?">Without Limits?</span>
+      </h2>
+      <p class="cta-sub reveal reveal-d1" data-en="Book a free 30-minute strategy call. We'll map your biggest automation opportunities and show you exactly how to start — no sales pressure, just clarity." data-es="Agenda una llamada de estrategia de 30 minutos gratuita. Mapearemos tus mayores oportunidades de automatización y te mostraremos exactamente cómo comenzar — sin presión de ventas, solo claridad.">Book a free 30-minute strategy call. We'll map your biggest automation opportunities and show you exactly how to start — no sales pressure, just clarity.</p>
+      <div class="cta-btns reveal reveal-d2">
+        <a href="#contact" class="btn btn-primary btn-lg magnetic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+          <span data-en="Book Your Free Strategy Call" data-es="Agenda Tu Llamada Gratuita">Book Your Free Strategy Call</span>
+        </a>
+        <a href="#services" class="btn btn-outline btn-lg magnetic">
+          <span data-en="Explore What We Build" data-es="Explorar Nuestros Servicios">Explore What We Build</span>
+        </a>
+      </div>
+      <div class="cta-trust reveal reveal-d3">
+        <span data-en="No sales pressure." data-es="Sin presión de ventas.">No sales pressure.</span>
+        <div class="cta-trust-dot" aria-hidden="true"></div>
+        <span data-en="100% free call." data-es="Llamada 100% gratuita.">100% free call.</span>
+        <div class="cta-trust-dot" aria-hidden="true"></div>
+        <span data-en="Results within 2 weeks." data-es="Resultados en 2 semanas.">Results within 2 weeks.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#hero" class="f-logo" aria-label="ThryveX Group home"><div class="f-logo-ico" aria-hidden="true">TX</div><span class="f-logo-text">ThryveX Group</span></a>
+        <p class="f-tagline" data-en="AI automation infrastructure for modern businesses that refuse to stay still." data-es="Infraestructura de automatización IA para negocios modernos que se niegan a quedarse quietos.">AI automation infrastructure for modern businesses that refuse to stay still.</p>
+        <div class="f-socials">
+          <a href="https://www.instagram.com/thryvexgroup" target="_blank" rel="noopener" class="f-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://wa.me/50765693716" target="_blank" rel="noopener" class="f-social" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+          <a href="mailto:glucas@thryvexgroup.com" class="f-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="f-col-h" data-en="Services" data-es="Servicios">Services</h4>
+        <ul class="f-links">
+          <li><a href="#services" data-en="AI Automation" data-es="Automatización IA">AI Automation</a></li>
+          <li><a href="#services" data-en="CRM Implementation" data-es="Implementación de CRM">CRM Implementation</a></li>
+          <li><a href="#services" data-en="Website Development" data-es="Desarrollo Web">Website Development</a></li>
+          <li><a href="#services" data-en="AI Chatbots" data-es="Chatbots de IA">AI Chatbots</a></li>
+          <li><a href="#services" data-en="Workflow Automation" data-es="Automatización de Flujos">Workflow Automation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="f-col-h" data-en="Company" data-es="Empresa">Company</h4>
+        <ul class="f-links">
+          <li><a href="#why" data-en="About Us" data-es="Sobre Nosotros">About Us</a></li>
+          <li><a href="#process" data-en="Our Process" data-es="Nuestro Proceso">Our Process</a></li>
+          <li><a href="#results" data-en="Case Studies" data-es="Casos de Éxito">Case Studies</a></li>
+          <li><a href="#testimonials" data-en="Testimonials" data-es="Testimonios">Testimonials</a></li>
+          <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="f-col-h" data-en="Connect" data-es="Conectar">Connect</h4>
+        <ul class="f-links">
+          <li><a href="mailto:glucas@thryvexgroup.com">glucas@thryvexgroup.com</a></li>
+          <li><a href="https://wa.me/50765693716" target="_blank" rel="noopener">+507 6569-3716</a></li>
+          <li><a href="https://www.instagram.com/thryvexgroup" target="_blank" rel="noopener">@thryvexgroup</a></li>
+          <li><a href="#contact" data-en="Book a Strategy Call →" data-es="Agendar una Llamada →">Book a Strategy Call →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="f-copy">© 2026 ThryveX Group. <span data-en="All rights reserved." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
+      <div class="f-legal">
+        <a href="#" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a>
+        <a href="#" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+(function(){
+'use strict';
+
+/* ─ 1. LOADER ─────────────────────────────────────────────── */
+const loader=document.getElementById('loader');
+const loaderProg=document.getElementById('loaderProgress');
+const loaderLabel=document.getElementById('loaderLabel');
+let lang='en';
+const llbls={en:['Initializing AI Systems...','Loading Neural Networks...','Calibrating Automations...','Ready.'],es:['Inicializando Sistemas IA...','Cargando Redes Neuronales...','Calibrando Automatizaciones...','Listo.']};
+const steps=[{w:28,delay:300,l:0},{w:58,delay:550,l:1},{w:82,delay:500,l:2},{w:97,delay:400,l:3},{w:100,delay:250}];
+let tt=0;
+steps.forEach(s=>{
+  tt+=s.delay;
+  setTimeout(()=>{
+    if(loaderProg)loaderProg.style.width=s.w+'%';
+    if(loaderLabel&&s.l!==undefined)loaderLabel.textContent=llbls[lang][s.l];
+  },tt);
+});
+setTimeout(()=>{
+  if(loader)loader.classList.add('out');
+  document.body.classList.remove('loading');
+  initScroll();
+},tt+600);
+
+/* ─ 2. CURSOR ─────────────────────────────────────────────── */
+const cur=document.getElementById('cursor');
+const ring=document.getElementById('cursorRing');
+let cX=-100,cY=-100,rX=-100,rY=-100;
+document.addEventListener('mousemove',e=>{
+  cX=e.clientX;cY=e.clientY;
+  if(cur){cur.style.left=cX+'px';cur.style.top=cY+'px';}
+});
+(function animRing(){
+  rX+=(cX-rX)*.12;rY+=(cY-rY)*.12;
+  if(ring){ring.style.left=rX+'px';ring.style.top=rY+'px';}
+  requestAnimationFrame(animRing);
+})();
+document.querySelectorAll('a,button,.s-card,.r-card,.int-card,.car-btn,.car-dot,.f-social').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur&&cur.classList.add('on-hover');ring&&ring.classList.add('on-hover');});
+  el.addEventListener('mouseleave',()=>{cur&&cur.classList.remove('on-hover');ring&&ring.classList.remove('on-hover');});
+});
+document.addEventListener('mousedown',()=>cur&&cur.classList.add('clicking'));
+document.addEventListener('mouseup',()=>cur&&cur.classList.remove('clicking'));
+document.addEventListener('mouseleave',()=>{if(ring)ring.style.opacity='0';});
+document.addEventListener('mouseenter',()=>{if(ring)ring.style.opacity='1';});
+
+/* ─ 3. PARTICLES ──────────────────────────────────────────── */
+const canvas=document.getElementById('particleCanvas');
+if(canvas){
+  const ctx=canvas.getContext('2d');
+  const N=75,DIST=148,SPD=0.28;
+  let W,H,pts=[],mouse={x:-500,y:-500};
+  const COLS=[[14,165,233],[124,58,237],[6,182,212]];
+  const prefRM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
+  function mkPt(){return{x:Math.random()*W,y:Math.random()*H,dx:(Math.random()-.5)*SPD,dy:(Math.random()-.5)*SPD,r:Math.random()*1.8+.8,c:COLS[Math.floor(Math.random()*COLS.length)]};}
+  resize();pts=Array.from({length:N},mkPt);
+  window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
+  (function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(let i=0;i<N;i++){
+      const p=pts[i];
+      if(!prefRM){
+        p.x+=p.dx;p.y+=p.dy;
+        if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+        const mdx=p.x-mouse.x,mdy=p.y-mouse.y,md=Math.sqrt(mdx*mdx+mdy*mdy);
+        if(md<90&&md>0){const f=(90-md)/90;p.x+=(mdx/md)*f*1.8;p.y+=(mdy/md)*f*1.8;}
+      }
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.c[0]},${p.c[1]},${p.c[2]},0.65)`;ctx.fill();
+      for(let j=i+1;j<N;j++){
+        const q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<DIST){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(14,165,233,${(1-d/DIST)*.27})`;ctx.lineWidth=.6;ctx.stroke();}
+      }
+    }
+    requestAnimationFrame(draw);
+  })();
+}
+
+/* ─ 4. TYPEWRITER ─────────────────────────────────────────── */
+const twEl=document.getElementById('typewriter');
+if(twEl){
+  const phrases={en:['Limits.','Scale.','Growth.','Ceilings.','Tomorrow.'],es:['Límites.','Escala.','Crecimiento.','Barreras.','El Futuro.']};
+  let idx=0,txt='',del=false;
+  function type(){
+    const arr=phrases[lang],phrase=arr[idx];
+    txt=del?phrase.substring(0,txt.length-1):phrase.substring(0,txt.length+1);
+    twEl.textContent=txt;
+    let spd=del?55:95;
+    if(!del&&txt===phrase){spd=2600;del=true;}
+    else if(del&&txt===''){del=false;idx=(idx+1)%arr.length;spd=320;}
+    setTimeout(type,spd);
+  }
+  setTimeout(type,3200);
+}
+
+/* ─ 5. NAVBAR SCROLL ──────────────────────────────────────── */
+const navbar=document.getElementById('navbar');
+const blob1=document.querySelector('.hero-blob-1');
+const blob2=document.querySelector('.hero-blob-2');
+const heroContent=document.querySelector('.hero-content');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  if(navbar)navbar.classList.toggle('scrolled',y>40);
+  if(blob1)blob1.style.transform=`translateY(${y*.18}px)`;
+  if(blob2)blob2.style.transform=`translateY(${y*-.14}px)`;
+  if(heroContent)heroContent.style.transform=`translateY(${y*.07}px)`;
+},{passive:true});
+
+/* ─ 6. TILT CARDS ─────────────────────────────────────────── */
+const prefRM2=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!prefRM2){
+  document.querySelectorAll('.s-card,.r-card,.int-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      card.style.transform=`perspective(900px) rotateX(${(y-.5)*-11}deg) rotateY(${(x-.5)*11}deg) translateZ(6px)`;
+      card.style.setProperty('--mx',(x*100)+'%');card.style.setProperty('--my',(y*100)+'%');
+    });
+    card.addEventListener('mouseleave',()=>{
+      card.style.transform='';card.style.transition='transform .5s ease';
+      setTimeout(()=>card.style.transition='',500);
+    });
+  });
+}
+
+/* ─ 7. MAGNETIC BUTTONS ───────────────────────────────────── */
+if(!prefRM2){
+  document.querySelectorAll('.magnetic').forEach(el=>{
+    el.addEventListener('mousemove',e=>{
+      const r=el.getBoundingClientRect();
+      el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.22}px,${(e.clientY-r.top-r.height/2)*.22}px)`;
+    });
+    el.addEventListener('mouseleave',()=>{
+      el.style.transform='';el.style.transition='transform .4s cubic-bezier(.4,0,.2,1)';
+      setTimeout(()=>el.style.transition='',400);
+    });
+  });
+}
+
+/* ─ 8. SCROLL REVEAL — BIDIRECTIONAL FADE IN/OUT ──────────── */
+function initScroll(){
+  const els=document.querySelectorAll('.reveal');
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+      } else {
+        // Fade out when element leaves viewport (bidirectional)
+        e.target.classList.remove('in');
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(el=>io.observe(el));
+}
+
+/* ─ 9. NUMBER COUNTERS ────────────────────────────────────── */
+const counters=document.querySelectorAll('.count');
+const cIO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target,target=parseInt(el.dataset.target),start=performance.now();
+      (function upd(now){
+        const p=Math.min((now-start)/2200,1),ease=1-Math.pow(1-p,3);
+        el.textContent=Math.floor(ease*target);
+        if(p<1)requestAnimationFrame(upd);else el.textContent=target;
+      })(start);
+      cIO.unobserve(el);
+    }
+  });
+},{threshold:.5});
+counters.forEach(el=>cIO.observe(el));
+
+/* ─ 10. CAROUSEL ─────────────────────────────────────────── */
+const track=document.getElementById('carouselTrack');
+const dots=document.querySelectorAll('.car-dot');
+const prevBtn=document.getElementById('carPrev');
+const nextBtn=document.getElementById('carNext');
+let cur2=0,autoT;
+function goTo(i){
+  const n=track?track.children.length:3;
+  cur2=((i%n)+n)%n;
+  if(track)track.style.transform=`translateX(-${cur2*100}%)`;
+  dots.forEach((d,j)=>d.classList.toggle('on',j===cur2));
+}
+function play(){clearInterval(autoT);autoT=setInterval(()=>goTo(cur2+1),5500);}
+prevBtn&&prevBtn.addEventListener('click',()=>{goTo(cur2-1);play();});
+nextBtn&&nextBtn.addEventListener('click',()=>{goTo(cur2+1);play();});
+dots.forEach((d,i)=>d.addEventListener('click',()=>{goTo(i);play();}));
+let tsX=0;
+if(track){
+  track.addEventListener('touchstart',e=>{tsX=e.touches[0].clientX;clearInterval(autoT);},{passive:true});
+  track.addEventListener('touchend',e=>{
+    const diff=tsX-e.changedTouches[0].clientX;
+    if(Math.abs(diff)>45)goTo(diff>0?cur2+1:cur2-1);
+    play();
+  },{passive:true});
+}
+goTo(0);play();
+
+/* ─ 11. MOBILE MENU ──────────────────────────────────────── */
+const ham=document.getElementById('hamburger');
+const mobileNav=document.getElementById('mobileNav');
+function closeMobile(){ham&&ham.classList.remove('open');mobileNav&&mobileNav.classList.remove('open');ham&&ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+ham&&ham.addEventListener('click',()=>{
+  const open=ham.classList.toggle('open');
+  mobileNav&&mobileNav.classList.toggle('open',open);
+  ham.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+});
+mobileNav&&mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobile));
+
+/* ─ 12. LANGUAGE TOGGLE (EN / ES BUTTONS) ────────────────── */
+function applyLang(){
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const val=el.dataset[lang];
+    if(val!==undefined&&el.children.length===0)el.textContent=val;
+  });
+  document.querySelectorAll('.lang-opt').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+  document.documentElement.lang=lang;
+  // Update typewriter phrases language
+  const twi=document.getElementById('typewriter');
+  if(twi){const phrases={en:['Limits.','Scale.','Growth.','Ceilings.','Tomorrow.'],es:['Límites.','Escala.','Crecimiento.','Barreras.','El Futuro.']};twi.textContent=phrases[lang][0];}
+}
+document.querySelectorAll('.lang-opt').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    lang=btn.dataset.lang;
+    applyLang();
+  });
+});
+
+/* ─ 13. CONTACT FORM ─────────────────────────────────────── */
+const form=document.getElementById('contactForm');
+const formSuccess=document.getElementById('formSuccess');
+form&&form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=form.querySelector('.f-submit'),span=btn&&btn.querySelector('span');
+  if(btn)btn.disabled=true;
+  if(span)span.textContent=lang==='es'?'Enviando...':'Sending...';
+  const data={name:form.querySelector('[name="name"]').value,email:form.querySelector('[name="email"]').value,company:form.querySelector('[name="company"]').value,service:form.querySelector('[name="service"]').value,message:form.querySelector('[name="message"]').value};
+  try{
+    const res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    if(res.ok){form.style.display='none';formSuccess&&formSuccess.classList.add('show');}
+    else throw new Error();
+  }catch{
+    if(btn)btn.disabled=false;
+    if(span)span.textContent=lang==='es'?'Enviar Mensaje':'Send Message';
+    const s=encodeURIComponent('ThryveX Inquiry from '+(data.name||'Website'));
+    const b=encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nService: ${data.service}\n\nMessage:\n${data.message}`);
+    window.location.href=`mailto:glucas@thryvexgroup.com?subject=${s}&body=${b}`;
+  }
+});
+
+/* ─ 14. GSAP SCROLL ANIMATIONS ───────────────────────────── */
+if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
+  gsap.registerPlugin(ScrollTrigger);
+  // Stagger service cards
+  gsap.utils.toArray('.services-grid .s-card').forEach((el,i)=>{
+    gsap.from(el,{scrollTrigger:{trigger:el,start:'top 88%',once:true},y:50,opacity:0,duration:.8,delay:i*.08,ease:'power3.out'});
+  });
+  // Stats boxes
+  gsap.utils.toArray('.stat-box').forEach((el,i)=>{
+    gsap.from(el,{scrollTrigger:{trigger:el,start:'top 85%',once:true},y:40,opacity:0,duration:.7,delay:i*.1,ease:'power3.out'});
+  });
+  // Process steps
+  gsap.utils.toArray('.p-step').forEach((el,i)=>{
+    gsap.from(el,{scrollTrigger:{trigger:'.process-steps',start:'top 80%',once:true},y:60,opacity:0,duration:.8,delay:i*.13,ease:'power3.out'});
+  });
+  // Integration cards
+  gsap.utils.toArray('.int-card').forEach((el,i)=>{
+    gsap.from(el,{scrollTrigger:{trigger:el,start:'top 85%',once:true},scale:.88,opacity:0,duration:.7,delay:i*.07,ease:'back.out(1.5)'});
+  });
+  // CTA final
+  gsap.from('.cta-h',{scrollTrigger:{trigger:'.cta-final',start:'top 75%',once:true},y:60,opacity:0,duration:1,ease:'power3.out'});
+}
+
+/* ─ 15. ACTIVE NAV ───────────────────────────────────────── */
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a');
+const sIO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id));}});
+},{threshold:.4});
+sections.forEach(s=>sIO.observe(s));
+
+})();
+</script>
+</body>
+</html>
