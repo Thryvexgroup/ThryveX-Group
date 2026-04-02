@@ -29,7 +29,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"ThryveX Group","url":"https://www.thryvexgroup.com","description":"AI Automation Agency — Scale Without Limits","contactPoint":{"@type":"ContactPoint","email":"glucas@thryvexgroup.com","telephone":"+50765693716"},"sameAs":["https://www.instagram.com/thryvexgroup"]}
+  {"@context":"https://schema.org","@type":"Organization","name":"ThryveX Group","url":"https://www.thryvexgroup.com","description":"AI Automation Agency — Scale Without Limits","contactPoint":{"@type":"ContactPoint","email":"services@thryvexgroup.com","telephone":"+50765693716"},"sameAs":["https://www.instagram.com/thryvexgroup"]}
   </script>
 
   <style>
@@ -43,7 +43,7 @@
       --green:#10B981; --green-glow:rgba(16,185,129,0.2);
       --t0:#FFFFFF; --t1:#F8FAFC; --t2:#E2E8F0; --t3:#CBD5E1;
       --tm:#64748B; --tf:#2D3748;
-      --cb:rgba(255,255,255,0.022); --cbr:rgba(255,255,255,0.06);
+      --cb:rgba(255,255,255,0.048); --cbr:rgba(255,255,255,0.10);
       --cbh:rgba(255,255,255,0.04); --cbhb:rgba(14,165,233,0.28);
       --fh:'Space Grotesk',-apple-system,sans-serif;
       --fb:'Inter',-apple-system,sans-serif;
@@ -298,6 +298,14 @@
     .gv-out{width:100%;padding:12px 16px;border-radius:var(--r-s);border:1px solid rgba(16,185,129,0.15);background:rgba(16,185,129,0.05);display:flex;align-items:center;gap:10px}
     .gv-out-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);flex-shrink:0}
     .gv-out-txt{font-size:13px;font-weight:600;color:var(--t2)}
+    .gv-node{transition:border-color .25s ease,box-shadow .25s ease}
+    .gv-node:hover{border-color:rgba(14,165,233,0.4);box-shadow:0 4px 24px rgba(14,165,233,0.18)}
+    .gv-out{transition:transform .25s ease,background .25s ease,border-color .25s ease;cursor:default}
+    .gv-out:hover{transform:translateX(6px);background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.35)}
+    .growth-visual{transform-style:preserve-3d;transition:transform .15s ease}
+    /* ── PHONE FIELD ──────────────────────────────────────── */
+    .f-phone-row{display:flex;gap:8px}
+    .f-phone-prefix{flex:0 0 135px;width:135px}
 
     /* ── RESULTS ──────────────────────────────────────────── */
     .results{padding:130px 0;position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--bg-1),var(--bg-2))}
@@ -478,7 +486,7 @@
     <!-- LEFT: Logo -->
     <a href="#hero" class="nav-logo" aria-label="ThryveX Group home">
       <div class="nav-logo-icon" aria-hidden="true">TX</div>
-      <span class="nav-logo-text">ThryveX</span>
+      <span class="nav-logo-text">ThryveX Group</span>
     </a>
     <!-- CENTER: Home, Services, Process -->
     <div class="nav-links" role="menubar">
@@ -670,7 +678,7 @@
       <div class="diff reveal reveal-d3">
         <div class="diff-num" aria-hidden="true">03</div>
         <div class="diff-t" data-en="We Think Like Operators" data-es="Pensamos Como Operadores">We Think Like Operators</div>
-        <div class="diff-d" data-en="Our team has built and scaled real businesses. We know what it costs to lose a deal to slow follow-up. Every decision we make is driven by business outcomes, not technical elegance." data-es="Nuestro equipo ha construido y escalado negocios reales. Sabemos lo que cuesta perder un trato por seguimiento lento. Cada decisión está impulsada por resultados de negocio.">Our team has built and scaled real businesses. We know what it costs to lose a deal to slow follow-up. Every decision we make is driven by business outcomes, not technical elegance.</div>
+        <div class="diff-d" data-en="I've built and scaled real businesses from the ground up. I know what it costs to lose a deal to slow follow-up. Every decision is driven by business outcomes, not technical elegance." data-es="He construido y escalado negocios reales desde cero. Sé lo que cuesta perder un trato por seguimiento lento. Cada decisión está impulsada por resultados de negocio, no elegancia técnica.">I've built and scaled real businesses from the ground up. I know what it costs to lose a deal to slow follow-up. Every decision is driven by business outcomes, not technical elegance.</div>
       </div>
       <div class="diff reveal reveal-d4">
         <div class="diff-num" aria-hidden="true">04</div>
@@ -696,7 +704,7 @@
       <div class="process-track" aria-hidden="true"></div>
       <div class="p-step"><div class="p-num" aria-hidden="true">01</div><div class="p-title" data-en="Discovery" data-es="Descubrimiento">Discovery</div><div class="p-desc" data-en="We audit your workflows and identify the highest-impact automation opportunities in your business." data-es="Auditamos tus flujos de trabajo e identificamos las oportunidades de automatización de mayor impacto.">We audit your workflows and identify the highest-impact automation opportunities in your business.</div></div>
       <div class="p-step"><div class="p-num" aria-hidden="true">02</div><div class="p-title" data-en="Strategy" data-es="Estrategia">Strategy</div><div class="p-desc" data-en="We design your custom automation blueprint — mapping every system, integration, and AI workflow." data-es="Diseñamos tu plan de automatización personalizado, mapeando cada sistema, integración y flujo de IA.">We design your custom automation blueprint — mapping every system, integration, and AI workflow.</div></div>
-      <div class="p-step active"><div class="p-num" aria-hidden="true">03</div><div class="p-title" data-en="Build" data-es="Construcción">Build</div><div class="p-desc" data-en="Our engineers implement and integrate your full automation stack — connecting tools and training AI models." data-es="Nuestros ingenieros implementan e integran tu stack de automatización completo, conectando herramientas y entrenando modelos de IA.">Our engineers implement and integrate your full automation stack — connecting tools and training AI models.</div></div>
+      <div class="p-step"><div class="p-num" aria-hidden="true">03</div><div class="p-title" data-en="Build" data-es="Construcción">Build</div><div class="p-desc" data-en="I implement and integrate your full automation stack — connecting every tool and training AI models to fit your exact workflow." data-es="Implemento e integro tu stack de automatización completo — conectando cada herramienta y entrenando modelos de IA para tu flujo de trabajo exacto.">I implement and integrate your full automation stack — connecting every tool and training AI models to fit your exact workflow.</div></div>
       <div class="p-step"><div class="p-num" aria-hidden="true">04</div><div class="p-title" data-en="Test & QA" data-es="Pruebas y QA">Test & QA</div><div class="p-desc" data-en="Every automation is rigorously tested across real-world scenarios before going live in your business." data-es="Cada automatización se prueba rigurosamente en escenarios del mundo real antes del lanzamiento.">Every automation is rigorously tested across real-world scenarios before going live in your business.</div></div>
       <div class="p-step"><div class="p-num" aria-hidden="true">05</div><div class="p-title" data-en="Scale & Optimize" data-es="Escalar y Optimizar">Scale & Optimize</div><div class="p-desc" data-en="We deploy, monitor in real-time, and continuously optimize to maximize your ROI as you grow." data-es="Desplegamos, monitoreamos en tiempo real y optimizamos continuamente para maximizar tu ROI.">We deploy, monitor in real-time, and continuously optimize to maximize your ROI as you grow.</div></div>
     </div>
@@ -777,7 +785,7 @@
             <div class="g-step-num">02</div>
             <div>
               <div class="g-step-title" data-en="Qualify and Route Instantly" data-es="Califica y Enruta al Instante">Qualify and Route Instantly</div>
-              <div class="g-step-desc" data-en="Our AI engine scores, enriches, and routes every lead or task to the right person or system in milliseconds — no manual triage." data-es="Nuestro motor IA puntúa, enriquece y enruta cada lead o tarea a la persona o sistema correcto en milisegundos — sin clasificación manual.">Our AI engine scores, enriches, and routes every lead or task to the right person or system in milliseconds — no manual triage.</div>
+              <div class="g-step-desc" data-en="The AI engine scores, enriches, and routes every lead or task to the right person or system in milliseconds — no manual triage, no delays." data-es="El motor IA puntúa, enriquece y enruta cada lead o tarea a la persona o sistema correcto en milisegundos — sin clasificación manual, sin retrasos.">The AI engine scores, enriches, and routes every lead or task to the right person or system in milliseconds — no manual triage, no delays.</div>
             </div>
           </div>
           <div class="g-step">
@@ -811,6 +819,7 @@
             <div class="gv-out"><div class="gv-out-dot"></div><span class="gv-out-txt" data-en="CRM updated in real-time" data-es="CRM actualizado en tiempo real">CRM updated in real-time</span></div>
             <div class="gv-out"><div class="gv-out-dot"></div><span class="gv-out-txt" data-en="Team notified instantly" data-es="Equipo notificado al instante">Team notified instantly</span></div>
             <div class="gv-out"><div class="gv-out-dot"></div><span class="gv-out-txt" data-en="Follow-up sequence triggered" data-es="Secuencia de seguimiento iniciada">Follow-up sequence triggered</span></div>
+            <div class="gv-out"><div class="gv-out-dot"></div><span class="gv-out-txt" data-en="Processes optimized end-to-end" data-es="Procesos optimizados de extremo a extremo">Processes optimized end-to-end</span></div>
           </div>
         </div>
       </div>
@@ -898,14 +907,14 @@
     <div class="sec-header">
       <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="Get In Touch" data-es="Contáctanos">Get In Touch</span></div>
       <h2 class="sec-h reveal reveal-d1"><span data-en="Start Your Growth." data-es="Comienza Tu Crecimiento.">Start Your Growth.</span><br><span class="g" data-en="Today." data-es="Hoy.">Today.</span></h2>
-      <p class="sec-sub reveal reveal-d2" data-en="Book a free strategy call. We'll map your biggest automation opportunities and show you exactly how to eliminate manual work in as little as 2 weeks." data-es="Agenda una llamada de estrategia gratuita. Mapearemos tus mayores oportunidades de automatización y te mostraremos cómo eliminar el trabajo manual en tan solo 2 semanas.">Book a free strategy call. We'll map your biggest automation opportunities and show you exactly how to eliminate manual work in as little as 2 weeks.</p>
+      <p class="sec-sub reveal reveal-d2" data-en="Book a free strategy call. I'll map your biggest automation opportunities and show you exactly where to start eliminating manual work." data-es="Agenda una llamada de estrategia gratuita. Mapearé tus mayores oportunidades de automatización y te mostraré exactamente dónde comenzar a eliminar el trabajo manual.">Book a free strategy call. I'll map your biggest automation opportunities and show you exactly where to start eliminating manual work.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info reveal">
-        <div class="c-detail"><div class="c-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="c-lbl" data-en="Email" data-es="Correo">Email</div><div class="c-val"><a href="mailto:glucas@thryvexgroup.com">glucas@thryvexgroup.com</a></div></div></div>
+        <div class="c-detail"><div class="c-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="c-lbl" data-en="Email" data-es="Correo">Email</div><div class="c-val"><a href="mailto:services@thryvexgroup.com">services@thryvexgroup.com</a></div></div></div>
         <div class="c-detail"><div class="c-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg></div><div><div class="c-lbl">WhatsApp</div><div class="c-val"><a href="https://wa.me/50765693716" target="_blank" rel="noopener">+507 6569-3716</a></div></div></div>
         <div class="c-detail"><div class="c-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="c-lbl" data-en="Location" data-es="Ubicación">Location</div><div class="c-val" data-en="Panama City · Global Remote" data-es="Ciudad de Panamá · Remoto Global">Panama City · Global Remote</div></div></div>
-        <div class="c-detail"><div class="c-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="c-lbl" data-en="Response Time" data-es="Tiempo de Respuesta">Response Time</div><div class="c-val" data-en="Within 24 hours" data-es="Dentro de 24 horas">Within 24 hours</div></div></div>
+        <div class="c-detail"><div class="c-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="c-lbl" data-en="Availability" data-es="Disponibilidad">Availability</div><div class="c-val" data-en="Remote · Available Worldwide" data-es="Remoto · Disponible Mundialmente">Remote · Available Worldwide</div></div></div>
       </div>
       <div class="reveal reveal-d2">
         <form id="contactForm" class="contact-form-wrap" novalidate aria-label="Contact form">
@@ -928,6 +937,62 @@
               </select>
             </div>
           </div>
+          <div class="f-row">
+            <div class="f-group">
+              <label class="f-label" for="fphone" data-en="Phone Number" data-es="Número de Teléfono">Phone Number</label>
+              <div class="f-phone-row">
+                <select class="f-select f-phone-prefix" id="fphoneprefix" name="phone_prefix">
+                  <option value="+1">+1 (US/CA)</option>
+                  <option value="+44">+44 (UK)</option>
+                  <option value="+49">+49 (DE)</option>
+                  <option value="+33">+33 (FR)</option>
+                  <option value="+34">+34 (ES)</option>
+                  <option value="+39">+39 (IT)</option>
+                  <option value="+31">+31 (NL)</option>
+                  <option value="+41">+41 (CH)</option>
+                  <option value="+61">+61 (AU)</option>
+                  <option value="+64">+64 (NZ)</option>
+                  <option value="+52">+52 (MX)</option>
+                  <option value="+55">+55 (BR)</option>
+                  <option value="+54">+54 (AR)</option>
+                  <option value="+57">+57 (CO)</option>
+                  <option value="+56">+56 (CL)</option>
+                  <option value="+51">+51 (PE)</option>
+                  <option value="+58">+58 (VE)</option>
+                  <option value="+593">+593 (EC)</option>
+                  <option value="+507" selected>+507 (PA)</option>
+                  <option value="+506">+506 (CR)</option>
+                  <option value="+502">+502 (GT)</option>
+                  <option value="+503">+503 (SV)</option>
+                  <option value="+504">+504 (HN)</option>
+                  <option value="+505">+505 (NI)</option>
+                  <option value="+1809">+1809 (DO)</option>
+                  <option value="+53">+53 (CU)</option>
+                  <option value="+34">+34 (ES)</option>
+                  <option value="+971">+971 (AE)</option>
+                  <option value="+966">+966 (SA)</option>
+                  <option value="+972">+972 (IL)</option>
+                  <option value="+91">+91 (IN)</option>
+                  <option value="+86">+86 (CN)</option>
+                  <option value="+81">+81 (JP)</option>
+                  <option value="+82">+82 (KR)</option>
+                  <option value="+65">+65 (SG)</option>
+                  <option value="+27">+27 (ZA)</option>
+                </select>
+                <input class="f-input" type="tel" id="fphone" name="phone" placeholder="6569-3716" autocomplete="tel">
+              </div>
+            </div>
+            <div class="f-group">
+              <label class="f-label" for="fcontact" data-en="Preferred Contact Method" data-es="Método de Contacto Preferido">Preferred Contact Method</label>
+              <select class="f-select" id="fcontact" name="contact_method">
+                <option value="">Select preferred method...</option>
+                <option value="phone">Phone Call</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="videocall">Video Call</option>
+                <option value="email">Email</option>
+              </select>
+            </div>
+          </div>
           <div class="f-group"><label class="f-label" for="fmessage" data-en="Tell Us About Your Business" data-es="Cuéntanos Sobre Tu Negocio">Tell Us About Your Business</label><textarea class="f-textarea" id="fmessage" name="message" placeholder="Describe your current challenges and what you're looking to automate..."></textarea></div>
           <button type="submit" class="btn btn-primary btn-lg f-submit magnetic">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
@@ -937,7 +1002,7 @@
         <div class="f-success" id="formSuccess" role="alert" aria-live="polite">
           <div class="f-success-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
           <h3 data-en="Message Sent!" data-es="¡Mensaje Enviado!">Message Sent!</h3>
-          <p data-en="Thank you. We'll get back to you within 24 hours." data-es="Gracias. Te responderemos dentro de 24 horas.">Thank you. We'll get back to you within 24 hours.</p>
+          <p data-en="Thank you. I'll review your message and be in touch soon." data-es="Gracias. Revisaré tu mensaje y me pondré en contacto pronto.">Thank you. I'll review your message and be in touch soon.</p>
         </div>
       </div>
     </div>
@@ -953,7 +1018,7 @@
         <span data-en="Ready to Scale" data-es="¿Listo Para Escalar">Ready to Scale</span><br>
         <span class="g" data-en="Without Limits?" data-es="Sin Límites?">Without Limits?</span>
       </h2>
-      <p class="cta-sub reveal reveal-d1" data-en="Book a free 30-minute strategy call. We'll map your biggest automation opportunities and show you exactly how to start — no sales pressure, just clarity." data-es="Agenda una llamada de estrategia de 30 minutos gratuita. Mapearemos tus mayores oportunidades de automatización y te mostraremos exactamente cómo comenzar — sin presión de ventas, solo claridad.">Book a free 30-minute strategy call. We'll map your biggest automation opportunities and show you exactly how to start — no sales pressure, just clarity.</p>
+      <p class="cta-sub reveal reveal-d1" data-en="Book a free 30-minute strategy call. I'll map your biggest automation opportunities and show you exactly where to start — no sales pressure, just clarity." data-es="Agenda una llamada de estrategia de 30 minutos gratuita. Mapearé tus mayores oportunidades de automatización y te mostraré exactamente dónde comenzar — sin presión de ventas, solo claridad.">Book a free 30-minute strategy call. I'll map your biggest automation opportunities and show you exactly where to start — no sales pressure, just clarity.</p>
       <div class="cta-btns reveal reveal-d2">
         <a href="#contact" class="btn btn-primary btn-lg magnetic">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
@@ -968,7 +1033,7 @@
         <div class="cta-trust-dot" aria-hidden="true"></div>
         <span data-en="100% free call." data-es="Llamada 100% gratuita.">100% free call.</span>
         <div class="cta-trust-dot" aria-hidden="true"></div>
-        <span data-en="Results within 2 weeks." data-es="Resultados en 2 semanas.">Results within 2 weeks.</span>
+        <span data-en="Clear next steps from day one." data-es="Pasos claros desde el primer día.">Clear next steps from day one.</span>
       </div>
     </div>
   </div>
@@ -984,7 +1049,7 @@
         <div class="f-socials">
           <a href="https://www.instagram.com/thryvexgroup" target="_blank" rel="noopener" class="f-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
           <a href="https://wa.me/50765693716" target="_blank" rel="noopener" class="f-social" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
-          <a href="mailto:glucas@thryvexgroup.com" class="f-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+          <a href="mailto:services@thryvexgroup.com" class="f-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
         </div>
       </div>
       <div>
@@ -1010,7 +1075,7 @@
       <div>
         <h4 class="f-col-h" data-en="Connect" data-es="Conectar">Connect</h4>
         <ul class="f-links">
-          <li><a href="mailto:glucas@thryvexgroup.com">glucas@thryvexgroup.com</a></li>
+          <li><a href="mailto:services@thryvexgroup.com">services@thryvexgroup.com</a></li>
           <li><a href="https://wa.me/50765693716" target="_blank" rel="noopener">+507 6569-3716</a></li>
           <li><a href="https://www.instagram.com/thryvexgroup" target="_blank" rel="noopener">@thryvexgroup</a></li>
           <li><a href="#contact" data-en="Book a Strategy Call →" data-es="Agendar una Llamada →">Book a Strategy Call →</a></li>
@@ -1156,6 +1221,34 @@ if(!prefRM2){
   });
 }
 
+/* ─ 6b. GROWTH VISUAL INTERACTIVE ────────────────────────── */
+const gvWrap=document.querySelector('.growth-visual');
+if(gvWrap&&!prefRM2){
+  const gvNodes=gvWrap.querySelectorAll('.gv-node');
+  gvWrap.addEventListener('mousemove',e=>{
+    const r=gvWrap.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    gvWrap.style.transform=`perspective(900px) rotateX(${y*-7}deg) rotateY(${x*7}deg)`;
+    gvNodes.forEach((n,i)=>{
+      const dir=i%2===0?1:-1;
+      n.style.transform=`translateX(${x*dir*10}px) translateY(${y*dir*7}px)`;
+    });
+  });
+  gvWrap.addEventListener('mouseleave',()=>{
+    gvWrap.style.transition='transform .55s cubic-bezier(.4,0,.2,1)';
+    gvWrap.style.transform='';
+    gvNodes.forEach(n=>{
+      n.style.transition='transform .55s cubic-bezier(.4,0,.2,1)';
+      n.style.transform='';
+    });
+    setTimeout(()=>{
+      gvWrap.style.transition='';
+      gvNodes.forEach(n=>n.style.transition='');
+    },550);
+  });
+}
+
 /* ─ 7. MAGNETIC BUTTONS ───────────────────────────────────── */
 if(!prefRM2){
   document.querySelectorAll('.magnetic').forEach(el=>{
@@ -1269,7 +1362,11 @@ form&&form.addEventListener('submit',async e=>{
   const btn=form.querySelector('.f-submit'),span=btn&&btn.querySelector('span');
   if(btn)btn.disabled=true;
   if(span)span.textContent=lang==='es'?'Enviando...':'Sending...';
-  const data={name:form.querySelector('[name="name"]').value,email:form.querySelector('[name="email"]').value,company:form.querySelector('[name="company"]').value,service:form.querySelector('[name="service"]').value,message:form.querySelector('[name="message"]').value};
+  const phonePrefix=form.querySelector('[name="phone_prefix"]');
+  const phoneNum=form.querySelector('[name="phone"]');
+  const phone=phonePrefix&&phoneNum?(phonePrefix.value+' '+phoneNum.value).trim():'';
+  const contactMethod=form.querySelector('[name="contact_method"]');
+  const data={name:form.querySelector('[name="name"]').value,email:form.querySelector('[name="email"]').value,company:form.querySelector('[name="company"]').value,service:form.querySelector('[name="service"]').value,phone,contact_method:contactMethod?contactMethod.value:'',message:form.querySelector('[name="message"]').value};
   try{
     const res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     if(res.ok){form.style.display='none';formSuccess&&formSuccess.classList.add('show');}
@@ -1279,7 +1376,7 @@ form&&form.addEventListener('submit',async e=>{
     if(span)span.textContent=lang==='es'?'Enviar Mensaje':'Send Message';
     const s=encodeURIComponent('ThryveX Inquiry from '+(data.name||'Website'));
     const b=encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nService: ${data.service}\n\nMessage:\n${data.message}`);
-    window.location.href=`mailto:glucas@thryvexgroup.com?subject=${s}&body=${b}`;
+    window.location.href=`mailto:services@thryvexgroup.com?subject=${s}&body=${b}`;
   }
 });
 
