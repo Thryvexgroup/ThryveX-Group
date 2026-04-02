@@ -43,13 +43,13 @@
       --green:#10B981; --green-glow:rgba(16,185,129,0.2);
       --t0:#FFFFFF; --t1:#F8FAFC; --t2:#E2E8F0; --t3:#CBD5E1;
       --tm:#64748B; --tf:#2D3748;
-      --cb:rgba(255,255,255,0.048); --cbr:rgba(255,255,255,0.10);
+      --cb:rgba(255,255,255,0.06); --cbr:rgba(255,255,255,0.13);
       --cbh:rgba(255,255,255,0.04); --cbhb:rgba(14,165,233,0.28);
       --fh:'Space Grotesk',-apple-system,sans-serif;
       --fb:'Inter',-apple-system,sans-serif;
       --r-s:8px; --r:12px; --r-l:20px; --r-xl:28px; --r-f:9999px;
       --sc:0 4px 32px rgba(0,0,0,0.5);
-      --tf:150ms ease; --t:250ms ease; --ts:400ms ease;
+      --t:250ms ease; --ts:400ms ease;
       --zc:10000; --zl:9999; --zn:1000;
     }
 
@@ -202,7 +202,7 @@
     .scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--blue),transparent);animation:scroll-line 2.2s ease infinite}
 
     /* ── SERVICES ─────────────────────────────────────────── */
-    .services{padding:130px 0;position:relative}
+    .services{padding:130px 0;position:relative;background:var(--bg-2)}
     .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .s-card{position:relative;padding:40px 34px;border-radius:var(--r-l);border:1px solid var(--cbr);background:var(--cb);transition:all .35s ease;cursor:none;overflow:hidden;transform-style:preserve-3d;will-change:transform}
     .s-card::before{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(14,165,233,.07) 0%,transparent 60%);opacity:0;transition:opacity .3s ease}
@@ -220,7 +220,7 @@
     .s-desc{font-size:14px;color:var(--tm);line-height:1.75}
 
     /* ── WHY THRYVEX ──────────────────────────────────────── */
-    .why{padding:130px 0;position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--bg-1),var(--bg-2))}
+    .why{padding:130px 0;position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--bg-3),var(--bg-4))}
     .why-aurora{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse at center,rgba(124,58,237,.12) 0%,rgba(14,165,233,.06) 50%,transparent 75%);filter:blur(70px);pointer-events:none;animation:aurora-move 20s ease infinite}
     .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--cbr);border-radius:var(--r-l);overflow:hidden;margin-bottom:88px}
     .stat-box{background:var(--bg-2);padding:44px 28px;text-align:center;position:relative;overflow:hidden;transition:background var(--t)}
@@ -240,7 +240,7 @@
     .diff-d{font-size:14px;color:var(--tm);line-height:1.72}
 
     /* ── PROCESS ──────────────────────────────────────────── */
-    .process{padding:130px 0;position:relative;overflow:hidden}
+    .process{padding:130px 0;position:relative;overflow:hidden;background:var(--bg-2)}
     .process-aurora{position:absolute;bottom:-80px;right:-80px;width:600px;height:600px;background:radial-gradient(circle,rgba(14,165,233,.07) 0%,transparent 70%);filter:blur(80px);pointer-events:none}
     .process-steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative}
     .process-track{position:absolute;top:28px;left:calc(10%);right:calc(10%);height:1px;background:linear-gradient(90deg,var(--blue) 0%,var(--purple) 50%,var(--cyan) 100%);opacity:.22;z-index:0}
@@ -251,7 +251,7 @@
     .p-desc{font-size:13px;color:var(--tm);line-height:1.65}
 
     /* ── INTEGRATIONS (replaces tech) ─────────────────────── */
-    .integrations{padding:130px 0;position:relative;background:linear-gradient(to bottom,var(--bg-2),var(--bg-1))}
+    .integrations{padding:130px 0;position:relative;background:linear-gradient(to bottom,var(--bg-3),var(--bg-2))}
     .int-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .int-card{padding:32px;border-radius:var(--r-l);border:1px solid var(--cbr);background:var(--cb);transition:all .35s ease;cursor:none;position:relative;overflow:hidden}
     .int-card::before{content:'';position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity .3s ease}
@@ -271,7 +271,7 @@
     .int-tag{padding:4px 10px;border-radius:var(--r-f);background:rgba(255,255,255,.04);border:1px solid var(--cbr);font-size:11px;font-weight:600;color:var(--tm);letter-spacing:.02em}
 
     /* ── HOW THRYVEX POWERS YOUR GROWTH ───────────────────── */
-    .growth{padding:130px 0;position:relative;overflow:hidden}
+    .growth{padding:130px 0;position:relative;overflow:hidden;background:var(--bg-3)}
     .growth-aurora{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:600px;background:radial-gradient(ellipse at center,rgba(14,165,233,.07) 0%,rgba(124,58,237,.05) 50%,transparent 80%);filter:blur(100px);pointer-events:none;animation:aurora-move 25s ease infinite}
     .growth-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
     .growth-steps{display:flex;flex-direction:column;gap:0;margin-top:44px}
@@ -308,7 +308,7 @@
     .f-phone-prefix{flex:0 0 135px;width:135px}
 
     /* ── RESULTS ──────────────────────────────────────────── */
-    .results{padding:130px 0;position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--bg-1),var(--bg-2))}
+    .results{padding:130px 0;position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--bg-2),var(--bg-3))}
     .results-aurora{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:1000px;height:600px;background:radial-gradient(ellipse at center,rgba(124,58,237,.07) 0%,rgba(6,182,212,.04) 50%,transparent 80%);filter:blur(90px);pointer-events:none}
     .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .r-card{padding:36px 30px;border-radius:var(--r-l);border:1px solid var(--cbr);background:var(--cb);position:relative;overflow:hidden;transition:all .35s ease;cursor:none}
@@ -324,7 +324,7 @@
     .r-label{font-size:12px;color:var(--tm);font-weight:500}
 
     /* ── TESTIMONIALS ─────────────────────────────────────── */
-    .testimonials{padding:130px 0;position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--bg-2),var(--bg-1))}
+    .testimonials{padding:130px 0;position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--bg-3),var(--bg-2))}
     .t-aurora{position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:350px;background:linear-gradient(to bottom,rgba(14,165,233,.05) 0%,transparent 100%);pointer-events:none}
     .carousel-wrap{position:relative}
     .carousel-track{display:flex;transition:transform .65s cubic-bezier(.4,0,.2,1);overflow:hidden;border-radius:var(--r-xl)}
@@ -345,7 +345,7 @@
     .car-dot.on{width:24px;background:var(--blue)}
 
     /* ── CONTACT ──────────────────────────────────────────── */
-    .contact{padding:130px 0;position:relative;overflow:hidden}
+    .contact{padding:130px 0;position:relative;overflow:hidden;background:var(--bg-2)}
     .contact-aurora{position:absolute;bottom:-120px;left:50%;transform:translateX(-50%);width:900px;height:700px;background:radial-gradient(ellipse at center,rgba(124,58,237,.1) 0%,rgba(14,165,233,.05) 50%,transparent 80%);filter:blur(90px);pointer-events:none}
     .contact-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
     .contact-info{display:flex;flex-direction:column;gap:0}
@@ -376,7 +376,7 @@
     .f-success p{font-size:14px;color:var(--tm)}
 
     /* ── FINAL CTA ────────────────────────────────────────── */
-    .cta-final{padding:160px 0;position:relative;overflow:hidden;text-align:center;background:var(--bg-2)}
+    .cta-final{padding:160px 0;position:relative;overflow:hidden;text-align:center;background:var(--bg-3)}
     .cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(14,165,233,.08) 0%,rgba(124,58,237,.06) 40%,transparent 70%);pointer-events:none}
     .cta-bg::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:80px 80px}
     .cta-inner{position:relative;z-index:1;max-width:900px;margin:0 auto}
@@ -919,11 +919,11 @@
       <div class="reveal reveal-d2">
         <form id="contactForm" class="contact-form-wrap" novalidate aria-label="Contact form">
           <div class="f-row">
-            <div class="f-group"><label class="f-label" for="fname" data-en="Full Name" data-es="Nombre Completo">Full Name</label><input class="f-input" type="text" id="fname" name="name" placeholder="John Smith" required autocomplete="name"></div>
-            <div class="f-group"><label class="f-label" for="femail" data-en="Work Email" data-es="Correo Laboral">Work Email</label><input class="f-input" type="email" id="femail" name="email" placeholder="john@company.com" required autocomplete="email"></div>
+            <div class="f-group"><label class="f-label" for="fname" data-en="Full Name" data-es="Nombre Completo">Full Name</label><input class="f-input" type="text" id="fname" name="name" placeholder="Full Name" required autocomplete="name"></div>
+            <div class="f-group"><label class="f-label" for="femail" data-en="Work Email" data-es="Correo Laboral">Work Email</label><input class="f-input" type="email" id="femail" name="email" placeholder="email@example.com" required autocomplete="email"></div>
           </div>
           <div class="f-row">
-            <div class="f-group"><label class="f-label" for="fcompany" data-en="Company" data-es="Empresa">Company</label><input class="f-input" type="text" id="fcompany" name="company" placeholder="Acme Corp" autocomplete="organization"></div>
+            <div class="f-group"><label class="f-label" for="fcompany" data-en="Company" data-es="Empresa">Company</label><input class="f-input" type="text" id="fcompany" name="company" placeholder="Company Name" autocomplete="organization"></div>
             <div class="f-group"><label class="f-label" for="fservice" data-en="Service Needed" data-es="Servicio Requerido">Service Needed</label>
               <select class="f-select" id="fservice" name="service">
                 <option value="">Select a service...</option>
@@ -942,44 +942,39 @@
               <label class="f-label" for="fphone" data-en="Phone Number" data-es="Número de Teléfono">Phone Number</label>
               <div class="f-phone-row">
                 <select class="f-select f-phone-prefix" id="fphoneprefix" name="phone_prefix">
-                  <option value="+1">+1 (US/CA)</option>
-                  <option value="+44">+44 (UK)</option>
-                  <option value="+49">+49 (DE)</option>
-                  <option value="+33">+33 (FR)</option>
-                  <option value="+34">+34 (ES)</option>
-                  <option value="+39">+39 (IT)</option>
-                  <option value="+31">+31 (NL)</option>
-                  <option value="+41">+41 (CH)</option>
-                  <option value="+61">+61 (AU)</option>
-                  <option value="+64">+64 (NZ)</option>
-                  <option value="+52">+52 (MX)</option>
-                  <option value="+55">+55 (BR)</option>
-                  <option value="+54">+54 (AR)</option>
-                  <option value="+57">+57 (CO)</option>
-                  <option value="+56">+56 (CL)</option>
-                  <option value="+51">+51 (PE)</option>
-                  <option value="+58">+58 (VE)</option>
-                  <option value="+593">+593 (EC)</option>
-                  <option value="+507" selected>+507 (PA)</option>
-                  <option value="+506">+506 (CR)</option>
-                  <option value="+502">+502 (GT)</option>
-                  <option value="+503">+503 (SV)</option>
-                  <option value="+504">+504 (HN)</option>
-                  <option value="+505">+505 (NI)</option>
-                  <option value="+1809">+1809 (DO)</option>
-                  <option value="+53">+53 (CU)</option>
-                  <option value="+34">+34 (ES)</option>
-                  <option value="+971">+971 (AE)</option>
-                  <option value="+966">+966 (SA)</option>
-                  <option value="+972">+972 (IL)</option>
-                  <option value="+91">+91 (IN)</option>
-                  <option value="+86">+86 (CN)</option>
-                  <option value="+81">+81 (JP)</option>
-                  <option value="+82">+82 (KR)</option>
-                  <option value="+65">+65 (SG)</option>
-                  <option value="+27">+27 (ZA)</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+1">🇨🇦 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+34">🇪🇸 +34</option>
+                  <option value="+39">🇮🇹 +39</option>
+                  <option value="+31">🇳🇱 +31</option>
+                  <option value="+41">🇨🇭 +41</option>
+                  <option value="+61">🇦🇺 +61</option>
+                  <option value="+64">🇳🇿 +64</option>
+                  <option value="+52">🇲🇽 +52</option>
+                  <option value="+55">🇧🇷 +55</option>
+                  <option value="+54">🇦🇷 +54</option>
+                  <option value="+57">🇨🇴 +57</option>
+                  <option value="+56">🇨🇱 +56</option>
+                  <option value="+51">🇵🇪 +51</option>
+                  <option value="+58">🇻🇪 +58</option>
+                  <option value="+593">🇪🇨 +593</option>
+                  <option value="+507" selected>🇵🇦 +507</option>
+                  <option value="+506">🇨🇷 +506</option>
+                  <option value="+502">🇬🇹 +502</option>
+                  <option value="+503">🇸🇻 +503</option>
+                  <option value="+504">🇭🇳 +504</option>
+                  <option value="+505">🇳🇮 +505</option>
+                  <option value="+1809">🇩🇴 +1-809</option>
+                  <option value="+971">🇦🇪 +971</option>
+                  <option value="+966">🇸🇦 +966</option>
+                  <option value="+91">🇮🇳 +91</option>
+                  <option value="+65">🇸🇬 +65</option>
+                  <option value="+27">🇿🇦 +27</option>
                 </select>
-                <input class="f-input" type="tel" id="fphone" name="phone" placeholder="6569-3716" autocomplete="tel">
+                <input class="f-input" type="tel" id="fphone" name="phone" placeholder="Phone Number" autocomplete="tel">
               </div>
             </div>
             <div class="f-group">
@@ -993,7 +988,7 @@
               </select>
             </div>
           </div>
-          <div class="f-group"><label class="f-label" for="fmessage" data-en="Tell Us About Your Business" data-es="Cuéntanos Sobre Tu Negocio">Tell Us About Your Business</label><textarea class="f-textarea" id="fmessage" name="message" placeholder="Describe your current challenges and what you're looking to automate..."></textarea></div>
+          <div class="f-group"><label class="f-label" for="fmessage" data-en="Tell Us About Your Business" data-es="Cuéntanos Sobre Tu Negocio">Tell Us About Your Business</label><textarea class="f-textarea" id="fmessage" name="message" placeholder="Tell us about your business..."></textarea></div>
           <button type="submit" class="btn btn-primary btn-lg f-submit magnetic">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             <span data-en="Send Message" data-es="Enviar Mensaje">Send Message</span>
@@ -1177,7 +1172,7 @@ if(canvas){
 /* ─ 4. TYPEWRITER ─────────────────────────────────────────── */
 const twEl=document.getElementById('typewriter');
 if(twEl){
-  const phrases={en:['Limits.','Scale.','Growth.','Ceilings.','Tomorrow.'],es:['Límites.','Escala.','Crecimiento.','Barreras.','El Futuro.']};
+  const phrases={en:['Limits.','Boundaries.','Ceilings.','Constraints.','Barriers.'],es:['Límites.','Fronteras.','Techos.','Restricciones.','Barreras.']};
   let idx=0,txt='',del=false;
   function type(){
     const arr=phrases[lang],phrase=arr[idx];
@@ -1263,19 +1258,17 @@ if(!prefRM2){
   });
 }
 
-/* ─ 8. SCROLL REVEAL — BIDIRECTIONAL FADE IN/OUT ──────────── */
+/* ─ 8. SCROLL REVEAL — FADE IN ON ENTER ──────────────────── */
 function initScroll(){
   const els=document.querySelectorAll('.reveal');
   const io=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
         e.target.classList.add('in');
-      } else {
-        // Fade out when element leaves viewport (bidirectional)
-        e.target.classList.remove('in');
+        io.unobserve(e.target);
       }
     });
-  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  },{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
   els.forEach(el=>io.observe(el));
 }
 
@@ -1345,7 +1338,7 @@ function applyLang(){
   document.documentElement.lang=lang;
   // Update typewriter phrases language
   const twi=document.getElementById('typewriter');
-  if(twi){const phrases={en:['Limits.','Scale.','Growth.','Ceilings.','Tomorrow.'],es:['Límites.','Escala.','Crecimiento.','Barreras.','El Futuro.']};twi.textContent=phrases[lang][0];}
+  if(twi){const phrases={en:['Limits.','Boundaries.','Ceilings.','Constraints.','Barriers.'],es:['Límites.','Fronteras.','Techos.','Restricciones.','Barreras.']};twi.textContent=phrases[lang][0];}
 }
 document.querySelectorAll('.lang-opt').forEach(btn=>{
   btn.addEventListener('click',()=>{
