@@ -59,7 +59,9 @@
 
     /* ── RESET ──────────────────────────────────────── */
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:84px}
+    html{scroll-padding-top:84px}
+    .scroll-bar{position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan));z-index:10000;transform-origin:left center;transform:scaleX(0);pointer-events:none;opacity:0;transition:opacity .25s ease;border-radius:0 2px 2px 0}
+    .scroll-bar.live{opacity:1}
     body{font-family:var(--fb);background:var(--bg-1);color:var(--t2);line-height:1.6;overflow-x:hidden;cursor:none}
     body.loading{overflow:hidden}
     img{max-width:100%;display:block}
@@ -483,6 +485,7 @@
 <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
 <!-- NAV -->
+<div class="scroll-bar" id="scrollBar" aria-hidden="true"></div>
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <div class="nav-logo-pill">
@@ -1196,7 +1199,55 @@ function applyLang(){
 }
 document.querySelectorAll('.lang-opt').forEach(btn=>{btn.addEventListener('click',()=>{lang=btn.dataset.lang;applyLang();});});
 
-/* ─ 11. ACTIVE NAV ────────────────────────────────────── */
+/* ─ 11. PREMIUM SCROLL ────────────────────────────────── */
+(function(){
+  const bar=document.getElementById('scrollBar');
+  let raf=null;
+
+  function easeInOutQuart(t){
+    return t<.5?8*t*t*t*t:1-Math.pow(-2*t+2,4)/2;
+  }
+
+  function premiumScrollTo(targetEl){
+    if(raf)cancelAnimationFrame(raf);
+    const startY=window.scrollY;
+    const offset=targetEl.getBoundingClientRect().top+startY-84;
+    const target=Math.max(0,Math.min(offset,document.body.scrollHeight-window.innerHeight));
+    const dist=target-startY;
+    if(Math.abs(dist)<2)return;
+    const duration=Math.min(Math.max(Math.abs(dist)*0.42,620),1080);
+    let t0=null;
+    if(bar){bar.style.transform='scaleX(0)';bar.classList.add('live');}
+    function step(now){
+      if(!t0)t0=now;
+      const p=Math.min((now-t0)/duration,1);
+      const e=easeInOutQuart(p);
+      window.scrollTo(0,startY+dist*e);
+      if(bar)bar.style.transform='scaleX('+e+')';
+      if(p<1){raf=requestAnimationFrame(step);}
+      else{
+        window.scrollTo(0,target);
+        if(bar){
+          bar.style.transform='scaleX(1)';
+          setTimeout(()=>{bar.classList.remove('live');bar.style.transform='scaleX(0)';},380);
+        }
+      }
+    }
+    raf=requestAnimationFrame(step);
+  }
+
+  document.addEventListener('click',function(e){
+    const a=e.target.closest('a[href^="#"]');
+    if(!a)return;
+    const hash=a.getAttribute('href').slice(1);
+    if(!hash)return;
+    const tgt=document.getElementById(hash);
+    if(!tgt)return;
+    e.preventDefault();
+    premiumScrollTo(tgt);
+  },{capture:true});
+})();
+
 const sections=document.querySelectorAll('section[id]');
 const navLinks=document.querySelectorAll('.nav-links a');
 const sIO=new IntersectionObserver(entries=>{
