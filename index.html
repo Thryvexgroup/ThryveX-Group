@@ -65,7 +65,7 @@
     @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.75)}}
     @keyframes pulse-glow{0%,100%{box-shadow:0 0 20px var(--blue-glow)}50%{box-shadow:0 0 50px var(--blue-gs),0 0 90px var(--blue-glow)}}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-    @keyframes scroll-line{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
     @keyframes shine{0%{left:-100%}100%{left:200%}}
     @keyframes fade-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
     @keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
@@ -191,13 +191,11 @@
     .tw-cursor{display:inline-block;width:3px;height:.88em;background:var(--blue);margin-left:3px;vertical-align:middle;animation:blink .85s ease infinite}
     .hero-sub{font-size:clamp(1rem,2vw,1.18rem);color:var(--tm);max-width:560px;line-height:1.78;margin-bottom:44px;animation:fade-up .9s ease .3s both}
     .hero-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap;animation:fade-up .9s ease .45s both}
-    .hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px}
-    .scroll-lbl{font-size:10px;color:var(--tm);letter-spacing:.14em;text-transform:uppercase;font-weight:600}
-    .scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--blue),transparent);animation:scroll-line 2.2s ease infinite}
+
 
     /* ── SERVICES ────────────────────────────────────── */
     .services{padding:130px 0;background:var(--bg-2)}
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--cbr);border-radius:var(--r-xl);overflow:hidden}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--bg-4);border-radius:var(--r-xl);overflow:hidden}
     .s-card{background:var(--bg-4);padding:40px 32px;transition:background var(--t);cursor:none;position:relative;overflow:hidden}
     .s-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--purple));opacity:0;transition:opacity var(--t)}
     .s-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),var(--cbh) 0%,transparent 60%);opacity:0;transition:opacity .3s}
@@ -406,7 +404,6 @@
       .cta-btns{flex-direction:column;align-items:stretch}
       .pipe-note-inner{flex-direction:column;gap:8px;text-align:center}
       .pipe-note-sep{display:none}
-      .hero-scroll{display:none}
     }
     @media(max-width:580px){
       .pipe-step{flex:0 0 100%;max-width:360px}
@@ -417,7 +414,6 @@
       .hero{padding:120px 0 80px}
       .hero-ctas{flex-direction:column;align-items:stretch}
       .sec-h{font-size:2.2rem}
-      .hero-scroll{display:none}
     }
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
@@ -529,10 +525,7 @@
       </a>
     </div>
   </div>
-  <div class="hero-scroll" aria-hidden="true">
-    <span class="scroll-lbl">Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
+
 </section>
 
 <div class="s-div"></div>
@@ -541,11 +534,11 @@
 <section id="services" class="services">
   <div class="container">
     <div class="sec-header">
-      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="What ThryveX Builds" data-es="Lo Que Construye ThryveX">What ThryveX Builds</span></div>
+      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="What ThryveX Group Builds" data-es="Lo Que Construye ThryveX Group">What ThryveX Group Builds</span></div>
       <h2 class="sec-h reveal d1"><span data-en="Everything Your Business Needs to" data-es="Todo Lo Que Tu Negocio Necesita Para">Everything Your Business Needs to</span><br><span class="g" data-en="Operate Without Limits" data-es="Operar Sin Límites">Operate Without Limits</span></h2>
       <p class="sec-sub reveal d2" data-en="From AI automation to full CRM implementation — ThryveX handles the technical complexity so clients can focus on growth." data-es="Desde automatización IA hasta implementación completa de CRM — ThryveX maneja la complejidad técnica para que los clientes puedan enfocarse en el crecimiento.">From AI automation to full CRM implementation — ThryveX handles the technical complexity so clients can focus on growth.</p>
     </div>
-    <div class="services-grid reveal d2">
+    <div class="services-grid">
       <div class="s-card" role="article">
         <div class="s-icon si-1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a5 5 0 0 1 5 5c0 1-.3 2-.8 2.8M12 2a5 5 0 0 0-5 5c0 1 .3 2 .8 2.8"/><path d="M9 9.5c-2 .5-3 2-3 3.5a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4c0-1.5-1-3-3-3.5"/><circle cx="9" cy="14" r="1" fill="currentColor"/><circle cx="15" cy="14" r="1" fill="currentColor"/></svg></div>
         <h3 class="s-title" data-en="AI Automation" data-es="Automatización IA">AI Automation</h3>
@@ -1366,16 +1359,14 @@ form&&form.addEventListener('submit',async e=>{
 /* ─ 13. GSAP ──────────────────────────────────────────── */
 if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
   gsap.registerPlugin(ScrollTrigger);
-  gsap.utils.toArray('.s-card').forEach((el,i)=>{
-    gsap.from(el,{scrollTrigger:{trigger:el,start:'top 88%',once:true},y:40,opacity:0,duration:.75,delay:i*.06,ease:'power3.out'});
-  });
+  /* s-card animations handled by IO observer below to avoid opacity conflict */
   /* NOTE: .p-card and .w-card are animated by the IO observer below — do NOT add GSAP here
      as gsap.from() would animate opacity:0→0 (CSS class sets computed opacity:0 as "to" target) */
 }
 
 /* ─ 14. PROCESS & WHY CARD REVEAL ────────────────────── */
 (function(){
-  const cards=document.querySelectorAll('.p-card,.w-card');
+  const cards=document.querySelectorAll('.s-card,.p-card,.w-card');
   if(!cards.length)return;
   const io=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
