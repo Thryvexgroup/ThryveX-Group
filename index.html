@@ -348,10 +348,19 @@
     .f-textarea{resize:vertical;min-height:120px;line-height:1.6}
     .f-submit{width:100%;justify-content:center}
     .f-phone-row{display:flex;gap:8px}
-    .f-phone-prefix{flex:0 0 140px;width:140px;background:#0d0d1a!important;color:#F8FAFC!important;-webkit-text-fill-color:#F8FAFC!important}
-    .f-phone-prefix:focus{background:#0d0d1a!important;border-color:rgba(14,165,233,.5)!important;color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important}
-    .f-phone-prefix::-webkit-calendar-picker-indicator{opacity:.4;cursor:pointer}
-    .f-phone-prefix:-webkit-autofill,.f-phone-prefix:-webkit-autofill:focus{-webkit-box-shadow:0 0 0 1000px #0d0d1a inset!important;-webkit-text-fill-color:#F8FAFC!important;caret-color:#F8FAFC}
+    .pfx-wrap{position:relative;flex:0 0 140px;width:140px}
+    .pfx-wrap .f-input{width:100%;cursor:pointer;caret-color:transparent;user-select:none}
+    .pfx-wrap .f-input:focus{border-color:rgba(14,165,233,.5);background:rgba(14,165,233,.08);box-shadow:0 0 0 3px rgba(14,165,233,.1)}
+    .pfx-drop{display:none;position:absolute;top:calc(100% + 5px);left:0;min-width:230px;background:#0d0d1a;border:1px solid rgba(14,165,233,.35);border-radius:10px;overflow:hidden;z-index:300;box-shadow:0 12px 36px rgba(0,0,0,.7)}
+    .pfx-drop.open{display:flex;flex-direction:column}
+    .pfx-search{padding:10px 14px;border:none;border-bottom:1px solid rgba(255,255,255,.07);background:#0d0d1a;color:#F8FAFC;font-size:13px;font-family:var(--fb);outline:none;width:100%;caret-color:#0EA5E9}
+    .pfx-search::placeholder{color:#374151}
+    .pfx-list{max-height:200px;overflow-y:auto;overscroll-behavior:contain}
+    .pfx-list::-webkit-scrollbar{width:4px}
+    .pfx-list::-webkit-scrollbar-track{background:transparent}
+    .pfx-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:4px}
+    .pfx-opt{padding:9px 14px;cursor:pointer;font-size:13px;color:#E2E8F0;white-space:nowrap;transition:background .12s}
+    .pfx-opt:hover,.pfx-opt.pfx-hi{background:rgba(14,165,233,.15);color:#fff}
     .f-toggle-row{display:flex;gap:10px}
     .f-toggle-opt{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:var(--r);border:1px solid var(--cbr);background:rgba(255,255,255,.035);color:var(--t2);font-size:14px;font-family:var(--fb);cursor:pointer;transition:all var(--t);user-select:none;flex:1;justify-content:center}
     .f-toggle-opt input[type="radio"]{display:none}
@@ -880,189 +889,13 @@
             <div class="f-group">
               <label class="f-label" for="fphone" data-en="Phone Number" data-es="Número de Teléfono">Phone Number</label>
               <div class="f-phone-row">
-                <input class="f-input f-phone-prefix" type="text" id="fphoneprefix" name="phone_prefix" list="phonePrefixList" placeholder="Prefix" autocomplete="off">
-                <datalist id="phonePrefixList">
-                  <option value="🇦🇫 +93">Afghanistan</option>
-                  <option value="🇦🇱 +355">Albania</option>
-                  <option value="🇩🇿 +213">Algeria</option>
-                  <option value="🇦🇩 +376">Andorra</option>
-                  <option value="🇦🇴 +244">Angola</option>
-                  <option value="🇦🇷 +54">Argentina</option>
-                  <option value="🇦🇲 +374">Armenia</option>
-                  <option value="🇦🇺 +61">Australia</option>
-                  <option value="🇦🇹 +43">Austria</option>
-                  <option value="🇦🇿 +994">Azerbaijan</option>
-                  <option value="🇧🇭 +973">Bahrain</option>
-                  <option value="🇧🇩 +880">Bangladesh</option>
-                  <option value="🇧🇪 +32">Belgium</option>
-                  <option value="🇧🇿 +501">Belize</option>
-                  <option value="🇧🇯 +229">Benin</option>
-                  <option value="🇧🇹 +975">Bhutan</option>
-                  <option value="🇧🇴 +591">Bolivia</option>
-                  <option value="🇧🇦 +387">Bosnia</option>
-                  <option value="🇧🇼 +267">Botswana</option>
-                  <option value="🇧🇷 +55">Brazil</option>
-                  <option value="🇧🇳 +673">Brunei</option>
-                  <option value="🇧🇬 +359">Bulgaria</option>
-                  <option value="🇧🇫 +226">Burkina Faso</option>
-                  <option value="🇧🇮 +257">Burundi</option>
-                  <option value="🇰🇭 +855">Cambodia</option>
-                  <option value="🇨🇲 +237">Cameroon</option>
-                  <option value="🇨🇦 +1">Canada</option>
-                  <option value="🇨🇻 +238">Cape Verde</option>
-                  <option value="🇨🇫 +236">Central African Republic</option>
-                  <option value="🇹🇩 +235">Chad</option>
-                  <option value="🇨🇱 +56">Chile</option>
-                  <option value="🇨🇳 +86">China</option>
-                  <option value="🇨🇴 +57">Colombia</option>
-                  <option value="🇰🇲 +269">Comoros</option>
-                  <option value="🇨🇬 +242">Congo</option>
-                  <option value="🇨🇷 +506">Costa Rica</option>
-                  <option value="🇭🇷 +385">Croatia</option>
-                  <option value="🇨🇺 +53">Cuba</option>
-                  <option value="🇨🇾 +357">Cyprus</option>
-                  <option value="🇨🇿 +420">Czech Republic</option>
-                  <option value="🇩🇰 +45">Denmark</option>
-                  <option value="🇩🇯 +253">Djibouti</option>
-                  <option value="🇩🇴 +1809">Dominican Republic</option>
-                  <option value="🇪🇨 +593">Ecuador</option>
-                  <option value="🇪🇬 +20">Egypt</option>
-                  <option value="🇸🇻 +503">El Salvador</option>
-                  <option value="🇬🇶 +240">Equatorial Guinea</option>
-                  <option value="🇪🇷 +291">Eritrea</option>
-                  <option value="🇪🇪 +372">Estonia</option>
-                  <option value="🇪🇹 +251">Ethiopia</option>
-                  <option value="🇫🇯 +679">Fiji</option>
-                  <option value="🇫🇮 +358">Finland</option>
-                  <option value="🇫🇷 +33">France</option>
-                  <option value="🇬🇦 +241">Gabon</option>
-                  <option value="🇬🇲 +220">Gambia</option>
-                  <option value="🇬🇪 +995">Georgia</option>
-                  <option value="🇩🇪 +49">Germany</option>
-                  <option value="🇬🇭 +233">Ghana</option>
-                  <option value="🇬🇷 +30">Greece</option>
-                  <option value="🇬🇹 +502">Guatemala</option>
-                  <option value="🇬🇳 +224">Guinea</option>
-                  <option value="🇬🇼 +245">Guinea-Bissau</option>
-                  <option value="🇬🇾 +592">Guyana</option>
-                  <option value="🇭🇹 +509">Haiti</option>
-                  <option value="🇭🇳 +504">Honduras</option>
-                  <option value="🇭🇰 +852">Hong Kong</option>
-                  <option value="🇭🇺 +36">Hungary</option>
-                  <option value="🇮🇸 +354">Iceland</option>
-                  <option value="🇮🇳 +91">India</option>
-                  <option value="🇮🇩 +62">Indonesia</option>
-                  <option value="🇮🇷 +98">Iran</option>
-                  <option value="🇮🇶 +964">Iraq</option>
-                  <option value="🇮🇪 +353">Ireland</option>
-                  <option value="🇮🇱 +972">Israel</option>
-                  <option value="🇮🇹 +39">Italy</option>
-                  <option value="🇯🇲 +1876">Jamaica</option>
-                  <option value="🇯🇵 +81">Japan</option>
-                  <option value="🇯🇴 +962">Jordan</option>
-                  <option value="🇰🇿 +7">Kazakhstan</option>
-                  <option value="🇰🇪 +254">Kenya</option>
-                  <option value="🇰🇮 +686">Kiribati</option>
-                  <option value="🇰🇼 +965">Kuwait</option>
-                  <option value="🇰🇬 +996">Kyrgyzstan</option>
-                  <option value="🇱🇦 +856">Laos</option>
-                  <option value="🇱🇻 +371">Latvia</option>
-                  <option value="🇱🇧 +961">Lebanon</option>
-                  <option value="🇱🇸 +266">Lesotho</option>
-                  <option value="🇱🇷 +231">Liberia</option>
-                  <option value="🇱🇾 +218">Libya</option>
-                  <option value="🇱🇮 +423">Liechtenstein</option>
-                  <option value="🇱🇹 +370">Lithuania</option>
-                  <option value="🇱🇺 +352">Luxembourg</option>
-                  <option value="🇲🇴 +853">Macau</option>
-                  <option value="🇲🇰 +389">Macedonia</option>
-                  <option value="🇲🇬 +261">Madagascar</option>
-                  <option value="🇲🇼 +265">Malawi</option>
-                  <option value="🇲🇾 +60">Malaysia</option>
-                  <option value="🇲🇻 +960">Maldives</option>
-                  <option value="🇲🇱 +223">Mali</option>
-                  <option value="🇲🇹 +356">Malta</option>
-                  <option value="🇲🇭 +692">Marshall Islands</option>
-                  <option value="🇲🇷 +222">Mauritania</option>
-                  <option value="🇲🇺 +230">Mauritius</option>
-                  <option value="🇲🇽 +52">Mexico</option>
-                  <option value="🇫🇲 +691">Micronesia</option>
-                  <option value="🇲🇩 +373">Moldova</option>
-                  <option value="🇲🇨 +377">Monaco</option>
-                  <option value="🇲🇳 +976">Mongolia</option>
-                  <option value="🇲🇪 +382">Montenegro</option>
-                  <option value="🇲🇦 +212">Morocco</option>
-                  <option value="🇲🇿 +258">Mozambique</option>
-                  <option value="🇲🇲 +95">Myanmar</option>
-                  <option value="🇳🇦 +264">Namibia</option>
-                  <option value="🇳🇷 +674">Nauru</option>
-                  <option value="🇳🇵 +977">Nepal</option>
-                  <option value="🇳🇱 +31">Netherlands</option>
-                  <option value="🇳🇿 +64">New Zealand</option>
-                  <option value="🇳🇮 +505">Nicaragua</option>
-                  <option value="🇳🇪 +227">Niger</option>
-                  <option value="🇳🇬 +234">Nigeria</option>
-                  <option value="🇰🇵 +850">North Korea</option>
-                  <option value="🇳🇴 +47">Norway</option>
-                  <option value="🇴🇲 +968">Oman</option>
-                  <option value="🇵🇰 +92">Pakistan</option>
-                  <option value="🇵🇼 +680">Palau</option>
-                  <option value="🇵🇦 +507">Panama</option>
-                  <option value="🇵🇬 +675">Papua New Guinea</option>
-                  <option value="🇵🇾 +595">Paraguay</option>
-                  <option value="🇵🇪 +51">Peru</option>
-                  <option value="🇵🇭 +63">Philippines</option>
-                  <option value="🇵🇱 +48">Poland</option>
-                  <option value="🇵🇹 +351">Portugal</option>
-                  <option value="🇶🇦 +974">Qatar</option>
-                  <option value="🇷🇴 +40">Romania</option>
-                  <option value="🇷🇺 +7">Russia</option>
-                  <option value="🇷🇼 +250">Rwanda</option>
-                  <option value="🇸🇦 +966">Saudi Arabia</option>
-                  <option value="🇸🇳 +221">Senegal</option>
-                  <option value="🇷🇸 +381">Serbia</option>
-                  <option value="🇸🇱 +232">Sierra Leone</option>
-                  <option value="🇸🇬 +65">Singapore</option>
-                  <option value="🇸🇰 +421">Slovakia</option>
-                  <option value="🇸🇮 +386">Slovenia</option>
-                  <option value="🇸🇧 +677">Solomon Islands</option>
-                  <option value="🇸🇴 +252">Somalia</option>
-                  <option value="🇿🇦 +27">South Africa</option>
-                  <option value="🇰🇷 +82">South Korea</option>
-                  <option value="🇪🇸 +34">Spain</option>
-                  <option value="🇱🇰 +94">Sri Lanka</option>
-                  <option value="🇸🇩 +249">Sudan</option>
-                  <option value="🇸🇷 +597">Suriname</option>
-                  <option value="🇸🇿 +268">Eswatini</option>
-                  <option value="🇸🇪 +46">Sweden</option>
-                  <option value="🇨🇭 +41">Switzerland</option>
-                  <option value="🇸🇾 +963">Syria</option>
-                  <option value="🇹🇼 +886">Taiwan</option>
-                  <option value="🇹🇯 +992">Tajikistan</option>
-                  <option value="🇹🇿 +255">Tanzania</option>
-                  <option value="🇹🇭 +66">Thailand</option>
-                  <option value="🇹🇬 +228">Togo</option>
-                  <option value="🇹🇴 +676">Tonga</option>
-                  <option value="🇹🇹 +1868">Trinidad and Tobago</option>
-                  <option value="🇹🇳 +216">Tunisia</option>
-                  <option value="🇹🇷 +90">Turkey</option>
-                  <option value="🇹🇲 +993">Turkmenistan</option>
-                  <option value="🇹🇻 +688">Tuvalu</option>
-                  <option value="🇺🇬 +256">Uganda</option>
-                  <option value="🇺🇦 +380">Ukraine</option>
-                  <option value="🇦🇪 +971">UAE</option>
-                  <option value="🇬🇧 +44">United Kingdom</option>
-                  <option value="🇺🇸 +1">United States</option>
-                  <option value="🇺🇾 +598">Uruguay</option>
-                  <option value="🇺🇿 +998">Uzbekistan</option>
-                  <option value="🇻🇺 +678">Vanuatu</option>
-                  <option value="🇻🇦 +379">Vatican</option>
-                  <option value="🇻🇪 +58">Venezuela</option>
-                  <option value="🇻🇳 +84">Vietnam</option>
-                  <option value="🇾🇪 +967">Yemen</option>
-                  <option value="🇿🇲 +260">Zambia</option>
-                  <option value="🇿🇼 +263">Zimbabwe</option>
-                </datalist>
+                <div class="pfx-wrap">
+                  <input class="f-input" type="text" id="fphoneprefix" name="phone_prefix" placeholder="Prefix" autocomplete="off" readonly>
+                  <div class="pfx-drop" id="phonePfxDrop">
+                    <input class="pfx-search" type="text" placeholder="Search country or code…" autocomplete="off">
+                    <div class="pfx-list" id="phonePfxList"></div>
+                  </div>
+                </div>
                 <input class="f-input" type="tel" id="fphone" name="phone" placeholder="Phone Number" autocomplete="tel">
               </div>
             </div>
@@ -1087,7 +920,13 @@
           <div class="f-group" id="waGroup" style="display:none">
             <label class="f-label" for="waphone" data-en="WhatsApp Number" data-es="Número de WhatsApp">WhatsApp Number</label>
             <div class="f-phone-row">
-              <input class="f-input f-phone-prefix" type="text" id="waphoneprefix" name="wa_prefix" list="phonePrefixList" placeholder="Prefix" autocomplete="off">
+              <div class="pfx-wrap">
+                <input class="f-input" type="text" id="waphoneprefix" name="wa_prefix" placeholder="Prefix" autocomplete="off" readonly>
+                <div class="pfx-drop" id="waPfxDrop">
+                  <input class="pfx-search" type="text" placeholder="Search country or code…" autocomplete="off">
+                  <div class="pfx-list" id="waPfxList"></div>
+                </div>
+              </div>
               <input class="f-input" type="tel" id="waphone" name="wa_number" placeholder="WhatsApp Number" autocomplete="tel">
             </div>
           </div>
@@ -1362,6 +1201,127 @@ const sIO=new IntersectionObserver(entries=>{
 sections.forEach(s=>sIO.observe(s));
 
 /* ─ 12. CONTACT FORM ──────────────────────────────────── */
+/* ─ PREFIX CUSTOM DROPDOWN ───────────────────────────── */
+(function(){
+  const PFX=[
+    ['🇦🇫 +93','Afghanistan'],['🇦🇱 +355','Albania'],['🇩🇿 +213','Algeria'],
+    ['🇦🇩 +376','Andorra'],['🇦🇴 +244','Angola'],['🇦🇷 +54','Argentina'],
+    ['🇦🇲 +374','Armenia'],['🇦🇺 +61','Australia'],['🇦🇹 +43','Austria'],
+    ['🇦🇿 +994','Azerbaijan'],['🇧🇭 +973','Bahrain'],['🇧🇩 +880','Bangladesh'],
+    ['🇧🇪 +32','Belgium'],['🇧🇿 +501','Belize'],['🇧🇯 +229','Benin'],
+    ['🇧🇹 +975','Bhutan'],['🇧🇴 +591','Bolivia'],['🇧🇦 +387','Bosnia'],
+    ['🇧🇼 +267','Botswana'],['🇧🇷 +55','Brazil'],['🇧🇳 +673','Brunei'],
+    ['🇧🇬 +359','Bulgaria'],['🇧🇫 +226','Burkina Faso'],['🇧🇮 +257','Burundi'],
+    ['🇰🇭 +855','Cambodia'],['🇨🇲 +237','Cameroon'],['🇨🇦 +1','Canada'],
+    ['🇨🇻 +238','Cape Verde'],['🇨🇫 +236','Central African Republic'],['🇹🇩 +235','Chad'],
+    ['🇨🇱 +56','Chile'],['🇨🇳 +86','China'],['🇨🇴 +57','Colombia'],
+    ['🇰🇲 +269','Comoros'],['🇨🇬 +242','Congo'],['🇨🇷 +506','Costa Rica'],
+    ['🇭🇷 +385','Croatia'],['🇨🇺 +53','Cuba'],['🇨🇾 +357','Cyprus'],
+    ['🇨🇿 +420','Czech Republic'],['🇩🇰 +45','Denmark'],['🇩🇯 +253','Djibouti'],
+    ['🇩🇴 +1809','Dominican Republic'],['🇪🇨 +593','Ecuador'],['🇪🇬 +20','Egypt'],
+    ['🇸🇻 +503','El Salvador'],['🇬🇶 +240','Equatorial Guinea'],['🇪🇷 +291','Eritrea'],
+    ['🇪🇪 +372','Estonia'],['🇪🇹 +251','Ethiopia'],['🇫🇯 +679','Fiji'],
+    ['🇫🇮 +358','Finland'],['🇫🇷 +33','France'],['🇬🇦 +241','Gabon'],
+    ['🇬🇲 +220','Gambia'],['🇬🇪 +995','Georgia'],['🇩🇪 +49','Germany'],
+    ['🇬🇭 +233','Ghana'],['🇬🇷 +30','Greece'],['🇬🇹 +502','Guatemala'],
+    ['🇬🇳 +224','Guinea'],['🇬🇼 +245','Guinea-Bissau'],['🇬🇾 +592','Guyana'],
+    ['🇭🇹 +509','Haiti'],['🇭🇳 +504','Honduras'],['🇭🇰 +852','Hong Kong'],
+    ['🇭🇺 +36','Hungary'],['🇮🇸 +354','Iceland'],['🇮🇳 +91','India'],
+    ['🇮🇩 +62','Indonesia'],['🇮🇷 +98','Iran'],['🇮🇶 +964','Iraq'],
+    ['🇮🇪 +353','Ireland'],['🇮🇱 +972','Israel'],['🇮🇹 +39','Italy'],
+    ['🇯🇲 +1876','Jamaica'],['🇯🇵 +81','Japan'],['🇯🇴 +962','Jordan'],
+    ['🇰🇿 +7','Kazakhstan'],['🇰🇪 +254','Kenya'],['🇰🇮 +686','Kiribati'],
+    ['🇰🇼 +965','Kuwait'],['🇰🇬 +996','Kyrgyzstan'],['🇱🇦 +856','Laos'],
+    ['🇱🇻 +371','Latvia'],['🇱🇧 +961','Lebanon'],['🇱🇸 +266','Lesotho'],
+    ['🇱🇷 +231','Liberia'],['🇱🇾 +218','Libya'],['🇱🇮 +423','Liechtenstein'],
+    ['🇱🇹 +370','Lithuania'],['🇱🇺 +352','Luxembourg'],['🇲🇴 +853','Macau'],
+    ['🇲🇰 +389','Macedonia'],['🇲🇬 +261','Madagascar'],['🇲🇼 +265','Malawi'],
+    ['🇲🇾 +60','Malaysia'],['🇲🇻 +960','Maldives'],['🇲🇱 +223','Mali'],
+    ['🇲🇹 +356','Malta'],['🇲🇭 +692','Marshall Islands'],['🇲🇷 +222','Mauritania'],
+    ['🇲🇺 +230','Mauritius'],['🇲🇽 +52','Mexico'],['🇫🇲 +691','Micronesia'],
+    ['🇲🇩 +373','Moldova'],['🇲🇨 +377','Monaco'],['🇲🇳 +976','Mongolia'],
+    ['🇲🇪 +382','Montenegro'],['🇲🇦 +212','Morocco'],['🇲🇿 +258','Mozambique'],
+    ['🇲🇲 +95','Myanmar'],['🇳🇦 +264','Namibia'],['🇳🇷 +674','Nauru'],
+    ['🇳🇵 +977','Nepal'],['🇳🇱 +31','Netherlands'],['🇳🇿 +64','New Zealand'],
+    ['🇳🇮 +505','Nicaragua'],['🇳🇪 +227','Niger'],['🇳🇬 +234','Nigeria'],
+    ['🇰🇵 +850','North Korea'],['🇳🇴 +47','Norway'],['🇴🇲 +968','Oman'],
+    ['🇵🇰 +92','Pakistan'],['🇵🇼 +680','Palau'],['🇵🇦 +507','Panama'],
+    ['🇵🇬 +675','Papua New Guinea'],['🇵🇾 +595','Paraguay'],['🇵🇪 +51','Peru'],
+    ['🇵🇭 +63','Philippines'],['🇵🇱 +48','Poland'],['🇵🇹 +351','Portugal'],
+    ['🇶🇦 +974','Qatar'],['🇷🇴 +40','Romania'],['🇷🇺 +7','Russia'],
+    ['🇷🇼 +250','Rwanda'],['🇸🇦 +966','Saudi Arabia'],['🇸🇳 +221','Senegal'],
+    ['🇷🇸 +381','Serbia'],['🇸🇱 +232','Sierra Leone'],['🇸🇬 +65','Singapore'],
+    ['🇸🇰 +421','Slovakia'],['🇸🇮 +386','Slovenia'],['🇸🇧 +677','Solomon Islands'],
+    ['🇸🇴 +252','Somalia'],['🇿🇦 +27','South Africa'],['🇰🇷 +82','South Korea'],
+    ['🇪🇸 +34','Spain'],['🇱🇰 +94','Sri Lanka'],['🇸🇩 +249','Sudan'],
+    ['🇸🇷 +597','Suriname'],['🇸🇿 +268','Eswatini'],['🇸🇪 +46','Sweden'],
+    ['🇨🇭 +41','Switzerland'],['🇸🇾 +963','Syria'],['🇹🇼 +886','Taiwan'],
+    ['🇹🇯 +992','Tajikistan'],['🇹🇿 +255','Tanzania'],['🇹🇭 +66','Thailand'],
+    ['🇹🇬 +228','Togo'],['🇹🇴 +676','Tonga'],['🇹🇹 +1868','Trinidad & Tobago'],
+    ['🇹🇳 +216','Tunisia'],['🇹🇷 +90','Turkey'],['🇹🇲 +993','Turkmenistan'],
+    ['🇹🇻 +688','Tuvalu'],['🇺🇬 +256','Uganda'],['🇺🇦 +380','Ukraine'],
+    ['🇦🇪 +971','UAE'],['🇬🇧 +44','United Kingdom'],['🇺🇸 +1','United States'],
+    ['🇺🇾 +598','Uruguay'],['🇺🇿 +998','Uzbekistan'],['🇻🇺 +678','Vanuatu'],
+    ['🇻🇦 +379','Vatican'],['🇻🇪 +58','Venezuela'],['🇻🇳 +84','Vietnam'],
+    ['🇾🇪 +967','Yemen'],['🇿🇲 +260','Zambia'],['🇿🇼 +263','Zimbabwe']
+  ];
+
+  function initPfxDropdown(triggerInput, drop, listEl, searchEl){
+    if(!triggerInput||!drop||!listEl||!searchEl)return;
+
+    function renderOptions(q){
+      const fl=(q||'').toLowerCase();
+      const filtered=fl?PFX.filter(([v,n])=>v.toLowerCase().includes(fl)||n.toLowerCase().includes(fl)):PFX;
+      listEl.innerHTML=filtered.map(([v,n])=>
+        `<div class="pfx-opt" data-v="${v}">${v}&nbsp;&nbsp;${n}</div>`
+      ).join('');
+      listEl.querySelectorAll('.pfx-opt').forEach(opt=>{
+        opt.addEventListener('mousedown',ev=>{
+          ev.preventDefault();
+          triggerInput.value=opt.dataset.v;
+          drop.classList.remove('open');
+          searchEl.value='';
+          renderOptions('');
+        });
+      });
+    }
+
+    function openDrop(){
+      document.querySelectorAll('.pfx-drop.open').forEach(d=>{if(d!==drop)d.classList.remove('open');});
+      renderOptions(searchEl.value);
+      drop.classList.add('open');
+      setTimeout(()=>searchEl.focus(),30);
+    }
+
+    triggerInput.addEventListener('click',openDrop);
+    triggerInput.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openDrop();}});
+    searchEl.addEventListener('input',()=>renderOptions(searchEl.value));
+    searchEl.addEventListener('keydown',e=>{if(e.key==='Escape'){drop.classList.remove('open');triggerInput.focus();}});
+
+    document.addEventListener('mousedown',e=>{
+      if(!drop.contains(e.target)&&e.target!==triggerInput){
+        drop.classList.remove('open');
+        searchEl.value='';
+      }
+    });
+
+    renderOptions('');
+  }
+
+  initPfxDropdown(
+    document.getElementById('fphoneprefix'),
+    document.getElementById('phonePfxDrop'),
+    document.getElementById('phonePfxList'),
+    document.querySelector('#phonePfxDrop .pfx-search')
+  );
+  initPfxDropdown(
+    document.getElementById('waphoneprefix'),
+    document.getElementById('waPfxDrop'),
+    document.getElementById('waPfxList'),
+    document.querySelector('#waPfxDrop .pfx-search')
+  );
+})();
+
 /* WhatsApp field toggle */
 (function(){
   document.querySelectorAll('[name="has_whatsapp"]').forEach(r=>{
