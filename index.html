@@ -121,7 +121,7 @@
     /* Logo — no bubble */
     .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:none}
     .nav-logo-img{width:36px;height:36px;object-fit:contain;flex-shrink:0;display:block}
-    .nav-logo-text{font-family:var(--fh);font-size:17px;font-weight:600;color:var(--t0);letter-spacing:-.02em}
+    .nav-logo-text{font-family:var(--fh);font-size:17px;font-weight:600;color:var(--t0)}
 
     /* Center — glass pill */
     .nav-links-wrap{display:flex;justify-content:center}
@@ -394,12 +394,14 @@
       .footer-top{grid-template-columns:1fr 1fr;gap:36px}
     }
     @media(max-width:768px){
+      /* Switch to flexbox so logo stays left and right items stay right */
+      .nav-inner{display:flex;justify-content:space-between;align-items:center}
       .nav-links-wrap{display:none}
       .hamburger{display:flex}
+      .nav-right{gap:6px}
       .nav-book span{display:none}
       .nav-book{padding:9px 12px}
       .nav-logo-text{font-size:14px}
-      /* Keep nav-cta-pill and lang-sw bubbles visible on mobile — they anchor the right side */
       .lang-sw{display:none}
       .services-grid{grid-template-columns:1fr;gap:0}
       .pipe-step{flex:0 0 calc(50% - 10px)}
