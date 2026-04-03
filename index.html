@@ -16,7 +16,7 @@
   <link rel="canonical" href="https://www.thryvexgroup.com">
   <title>ThryveX Group — AI Automation Agency | Scale Without Limits</title>
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230EA5E9'/%3E%3Cstop offset='1' stop-color='%237C3AED'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-weight='800' font-size='15' fill='white' text-anchor='middle'%3ETX%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/jpeg" href="/logo.jpeg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,7 +86,8 @@
     .loader-content{position:relative;display:flex;flex-direction:column;align-items:center;gap:32px;animation:fade-up .7s ease both}
     .loader-ring{position:absolute;width:116px;height:116px;border-radius:50%;border:1px solid rgba(14,165,233,.15);animation:spin-slow 8s linear infinite}
     .loader-ring::before{content:'';position:absolute;top:-3px;left:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue)}
-    .loader-icon{width:78px;height:78px;border-radius:20px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:26px;font-weight:800;color:#fff;animation:pulse-glow 2.5s ease infinite;letter-spacing:-1px}
+    .loader-icon{width:78px;height:78px;border-radius:20px;overflow:hidden;animation:pulse-glow 2.5s ease infinite}
+    .loader-icon img{width:100%;height:100%;object-fit:cover;display:block}
     .loader-icon-wrap{position:relative;display:flex;align-items:center;justify-content:center}
     .loader-brand{font-family:var(--fh);font-size:20px;font-weight:600;color:var(--t1);letter-spacing:-.02em}
     .loader-bar-wrap{width:260px;display:flex;flex-direction:column;align-items:center;gap:12px}
@@ -109,7 +110,7 @@
 
     /* Logo — no bubble */
     .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:none}
-    .nav-logo-icon{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
+    .nav-logo-img{width:36px;height:36px;border-radius:9px;object-fit:cover;flex-shrink:0;display:block}
     .nav-logo-text{font-family:var(--fh);font-size:17px;font-weight:600;color:var(--t0);letter-spacing:-.02em}
 
     /* Center — glass pill */
@@ -352,7 +353,7 @@
     .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:52px;margin-bottom:52px}
     .footer-brand{display:flex;flex-direction:column;gap:16px}
     .f-logo{display:flex;align-items:center;gap:10px;cursor:none}
-    .f-logo-ico{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:12px;font-weight:800;color:#fff}
+    .f-logo-img{width:34px;height:34px;border-radius:8px;object-fit:cover;flex-shrink:0;display:block}
     .f-logo-txt{font-family:var(--fh);font-size:16px;font-weight:600;color:var(--t0);letter-spacing:-.02em}
     .f-tagline{font-size:14px;color:var(--tm);line-height:1.65;max-width:240px}
     .f-socials{display:flex;gap:8px}
@@ -421,9 +422,9 @@
   <div class="loader-content">
     <div class="loader-icon-wrap">
       <div class="loader-ring"></div>
-      <div class="loader-icon">TX</div>
+      <div class="loader-icon"><img src="/logo.jpeg" alt="ThryveX Group" aria-hidden="true"></div>
     </div>
-    <div><span class="loader-brand">ThryveX Group</span></div>
+    <div class="loader-brand-wrap"><span class="loader-brand">ThryveX Group</span></div>
     <div class="loader-bar-wrap">
       <div class="loader-bar"><div class="loader-progress" id="loaderProg"></div></div>
       <span class="loader-label" id="loaderLbl">Initializing...</span>
@@ -439,7 +440,7 @@
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo" aria-label="ThryveX Group home">
-      <div class="nav-logo-icon" aria-hidden="true">TX</div>
+      <img src="/logo.jpeg" alt="ThryveX Group" class="nav-logo-img">
       <span class="nav-logo-text">ThryveX Group</span>
     </a>
     <div class="nav-links-wrap">
@@ -1100,7 +1101,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <a href="#hero" class="f-logo" aria-label="ThryveX Group home">
-          <div class="f-logo-ico" aria-hidden="true">TX</div>
+          <img src="/logo.jpeg" alt="ThryveX Group" class="f-logo-img">
           <span class="f-logo-txt">ThryveX Group</span>
         </a>
         <p class="f-tagline" data-en="AI automation infrastructure for businesses that refuse to stay still." data-es="Infraestructura de automatización IA para negocios que se niegan a quedarse quietos.">AI automation infrastructure for businesses that refuse to stay still.</p>
