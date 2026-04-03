@@ -1,4 +1,10 @@
 {
+  "headers": [
+    {
+      "source": "/favicon.svg",
+      "headers": [{ "key": "Content-Type", "value": "image/svg+xml" }]
+    }
+  ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
