@@ -7,6 +7,10 @@
     {
       "source": "/logo.png",
       "headers": [{ "key": "Content-Type", "value": "image/png" }]
+    },
+    {
+      "source": "/logo.jpeg",
+      "headers": [{ "key": "Content-Type", "value": "image/jpeg" }]
     }
   ],
   "rewrites": [
