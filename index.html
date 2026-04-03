@@ -7,23 +7,27 @@
   <meta name="keywords" content="AI automation, CRM implementation, workflow automation, business automation, AI chatbots, ThryveX Group, Panama automation agency">
   <meta name="author" content="ThryveX Group">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="ThryveX Group — AI Automation Agency | Scale Without Limits">
+  <meta property="og:title" content="ThryveX Group | AI Automation Agency">
   <meta property="og:description" content="ThryveX Group builds AI automation systems that capture, qualify and convert — so businesses run at full capacity.">
   <meta property="og:url" content="https://www.thryvexgroup.com">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.thryvexgroup.com/logo.png">
-  <meta property="og:image:width" content="400">
-  <meta property="og:image:height" content="400">
+  <meta property="og:image" content="https://www.thryvexgroup.com/api/og">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="ThryveX Group — AI Automation Agency">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.thryvexgroup.com/logo.png">
-  <meta name="twitter:title" content="ThryveX Group — AI Automation Agency">
+  <meta name="twitter:image" content="https://www.thryvexgroup.com/api/og">
+  <meta name="twitter:title" content="ThryveX Group | AI Automation Agency">
   <meta name="twitter:description" content="AI automation systems that capture leads, qualify prospects, and help businesses scale.">
   <meta name="theme-color" content="#050508">
   <link rel="canonical" href="https://www.thryvexgroup.com">
   <title>ThryveX Group — AI Automation Agency | Scale Without Limits</title>
 
-  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
+  <link rel="shortcut icon" href="/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -344,7 +348,14 @@
     .f-textarea{resize:vertical;min-height:120px;line-height:1.6}
     .f-submit{width:100%;justify-content:center}
     .f-phone-row{display:flex;gap:8px}
-    .f-phone-prefix{flex:0 0 130px;width:130px}
+    .f-phone-prefix{flex:0 0 140px;width:140px}
+    .f-phone-prefix::-webkit-calendar-picker-indicator{opacity:.4;cursor:pointer}
+    .f-toggle-row{display:flex;gap:10px}
+    .f-toggle-opt{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:var(--r);border:1px solid var(--cbr);background:rgba(255,255,255,.035);color:var(--t2);font-size:14px;font-family:var(--fb);cursor:pointer;transition:all var(--t);user-select:none;flex:1;justify-content:center}
+    .f-toggle-opt input[type="radio"]{display:none}
+    .f-toggle-opt:has(input:checked){border-color:rgba(14,165,233,.5);background:rgba(14,165,233,.08);color:var(--blue);font-weight:600}
+    .f-error{display:none;padding:12px 16px;border-radius:var(--r);border:1px solid rgba(239,68,68,.25);background:rgba(239,68,68,.06);color:#f87171;font-size:14px;text-align:center}
+    .f-error.show{display:block}
     .f-success{display:none;text-align:center;padding:40px 32px;border-radius:var(--r-l);border:1px solid rgba(16,185,129,.2);background:rgba(16,185,129,.05)}
     .f-success.show{display:block}
     .f-success-ico{width:50px;height:50px;border-radius:50%;background:rgba(16,185,129,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
@@ -867,189 +878,189 @@
             <div class="f-group">
               <label class="f-label" for="fphone" data-en="Phone Number" data-es="Número de Teléfono">Phone Number</label>
               <div class="f-phone-row">
-                <select class="f-select f-phone-prefix" id="fphoneprefix" name="phone_prefix">
-                  <option value="">Flag</option>
-                  <option value="+93">🇦🇫 +93</option>
-                  <option value="+355">🇦🇱 +355</option>
-                  <option value="+213">🇩🇿 +213</option>
-                  <option value="+376">🇦🇩 +376</option>
-                  <option value="+244">🇦🇴 +244</option>
-                  <option value="+54">🇦🇷 +54</option>
-                  <option value="+374">🇦🇲 +374</option>
-                  <option value="+61">🇦🇺 +61</option>
-                  <option value="+43">🇦🇹 +43</option>
-                  <option value="+994">🇦🇿 +994</option>
-                  <option value="+973">🇧🇭 +973</option>
-                  <option value="+880">🇧🇩 +880</option>
-                  <option value="+32">🇧🇪 +32</option>
-                  <option value="+501">🇧🇿 +501</option>
-                  <option value="+229">🇧🇯 +229</option>
-                  <option value="+975">🇧🇹 +975</option>
-                  <option value="+591">🇧🇴 +591</option>
-                  <option value="+387">🇧🇦 +387</option>
-                  <option value="+267">🇧🇼 +267</option>
-                  <option value="+55">🇧🇷 +55</option>
-                  <option value="+673">🇧🇳 +673</option>
-                  <option value="+359">🇧🇬 +359</option>
-                  <option value="+226">🇧🇫 +226</option>
-                  <option value="+257">🇧🇮 +257</option>
-                  <option value="+855">🇰🇭 +855</option>
-                  <option value="+237">🇨🇲 +237</option>
-                  <option value="+1">🇨🇦 +1</option>
-                  <option value="+238">🇨🇻 +238</option>
-                  <option value="+236">🇨🇫 +236</option>
-                  <option value="+235">🇹🇩 +235</option>
-                  <option value="+56">🇨🇱 +56</option>
-                  <option value="+86">🇨🇳 +86</option>
-                  <option value="+57">🇨🇴 +57</option>
-                  <option value="+269">🇰🇲 +269</option>
-                  <option value="+242">🇨🇬 +242</option>
-                  <option value="+506">🇨🇷 +506</option>
-                  <option value="+385">🇭🇷 +385</option>
-                  <option value="+53">🇨🇺 +53</option>
-                  <option value="+357">🇨🇾 +357</option>
-                  <option value="+420">🇨🇿 +420</option>
-                  <option value="+45">🇩🇰 +45</option>
-                  <option value="+253">🇩🇯 +253</option>
-                  <option value="+1809">🇩🇴 +1-809</option>
-                  <option value="+593">🇪🇨 +593</option>
-                  <option value="+20">🇪🇬 +20</option>
-                  <option value="+503">🇸🇻 +503</option>
-                  <option value="+240">🇬🇶 +240</option>
-                  <option value="+291">🇪🇷 +291</option>
-                  <option value="+372">🇪🇪 +372</option>
-                  <option value="+251">🇪🇹 +251</option>
-                  <option value="+679">🇫🇯 +679</option>
-                  <option value="+358">🇫🇮 +358</option>
-                  <option value="+33">🇫🇷 +33</option>
-                  <option value="+241">🇬🇦 +241</option>
-                  <option value="+220">🇬🇲 +220</option>
-                  <option value="+995">🇬🇪 +995</option>
-                  <option value="+49">🇩🇪 +49</option>
-                  <option value="+233">🇬🇭 +233</option>
-                  <option value="+30">🇬🇷 +30</option>
-                  <option value="+502">🇬🇹 +502</option>
-                  <option value="+224">🇬🇳 +224</option>
-                  <option value="+245">🇬🇼 +245</option>
-                  <option value="+592">🇬🇾 +592</option>
-                  <option value="+509">🇭🇹 +509</option>
-                  <option value="+504">🇭🇳 +504</option>
-                  <option value="+852">🇭🇰 +852</option>
-                  <option value="+36">🇭🇺 +36</option>
-                  <option value="+354">🇮🇸 +354</option>
-                  <option value="+91">🇮🇳 +91</option>
-                  <option value="+62">🇮🇩 +62</option>
-                  <option value="+98">🇮🇷 +98</option>
-                  <option value="+964">🇮🇶 +964</option>
-                  <option value="+353">🇮🇪 +353</option>
-                  <option value="+972">🇮🇱 +972</option>
-                  <option value="+39">🇮🇹 +39</option>
-                  <option value="+1876">🇯🇲 +1-876</option>
-                  <option value="+81">🇯🇵 +81</option>
-                  <option value="+962">🇯🇴 +962</option>
-                  <option value="+7">🇰🇿 +7</option>
-                  <option value="+254">🇰🇪 +254</option>
-                  <option value="+686">🇰🇮 +686</option>
-                  <option value="+965">🇰🇼 +965</option>
-                  <option value="+996">🇰🇬 +996</option>
-                  <option value="+856">🇱🇦 +856</option>
-                  <option value="+371">🇱🇻 +371</option>
-                  <option value="+961">🇱🇧 +961</option>
-                  <option value="+266">🇱🇸 +266</option>
-                  <option value="+231">🇱🇷 +231</option>
-                  <option value="+218">🇱🇾 +218</option>
-                  <option value="+423">🇱🇮 +423</option>
-                  <option value="+370">🇱🇹 +370</option>
-                  <option value="+352">🇱🇺 +352</option>
-                  <option value="+853">🇲🇴 +853</option>
-                  <option value="+389">🇲🇰 +389</option>
-                  <option value="+261">🇲🇬 +261</option>
-                  <option value="+265">🇲🇼 +265</option>
-                  <option value="+60">🇲🇾 +60</option>
-                  <option value="+960">🇲🇻 +960</option>
-                  <option value="+223">🇲🇱 +223</option>
-                  <option value="+356">🇲🇹 +356</option>
-                  <option value="+692">🇲🇭 +692</option>
-                  <option value="+222">🇲🇷 +222</option>
-                  <option value="+230">🇲🇺 +230</option>
-                  <option value="+52">🇲🇽 +52</option>
-                  <option value="+691">🇫🇲 +691</option>
-                  <option value="+373">🇲🇩 +373</option>
-                  <option value="+377">🇲🇨 +377</option>
-                  <option value="+976">🇲🇳 +976</option>
-                  <option value="+382">🇲🇪 +382</option>
-                  <option value="+212">🇲🇦 +212</option>
-                  <option value="+258">🇲🇿 +258</option>
-                  <option value="+95">🇲🇲 +95</option>
-                  <option value="+264">🇳🇦 +264</option>
-                  <option value="+674">🇳🇷 +674</option>
-                  <option value="+977">🇳🇵 +977</option>
-                  <option value="+31">🇳🇱 +31</option>
-                  <option value="+64">🇳🇿 +64</option>
-                  <option value="+505">🇳🇮 +505</option>
-                  <option value="+227">🇳🇪 +227</option>
-                  <option value="+234">🇳🇬 +234</option>
-                  <option value="+850">🇰🇵 +850</option>
-                  <option value="+47">🇳🇴 +47</option>
-                  <option value="+968">🇴🇲 +968</option>
-                  <option value="+92">🇵🇰 +92</option>
-                  <option value="+680">🇵🇼 +680</option>
-                  <option value="+507">🇵🇦 +507</option>
-                  <option value="+675">🇵🇬 +675</option>
-                  <option value="+595">🇵🇾 +595</option>
-                  <option value="+51">🇵🇪 +51</option>
-                  <option value="+63">🇵🇭 +63</option>
-                  <option value="+48">🇵🇱 +48</option>
-                  <option value="+351">🇵🇹 +351</option>
-                  <option value="+974">🇶🇦 +974</option>
-                  <option value="+40">🇷🇴 +40</option>
-                  <option value="+7">🇷🇺 +7</option>
-                  <option value="+250">🇷🇼 +250</option>
-                  <option value="+966">🇸🇦 +966</option>
-                  <option value="+221">🇸🇳 +221</option>
-                  <option value="+381">🇷🇸 +381</option>
-                  <option value="+232">🇸🇱 +232</option>
-                  <option value="+65">🇸🇬 +65</option>
-                  <option value="+421">🇸🇰 +421</option>
-                  <option value="+386">🇸🇮 +386</option>
-                  <option value="+677">🇸🇧 +677</option>
-                  <option value="+252">🇸🇴 +252</option>
-                  <option value="+27">🇿🇦 +27</option>
-                  <option value="+82">🇰🇷 +82</option>
-                  <option value="+34">🇪🇸 +34</option>
-                  <option value="+94">🇱🇰 +94</option>
-                  <option value="+249">🇸🇩 +249</option>
-                  <option value="+597">🇸🇷 +597</option>
-                  <option value="+268">🇸🇿 +268</option>
-                  <option value="+46">🇸🇪 +46</option>
-                  <option value="+41">🇨🇭 +41</option>
-                  <option value="+963">🇸🇾 +963</option>
-                  <option value="+886">🇹🇼 +886</option>
-                  <option value="+992">🇹🇯 +992</option>
-                  <option value="+255">🇹🇿 +255</option>
-                  <option value="+66">🇹🇭 +66</option>
-                  <option value="+228">🇹🇬 +228</option>
-                  <option value="+676">🇹🇴 +676</option>
-                  <option value="+1868">🇹🇹 +1-868</option>
-                  <option value="+216">🇹🇳 +216</option>
-                  <option value="+90">🇹🇷 +90</option>
-                  <option value="+993">🇹🇲 +993</option>
-                  <option value="+688">🇹🇻 +688</option>
-                  <option value="+256">🇺🇬 +256</option>
-                  <option value="+380">🇺🇦 +380</option>
-                  <option value="+971">🇦🇪 +971</option>
-                  <option value="+44">🇬🇧 +44</option>
-                  <option value="+1">🇺🇸 +1</option>
-                  <option value="+598">🇺🇾 +598</option>
-                  <option value="+998">🇺🇿 +998</option>
-                  <option value="+678">🇻🇺 +678</option>
-                  <option value="+379">🇻🇦 +379</option>
-                  <option value="+58">🇻🇪 +58</option>
-                  <option value="+84">🇻🇳 +84</option>
-                  <option value="+967">🇾🇪 +967</option>
-                  <option value="+260">🇿🇲 +260</option>
-                  <option value="+263">🇿🇼 +263</option>
-                </select>
+                <input class="f-input f-phone-prefix" type="text" id="fphoneprefix" name="phone_prefix" list="phonePrefixList" placeholder="Prefix" autocomplete="off">
+                <datalist id="phonePrefixList">
+                  <option value="🇦🇫 +93">Afghanistan</option>
+                  <option value="🇦🇱 +355">Albania</option>
+                  <option value="🇩🇿 +213">Algeria</option>
+                  <option value="🇦🇩 +376">Andorra</option>
+                  <option value="🇦🇴 +244">Angola</option>
+                  <option value="🇦🇷 +54">Argentina</option>
+                  <option value="🇦🇲 +374">Armenia</option>
+                  <option value="🇦🇺 +61">Australia</option>
+                  <option value="🇦🇹 +43">Austria</option>
+                  <option value="🇦🇿 +994">Azerbaijan</option>
+                  <option value="🇧🇭 +973">Bahrain</option>
+                  <option value="🇧🇩 +880">Bangladesh</option>
+                  <option value="🇧🇪 +32">Belgium</option>
+                  <option value="🇧🇿 +501">Belize</option>
+                  <option value="🇧🇯 +229">Benin</option>
+                  <option value="🇧🇹 +975">Bhutan</option>
+                  <option value="🇧🇴 +591">Bolivia</option>
+                  <option value="🇧🇦 +387">Bosnia</option>
+                  <option value="🇧🇼 +267">Botswana</option>
+                  <option value="🇧🇷 +55">Brazil</option>
+                  <option value="🇧🇳 +673">Brunei</option>
+                  <option value="🇧🇬 +359">Bulgaria</option>
+                  <option value="🇧🇫 +226">Burkina Faso</option>
+                  <option value="🇧🇮 +257">Burundi</option>
+                  <option value="🇰🇭 +855">Cambodia</option>
+                  <option value="🇨🇲 +237">Cameroon</option>
+                  <option value="🇨🇦 +1">Canada</option>
+                  <option value="🇨🇻 +238">Cape Verde</option>
+                  <option value="🇨🇫 +236">Central African Republic</option>
+                  <option value="🇹🇩 +235">Chad</option>
+                  <option value="🇨🇱 +56">Chile</option>
+                  <option value="🇨🇳 +86">China</option>
+                  <option value="🇨🇴 +57">Colombia</option>
+                  <option value="🇰🇲 +269">Comoros</option>
+                  <option value="🇨🇬 +242">Congo</option>
+                  <option value="🇨🇷 +506">Costa Rica</option>
+                  <option value="🇭🇷 +385">Croatia</option>
+                  <option value="🇨🇺 +53">Cuba</option>
+                  <option value="🇨🇾 +357">Cyprus</option>
+                  <option value="🇨🇿 +420">Czech Republic</option>
+                  <option value="🇩🇰 +45">Denmark</option>
+                  <option value="🇩🇯 +253">Djibouti</option>
+                  <option value="🇩🇴 +1809">Dominican Republic</option>
+                  <option value="🇪🇨 +593">Ecuador</option>
+                  <option value="🇪🇬 +20">Egypt</option>
+                  <option value="🇸🇻 +503">El Salvador</option>
+                  <option value="🇬🇶 +240">Equatorial Guinea</option>
+                  <option value="🇪🇷 +291">Eritrea</option>
+                  <option value="🇪🇪 +372">Estonia</option>
+                  <option value="🇪🇹 +251">Ethiopia</option>
+                  <option value="🇫🇯 +679">Fiji</option>
+                  <option value="🇫🇮 +358">Finland</option>
+                  <option value="🇫🇷 +33">France</option>
+                  <option value="🇬🇦 +241">Gabon</option>
+                  <option value="🇬🇲 +220">Gambia</option>
+                  <option value="🇬🇪 +995">Georgia</option>
+                  <option value="🇩🇪 +49">Germany</option>
+                  <option value="🇬🇭 +233">Ghana</option>
+                  <option value="🇬🇷 +30">Greece</option>
+                  <option value="🇬🇹 +502">Guatemala</option>
+                  <option value="🇬🇳 +224">Guinea</option>
+                  <option value="🇬🇼 +245">Guinea-Bissau</option>
+                  <option value="🇬🇾 +592">Guyana</option>
+                  <option value="🇭🇹 +509">Haiti</option>
+                  <option value="🇭🇳 +504">Honduras</option>
+                  <option value="🇭🇰 +852">Hong Kong</option>
+                  <option value="🇭🇺 +36">Hungary</option>
+                  <option value="🇮🇸 +354">Iceland</option>
+                  <option value="🇮🇳 +91">India</option>
+                  <option value="🇮🇩 +62">Indonesia</option>
+                  <option value="🇮🇷 +98">Iran</option>
+                  <option value="🇮🇶 +964">Iraq</option>
+                  <option value="🇮🇪 +353">Ireland</option>
+                  <option value="🇮🇱 +972">Israel</option>
+                  <option value="🇮🇹 +39">Italy</option>
+                  <option value="🇯🇲 +1876">Jamaica</option>
+                  <option value="🇯🇵 +81">Japan</option>
+                  <option value="🇯🇴 +962">Jordan</option>
+                  <option value="🇰🇿 +7">Kazakhstan</option>
+                  <option value="🇰🇪 +254">Kenya</option>
+                  <option value="🇰🇮 +686">Kiribati</option>
+                  <option value="🇰🇼 +965">Kuwait</option>
+                  <option value="🇰🇬 +996">Kyrgyzstan</option>
+                  <option value="🇱🇦 +856">Laos</option>
+                  <option value="🇱🇻 +371">Latvia</option>
+                  <option value="🇱🇧 +961">Lebanon</option>
+                  <option value="🇱🇸 +266">Lesotho</option>
+                  <option value="🇱🇷 +231">Liberia</option>
+                  <option value="🇱🇾 +218">Libya</option>
+                  <option value="🇱🇮 +423">Liechtenstein</option>
+                  <option value="🇱🇹 +370">Lithuania</option>
+                  <option value="🇱🇺 +352">Luxembourg</option>
+                  <option value="🇲🇴 +853">Macau</option>
+                  <option value="🇲🇰 +389">Macedonia</option>
+                  <option value="🇲🇬 +261">Madagascar</option>
+                  <option value="🇲🇼 +265">Malawi</option>
+                  <option value="🇲🇾 +60">Malaysia</option>
+                  <option value="🇲🇻 +960">Maldives</option>
+                  <option value="🇲🇱 +223">Mali</option>
+                  <option value="🇲🇹 +356">Malta</option>
+                  <option value="🇲🇭 +692">Marshall Islands</option>
+                  <option value="🇲🇷 +222">Mauritania</option>
+                  <option value="🇲🇺 +230">Mauritius</option>
+                  <option value="🇲🇽 +52">Mexico</option>
+                  <option value="🇫🇲 +691">Micronesia</option>
+                  <option value="🇲🇩 +373">Moldova</option>
+                  <option value="🇲🇨 +377">Monaco</option>
+                  <option value="🇲🇳 +976">Mongolia</option>
+                  <option value="🇲🇪 +382">Montenegro</option>
+                  <option value="🇲🇦 +212">Morocco</option>
+                  <option value="🇲🇿 +258">Mozambique</option>
+                  <option value="🇲🇲 +95">Myanmar</option>
+                  <option value="🇳🇦 +264">Namibia</option>
+                  <option value="🇳🇷 +674">Nauru</option>
+                  <option value="🇳🇵 +977">Nepal</option>
+                  <option value="🇳🇱 +31">Netherlands</option>
+                  <option value="🇳🇿 +64">New Zealand</option>
+                  <option value="🇳🇮 +505">Nicaragua</option>
+                  <option value="🇳🇪 +227">Niger</option>
+                  <option value="🇳🇬 +234">Nigeria</option>
+                  <option value="🇰🇵 +850">North Korea</option>
+                  <option value="🇳🇴 +47">Norway</option>
+                  <option value="🇴🇲 +968">Oman</option>
+                  <option value="🇵🇰 +92">Pakistan</option>
+                  <option value="🇵🇼 +680">Palau</option>
+                  <option value="🇵🇦 +507">Panama</option>
+                  <option value="🇵🇬 +675">Papua New Guinea</option>
+                  <option value="🇵🇾 +595">Paraguay</option>
+                  <option value="🇵🇪 +51">Peru</option>
+                  <option value="🇵🇭 +63">Philippines</option>
+                  <option value="🇵🇱 +48">Poland</option>
+                  <option value="🇵🇹 +351">Portugal</option>
+                  <option value="🇶🇦 +974">Qatar</option>
+                  <option value="🇷🇴 +40">Romania</option>
+                  <option value="🇷🇺 +7">Russia</option>
+                  <option value="🇷🇼 +250">Rwanda</option>
+                  <option value="🇸🇦 +966">Saudi Arabia</option>
+                  <option value="🇸🇳 +221">Senegal</option>
+                  <option value="🇷🇸 +381">Serbia</option>
+                  <option value="🇸🇱 +232">Sierra Leone</option>
+                  <option value="🇸🇬 +65">Singapore</option>
+                  <option value="🇸🇰 +421">Slovakia</option>
+                  <option value="🇸🇮 +386">Slovenia</option>
+                  <option value="🇸🇧 +677">Solomon Islands</option>
+                  <option value="🇸🇴 +252">Somalia</option>
+                  <option value="🇿🇦 +27">South Africa</option>
+                  <option value="🇰🇷 +82">South Korea</option>
+                  <option value="🇪🇸 +34">Spain</option>
+                  <option value="🇱🇰 +94">Sri Lanka</option>
+                  <option value="🇸🇩 +249">Sudan</option>
+                  <option value="🇸🇷 +597">Suriname</option>
+                  <option value="🇸🇿 +268">Eswatini</option>
+                  <option value="🇸🇪 +46">Sweden</option>
+                  <option value="🇨🇭 +41">Switzerland</option>
+                  <option value="🇸🇾 +963">Syria</option>
+                  <option value="🇹🇼 +886">Taiwan</option>
+                  <option value="🇹🇯 +992">Tajikistan</option>
+                  <option value="🇹🇿 +255">Tanzania</option>
+                  <option value="🇹🇭 +66">Thailand</option>
+                  <option value="🇹🇬 +228">Togo</option>
+                  <option value="🇹🇴 +676">Tonga</option>
+                  <option value="🇹🇹 +1868">Trinidad and Tobago</option>
+                  <option value="🇹🇳 +216">Tunisia</option>
+                  <option value="🇹🇷 +90">Turkey</option>
+                  <option value="🇹🇲 +993">Turkmenistan</option>
+                  <option value="🇹🇻 +688">Tuvalu</option>
+                  <option value="🇺🇬 +256">Uganda</option>
+                  <option value="🇺🇦 +380">Ukraine</option>
+                  <option value="🇦🇪 +971">UAE</option>
+                  <option value="🇬🇧 +44">United Kingdom</option>
+                  <option value="🇺🇸 +1">United States</option>
+                  <option value="🇺🇾 +598">Uruguay</option>
+                  <option value="🇺🇿 +998">Uzbekistan</option>
+                  <option value="🇻🇺 +678">Vanuatu</option>
+                  <option value="🇻🇦 +379">Vatican</option>
+                  <option value="🇻🇪 +58">Venezuela</option>
+                  <option value="🇻🇳 +84">Vietnam</option>
+                  <option value="🇾🇪 +967">Yemen</option>
+                  <option value="🇿🇲 +260">Zambia</option>
+                  <option value="🇿🇼 +263">Zimbabwe</option>
+                </datalist>
                 <input class="f-input" type="tel" id="fphone" name="phone" placeholder="Phone Number" autocomplete="tel">
               </div>
             </div>
@@ -1065,9 +1076,24 @@
             </div>
           </div>
           <div class="f-group">
+            <label class="f-label" data-en="Would you like to add a different WhatsApp number?" data-es="¿Desea agregar un número de WhatsApp diferente?">Would you like to add a different WhatsApp number?</label>
+            <div class="f-toggle-row">
+              <label class="f-toggle-opt"><input type="radio" name="has_whatsapp" value="no" checked><span data-en="No" data-es="No">No</span></label>
+              <label class="f-toggle-opt"><input type="radio" name="has_whatsapp" value="yes"><span data-en="Yes" data-es="Sí">Yes</span></label>
+            </div>
+          </div>
+          <div class="f-group" id="waGroup" style="display:none">
+            <label class="f-label" for="waphone" data-en="WhatsApp Number" data-es="Número de WhatsApp">WhatsApp Number</label>
+            <div class="f-phone-row">
+              <input class="f-input f-phone-prefix" type="text" id="waphoneprefix" name="wa_prefix" list="phonePrefixList" placeholder="Prefix" autocomplete="off">
+              <input class="f-input" type="tel" id="waphone" name="wa_number" placeholder="WhatsApp Number" autocomplete="tel">
+            </div>
+          </div>
+          <div class="f-group">
             <label class="f-label" for="fmessage" data-en="Tell Us About Your Business" data-es="Cuéntanos Sobre Tu Negocio">Tell Us About Your Business</label>
             <textarea class="f-textarea" id="fmessage" name="message" placeholder="Tell us about your business..."></textarea>
           </div>
+          <div class="f-error" id="formError"></div>
           <button type="submit" class="btn btn-primary btn-lg f-submit magnetic">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             <span data-en="Send Message" data-es="Enviar Mensaje">Send Message</span>
@@ -1334,16 +1360,34 @@ const sIO=new IntersectionObserver(entries=>{
 sections.forEach(s=>sIO.observe(s));
 
 /* ─ 12. CONTACT FORM ──────────────────────────────────── */
+/* WhatsApp field toggle */
+(function(){
+  document.querySelectorAll('[name="has_whatsapp"]').forEach(r=>{
+    r.addEventListener('change',()=>{
+      const g=document.getElementById('waGroup');
+      if(g)g.style.display=r.value==='yes'?'flex':'none';
+    });
+  });
+  const wg=document.getElementById('waGroup');
+  if(wg)wg.style.flexDirection='column';
+})();
+
 const form=document.getElementById('contactForm');
 const fSuccess=document.getElementById('formSuccess');
+const fError=document.getElementById('formError');
 form&&form.addEventListener('submit',async e=>{
   e.preventDefault();
   const btn=form.querySelector('.f-submit'),span=btn&&btn.querySelector('span');
+  if(fError){fError.textContent='';fError.classList.remove('show');}
   if(btn)btn.disabled=true;
   if(span)span.textContent=lang==='es'?'Enviando...':'Sending...';
   const pfx=form.querySelector('[name="phone_prefix"]');
   const pnum=form.querySelector('[name="phone"]');
   const phone=pfx&&pnum&&pnum.value?(pfx.value+' '+pnum.value).trim():'';
+  const hasWa=form.querySelector('[name="has_whatsapp"]:checked');
+  const waPfx=form.querySelector('[name="wa_prefix"]');
+  const waNum=form.querySelector('[name="wa_number"]');
+  const whatsapp=hasWa&&hasWa.value==='yes'&&waNum&&waNum.value?(waPfx.value+' '+waNum.value).trim():'';
   const cm=form.querySelector('[name="contact_method"]');
   const data={
     name:form.querySelector('[name="name"]').value,
@@ -1351,19 +1395,24 @@ form&&form.addEventListener('submit',async e=>{
     company:form.querySelector('[name="company"]').value,
     service:form.querySelector('[name="service"]').value,
     phone,
+    whatsapp,
     contact_method:cm?cm.value:'',
     message:form.querySelector('[name="message"]').value
   };
   try{
     const res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     if(res.ok){form.style.display='none';fSuccess&&fSuccess.classList.add('show');}
-    else throw new Error();
-  }catch{
+    else{
+      const j=await res.json().catch(()=>({}));
+      throw new Error(j.error||'server');
+    }
+  }catch(err){
     if(btn)btn.disabled=false;
     if(span)span.textContent=lang==='es'?'Enviar Mensaje':'Send Message';
-    const s=encodeURIComponent('ThryveX Group Inquiry from '+(data.name||'Website'));
-    const b=encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nService: ${data.service}\nPhone: ${data.phone}\nPreferred Contact: ${data.contact_method}\n\nMessage:\n${data.message}`);
-    window.location.href=`mailto:services@thryvexgroup.com?subject=${s}&body=${b}`;
+    if(fError){
+      fError.textContent=lang==='es'?'Error al enviar. Por favor intenta de nuevo o escríbenos a services@thryvexgroup.com':'Failed to send. Please try again or email us at services@thryvexgroup.com';
+      fError.classList.add('show');
+    }
   }
 });
 
