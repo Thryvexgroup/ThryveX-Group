@@ -3,10 +3,14 @@
     {
       "source": "/favicon.svg",
       "headers": [{ "key": "Content-Type", "value": "image/svg+xml" }]
+    },
+    {
+      "source": "/logo.png",
+      "headers": [{ "key": "Content-Type", "value": "image/png" }]
     }
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    { "source": "/((?!api/)(?:[^.]+|.+\\.html)$)", "destination": "/index.html" }
   ]
 }
