@@ -136,6 +136,7 @@
 
     /* Right — CTA pill + lang pill */
     .nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .nav-logo-pill{display:inline-flex;align-items:center;background:rgba(10,10,20,.82);backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);border:1px solid rgba(255,255,255,.11);border-radius:var(--r-f);padding:6px 14px 6px 6px;transition:background .55s ease,border-color .55s ease}
     .nav-cta-pill{display:inline-flex;align-items:center;background:rgba(10,10,20,.82);backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);border:1px solid rgba(255,255,255,.11);border-radius:var(--r-f);padding:5px;transition:background .55s ease,border-color .55s ease}
     .nav-book{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:var(--r-f);background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;font-family:var(--fb);font-size:13px;font-weight:600;letter-spacing:-.01em;cursor:none;transition:opacity var(--t),transform var(--t);white-space:nowrap}
     .nav-book:hover{opacity:.85;transform:scale(.97)}
@@ -147,6 +148,7 @@
     .lang-sep{font-size:11px;color:var(--tdim);pointer-events:none;padding:0 1px}
 
     /* Scroll: bubbles fade to transparent */
+    .navbar.scrolled .nav-logo-pill{background:rgba(10,10,20,.26);border-color:rgba(255,255,255,.05)}
     .navbar.scrolled .nav-links{background:rgba(10,10,20,.26);border-color:rgba(255,255,255,.05)}
     .navbar.scrolled .nav-cta-pill{background:rgba(10,10,20,.26);border-color:rgba(255,255,255,.05)}
     .navbar.scrolled .lang-sw{background:rgba(10,10,20,.26);border-color:rgba(255,255,255,.05)}
@@ -483,10 +485,12 @@
 <!-- NAV -->
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo" aria-label="ThryveX Group home">
-      <img src="/logo.png" alt="ThryveX Group" class="nav-logo-img">
-      <span class="nav-logo-text">ThryveX Group</span>
-    </a>
+    <div class="nav-logo-pill">
+      <a href="#hero" class="nav-logo" aria-label="ThryveX Group home">
+        <img src="/logo.png" alt="ThryveX Group" class="nav-logo-img">
+        <span class="nav-logo-text">ThryveX Group</span>
+      </a>
+    </div>
     <div class="nav-links-wrap">
       <div class="nav-links" role="menubar">
         <a href="#hero" role="menuitem" data-en="Home" data-es="Inicio">Home</a>
