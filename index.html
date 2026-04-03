@@ -16,7 +16,7 @@
   <link rel="canonical" href="https://www.thryvexgroup.com">
   <title>ThryveX Group — AI Automation Agency | Scale Without Limits</title>
 
-  <link rel="icon" type="image/jpeg" href="/logo.jpeg">
+  <link rel="icon" type="image/png" href="/logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,7 +86,7 @@
     .loader-content{position:relative;display:flex;flex-direction:column;align-items:center;gap:32px;animation:fade-up .7s ease both}
     .loader-ring{position:absolute;width:116px;height:116px;border-radius:50%;border:1px solid rgba(14,165,233,.15);animation:spin-slow 8s linear infinite}
     .loader-ring::before{content:'';position:absolute;top:-3px;left:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue)}
-    .loader-icon{width:78px;height:78px;border-radius:20px;overflow:hidden;animation:pulse-glow 2.5s ease infinite}
+    .loader-icon{width:78px;height:78px;border-radius:20px;overflow:visible;animation:pulse-glow 2.5s ease infinite}
     .loader-icon img{width:100%;height:100%;object-fit:cover;display:block}
     .loader-icon-wrap{position:relative;display:flex;align-items:center;justify-content:center}
     .loader-brand{font-family:var(--fh);font-size:20px;font-weight:600;color:var(--t1);letter-spacing:-.02em}
@@ -110,7 +110,7 @@
 
     /* Logo — no bubble */
     .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:none}
-    .nav-logo-img{width:36px;height:36px;border-radius:9px;object-fit:cover;flex-shrink:0;display:block}
+    .nav-logo-img{width:36px;height:36px;object-fit:contain;flex-shrink:0;display:block}
     .nav-logo-text{font-family:var(--fh);font-size:17px;font-weight:600;color:var(--t0);letter-spacing:-.02em}
 
     /* Center — glass pill */
@@ -353,7 +353,7 @@
     .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:52px;margin-bottom:52px}
     .footer-brand{display:flex;flex-direction:column;gap:16px}
     .f-logo{display:flex;align-items:center;gap:10px;cursor:none}
-    .f-logo-img{width:34px;height:34px;border-radius:8px;object-fit:cover;flex-shrink:0;display:block}
+    .f-logo-img{width:34px;height:34px;object-fit:contain;flex-shrink:0;display:block}
     .f-logo-txt{font-family:var(--fh);font-size:16px;font-weight:600;color:var(--t0);letter-spacing:-.02em}
     .f-tagline{font-size:14px;color:var(--tm);line-height:1.65;max-width:240px}
     .f-socials{display:flex;gap:8px}
@@ -422,7 +422,7 @@
   <div class="loader-content">
     <div class="loader-icon-wrap">
       <div class="loader-ring"></div>
-      <div class="loader-icon"><img src="/logo.jpeg" alt="ThryveX Group" aria-hidden="true"></div>
+      <div class="loader-icon"><img src="/logo.png" alt="ThryveX Group" aria-hidden="true"></div>
     </div>
     <div class="loader-brand-wrap"><span class="loader-brand">ThryveX Group</span></div>
     <div class="loader-bar-wrap">
@@ -440,7 +440,7 @@
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo" aria-label="ThryveX Group home">
-      <img src="/logo.jpeg" alt="ThryveX Group" class="nav-logo-img">
+      <img src="/logo.png" alt="ThryveX Group" class="nav-logo-img">
       <span class="nav-logo-text">ThryveX Group</span>
     </a>
     <div class="nav-links-wrap">
@@ -1101,7 +1101,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <a href="#hero" class="f-logo" aria-label="ThryveX Group home">
-          <img src="/logo.jpeg" alt="ThryveX Group" class="f-logo-img">
+          <img src="/logo.png" alt="ThryveX Group" class="f-logo-img">
           <span class="f-logo-txt">ThryveX Group</span>
         </a>
         <p class="f-tagline" data-en="AI automation infrastructure for businesses that refuse to stay still." data-es="Infraestructura de automatización IA para negocios que se niegan a quedarse quietos.">AI automation infrastructure for businesses that refuse to stay still.</p>
