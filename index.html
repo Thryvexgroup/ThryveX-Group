@@ -104,8 +104,11 @@
     .cursor.clicking{transform:translate(-50%,-50%) scale(.6)}
 
     /* ── NAVBAR ─────────────────────────────────────── */
-    .navbar{position:fixed;top:0;left:0;right:0;z-index:var(--zn);padding:16px 0;transition:padding .4s ease}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:var(--zn);padding:16px 0;transition:padding .4s ease,background .4s ease,backdrop-filter .4s ease}
     .navbar.scrolled{padding:10px 0}
+    @media(max-width:768px){
+      .navbar{background:rgba(5,5,8,.85);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.06)}
+    }
     .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px}
 
     /* Logo — no bubble */
@@ -141,10 +144,14 @@
     .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
     .hamburger.open span:nth-child(2){opacity:0}
     .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-    .mobile-nav{position:fixed;inset:0;z-index:calc(var(--zn) - 1);background:rgba(2,2,4,.97);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:100px 24px 40px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+    .mobile-nav{position:fixed;inset:0;z-index:calc(var(--zn) - 1);background:rgba(2,2,4,.97);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:80px 24px 40px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
     .mobile-nav.open{opacity:1;visibility:visible}
-    .mobile-nav a{font-family:var(--fh);font-size:2rem;font-weight:600;color:var(--t2);padding:12px 32px;transition:color var(--t);border-radius:var(--r)}
+    .mobile-nav a{font-family:var(--fh);font-size:1.35rem;font-weight:600;color:var(--t2);padding:10px 28px;transition:color var(--t);border-radius:var(--r)}
     .mobile-nav a:hover{color:var(--blue)}
+    .mobile-nav-lang{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.12);border-radius:var(--r-f);overflow:hidden;margin-top:20px}
+    .mobile-nav-lang button{padding:9px 22px;font-size:13px;font-weight:700;color:var(--tm);letter-spacing:.06em;background:none;border:none;cursor:pointer;transition:all var(--t)}
+    .mobile-nav-lang button.on{color:var(--blue);background:rgba(14,165,233,.1)}
+    .mobile-nav-lang span{font-size:11px;color:var(--tdim)}
 
     /* ── BUTTONS ─────────────────────────────────────── */
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 28px;border-radius:var(--r);font-family:var(--fb);font-size:15px;font-weight:600;letter-spacing:-.01em;transition:all var(--t);cursor:none;position:relative;overflow:hidden;white-space:nowrap}
@@ -388,6 +395,9 @@
       .hamburger{display:flex}
       .nav-book span{display:none}
       .nav-book{padding:9px 12px}
+      .nav-logo-text{font-size:14px}
+      /* Keep nav-cta-pill and lang-sw bubbles visible on mobile — they anchor the right side */
+      .lang-sw{display:none}
       .services-grid{grid-template-columns:1fr;gap:0}
       .pipe-step{flex:0 0 calc(50% - 10px)}
       .f-row{grid-template-columns:1fr}
@@ -396,6 +406,7 @@
       .cta-btns{flex-direction:column;align-items:stretch}
       .pipe-note-inner{flex-direction:column;gap:8px;text-align:center}
       .pipe-note-sep{display:none}
+      .hero-scroll{display:none}
     }
     @media(max-width:580px){
       .pipe-step{flex:0 0 100%;max-width:360px}
@@ -406,6 +417,7 @@
       .hero{padding:120px 0 80px}
       .hero-ctas{flex-direction:column;align-items:stretch}
       .sec-h{font-size:2.2rem}
+      .hero-scroll{display:none}
     }
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
@@ -479,6 +491,11 @@
   <a href="#why" data-en="Why ThryveX" data-es="Por Qué ThryveX">Why ThryveX</a>
   <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
   <a href="#contact" class="btn btn-primary" style="margin-top:20px" data-en="Book a Strategy Call" data-es="Agendar una Llamada">Book a Strategy Call</a>
+  <div class="mobile-nav-lang" aria-label="Language switcher">
+    <button class="lang-opt on" data-lang="en" aria-label="English">EN</button>
+    <span aria-hidden="true">|</span>
+    <button class="lang-opt" data-lang="es" aria-label="Español">ES</button>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -790,7 +807,7 @@
   <div class="contact-aurora" aria-hidden="true"></div>
   <div class="container">
     <div class="sec-header">
-      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="Get In Touch" data-es="Contáctame">Get In Touch</span></div>
+      <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span data-en="Get In Touch" data-es="Contacto">Get In Touch</span></div>
       <h2 class="sec-h reveal d1"><span data-en="Let's Build Something" data-es="Construyamos Algo">Let's Build Something</span><br><span class="g" data-en="That Actually Works." data-es="Que Realmente Funcione.">That Actually Works.</span></h2>
       <p class="sec-sub reveal d2" data-en="Book a free strategy call. ThryveX maps the biggest automation opportunities and shows exactly where to start." data-es="Agenda una llamada de estrategia gratuita. ThryveX mapea las mayores oportunidades de automatización y muestra exactamente dónde comenzar.">Book a free strategy call. ThryveX maps the biggest automation opportunities and shows exactly where to start.</p>
     </div>
