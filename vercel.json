@@ -2,27 +2,67 @@
   "headers": [
     {
       "source": "/favicon.svg",
-      "headers": [{ "key": "Content-Type", "value": "image/svg+xml" }]
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/svg+xml"
+        }
+      ]
     },
     {
       "source": "/logo.png",
-      "headers": [{ "key": "Content-Type", "value": "image/png" }]
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/png"
+        }
+      ]
     },
     {
       "source": "/logo.jpeg",
-      "headers": [{ "key": "Content-Type", "value": "image/jpeg" }]
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/jpeg"
+        }
+      ]
     },
     {
       "source": "/favicon.ico",
-      "headers": [{ "key": "Content-Type", "value": "image/x-icon" }]
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/x-icon"
+        }
+      ]
     },
     {
       "source": "/favicon-32x32.png",
-      "headers": [{ "key": "Content-Type", "value": "image/png" }]
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/png"
+        }
+      ]
+    },
+    {
+      "source": "/apple-touch-icon.png",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/png"
+        }
+      ]
     }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/((?!api/)(?:[^.]+|.+\\.html)$)", "destination": "/index.html" }
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/((?!api/)(?:[^.]+|.+\\.html)$)",
+      "destination": "/index.html"
+    }
   ]
 }
