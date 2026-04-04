@@ -18,7 +18,8 @@
       "Bash(sed -i '' '/\\\\.pipe-tools{/d' index.html)",
       "Bash(sed -i '' '/\\\\.pipe-tool{/d' index.html)",
       "Bash(python3 -c ':*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(convert --version)"
     ]
   }
 }

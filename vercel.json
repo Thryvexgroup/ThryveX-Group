@@ -11,6 +11,14 @@
     {
       "source": "/logo.jpeg",
       "headers": [{ "key": "Content-Type", "value": "image/jpeg" }]
+    },
+    {
+      "source": "/favicon.ico",
+      "headers": [{ "key": "Content-Type", "value": "image/x-icon" }]
+    },
+    {
+      "source": "/favicon-32x32.png",
+      "headers": [{ "key": "Content-Type", "value": "image/png" }]
     }
   ],
   "rewrites": [
