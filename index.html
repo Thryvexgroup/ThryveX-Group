@@ -2822,6 +2822,24 @@
       }
     }
   </style>
+<script>
+  (function(){
+    var ts = Date.now();
+    var existing = document.querySelectorAll('link[rel*="icon"]');
+    existing.forEach(function(el){ el.parentNode.removeChild(el); });
+    function addLink(rel, href, sizes){
+      var l = document.createElement('link');
+      l.rel = rel;
+      l.type = 'image/png';
+      l.href = href + '?v=' + ts;
+      if(sizes) l.setAttribute('sizes', sizes);
+      document.head.appendChild(l);
+    }
+    addLink('icon', '/favicon-32x32.png', '32x32');
+    addLink('shortcut icon', '/favicon-32x32.png');
+    addLink('apple-touch-icon', '/apple-touch-icon.png', '180x180');
+  })();
+</script>
 </head>
 
 <body class="loading">
