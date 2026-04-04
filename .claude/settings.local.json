@@ -17,7 +17,8 @@
       "Bash(sed -i '' 's|\\\\.loader-icon{width:78px;height:78px;border-radius:20px;overflow:hidden;animation:pulse-glow 2.5s ease infinite}|.loader-icon{width:78px;height:78px;border-radius:20px;overflow:visible;animation:pulse-glow 2.5s ease infinite}|' index.html)",
       "Bash(sed -i '' '/\\\\.pipe-tools{/d' index.html)",
       "Bash(sed -i '' '/\\\\.pipe-tool{/d' index.html)",
-      "Bash(python3 -c ':*)"
+      "Bash(python3 -c ':*)",
+      "Bash(python3:*)"
     ]
   }
 }
