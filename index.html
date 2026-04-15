@@ -4127,7 +4127,7 @@
           referral_source: form.querySelector('[name="referral_source"]').value
         };
         try {
-          const res = await fetch('https://hook.us2.make.com/jbnfm1436jkxme8njcs17tlckczg3x9k', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+          const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
           if (res.ok) { form.style.display = 'none'; fSuccess && fSuccess.classList.add('show'); }
           else {
             const j = await res.json().catch(() => ({}));
