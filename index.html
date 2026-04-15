@@ -3516,103 +3516,84 @@
           <form id="contactForm" class="contact-form" novalidate aria-label="Contact form">
             <div class="f-row">
               <div class="f-group">
-                <label class="f-label" for="fname" data-en="Full Name" data-es="Nombre Completo">Full Name</label>
-                <input class="f-input" type="text" id="fname" name="name" placeholder="Full Name" required
-                  autocomplete="name">
+                <label class="f-label" for="fname">First Name <span style="color:var(--acc)">*</span></label>
+                <input class="f-input" type="text" id="fname" name="first_name" placeholder="First Name" required
+                  autocomplete="given-name">
               </div>
               <div class="f-group">
-                <label class="f-label" for="femail" data-en="Email" data-es="Correo">Email</label>
+                <label class="f-label" for="femail">Email <span style="color:var(--acc)">*</span></label>
                 <input class="f-input" type="email" id="femail" name="email" placeholder="email@example.com" required
                   autocomplete="email">
               </div>
             </div>
             <div class="f-row">
               <div class="f-group">
-                <label class="f-label" for="fcompany" data-en="Company" data-es="Empresa">Company</label>
-                <input class="f-input" type="text" id="fcompany" name="company" placeholder="Company Name"
-                  autocomplete="organization">
+                <label class="f-label" for="fphone">Phone <span style="opacity:.5;font-size:.8em">(optional)</span></label>
+                <input class="f-input" type="tel" id="fphone" name="phone" placeholder="Phone Number"
+                  autocomplete="tel">
               </div>
               <div class="f-group">
-                <label class="f-label" for="fservice" data-en="Service Needed" data-es="Servicio Requerido">Service
-                  Needed</label>
-                <select class="f-select" id="fservice" name="service">
-                  <option value="">Select a service...</option>
-                  <option value="ai-automation" data-en="AI Automation" data-es="Automatización IA">AI Automation
-                  </option>
-                  <option value="crm" data-en="CRM Implementation" data-es="Implementación de CRM">CRM Implementation
-                  </option>
-                  <option value="website" data-en="Website Development" data-es="Desarrollo Web">Website Development
-                  </option>
-                  <option value="chatbot" data-en="AI Chatbot" data-es="Chatbot de IA">AI Chatbot</option>
-                  <option value="workflow" data-en="Workflow Automation" data-es="Automatización de Flujos">Workflow
-                    Automation</option>
-                  <option value="analytics" data-en="Data & Analytics" data-es="Datos y Analítica">Data & Analytics
-                  </option>
-                  <option value="full" data-en="Full Package" data-es="Paquete Completo">Full Package</option>
-                </select>
-              </div>
-            </div>
-            <div class="f-row">
-              <div class="f-group">
-                <label class="f-label" for="fphone" data-en="Phone Number" data-es="Número de Teléfono">Phone
-                  Number</label>
-                <div class="f-phone-row">
-                  <div class="pfx-wrap">
-                    <input class="f-input" type="text" id="fphoneprefix" name="phone_prefix" placeholder="Prefix"
-                      autocomplete="off" readonly>
-                    <div class="pfx-drop" id="phonePfxDrop">
-                      <input class="pfx-search" type="text" placeholder="Search country or code…" autocomplete="off">
-                      <div class="pfx-list" id="phonePfxList"></div>
-                    </div>
-                  </div>
-                  <input class="f-input" type="tel" id="fphone" name="phone" placeholder="Phone Number"
-                    autocomplete="tel">
-                </div>
-              </div>
-              <div class="f-group">
-                <label class="f-label" for="fcontact" data-en="Preferred Contact" data-es="Contacto Preferido">Preferred
-                  Contact</label>
+                <label class="f-label" for="fcontact">Preferred Contact Method</label>
                 <select class="f-select" id="fcontact" name="contact_method">
                   <option value="">Select method...</option>
-                  <option value="phone">Phone Call</option>
-                  <option value="whatsapp">WhatsApp</option>
-                  <option value="videocall">Video Call</option>
                   <option value="email">Email</option>
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="phone">Phone Call</option>
                 </select>
-              </div>
-            </div>
-            <div class="f-group">
-              <label class="f-label" data-en="Would you like to add a different WhatsApp number?"
-                data-es="¿Desea agregar un número de WhatsApp diferente?">Would you like to add a different WhatsApp
-                number?</label>
-              <div class="f-toggle-row">
-                <label class="f-toggle-opt"><input type="radio" name="has_whatsapp" value="no" checked><span
-                    data-en="No" data-es="No">No</span></label>
-                <label class="f-toggle-opt"><input type="radio" name="has_whatsapp" value="yes"><span data-en="Yes"
-                    data-es="Sí">Yes</span></label>
               </div>
             </div>
             <div class="f-group" id="waGroup" style="display:none">
-              <label class="f-label" for="waphone" data-en="WhatsApp Number" data-es="Número de WhatsApp">WhatsApp
-                Number</label>
-              <div class="f-phone-row">
-                <div class="pfx-wrap">
-                  <input class="f-input" type="text" id="waphoneprefix" name="wa_prefix" placeholder="Prefix"
-                    autocomplete="off" readonly>
-                  <div class="pfx-drop" id="waPfxDrop">
-                    <input class="pfx-search" type="text" placeholder="Search country or code…" autocomplete="off">
-                    <div class="pfx-list" id="waPfxList"></div>
-                  </div>
-                </div>
-                <input class="f-input" type="tel" id="waphone" name="wa_number" placeholder="WhatsApp Number"
-                  autocomplete="tel">
+              <label class="f-label" for="waphone">WhatsApp Number <span style="opacity:.5;font-size:.8em">(if different from phone above)</span></label>
+              <input class="f-input" type="tel" id="waphone" name="wa_number" placeholder="WhatsApp Number"
+                autocomplete="tel">
+            </div>
+            <div class="f-group">
+              <label class="f-label" for="fbusiness">What does your business do?</label>
+              <input class="f-input" type="text" id="fbusiness" name="business_description"
+                placeholder="Briefly describe your business">
+            </div>
+            <div class="f-group">
+              <label class="f-label" for="fchallenge">What's your biggest operational challenge right now?</label>
+              <textarea class="f-textarea" id="fchallenge" name="operational_challenge"
+                placeholder="Describe your biggest challenge..."></textarea>
+            </div>
+            <div class="f-group">
+              <label class="f-label" for="fsuccess">What would success look like after working with us?</label>
+              <textarea class="f-textarea" id="fsuccess" name="success_vision"
+                placeholder="Describe what success looks like..."></textarea>
+            </div>
+            <div class="f-row">
+              <div class="f-group">
+                <label class="f-label" for="fservice">Which service are you interested in?</label>
+                <select class="f-select" id="fservice" name="service">
+                  <option value="">Select a service...</option>
+                  <option value="ai-automation-crm">AI Automation &amp; CRM Implementation</option>
+                  <option value="website">Website Development</option>
+                  <option value="both">Both</option>
+                </select>
+              </div>
+              <div class="f-group">
+                <label class="f-label" for="ftimeline">What's your timeline?</label>
+                <select class="f-select" id="ftimeline" name="timeline">
+                  <option value="">Select timeline...</option>
+                  <option value="asap">ASAP</option>
+                  <option value="within-1-month">Within 1 month</option>
+                  <option value="1-3-months">1–3 months</option>
+                  <option value="3-6-months">3–6 months</option>
+                  <option value="exploring">Just exploring</option>
+                </select>
               </div>
             </div>
             <div class="f-group">
-              <label class="f-label" for="fmessage" data-en="Tell Us About Your Business"
-                data-es="Cuéntanos Sobre Tu Negocio">Tell Us About Your Business</label>
-              <textarea class="f-textarea" id="fmessage" name="message"
-                placeholder="Tell us about your business..."></textarea>
+              <label class="f-label" for="fhear">How did you hear about us?</label>
+              <select class="f-select" id="fhear" name="referral_source">
+                <option value="">Select source...</option>
+                <option value="google">Google</option>
+                <option value="instagram">Instagram</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="referral">Referral</option>
+                <option value="other">Other</option>
+              </select>
             </div>
             <div class="f-error" id="formError"></div>
             <button type="submit" class="btn btn-primary btn-lg f-submit magnetic">
@@ -3620,7 +3601,7 @@
                 <line x1="22" y1="2" x2="11" y2="13" />
                 <polygon points="22 2 15 22 11 13 2 9 22 2" />
               </svg>
-              <span data-en="Send Message" data-es="Enviar Mensaje">Send Message</span>
+              <span>Send Message</span>
             </button>
           </form>
           <div class="f-success" id="formSuccess" role="alert" aria-live="polite">
@@ -3628,10 +3609,8 @@
                 stroke-width="2" stroke-linecap="round">
                 <polyline points="20 6 9 17 4 12" />
               </svg></div>
-            <h3 data-en="Message Sent!" data-es="¡Mensaje Enviado!">Message Sent!</h3>
-            <p data-en="Message received. ThryveX Group will review it and be in touch shortly."
-              data-es="Mensaje recibido. ThryveX Group lo revisará y se pondrá en contacto pronto.">Message received.
-              ThryveX Group will review it and be in touch shortly.</p>
+            <h3>Thank You!</h3>
+            <p>Thank you! We'll review your answers and reach out within 24 hours to schedule your strategy call.</p>
           </div>
         </div>
       </div>
@@ -4091,14 +4070,13 @@
 
       /* WhatsApp field toggle */
       (function () {
-        document.querySelectorAll('[name="has_whatsapp"]').forEach(r => {
-          r.addEventListener('change', () => {
+        const contactSelect = document.getElementById('fcontact');
+        if (contactSelect) {
+          contactSelect.addEventListener('change', () => {
             const g = document.getElementById('waGroup');
-            if (g) g.style.display = r.value === 'yes' ? 'flex' : 'none';
+            if (g) g.style.display = contactSelect.value === 'whatsapp' ? 'block' : 'none';
           });
-        });
-        const wg = document.getElementById('waGroup');
-        if (wg) wg.style.flexDirection = 'column';
+        }
       })();
 
       const form = document.getElementById('contactForm');
@@ -4109,27 +4087,23 @@
         const btn = form.querySelector('.f-submit'), span = btn && btn.querySelector('span');
         if (fError) { fError.textContent = ''; fError.classList.remove('show'); }
         if (btn) btn.disabled = true;
-        if (span) span.textContent = lang === 'es' ? 'Enviando...' : 'Sending...';
-        const pfx = form.querySelector('[name="phone_prefix"]');
-        const pnum = form.querySelector('[name="phone"]');
-        const phone = pfx && pnum && pnum.value ? (pfx.value + ' ' + pnum.value).trim() : '';
-        const hasWa = form.querySelector('[name="has_whatsapp"]:checked');
-        const waPfx = form.querySelector('[name="wa_prefix"]');
-        const waNum = form.querySelector('[name="wa_number"]');
-        const whatsapp = hasWa && hasWa.value === 'yes' && waNum && waNum.value ? (waPfx.value + ' ' + waNum.value).trim() : '';
-        const cm = form.querySelector('[name="contact_method"]');
+        if (span) span.textContent = 'Sending...';
+        const waNumEl = form.querySelector('[name="wa_number"]');
         const data = {
-          name: form.querySelector('[name="name"]').value,
+          first_name: form.querySelector('[name="first_name"]').value,
           email: form.querySelector('[name="email"]').value,
-          company: form.querySelector('[name="company"]').value,
+          phone: form.querySelector('[name="phone"]').value,
+          contact_method: form.querySelector('[name="contact_method"]').value,
+          wa_number: waNumEl ? waNumEl.value : '',
+          business_description: form.querySelector('[name="business_description"]').value,
+          operational_challenge: form.querySelector('[name="operational_challenge"]').value,
+          success_vision: form.querySelector('[name="success_vision"]').value,
           service: form.querySelector('[name="service"]').value,
-          phone,
-          whatsapp,
-          contact_method: cm ? cm.value : '',
-          message: form.querySelector('[name="message"]').value
+          timeline: form.querySelector('[name="timeline"]').value,
+          referral_source: form.querySelector('[name="referral_source"]').value
         };
         try {
-          const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+          const res = await fetch('https://hook.us2.make.com/jbnfm1436jkxme8njcs17tlckczg3x9k', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
           if (res.ok) { form.style.display = 'none'; fSuccess && fSuccess.classList.add('show'); }
           else {
             const j = await res.json().catch(() => ({}));
@@ -4137,9 +4111,9 @@
           }
         } catch (err) {
           if (btn) btn.disabled = false;
-          if (span) span.textContent = lang === 'es' ? 'Enviar Mensaje' : 'Send Message';
+          if (span) span.textContent = 'Send Message';
           if (fError) {
-            fError.textContent = lang === 'es' ? 'Error al enviar. Por favor intenta de nuevo o escríbenos a services@thryvexgroup.com' : 'Failed to send. Please try again or email us at services@thryvexgroup.com';
+            fError.textContent = 'Failed to send. Please try again or email us at services@thryvexgroup.com';
             fError.classList.add('show');
           }
         }
