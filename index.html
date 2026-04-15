@@ -3528,9 +3528,19 @@
             </div>
             <div class="f-row">
               <div class="f-group">
-                <label class="f-label" for="fphone">Phone <span style="opacity:.5;font-size:.8em">(optional)</span></label>
-                <input class="f-input" type="tel" id="fphone" name="phone" placeholder="Phone Number"
-                  autocomplete="tel">
+                <label class="f-label" for="fphone">Phone</label>
+                <div class="f-phone-row">
+                  <div class="pfx-wrap">
+                    <input class="f-input" type="text" id="fphoneprefix" name="phone_prefix" placeholder="Prefix"
+                      autocomplete="off" readonly>
+                    <div class="pfx-drop" id="phonePfxDrop">
+                      <input class="pfx-search" type="text" placeholder="Search country or code…" autocomplete="off">
+                      <div class="pfx-list" id="phonePfxList"></div>
+                    </div>
+                  </div>
+                  <input class="f-input" type="tel" id="fphone" name="phone" placeholder="Phone Number"
+                    autocomplete="tel">
+                </div>
               </div>
               <div class="f-group">
                 <label class="f-label" for="fcontact">Preferred Contact Method</label>
@@ -3539,13 +3549,24 @@
                   <option value="email">Email</option>
                   <option value="whatsapp">WhatsApp</option>
                   <option value="phone">Phone Call</option>
+                  <option value="videocall">Video Call</option>
                 </select>
               </div>
             </div>
             <div class="f-group" id="waGroup" style="display:none">
               <label class="f-label" for="waphone">WhatsApp Number <span style="opacity:.5;font-size:.8em">(if different from phone above)</span></label>
-              <input class="f-input" type="tel" id="waphone" name="wa_number" placeholder="WhatsApp Number"
-                autocomplete="tel">
+              <div class="f-phone-row">
+                <div class="pfx-wrap">
+                  <input class="f-input" type="text" id="waphoneprefix" name="wa_prefix" placeholder="Prefix"
+                    autocomplete="off" readonly>
+                  <div class="pfx-drop" id="waPfxDrop">
+                    <input class="pfx-search" type="text" placeholder="Search country or code…" autocomplete="off">
+                    <div class="pfx-list" id="waPfxList"></div>
+                  </div>
+                </div>
+                <input class="f-input" type="tel" id="waphone" name="wa_number" placeholder="WhatsApp Number"
+                  autocomplete="tel">
+              </div>
             </div>
             <div class="f-group">
               <label class="f-label" for="fbusiness">What does your business do?</label>
@@ -4088,13 +4109,18 @@
         if (fError) { fError.textContent = ''; fError.classList.remove('show'); }
         if (btn) btn.disabled = true;
         if (span) span.textContent = 'Sending...';
+        const pfxEl = form.querySelector('[name="phone_prefix"]');
+        const pnumEl = form.querySelector('[name="phone"]');
+        const phone = pfxEl && pnumEl && pnumEl.value ? (pfxEl.value + ' ' + pnumEl.value).trim() : (pnumEl ? pnumEl.value : '');
+        const waPfxEl = form.querySelector('[name="wa_prefix"]');
         const waNumEl = form.querySelector('[name="wa_number"]');
+        const wa_number = waPfxEl && waNumEl && waNumEl.value ? (waPfxEl.value + ' ' + waNumEl.value).trim() : (waNumEl ? waNumEl.value : '');
         const data = {
           first_name: form.querySelector('[name="first_name"]').value,
           email: form.querySelector('[name="email"]').value,
-          phone: form.querySelector('[name="phone"]').value,
+          phone,
           contact_method: form.querySelector('[name="contact_method"]').value,
-          wa_number: waNumEl ? waNumEl.value : '',
+          wa_number,
           business_description: form.querySelector('[name="business_description"]').value,
           operational_challenge: form.querySelector('[name="operational_challenge"]').value,
           success_vision: form.querySelector('[name="success_vision"]').value,
@@ -4113,7 +4139,7 @@
           if (btn) btn.disabled = false;
           if (span) span.textContent = 'Send Message';
           if (fError) {
-            fError.textContent = 'Failed to send. Please try again or email us at services@thryvexgroup.com';
+            fError.innerHTML = 'Failed to send. Please try again or email us at <a href="mailto:services@thryvexgroup.com" style="color:inherit;text-decoration:underline">services@thryvexgroup.com</a>';
             fError.classList.add('show');
           }
         }
