@@ -3036,6 +3036,61 @@
     .cv2-floor, .s-div::after { animation: none; }
   }
 </style>
+
+<!-- ══ CINEMATIC V2.1 — WOW pass: headline reveal · mouse light · live pipeline ══ -->
+<style id="cinematic-v2b">
+  /* ── 1. MOUSE-FOLLOW LIGHT ───────────────────────────────────── */
+  .cv2-spotlight {
+    position: fixed; inset: 0; z-index: 9996; pointer-events: none;
+    opacity: 0; transition: opacity .5s ease; mix-blend-mode: screen;
+    background: radial-gradient(560px circle at var(--cx, 50%) var(--cy, 50%),
+      rgba(56,189,248,.08), rgba(124,58,237,.05) 34%, transparent 62%);
+  }
+  .cv2-spotlight.on { opacity: 1; }
+  @media (max-width: 860px), (pointer: coarse) { .cv2-spotlight { display: none; } }
+
+  /* ── 2. CINEMATIC HEADLINE REVEAL (bilingual-safe, element-level) ─ */
+  @media (prefers-reduced-motion: no-preference) {
+    .cv2-h {
+      position: relative;
+      opacity: 0; transform: translateY(40px);
+      filter: blur(16px);
+      -webkit-clip-path: inset(0 0 104% 0); clip-path: inset(0 0 104% 0);
+      transition: opacity .85s var(--cv2-ease), transform 1s var(--cv2-ease),
+                  filter .85s var(--cv2-ease), clip-path 1s var(--cv2-ease);
+      will-change: opacity, transform, filter, clip-path;
+    }
+    .cv2-h.in {
+      opacity: 1; transform: none; filter: blur(0);
+      -webkit-clip-path: inset(0 0 -12% 0); clip-path: inset(0 0 -12% 0);
+    }
+    /* light sweep as the title "assembles" */
+    .cv2-h::after {
+      content: ''; position: absolute; inset: -2% -4%; pointer-events: none; opacity: 0;
+      background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,.55) 50%, transparent 58%);
+      background-size: 260% 100%; background-position: 120% 0;
+    }
+    .cv2-h.in::after { animation: cv2-hsheen 1.05s ease .12s 1; }
+  }
+  @keyframes cv2-hsheen {
+    0% { opacity: 0; background-position: 120% 0 }
+    30% { opacity: .65 }
+    100% { opacity: 0; background-position: -50% 0 }
+  }
+
+  /* ── 3. LIVE PIPELINE DATA FLOW (desktop) ────────────────────── */
+  @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+    .pipe-conn-line {
+      background-image: linear-gradient(90deg,
+        rgba(14,165,233,.10), rgba(124,58,237,.5) 35%,
+        rgba(125,211,252,.95) 50%, rgba(124,58,237,.5) 65%, rgba(14,165,233,.10)) !important;
+      background-size: 220% 100% !important;
+      animation: cv2-stream 1.5s linear infinite;
+    }
+  }
+  @keyframes cv2-stream { from { background-position: 200% 0 } to { background-position: -200% 0 } }
+  .pm-score-num { font-variant-numeric: tabular-nums; }
+</style>
 </head>
 
 <body class="loading">
@@ -4480,6 +4535,78 @@
             });
           }
         }, { passive: true });
+      }
+    })();
+  </script>
+
+  <!-- ══ CINEMATIC V2.1 — WOW behaviors (additive, non-blocking) ══ -->
+  <script>
+    (function () {
+      'use strict';
+      var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var fine = window.matchMedia('(min-width:861px) and (pointer:fine)').matches;
+
+      /* 1 ─ Mouse-follow light ─────────────────────────────────── */
+      if (fine && !rm) {
+        var sp = document.createElement('div');
+        sp.className = 'cv2-spotlight'; sp.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(sp);
+        var px = 50, py = 50, tick = false;
+        window.addEventListener('mousemove', function (e) {
+          px = e.clientX / window.innerWidth * 100;
+          py = e.clientY / window.innerHeight * 100;
+          if (!sp.classList.contains('on')) sp.classList.add('on');
+          if (!tick) {
+            tick = true;
+            requestAnimationFrame(function () {
+              sp.style.setProperty('--cx', px + '%');
+              sp.style.setProperty('--cy', py + '%');
+              tick = false;
+            });
+          }
+        }, { passive: true });
+      }
+
+      /* 2 ─ Cinematic headline reveal ──────────────────────────── */
+      var heads = document.querySelectorAll('.sec-h, .cta-h, .hero-title');
+      heads.forEach(function (h) { h.classList.add('cv2-h'); });
+
+      var heroTitle = document.querySelector('.hero-title');
+      if (heroTitle) {
+        heroTitle.style.animation = 'none'; /* hand control to the reveal */
+        var iv = setInterval(function () {
+          if (!document.body.classList.contains('loading')) {
+            clearInterval(iv);
+            setTimeout(function () { heroTitle.classList.add('in'); }, 160);
+          }
+        }, 80);
+      }
+      /* failsafe: never leave a heading hidden if its observer didn't fire */
+      setTimeout(function () {
+        document.querySelectorAll('.cv2-h:not(.in)').forEach(function (h) {
+          var r = h.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) h.classList.add('in');
+        });
+      }, 5000);
+
+      /* 3 ─ Pipeline AI-score count-up ─────────────────────────── */
+      var scoreNum = document.querySelector('.pm-score-num');
+      if (scoreNum && !rm) {
+        var ran = false;
+        var io = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting && !ran) {
+            ran = true; io.disconnect();
+            var target = 87, t0 = null, dur = 1500;
+            (function step(t) {
+              if (!t0) t0 = t;
+              var p = Math.min((t - t0) / dur, 1);
+              var v = Math.round((1 - Math.pow(1 - p, 3)) * target);
+              scoreNum.textContent = v + ' / 100';
+              if (p < 1) requestAnimationFrame(step);
+            })(performance.now());
+          }
+        }, { threshold: 0.6 });
+        io.observe(scoreNum);
       }
     })();
   </script>
