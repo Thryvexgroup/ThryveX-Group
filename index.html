@@ -3094,6 +3094,56 @@
   @media (prefers-reduced-motion: reduce) {
     #loader .loader-icon img { animation: none; }
   }
+
+  /* ── 5. BRIGHTER NAV + BUTTONS (were reading too dark/flat) ───── */
+  .nav-logo-pill, .nav-links, .nav-cta-pill, .lang-sw {
+    background: rgba(26, 31, 52, .72) !important;
+    border-color: rgba(255, 255, 255, .18) !important;
+    box-shadow: 0 6px 26px rgba(0,0,0,.35),
+                inset 0 1px 0 rgba(255,255,255,.14),
+                0 0 0 1px rgba(14,165,233,.06) !important;
+  }
+  /* keep them defined (not nearly-invisible) once scrolled */
+  .navbar.scrolled .nav-logo-pill,
+  .navbar.scrolled .nav-links,
+  .navbar.scrolled .nav-cta-pill,
+  .navbar.scrolled .lang-sw {
+    background: rgba(22, 27, 46, .6) !important;
+    border-color: rgba(255, 255, 255, .15) !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,.4),
+                inset 0 1px 0 rgba(255,255,255,.12) !important;
+  }
+  .nav-links a { color: var(--t2) !important; }
+  .nav-links a:hover, .nav-links a.active {
+    color: #fff !important; background: rgba(255,255,255,.12) !important;
+  }
+  .lang-opt { color: var(--t3) !important; }
+
+  /* "Apply" button — make it glow / pop */
+  .nav-book {
+    box-shadow: 0 4px 20px rgba(14,165,233,.45),
+                0 0 0 1px rgba(56,189,248,.35),
+                inset 0 1px 0 rgba(255,255,255,.28) !important;
+  }
+  .nav-book:hover {
+    opacity: 1 !important; transform: translateY(-1px) !important;
+    box-shadow: 0 7px 30px rgba(14,165,233,.7),
+                0 0 0 1px rgba(56,189,248,.55),
+                inset 0 1px 0 rgba(255,255,255,.35) !important;
+  }
+
+  /* Outline buttons were near-black glass — lift them */
+  .btn-outline {
+    background: rgba(255,255,255,.07) !important;
+    border-color: rgba(255,255,255,.2) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.1) !important;
+    color: var(--t1) !important;
+  }
+  .btn-outline:hover {
+    background: rgba(255,255,255,.11) !important;
+    border-color: rgba(56,189,248,.45) !important;
+    box-shadow: 0 6px 24px rgba(14,165,233,.25), inset 0 1px 0 rgba(255,255,255,.14) !important;
+  }
 </style>
 </head>
 
