@@ -61,6 +61,14 @@
       "destination": "/api/$1"
     },
     {
+      "source": "/book",
+      "destination": "/book.html"
+    },
+    {
+      "source": "/book.html",
+      "destination": "/book.html"
+    },
+    {
       "source": "/((?!api/)(?:[^.]+|.+\\.html)$)",
       "destination": "/index.html"
     }

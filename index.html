@@ -3142,6 +3142,37 @@
     border-color: rgba(56,189,248,.45) !important;
     box-shadow: 0 6px 24px rgba(14,165,233,.25), inset 0 1px 0 rgba(255,255,255,.14) !important;
   }
+
+  /* ── 6. BOOKING CTA card (replaces the old contact form) ─────── */
+  .book-cta {
+    display: flex; flex-direction: column; align-items: flex-start;
+    height: 100%; justify-content: center;
+    padding: 44px 38px;
+    border-radius: 22px;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(14,165,233,.08), transparent 60%),
+      rgba(13,13,26,.55);
+    border: 1px solid var(--cbr);
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.06);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  }
+  .book-cta-ico {
+    width: 56px; height: 56px; border-radius: 16px; margin-bottom: 22px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(14,165,233,.12);
+    box-shadow: inset 0 0 0 1px rgba(14,165,233,.22);
+    color: var(--blue-l);
+  }
+  .book-cta-ico svg { width: 28px; height: 28px; }
+  .book-cta-h {
+    font-family: var(--fh); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700;
+    letter-spacing: -.02em; color: var(--t0); line-height: 1.15; margin-bottom: 14px;
+  }
+  .book-cta-p { color: var(--tm); font-size: 1.02rem; line-height: 1.7; margin-bottom: 30px; max-width: 460px; }
+  .book-cta-btn { align-self: stretch; justify-content: center; }
+  .book-cta-alt { margin-top: 18px; font-size: 13.5px; color: var(--tm); }
+  .book-cta-alt a { color: var(--blue-l); text-decoration: none; border-bottom: 1px solid rgba(56,189,248,.4); }
+  .book-cta-alt a:hover { color: #fff; }
 </style>
 </head>
 
@@ -3193,7 +3224,7 @@
       </div>
       <div class="nav-right">
         <div class="nav-cta-pill">
-          <a href="#contact" class="nav-book magnetic" aria-label="Book a Call">
+          <a href="/book" class="nav-book magnetic" aria-label="Book a Call">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
             </svg>
@@ -3219,7 +3250,7 @@
     <a href="#why" data-en="Why ThryveX Group" data-es="Por Qué ThryveX Group">Why ThryveX Group</a>
     <a href="#pipeline" data-en="Process" data-es="Proceso">Process</a>
     <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
-    <a href="#contact" class="btn btn-primary" style="margin-top:20px" data-en="Apply for Your Strategy Call"
+    <a href="/book" class="btn btn-primary" style="margin-top:20px" data-en="Apply for Your Strategy Call"
       data-es="Solicita tu Llamada Estratégica">Apply for Your Strategy Call</a>
     <div class="mobile-nav-lang" aria-label="Language switcher">
       <button class="lang-opt on" data-lang="en" aria-label="English">EN</button>
@@ -3254,7 +3285,7 @@
         businesses run at full capacity, so clients can focus on what matters.
       </p>
       <div class="hero-ctas">
-        <a href="#contact" class="btn btn-primary btn-lg magnetic">
+        <a href="/book" class="btn btn-primary btn-lg magnetic">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
           </svg>
@@ -3816,125 +3847,28 @@
           </div>
         </div>
         <div class="reveal d2">
-          <form id="contactForm" class="contact-form" novalidate aria-label="Contact form">
-            <div class="f-row">
-              <div class="f-group">
-                <label class="f-label" for="fname">First Name <span style="color:var(--acc)">*</span></label>
-                <input class="f-input" type="text" id="fname" name="first_name" placeholder="First Name" required
-                  autocomplete="given-name">
-              </div>
-              <div class="f-group">
-                <label class="f-label" for="femail">Email <span style="color:var(--acc)">*</span></label>
-                <input class="f-input" type="email" id="femail" name="email" placeholder="email@example.com" required
-                  autocomplete="email">
-              </div>
-            </div>
-            <div class="f-row">
-              <div class="f-group">
-                <label class="f-label" for="fphone">Phone</label>
-                <div class="f-phone-row">
-                  <div class="pfx-wrap">
-                    <input class="f-input" type="text" id="fphoneprefix" name="phone_prefix" placeholder="Prefix"
-                      autocomplete="off" readonly>
-                    <div class="pfx-drop" id="phonePfxDrop">
-                      <input class="pfx-search" type="text" placeholder="Search country or code…" autocomplete="off">
-                      <div class="pfx-list" id="phonePfxList"></div>
-                    </div>
-                  </div>
-                  <input class="f-input" type="tel" id="fphone" name="phone" placeholder="Phone Number"
-                    autocomplete="tel">
-                </div>
-              </div>
-              <div class="f-group">
-                <label class="f-label" for="fcontact">Preferred Contact Method</label>
-                <select class="f-select" id="fcontact" name="contact_method">
-                  <option value="">Select method...</option>
-                  <option value="email">Email</option>
-                  <option value="whatsapp">WhatsApp</option>
-                  <option value="phone">Phone Call</option>
-                  <option value="videocall">Video Call</option>
-                </select>
-              </div>
-            </div>
-            <div class="f-group" id="waGroup" style="display:none">
-              <label class="f-label" for="waphone">WhatsApp Number <span style="opacity:.5;font-size:.8em">(if different from phone above)</span></label>
-              <div class="f-phone-row">
-                <div class="pfx-wrap">
-                  <input class="f-input" type="text" id="waphoneprefix" name="wa_prefix" placeholder="Prefix"
-                    autocomplete="off" readonly>
-                  <div class="pfx-drop" id="waPfxDrop">
-                    <input class="pfx-search" type="text" placeholder="Search country or code…" autocomplete="off">
-                    <div class="pfx-list" id="waPfxList"></div>
-                  </div>
-                </div>
-                <input class="f-input" type="tel" id="waphone" name="wa_number" placeholder="WhatsApp Number"
-                  autocomplete="tel">
-              </div>
-            </div>
-            <div class="f-group">
-              <label class="f-label" for="fbusiness">What does your business do?</label>
-              <input class="f-input" type="text" id="fbusiness" name="business_description"
-                placeholder="Briefly describe your business">
-            </div>
-            <div class="f-group">
-              <label class="f-label" for="fchallenge">What's your biggest operational challenge right now?</label>
-              <textarea class="f-textarea" id="fchallenge" name="operational_challenge"
-                placeholder="Describe your biggest challenge..."></textarea>
-            </div>
-            <div class="f-group">
-              <label class="f-label" for="fsuccess">What would success look like after working with us?</label>
-              <textarea class="f-textarea" id="fsuccess" name="success_vision"
-                placeholder="Describe what success looks like..."></textarea>
-            </div>
-            <div class="f-row">
-              <div class="f-group">
-                <label class="f-label" for="fservice">Which service are you interested in?</label>
-                <select class="f-select" id="fservice" name="service">
-                  <option value="">Select a service...</option>
-                  <option value="ai-automation-crm">AI Automation &amp; CRM Implementation</option>
-                  <option value="website">Website Development</option>
-                  <option value="both">Both</option>
-                </select>
-              </div>
-              <div class="f-group">
-                <label class="f-label" for="ftimeline">What's your timeline?</label>
-                <select class="f-select" id="ftimeline" name="timeline">
-                  <option value="">Select timeline...</option>
-                  <option value="asap">ASAP</option>
-                  <option value="within-1-month">Within 1 month</option>
-                  <option value="1-3-months">1–3 months</option>
-                  <option value="3-6-months">3–6 months</option>
-                  <option value="exploring">Just exploring</option>
-                </select>
-              </div>
-            </div>
-            <div class="f-group">
-              <label class="f-label" for="fhear">How did you hear about us?</label>
-              <select class="f-select" id="fhear" name="referral_source">
-                <option value="">Select source...</option>
-                <option value="google">Google</option>
-                <option value="instagram">Instagram</option>
-                <option value="linkedin">LinkedIn</option>
-                <option value="referral">Referral</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="f-error" id="formError"></div>
-            <button type="submit" class="btn btn-primary btn-lg f-submit magnetic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <line x1="22" y1="2" x2="11" y2="13" />
-                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+          <div class="book-cta">
+            <div class="book-cta-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
+                <path d="m9 16 2 2 4-4" />
               </svg>
-              <span>Send Message</span>
-            </button>
-          </form>
-          <div class="f-success" id="formSuccess" role="alert" aria-live="polite">
-            <div class="f-success-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg></div>
-            <h3>Thank You!</h3>
-            <p>Thank you! We'll review your answers and reach back out to you soon.</p>
+            </div>
+            <h3 class="book-cta-h" data-en="Book your free strategy call"
+              data-es="Agenda tu llamada de estrategia gratis">Book your free strategy call</h3>
+            <p class="book-cta-p"
+              data-en="Pick a time that works for you. We'll map your biggest automation opportunities and show you exactly where to start — no pressure, just clarity."
+              data-es="Elige un horario que te funcione. Mapearemos tus mayores oportunidades de automatización y te mostraremos exactamente dónde empezar, sin compromiso.">
+              Pick a time that works for you. We'll map your biggest automation opportunities and show you exactly where
+              to start — no pressure, just clarity.</p>
+            <a href="/book" class="btn btn-primary btn-lg book-cta-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
+              </svg>
+              <span data-en="Book Your Strategy Call" data-es="Agenda tu Llamada">Book Your Strategy Call</span>
+            </a>
+            <p class="book-cta-alt"><span data-en="Prefer email?" data-es="¿Prefieres correo?">Prefer email?</span>
+              <a href="mailto:services@thryvexgroup.com">services@thryvexgroup.com</a></p>
           </div>
         </div>
       </div>
@@ -3957,7 +3891,7 @@
           Book a free 30-minute strategy call. ThryveX Group maps the biggest automation opportunities and shows exactly
           where to start. No pressure, just clarity.</p>
         <div class="cta-btns reveal d2">
-          <a href="#contact" class="btn btn-primary btn-lg magnetic">
+          <a href="/book" class="btn btn-primary btn-lg magnetic">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
             </svg>
@@ -4043,7 +3977,7 @@
             <li><a href="mailto:services@thryvexgroup.com">services@thryvexgroup.com</a></li>
             <li><a href="https://wa.me/50765693716" target="_blank" rel="noopener">+507 6569-3716</a></li>
             <li><a href="https://www.instagram.com/thryvexgroup" target="_blank" rel="noopener">@thryvexgroup</a></li>
-            <li><a href="#contact" data-en="Apply for Your Strategy Call →" data-es="Solicita tu Llamada Estratégica →">Apply for Your Strategy Call →</a></li>
+            <li><a href="/book" data-en="Apply for Your Strategy Call →" data-es="Solicita tu Llamada Estratégica →">Apply for Your Strategy Call →</a></li>
           </ul>
         </div>
       </div>

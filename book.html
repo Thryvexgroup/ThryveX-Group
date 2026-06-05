@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Book your free strategy call with ThryveX Group. We'll map your biggest automation opportunities and show you exactly where to start.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Book Your Strategy Call | ThryveX Group">
+  <meta property="og:description"
+    content="Book a free strategy call with ThryveX Group — AI automation systems that capture, qualify and convert.">
+  <meta property="og:url" content="https://www.thryvexgroup.com/book">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.thryvexgroup.com/api/og">
+  <meta name="theme-color" content="#050508">
+  <link rel="canonical" href="https://www.thryvexgroup.com/book">
+  <title>Book Your Strategy Call — ThryveX Group</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=5">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=5">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-0: #020204;
+      --bg-1: #050508;
+      --bg-2: #09090f;
+      --blue: #0EA5E9;
+      --blue-l: #38BDF8;
+      --purple: #7C3AED;
+      --cyan: #06B6D4;
+      --t0: #FFFFFF;
+      --t2: #E2E8F0;
+      --t3: #CBD5E1;
+      --tm: #64748B;
+      --cbr: rgba(255, 255, 255, .12);
+      --f: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --r-f: 9999px;
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--f);
+      background: var(--bg-1);
+      color: var(--t2);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Background */
+    .bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .bg::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% -10%, #0a1326 0%, transparent 60%),
+        radial-gradient(circle at 12% 8%, rgba(14,165,233,.16), transparent 38%),
+        radial-gradient(circle at 88% 92%, rgba(124,58,237,.16), transparent 42%);
+      filter: blur(0);
+    }
+    .bg-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 64px 64px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000, transparent);
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000, transparent);
+    }
+    .vignette {
+      position: fixed; inset: 0; z-index: 5; pointer-events: none;
+      box-shadow: inset 0 0 220px 40px rgba(0,0,0,.5);
+    }
+
+    /* Top bar */
+    .topbar {
+      position: relative; z-index: 10;
+      max-width: 1100px; margin: 0 auto;
+      padding: 22px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; }
+    .brand img { width: 34px; height: 34px; object-fit: contain; }
+    .brand span { font-size: 17px; font-weight: 600; color: var(--t0); }
+    .back {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 16px; border-radius: var(--r-f);
+      background: rgba(26,31,52,.7);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+      font-size: 13.5px; font-weight: 500; color: var(--t3);
+      transition: all .25s ease;
+    }
+    .back:hover { color: #fff; border-color: rgba(56,189,248,.45); }
+    .back svg { width: 15px; height: 15px; }
+
+    /* Header */
+    .head {
+      position: relative; z-index: 10;
+      max-width: 760px; margin: 0 auto;
+      padding: 36px 24px 8px; text-align: center;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 16px; margin-bottom: 22px;
+      border-radius: var(--r-f);
+      border: 1px solid rgba(14,165,233,.25);
+      background: rgba(7,10,22,.5);
+      font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--blue-l);
+    }
+    .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #10B981; box-shadow: 0 0 10px #10B981; }
+    .head h1 {
+      font-size: clamp(2.3rem, 6vw, 3.6rem);
+      font-weight: 700; line-height: 1.05; letter-spacing: -.03em; color: var(--t0);
+      margin-bottom: 18px;
+    }
+    .head h1 .g {
+      background: linear-gradient(135deg, var(--blue), var(--purple) 50%, var(--cyan));
+      background-size: 220% 220%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: flow 9s ease-in-out infinite;
+    }
+    @keyframes flow { 0%,100% { background-position: 0% 50% } 50% { background-position: 100% 50% } }
+    .head p {
+      font-size: clamp(1rem, 2vw, 1.12rem); color: var(--tm);
+      max-width: 600px; margin: 0 auto; line-height: 1.7;
+    }
+
+    /* Widget card */
+    .widget-wrap {
+      position: relative; z-index: 10;
+      max-width: 1040px; margin: 30px auto 60px;
+      padding: 0 16px;
+    }
+    .widget-card {
+      background: rgba(10,12,22,.55);
+      border: 1px solid var(--cbr);
+      border-radius: 22px;
+      box-shadow: 0 30px 80px -30px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.05);
+      padding: 14px;
+      min-height: 800px;
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      overflow: hidden;
+    }
+    .widget-card iframe {
+      width: 100%; border: none; overflow: hidden;
+      min-height: 780px; height: 780px; border-radius: 14px; display: block;
+      background: #fff;
+    }
+    .widget-fallback {
+      text-align: center; padding: 26px 16px 6px; color: var(--tm); font-size: 14px;
+    }
+    .widget-fallback a { color: var(--blue-l); text-decoration: underline; }
+
+    /* Footer */
+    .foot {
+      position: relative; z-index: 10;
+      max-width: 1100px; margin: 0 auto;
+      padding: 26px 24px 40px;
+      display: flex; flex-wrap: wrap; gap: 14px;
+      align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,.06);
+      color: var(--tm); font-size: 13px;
+    }
+    .foot a { color: var(--t3); transition: color .2s; }
+    .foot a:hover { color: #fff; }
+    .foot-links { display: flex; gap: 18px; flex-wrap: wrap; }
+
+    @media (max-width: 600px) {
+      .topbar { padding: 16px; }
+      .brand span { display: none; }
+      .head { padding-top: 20px; }
+      .widget-card iframe { min-height: 820px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .head h1 .g { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"><div class="bg-grid"></div></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="ThryveX Group home">
+      <img src="/logo.png" alt="ThryveX Group">
+      <span>ThryveX Group</span>
+    </a>
+    <a class="back" href="/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      <span>Back to site</span>
+    </a>
+  </header>
+
+  <!-- Header -->
+  <section class="head">
+    <div class="badge"><span class="dot" aria-hidden="true"></span> Free 30-min strategy call</div>
+    <h1>Book Your <span class="g">Strategy Call</span></h1>
+    <p>Pick a time that works for you. We'll map your biggest automation opportunities and show you exactly where to
+      start — no pressure, just clarity.</p>
+  </section>
+
+  <!-- Booking widget -->
+  <div class="widget-wrap">
+    <div class="widget-card">
+      <iframe
+        src="https://source.thryvexgroup.com/widget/booking/GoaSvdUc3KUaJwvNIsMr"
+        style="width:100%;border:none;overflow:hidden;min-height:780px"
+        scrolling="no"
+        id="GoaSvdUc3KUaJwvNIsMr_book"
+        title="Book a strategy call with ThryveX Group"></iframe>
+    </div>
+    <p class="widget-fallback">
+      Trouble booking? Email <a href="mailto:services@thryvexgroup.com">services@thryvexgroup.com</a>
+      or WhatsApp <a href="https://wa.me/50765693716" target="_blank" rel="noopener">+507 6569-3716</a>.
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <span>© 2026 ThryveX Group. All rights reserved.</span>
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <a href="mailto:services@thryvexgroup.com">services@thryvexgroup.com</a>
+      <a href="https://www.instagram.com/thryvexgroup" target="_blank" rel="noopener">@thryvexgroup</a>
+    </div>
+  </footer>
+
+  <script src="https://source.thryvexgroup.com/js/form_embed.js" type="text/javascript"></script>
+</body>
+
+</html>
