@@ -4461,23 +4461,30 @@
         const cards = document.querySelectorAll('.s-card,.p-card,.w-card');
         if (!cards.length) return;
         const isTouch = window.matchMedia('(hover:none)').matches;
-        /* entrance animation */
         const isMobCard = window.innerWidth <= 768;
-        const io = new IntersectionObserver(entries => {
-          entries.forEach(e => {
-            if (e.isIntersecting) {
-              e.target.style.opacity = '1';
-              e.target.style.transform = 'translateY(0) scale(1)';
-              io.unobserve(e.target);
-            }
+
+        /* Entrance animation — reveal each grid as ONE group so cards always
+           animate in strict DOM order (1→2→3→4). The previous per-card
+           approach scrambled order in multi-column grids because rows
+           crossed the viewport at slightly different times. */
+        document.querySelectorAll('.services-grid, .process-grid, .why-grid').forEach(grid => {
+          const items = Array.prototype.slice.call(grid.children)
+            .filter(c => c.matches('.s-card,.p-card,.w-card'));
+          if (!items.length) return;
+          items.forEach((c, i) => {
+            c.style.opacity = '0';
+            c.style.transform = 'translateY(28px) scale(0.97)';
+            c.style.transition = `opacity .6s cubic-bezier(.22,1,.36,1) ${i * .09}s,transform .6s cubic-bezier(.22,1,.36,1) ${i * .09}s`;
           });
-        }, { threshold: 0.05, rootMargin: isMobCard ? '0px 0px 0px 0px' : '0px 0px -20px 0px' });
-        cards.forEach((c, i) => {
-          c.style.opacity = '0';
-          c.style.transform = 'translateY(28px) scale(0.97)';
-          c.style.transition = `opacity .65s cubic-bezier(.22,1,.36,1) ${i * .08}s,transform .65s cubic-bezier(.22,1,.36,1) ${i * .08}s`;
-          io.observe(c);
+          const gio = new IntersectionObserver((entries, obs) => {
+            if (entries.some(e => e.isIntersecting)) {
+              items.forEach(c => { c.style.opacity = '1'; c.style.transform = 'translateY(0) scale(1)'; });
+              obs.disconnect();
+            }
+          }, { threshold: 0.05, rootMargin: isMobCard ? '0px 0px -8% 0px' : '0px 0px -10% 0px' });
+          gio.observe(grid);
         });
+
         /* mobile: highlight card in center of viewport */
         if (isTouch) {
           const mIO = new IntersectionObserver(entries => {
