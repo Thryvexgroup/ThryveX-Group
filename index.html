@@ -37,8 +37,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"ThryveX Group","url":"https://www.thryvexgroup.com","description":"AI Automation Agency","contactPoint":{"@type":"ContactPoint","email":"services@thryvexgroup.com","telephone":"+50765693716"},"sameAs":["https://www.instagram.com/thryvexgroup"]}
@@ -4448,15 +4446,7 @@
         }
       });
 
-      /* ─ 13. GSAP ──────────────────────────────────────────── */
-      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-        /* s-card animations handled by IO observer below to avoid opacity conflict */
-        /* NOTE: .p-card and .w-card are animated by the IO observer below — do NOT add GSAP here
-           as gsap.from() would animate opacity:0→0 (CSS class sets computed opacity:0 as "to" target) */
-      }
-
-      /* ─ 14. PROCESS & WHY CARD REVEAL ────────────────────── */
+      /* ─ 13. PROCESS & WHY CARD REVEAL ────────────────────── */
       (function () {
         const cards = document.querySelectorAll('.s-card,.p-card,.w-card');
         if (!cards.length) return;
