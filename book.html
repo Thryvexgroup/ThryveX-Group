@@ -155,10 +155,37 @@
       min-height: 780px; height: 780px; border-radius: 14px; display: block;
       background: transparent;
     }
-    .widget-fallback {
-      text-align: center; padding: 26px 16px 6px; color: var(--tm); font-size: 14px;
+    /* Contact section */
+    .book-contact {
+      position: relative; z-index: 10;
+      max-width: 920px; margin: 6px auto 0; padding: 26px 24px 8px; text-align: center;
     }
-    .widget-fallback a { color: var(--blue-l); text-decoration: underline; }
+    .book-contact h2 {
+      font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 700;
+      color: var(--t0); letter-spacing: -.02em; margin-bottom: 8px;
+    }
+    .book-contact > p { color: var(--tm); font-size: .98rem; margin-bottom: 24px; }
+    .book-contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .bc-card {
+      display: flex; flex-direction: column; align-items: center; gap: 5px;
+      padding: 22px 16px; border-radius: 16px;
+      background: rgba(13,13,26,.5); border: 1px solid var(--cbr);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+    .bc-card:hover {
+      transform: translateY(-2px); border-color: rgba(56,189,248,.4);
+      background: rgba(20,24,40,.6);
+    }
+    .bc-ico {
+      width: 42px; height: 42px; border-radius: 12px; margin-bottom: 6px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(14,165,233,.12); color: var(--blue-l);
+      box-shadow: inset 0 0 0 1px rgba(14,165,233,.2);
+    }
+    .bc-ico svg { width: 20px; height: 20px; }
+    .bc-lbl { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tm); }
+    .bc-val { font-size: 14px; color: var(--t2); font-weight: 500; word-break: break-word; }
+    @media (max-width: 600px) { .book-contact-grid { grid-template-columns: 1fr; } }
 
     /* Footer */
     .foot {
@@ -224,19 +251,51 @@
         id="GoaSvdUc3KUaJwvNIsMr_book"
         title="Book a strategy call with ThryveX Group"></iframe>
     </div>
-    <p class="widget-fallback">
-      Trouble booking? Email <a href="mailto:services@thryvexgroup.com">services@thryvexgroup.com</a>
-      or WhatsApp <a href="https://wa.me/50765693716" target="_blank" rel="noopener">+507 6569-3716</a>.
-    </p>
   </div>
+
+  <!-- Contact -->
+  <section class="book-contact">
+    <h2>Questions before booking?</h2>
+    <p>Reach out directly — we usually reply fast.</p>
+    <div class="book-contact-grid">
+      <a class="bc-card" href="mailto:services@thryvexgroup.com">
+        <div class="bc-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        </div>
+        <span class="bc-lbl">Email</span>
+        <span class="bc-val">services@thryvexgroup.com</span>
+      </a>
+      <a class="bc-card" href="https://wa.me/50765693716" target="_blank" rel="noopener">
+        <div class="bc-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+          </svg>
+        </div>
+        <span class="bc-lbl">WhatsApp</span>
+        <span class="bc-val">+507 6569-3716</span>
+      </a>
+      <a class="bc-card" href="https://www.instagram.com/thryvexgroup" target="_blank" rel="noopener">
+        <div class="bc-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
+        </div>
+        <span class="bc-lbl">Instagram</span>
+        <span class="bc-val">@thryvexgroup</span>
+      </a>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="foot">
     <span>© 2026 ThryveX Group. All rights reserved.</span>
     <div class="foot-links">
-      <a href="/">Home</a>
-      <a href="mailto:services@thryvexgroup.com">services@thryvexgroup.com</a>
-      <a href="https://www.instagram.com/thryvexgroup" target="_blank" rel="noopener">@thryvexgroup</a>
+      <a href="/">← Back to site</a>
     </div>
   </footer>
 
