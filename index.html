@@ -3250,16 +3250,16 @@
               mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
               mask-composite: exclude;
-      animation: s-beam-spin 5s linear infinite;
     }
-    .s-card:hover .s-beam { opacity: 1; }
+    /* Beam appears + spins only on hover — calmer at rest, lighter on the GPU */
+    .s-card:hover .s-beam { opacity: 1; animation: s-beam-spin 5s linear infinite; }
     @keyframes s-beam-spin { to { --s-beam-a: 360deg; } }
 
-    /* ── Animated gradient shimmer on gradient text ───────────── */
+    /* ── Gentle gradient shimmer (numbers only, slow) ─────────── */
     @keyframes txt-shimmer { to { background-position: 200% center; } }
-    .sec-h .g, .cta-h .g, .p-num, .w-num {
+    .p-num, .w-num {
       background-size: 200% auto;
-      animation: txt-shimmer 6.5s linear infinite;
+      animation: txt-shimmer 9s linear infinite;
     }
 
     /* ── Animated aurora behind the contact section ───────────── */
@@ -3316,8 +3316,8 @@
 
     /* Disable all of the above under reduced motion */
     @media (prefers-reduced-motion: reduce) {
-      .s-beam { animation: none; opacity: 0; }
-      .sec-h .g, .cta-h .g, .p-num, .w-num { animation: none; }
+      .s-beam, .s-card:hover .s-beam { animation: none; opacity: 0; }
+      .p-num, .w-num { animation: none; }
       .contact-aurora { animation: none; }
       .f-loc-arrow { animation: none; }
     }
