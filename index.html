@@ -1026,6 +1026,35 @@
       pointer-events: none
     }
 
+    /* ── Hero 3D network (WebGL) + static fallback ──────────────── */
+    .hero-net {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .hero-net-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      display: none;
+      background:
+        radial-gradient(70% 55% at 50% 0%, rgba(14, 165, 233, .10) 0%, transparent 60%),
+        radial-gradient(50% 50% at 82% 28%, rgba(124, 58, 237, .08) 0%, transparent 60%),
+        radial-gradient(60% 50% at 15% 78%, rgba(6, 182, 212, .07) 0%, transparent 60%);
+    }
+    /* JS running → drop the legacy 2D particle canvas */
+    .hero.hero-enhanced #particleCanvas { display: none; }
+    /* 3D running */
+    .hero.webgl-active .hero-net { opacity: 1; }
+    /* static-gradient fallback (mobile / reduced motion / no WebGL) */
+    .hero.fallback-active .hero-net-fallback { display: block; }
+
     .hero-bg {
       position: absolute;
       inset: 0;
@@ -1657,6 +1686,25 @@
       align-items: center;
       position: relative;
       padding-top: 34px
+    }
+
+    /* Self-playing scroll sequence: let GSAP own the steps + connector dots */
+    .pipe-track.pipe-seq .pipe-step { transition: none !important; }
+    .pipe-track.pipe-seq .pipe-conn-dot { animation: none !important; }
+
+    /* Ambient flow pulse — a glowing dot that keeps travelling the pipeline */
+    .pipe-flow-dot {
+      position: absolute;
+      top: 34px;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      margin-top: -3px;
+      border-radius: 50%;
+      background: var(--blue-l);
+      box-shadow: 0 0 12px 2px rgba(56, 189, 248, .85), 0 0 4px #fff;
+      opacity: 0;
+      pointer-events: none;
     }
 
     .pipe-conn-line {
@@ -2984,7 +3032,7 @@
   .pipe-conn-dot { box-shadow: 0 0 14px 2px var(--blue), 0 0 4px #fff; }
   .pipe-step.in .pipe-icon { box-shadow: 0 0 0 1px rgba(14,165,233,.25), 0 12px 40px -10px rgba(14,165,233,.4); }
   .pipe-mock { transition: transform .4s var(--cv2-ease), box-shadow .4s var(--cv2-ease); }
-  .pipe-step:hover .pipe-mock { transform: translateY(-4px); box-shadow: 0 20px 50px -18px rgba(14,165,233,.4); }
+  .pipe-step:hover .pipe-mock { transform: translateY(-6px) scale(1.06); box-shadow: 0 24px 60px -18px rgba(14,165,233,.45); }
 
   /* ── SECTION DIVIDERS: traveling data pulse ──────────────────── */
   .s-div { position: relative; overflow: hidden; }
@@ -3174,6 +3222,116 @@
   .book-cta-alt a { color: var(--blue-l); text-decoration: none; border-bottom: 1px solid rgba(56,189,248,.4); }
   .book-cta-alt a:hover { color: #fff; }
 </style>
+
+  <!-- Lenis smooth-scroll base styles (foundation) -->
+  <style>
+    html.lenis,
+    html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    /* Word units for GSAP heading reveals */
+    .gsap-word { display: inline-block; }
+
+    /* ── Border beam on service cards ─────────────────────────── */
+    @property --s-beam-a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+    .s-beam {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.5px;
+      pointer-events: none;
+      z-index: 3;
+      opacity: .5;
+      transition: opacity .4s ease;
+      background: conic-gradient(from var(--s-beam-a),
+        transparent 0 70%, var(--blue-l) 80%, #fff 86%, var(--cyan-l) 92%, transparent 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+              mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      animation: s-beam-spin 5s linear infinite;
+    }
+    .s-card:hover .s-beam { opacity: 1; }
+    @keyframes s-beam-spin { to { --s-beam-a: 360deg; } }
+
+    /* ── Animated gradient shimmer on gradient text ───────────── */
+    @keyframes txt-shimmer { to { background-position: 200% center; } }
+    .sec-h .g, .cta-h .g, .p-num, .w-num {
+      background-size: 200% auto;
+      animation: txt-shimmer 6.5s linear infinite;
+    }
+
+    /* ── Animated aurora behind the contact section ───────────── */
+    @keyframes aurora-contact {
+      0%, 100% { transform: translate(-50%, 0)   scale(1)    rotate(0deg); }
+      33%      { transform: translate(-47%, 3%)  scale(1.10) rotate(18deg); }
+      66%      { transform: translate(-53%, -3%) scale(.95)  rotate(-14deg); }
+    }
+    .contact-aurora {
+      width: 1100px;
+      height: 720px;
+      background:
+        radial-gradient(ellipse 50% 50% at 35% 40%, rgba(14, 165, 233, .12) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 55% at 70% 55%, rgba(124, 58, 237, .12) 0%, transparent 70%),
+        radial-gradient(ellipse 45% 45% at 55% 72%, rgba(6, 182, 212, .08) 0%, transparent 70%);
+      animation: aurora-contact 26s ease-in-out infinite;
+    }
+
+    /* ── Footer interactive globe (cobe) ─────────────────────── */
+    .f-globe {
+      width: 210px;
+      max-width: 100%;
+      aspect-ratio: 1 / 1;
+      margin: 18px 0 4px;
+      opacity: 0;
+      transition: opacity .8s ease;
+      cursor: grab;
+      touch-action: pan-y;
+      contain: layout paint;
+    }
+    .f-globe:active { cursor: grabbing; }
+
+    /* ── Footer location line (Panamá → Worldwide) ───────────── */
+    .f-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 16px;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: .01em;
+      color: var(--t3);
+    }
+    .f-location svg { width: 15px; height: 15px; color: var(--blue-l); flex: 0 0 auto; }
+    .f-loc-arrow {
+      color: var(--blue-l);
+      font-weight: 700;
+      animation: f-loc-nudge 2.4s ease-in-out infinite;
+    }
+    @keyframes f-loc-nudge {
+      0%, 100% { transform: translateX(0); opacity: .75; }
+      50%      { transform: translateX(3px); opacity: 1; }
+    }
+
+    /* Disable all of the above under reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .s-beam { animation: none; opacity: 0; }
+      .sec-h .g, .cta-h .g, .p-num, .w-num { animation: none; }
+      .contact-aurora { animation: none; }
+      .f-loc-arrow { animation: none; }
+    }
+  </style>
+
+  <!-- Three.js ESM import map (hero WebGL background) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js",
+      "cobe": "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm"
+    }
+  }
+  </script>
 </head>
 
 <body class="loading">
@@ -3262,6 +3420,8 @@
   <!-- HERO -->
   <section id="hero" class="hero" aria-label="Hero">
     <canvas id="particleCanvas" aria-hidden="true"></canvas>
+    <canvas id="heroNet" class="hero-net" aria-hidden="true"></canvas>
+    <div class="hero-net-fallback" aria-hidden="true"></div>
     <div class="hero-bg" aria-hidden="true">
       <div class="hero-blob hero-blob-1"></div>
       <div class="hero-blob hero-blob-2"></div>
@@ -3924,6 +4084,17 @@
           <p class="f-tagline" data-en="AI automation infrastructure for businesses that refuse to stay still."
             data-es="Infraestructura de automatización IA para negocios que se niegan a quedarse quietos.">AI automation
             infrastructure for businesses that refuse to stay still.</p>
+          <div class="f-location" aria-label="Based in Panama, serving worldwide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" />
+            </svg>
+            <span>Panamá</span>
+            <span class="f-loc-arrow" aria-hidden="true">→</span>
+            <span data-en="Worldwide" data-es="Mundial">Worldwide</span>
+          </div>
+          <canvas class="f-globe" role="img"
+            aria-label="Interactive globe showing ThryveX Group's reach from Panama worldwide"></canvas>
           <div class="f-socials">
             <a href="https://www.instagram.com/thryvexgroup" target="_blank" rel="noopener" class="f-soc"
               aria-label="Instagram">
@@ -4604,6 +4775,21 @@
       })();
     })();
   </script>
+
+  <!-- ══ Scroll foundation: Lenis + GSAP/ScrollTrigger (synced) ══ -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
+  <script src="/scroll.js"></script>
+  <script src="/pipeline-scroll.js"></script>
+  <script src="/headings-scroll.js"></script>
+  <script src="/effects.js"></script>
+
+  <!-- Hero 3D network background (Three.js) -->
+  <script type="module" src="/hero-bg.js"></script>
+
+  <!-- Footer interactive globe (cobe) -->
+  <script type="module" src="/globe.js"></script>
 </body>
 
 </html>
