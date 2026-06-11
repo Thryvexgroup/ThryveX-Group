@@ -71,6 +71,59 @@
       registry.push(units);
     });
 
+    /* ── Hero headline: character mask-reveal on load ─────────────────
+       Split "Scale Without" into characters that rise from behind a clip
+       mask; "Limits." (an animated typewriter word) rises in as a unit so
+       its gradient + typewriter stay intact. Fires once the loader lifts. */
+    (function () {
+      var title = document.querySelector('.hero-title');
+      if (!title) return;
+      var line1 = title.querySelector('span:not(.line2)');
+      var line2 = title.querySelector('.line2');
+      if (!line1) return;
+
+      title.style.animation = 'none';            // GSAP owns the entrance now
+
+      var text = (line1.dataset[currentLang()] || line1.textContent || '').trim();
+      line1.textContent = '';
+      var chars = [];
+      for (var i = 0; i < text.length; i++) {
+        if (text[i] === ' ') { line1.appendChild(document.createTextNode(' ')); continue; }
+        var mask = document.createElement('span'); mask.className = 'hm-mask';
+        var inner = document.createElement('span'); inner.className = 'hm-char';
+        inner.textContent = text[i];
+        mask.appendChild(inner);
+        line1.appendChild(mask);
+        chars.push(inner);
+      }
+
+      gsap.set(title, { opacity: 1 });
+      gsap.set(chars, { yPercent: 110 });
+      if (line2) gsap.set(line2, { opacity: 0, y: 24 });
+
+      var played = false;
+      function play() {
+        if (played) return;
+        played = true;
+        var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        tl.to(chars, { yPercent: 0, duration: 0.7, stagger: 0.035 });
+        if (line2) tl.to(line2, { opacity: 1, y: 0, duration: 0.6 }, '-=0.4');
+      }
+
+      // Reveal once the loader lifts (body loses .loading); failsafe timer.
+      if (document.body.classList.contains('loading')) {
+        var mo = new MutationObserver(function () {
+          if (!document.body.classList.contains('loading')) { mo.disconnect(); play(); }
+        });
+        mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        setTimeout(play, 4000);
+      } else {
+        play();
+      }
+
+      registry.push([line1]);                    // re-translate on language switch
+    }());
+
     // Keep EN/ES working: rebuild words (already visible) on language switch.
     document.querySelectorAll('.lang-opt').forEach(function (btn) {
       btn.addEventListener('click', function () {
