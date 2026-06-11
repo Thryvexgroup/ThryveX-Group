@@ -15,8 +15,6 @@
    Wiring: hero gets class `hero-enhanced` (hides the old 2D canvas) plus
    either `webgl-active` (3D running) or `fallback-active` (static gradient).
    ════════════════════════════════════════════════════════════════════ */
-import * as THREE from 'three';
-
 (function () {
   'use strict';
 
@@ -45,6 +43,22 @@ import * as THREE from 'three';
   }
   hero.classList.add('webgl-active');
 
+  // Load Three.js only on this (WebGL) path, and after first paint — so
+  // mobile / reduced-motion visitors never download the ~700KB library and
+  // the hero text/background paint first.
+  var startThree = function () {
+    import('three')
+      .then(function (THREE) { initNetwork(THREE); })
+      .catch(function () {
+        hero.classList.remove('webgl-active');
+        hero.classList.add('fallback-active');   // graceful: show static gradient
+      });
+  };
+  if ('requestIdleCallback' in window) requestIdleCallback(startThree, { timeout: 1500 });
+  else setTimeout(startThree, 200);
+  return;
+
+  function initNetwork(THREE) {
   /* ── Tunables ─────────────────────────────────────────────────────── */
   const NODES     = 110;   // node count
   const LINK_DIST = 15;    // world-unit distance below which two nodes link
@@ -251,4 +265,5 @@ import * as THREE from 'three';
   // First paint (IntersectionObserver will start the loop since the hero
   // is on screen at load).
   renderer.render(scene, camera);
+  }
 }());
