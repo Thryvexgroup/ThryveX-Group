@@ -3365,6 +3365,7 @@
 
   <!-- ── FLOATING SERVICE DECK ────────────────────────────────── -->
   <style id="floating-deck">
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
     /* Local tokens — scoped so they don't bleed into the rest of the page */
     #services {
       --fd-void: var(--bg-1);
@@ -3598,39 +3599,6 @@
       padding: 0;
     }
     .fd-dot.on { width: 26px; border-radius: 4px; background: var(--accent, #46b4ff); }
-    /* CTA */
-    .fd-section-cta {
-      display: flex;
-      justify-content: center;
-      padding: 6px 24px 64px;
-    }
-    .fd-section-cta a {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      font-family: var(--fh);
-      font-weight: 600;
-      font-size: 15px;
-      color: #fff;
-      text-decoration: none;
-      padding: 14px 26px;
-      border-radius: 13px;
-      background: linear-gradient(100deg, #5b8bff, #9a7cff);
-      box-shadow: 0 16px 40px -16px rgba(120,110,255,.7);
-      transition: transform .25s, box-shadow .25s;
-      cursor: none;
-    }
-    .fd-section-cta a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 52px -16px rgba(120,110,255,.9);
-    }
-    .fd-section-cta svg {
-      width: 16px;
-      height: 16px;
-      stroke-width: 2.4;
-      transition: transform .25s;
-    }
-    .fd-section-cta a:hover svg { transform: translateX(3px); }
     /* Accent colour variants */
     .a-cyan   { --accent: #46b4ff; --rgb: 70,180,255 }
     .a-violet { --accent: #9a7cff; --rgb: 154,124,255 }
@@ -3829,12 +3797,6 @@
     </div>
 
     <div id="live" class="sr-only" aria-live="polite"></div>
-
-    <div class="fd-section-cta">
-      <a href="/book" class="magnetic">Book a call
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
   </section>
 
   <div class="s-div"></div>
