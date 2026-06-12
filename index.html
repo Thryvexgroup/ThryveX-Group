@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap"
     rel="stylesheet">
 
   <script type="application/ld+json">
@@ -3363,6 +3363,295 @@
     }
   </style>
 
+  <!-- ── FLOATING SERVICE DECK ────────────────────────────────── -->
+  <style id="floating-deck">
+    /* Local tokens — scoped so they don't bleed into the rest of the page */
+    #services {
+      --fd-void: var(--bg-1);
+      --fd-ink: var(--t1);
+      --fd-mist: var(--t3);
+      --fd-dim: var(--tm);
+      --fd-line: var(--cbr);
+      --env: 70,180,255; /* overwritten by JS per active card */
+    }
+    /* Section layout */
+    #services {
+      padding: 100px 0 0;
+      overflow: hidden;
+    }
+    /* Stage */
+    .stage {
+      position: relative;
+      width: 100%;
+      min-height: 660px;
+      perspective: 1900px;
+      perspective-origin: 50% 56%;
+      touch-action: pan-y;
+      cursor: grab;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+    .env-glow {
+      position: absolute;
+      left: 50%;
+      top: 6%;
+      width: 900px;
+      height: 560px;
+      transform: translateX(-50%);
+      background-color: rgb(var(--env));
+      opacity: .13;
+      -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #000, transparent 72%);
+              mask-image: radial-gradient(50% 50% at 50% 50%, #000, transparent 72%);
+      transition: background-color .6s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .floor-wrap {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 54%;
+      perspective: 440px;
+      perspective-origin: 50% 0%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .floor {
+      position: absolute;
+      left: -60%; right: -60%; top: 0; bottom: -70%;
+      background-image:
+        linear-gradient(rgba(var(--env),.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--env),.5) 1px, transparent 1px);
+      background-size: 62px 62px;
+      transform: rotateX(68deg);
+      transform-origin: 50% 0%;
+      -webkit-mask-image: radial-gradient(130% 92% at 50% 100%, #000 18%, transparent 78%);
+              mask-image: radial-gradient(130% 92% at 50% 100%, #000 18%, transparent 78%);
+      opacity: .3;
+      animation: floorMove 6s linear infinite;
+    }
+    @keyframes floorMove { from { background-position: 0 0 } to { background-position: 0 62px } }
+    .deck {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      transition: transform .25s ease-out;
+    }
+    .bob {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      animation: bob 7s ease-in-out infinite;
+    }
+    @keyframes bob { 0%,100% { transform: translateY(-8px) } 50% { transform: translateY(8px) } }
+    /* Cards */
+    .card {
+      --accent: #46b4ff;
+      --rgb: 70,180,255;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 360px;
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
+      transition: transform .7s cubic-bezier(.2,.75,.2,1), opacity .7s, filter .7s;
+      cursor: pointer;
+    }
+    .face {
+      position: relative;
+      border-radius: 20px;
+      padding: 26px 26px 22px;
+      overflow: hidden;
+      background: linear-gradient(165deg, rgba(20,26,44,.96), rgba(9,12,22,.97));
+      border: 1px solid rgba(var(--rgb),.28);
+      box-shadow: 0 40px 80px -30px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.03) inset;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+    .face::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(220px 160px at 100% 0%, rgba(var(--rgb),.30), transparent 65%);
+      opacity: .5;
+      transition: opacity .6s;
+    }
+    .card.active .face::before { opacity: 1; }
+    .card.active .face {
+      border-color: rgba(var(--rgb),.6);
+      box-shadow: 0 50px 90px -28px rgba(var(--rgb),.5), 0 40px 80px -34px #000;
+    }
+    .toprow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .modid {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: var(--fd-dim);
+    }
+    .fd-status {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .14em;
+      color: var(--accent);
+    }
+    .fd-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: fd-pulse 2.4s infinite;
+    }
+    @keyframes fd-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(var(--rgb),.55) }
+      70%  { box-shadow: 0 0 0 8px rgba(var(--rgb),0) }
+      100% { box-shadow: 0 0 0 0 rgba(var(--rgb),0) }
+    }
+    .ic {
+      display: flex;
+      align-items: center;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .ic svg { width: 38px; height: 38px; }
+    .card.active .ic { filter: drop-shadow(0 0 14px rgba(var(--rgb),.5)); }
+    .card .title {
+      font-family: var(--fh);
+      font-weight: 600;
+      font-size: 21px;
+      letter-spacing: -.01em;
+      position: relative;
+      color: var(--fd-ink);
+    }
+    .card .desc {
+      color: var(--fd-mist);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 10px;
+      position: relative;
+    }
+    .readout {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--fd-line);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--fd-dim);
+      position: relative;
+    }
+    .readout .arrow { color: var(--accent); }
+    .readout b { color: #c4cbe0; font-weight: 500; }
+    /* Controls */
+    .fd-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      padding: 8px 0 26px;
+      z-index: 30;
+      position: relative;
+    }
+    .fd-nav {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid var(--fd-line);
+      background: rgba(255,255,255,.03);
+      color: var(--fd-ink);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: .25s;
+      backdrop-filter: blur(4px);
+    }
+    .fd-nav:hover {
+      border-color: rgba(255,255,255,.3);
+      background: rgba(255,255,255,.07);
+      transform: scale(1.06);
+    }
+    .fd-nav svg { width: 18px; height: 18px; }
+    .fd-dots { display: flex; gap: 9px; }
+    .fd-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.16);
+      cursor: pointer;
+      transition: .3s;
+      border: 0;
+      padding: 0;
+    }
+    .fd-dot.on { width: 26px; border-radius: 4px; background: var(--accent, #46b4ff); }
+    /* CTA */
+    .fd-section-cta {
+      display: flex;
+      justify-content: center;
+      padding: 6px 24px 64px;
+    }
+    .fd-section-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--fh);
+      font-weight: 600;
+      font-size: 15px;
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 26px;
+      border-radius: 13px;
+      background: linear-gradient(100deg, #5b8bff, #9a7cff);
+      box-shadow: 0 16px 40px -16px rgba(120,110,255,.7);
+      transition: transform .25s, box-shadow .25s;
+      cursor: none;
+    }
+    .fd-section-cta a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 52px -16px rgba(120,110,255,.9);
+    }
+    .fd-section-cta svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2.4;
+      transition: transform .25s;
+    }
+    .fd-section-cta a:hover svg { transform: translateX(3px); }
+    /* Accent colour variants */
+    .a-cyan   { --accent: #46b4ff; --rgb: 70,180,255 }
+    .a-violet { --accent: #9a7cff; --rgb: 154,124,255 }
+    .a-blue   { --accent: #5b8bff; --rgb: 91,139,255 }
+    .a-mint   { --accent: #34d39a; --rgb: 52,211,154 }
+    .a-amber  { --accent: #fb9b3c; --rgb: 251,155,60 }
+    .a-coral  { --accent: #f8717f; --rgb: 248,113,127 }
+    /* Responsive */
+    @media (max-width: 560px) {
+      .card { width: 300px }
+      .face { min-height: 300px }
+      .stage { min-height: 480px }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .bob  { animation: none }
+      .card { transition: none }
+      .fd-pulse { animation: none }
+      .floor { animation: none }
+    }
+  </style>
+
   <!-- Three.js ESM import map (hero WebGL background) -->
   <script type="importmap">
   {
@@ -3505,110 +3794,46 @@
 
   <div class="s-div"></div>
 
-  <!-- SERVICES -->
+  <!-- SERVICES — floating 3D card deck -->
   <section id="services" class="services">
     <div class="container">
       <div class="sec-header">
         <div class="sec-tag reveal"><span class="sec-tag-dot" aria-hidden="true"></span><span
-            data-en="What ThryveX Group Builds" data-es="Lo Que Construye ThryveX Group">What ThryveX Group
-            Builds</span></div>
+            data-en="What ThryveX Group Builds" data-es="Lo Que Construye ThryveX Group">What ThryveX Group Builds</span></div>
         <h2 class="sec-h reveal d1"><span data-en="Everything Your Business Needs to"
             data-es="Todo Lo Que Tu Negocio Necesita Para">Everything Your Business Needs to</span><br><span class="g"
             data-en="Operate Without Limits" data-es="Operar Sin Límites">Operate Without Limits</span></h2>
         <p class="sec-sub reveal d2"
           data-en="From AI automation to full CRM implementation. ThryveX Group handles the technical complexity so clients can focus on growth."
           data-es="Desde automatización IA hasta implementación completa de CRM. ThryveX Group maneja la complejidad técnica para que los clientes puedan enfocarse en el crecimiento.">
-          From AI automation to full CRM implementation. ThryveX Group handles the technical complexity so clients can
-          focus on growth.</p>
+          From AI automation to full CRM implementation. ThryveX Group handles the technical complexity so clients can focus on growth.</p>
       </div>
-      <div class="services-grid">
-        <div class="s-card" role="article">
-          <div class="s-icon si-1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.5" stroke-linecap="round">
-              <path d="M12 2a5 5 0 0 1 5 5c0 1-.3 2-.8 2.8M12 2a5 5 0 0 0-5 5c0 1 .3 2 .8 2.8" />
-              <path d="M9 9.5c-2 .5-3 2-3 3.5a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4c0-1.5-1-3-3-3.5" />
-              <circle cx="9" cy="14" r="1" fill="currentColor" />
-              <circle cx="15" cy="14" r="1" fill="currentColor" />
-            </svg></div>
-          <h3 class="s-title" data-en="AI Automation" data-es="Automatización IA">AI Automation</h3>
-          <p class="s-desc"
-            data-en="Intelligent agents that handle complex business tasks around the clock, from data processing and decision-making to lead follow-up and reporting, without human intervention."
-            data-es="Agentes inteligentes que manejan tareas empresariales complejas las 24 horas, desde el procesamiento de datos y toma de decisiones hasta el seguimiento de leads e informes, sin intervención humana.">
-            Intelligent agents that handle complex business tasks around the clock, from data processing and
-            decision-making to lead follow-up and reporting, without human intervention.</p>
-        </div>
-        <div class="s-card" role="article">
-          <div class="s-icon si-2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.5" stroke-linecap="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg></div>
-          <h3 class="s-title" data-en="CRM Implementation" data-es="Implementación de CRM">CRM Implementation</h3>
-          <p class="s-desc"
-            data-en="Full CRM setup tailored to your sales process, capturing every lead, qualifying automatically, and keeping your pipeline clean and moving."
-            data-es="Configuración completa de CRM adaptada a tu proceso de ventas, capturando cada lead, calificando automáticamente y manteniendo tu pipeline en movimiento.">
-            Full CRM setup tailored to your sales process, capturing every lead, qualifying automatically, and keeping your pipeline clean and moving.</p>
-        </div>
-        <div class="s-card" role="article">
-          <div class="s-icon si-3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.5" stroke-linecap="round">
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
-            </svg></div>
-          <h3 class="s-title" data-en="Website Development" data-es="Desarrollo Web">Website Development</h3>
-          <p class="s-desc"
-            data-en="High-performance, conversion-focused websites that integrate directly with your CRM and automation stack, so every visitor becomes a tracked, qualified lead from the moment they land."
-            data-es="Sitios web de alto rendimiento y enfocados en conversión que se integran directamente con tu CRM y stack de automatización, para que cada visitante se convierta en un lead rastreado y calificado.">
-            High-performance, conversion-focused websites that integrate directly with your CRM and automation stack,
-            so every visitor becomes a tracked, qualified lead from the moment they land.</p>
-        </div>
-        <div class="s-card" role="article">
-          <div class="s-icon si-4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.5" stroke-linecap="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              <circle cx="9" cy="10" r="1" fill="currentColor" />
-              <circle cx="12" cy="10" r="1" fill="currentColor" />
-              <circle cx="15" cy="10" r="1" fill="currentColor" />
-            </svg></div>
-          <h3 class="s-title" data-en="AI Chatbots" data-es="Chatbots de IA">AI Chatbots</h3>
-          <p class="s-desc"
-            data-en="Custom GPT-powered chatbots trained on your business data, qualifying leads, answering questions, booking appointments, and handing off to you only when it counts."
-            data-es="Chatbots personalizados con GPT entrenados en los datos de tu negocio, calificando leads, respondiendo preguntas, agendando citas y transfiriéndote solo cuando importa.">
-            Custom GPT-powered chatbots trained on your business data, qualifying leads, answering questions, booking
-            appointments, and handing off to you only when it counts.</p>
-        </div>
-        <div class="s-card" role="article">
-          <div class="s-icon si-5" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.5" stroke-linecap="round">
-              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
-              <path d="M21 3v5h-5" />
-              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
-              <path d="M8 16H3v5" />
-            </svg></div>
-          <h3 class="s-title" data-en="Workflow Automation" data-es="Automatización de Flujos">Workflow Automation</h3>
-          <p class="s-desc"
-            data-en="Connect your entire tech stack with intelligent, event-driven workflows, eliminating manual tasks and ensuring data flows exactly where it needs to go."
-            data-es="Conecta todo tu stack tecnológico con flujos de trabajo inteligentes, eliminando tareas manuales y asegurando que los datos fluyan exactamente donde deben ir.">
-            Connect your entire tech stack with intelligent, event-driven workflows, eliminating manual tasks and
-            ensuring data flows exactly where it needs to go.</p>
-        </div>
-        <div class="s-card" role="article">
-          <div class="s-icon si-6" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.5" stroke-linecap="round">
-              <line x1="18" y1="20" x2="18" y2="10" />
-              <line x1="12" y1="20" x2="12" y2="4" />
-              <line x1="6" y1="20" x2="6" y2="14" />
-              <line x1="2" y1="20" x2="22" y2="20" />
-            </svg></div>
-          <h3 class="s-title" data-en="Data & Analytics" data-es="Datos y Analítica">Data & Analytics</h3>
-          <p class="s-desc"
-            data-en="Real-time dashboards and business intelligence pipelines that give you complete visibility into your operations, pipeline, and performance. All automated and always up to date."
-            data-es="Dashboards en tiempo real y pipelines de inteligencia de negocio que te dan visibilidad completa de tus operaciones, pipeline y rendimiento. Siempre automatizados y actualizados.">
-            Real-time dashboards and business intelligence pipelines that give you complete visibility into your
-            operations, pipeline, and performance. All automated and always up to date.</p>
-        </div>
+    </div>
+
+    <div class="stage" id="stage" role="region" aria-roledescription="carousel" aria-label="Our services">
+      <div class="env-glow"></div>
+      <div class="floor-wrap"><div class="floor"></div></div>
+      <div class="deck" id="deck">
+        <div class="bob" id="bob"><!-- cards injected by JS --></div>
       </div>
+    </div>
+
+    <div class="fd-controls">
+      <button class="fd-nav" id="prev" aria-label="Previous service">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <div class="fd-dots" id="dots"></div>
+      <button class="fd-nav" id="next" aria-label="Next service">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <div id="live" class="sr-only" aria-live="polite"></div>
+
+    <div class="fd-section-cta">
+      <a href="/book" class="magnetic">Book a call
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </section>
 
@@ -4838,6 +5063,121 @@
 
   <!-- Footer interactive globe (cobe) -->
   <script type="module" src="/globe.js"></script>
+
+  <!-- Floating service deck -->
+  <script>
+  (function(){
+    const svc=[
+      {t:"AI Automation",cls:"a-cyan",id:"SYS-01",st:"ALWAYS ON",
+       d:"Intelligent agents that run complex business tasks around the clock. They handle data, make decisions, chase leads and report back — all without human intervention.",
+       r:"runs <b>24/7</b> · ~<b>40 hrs/wk</b> saved",
+       ic:'<rect x="6" y="6" width="12" height="12" rx="3.2" opacity=".3"/><rect x="9" y="9" width="6" height="6" rx="1.6"/><rect x="9" y="2.4" width="1.6" height="3" rx=".8"/><rect x="13.4" y="2.4" width="1.6" height="3" rx=".8"/><rect x="9" y="18.6" width="1.6" height="3" rx=".8"/><rect x="13.4" y="18.6" width="1.6" height="3" rx=".8"/><rect x="2.4" y="9" width="3" height="1.6" rx=".8"/><rect x="2.4" y="13.4" width="3" height="1.6" rx=".8"/><rect x="18.6" y="9" width="3" height="1.6" rx=".8"/><rect x="18.6" y="13.4" width="3" height="1.6" rx=".8"/>'},
+      {t:"CRM Implementation",cls:"a-violet",id:"SYS-02",st:"LIVE",
+       d:"A full CRM setup tailored to your sales process. Every lead captured, qualified automatically, and your pipeline kept clean and moving.",
+       r:"live in <b>~2 wks</b> · <b>0</b> leads lost",
+       ic:'<g opacity=".3"><circle cx="16" cy="9" r="3"/><path d="M16 13c-3.3 0-6 2.2-6 5 0 .6.4 1 1 1h10c.6 0 1-.4 1-1 0-2.8-2.7-5-6-5z"/></g><circle cx="9" cy="8.5" r="3.5"/><path d="M9 13c-3.6 0-6.5 2.4-6.5 5.4 0 .6.5 1.1 1.1 1.1h10.8c.6 0 1.1-.5 1.1-1.1C15.5 15.4 12.6 13 9 13z"/>'},
+      {t:"Website Development",cls:"a-blue",id:"SYS-03",st:"DEPLOYED",
+       d:"Fast, high-converting websites wired straight into your CRM and automation stack — so every visitor lands as a tracked, qualified lead.",
+       r:"<b>95+</b> PageSpeed · ~<b>0.8s</b> load",
+       ic:'<rect x="2.5" y="4" width="19" height="16" rx="3" opacity=".3"/><circle cx="6" cy="7.5" r="1"/><circle cx="9" cy="7.5" r="1"/><path d="M10.4 11.8 8 14.2l2.4 2.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.6 11.8 16 14.2l-2.4 2.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>'},
+      {t:"AI Chatbots",cls:"a-mint",id:"SYS-04",st:"ONLINE",
+       d:"Custom bots powered by GPT and trained on your business data. They qualify leads, answer questions, book appointments and hand off to you only when it counts.",
+       r:"~<b>2s</b> replies · ~<b>70%</b> resolved",
+       ic:'<path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-4 3.5V17H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" opacity=".3"/><circle cx="8.5" cy="10.5" r="1.4"/><circle cx="12" cy="10.5" r="1.4"/><circle cx="15.5" cy="10.5" r="1.4"/>'},
+      {t:"Workflow Automation",cls:"a-amber",id:"SYS-05",st:"RUNNING",
+       d:"Connect your entire tech stack with intelligent workflows that fire on events, kill manual tasks, and send data exactly where it needs to go.",
+       r:"<b>20+</b> tools synced · ~<b>30 hrs/mo</b> saved",
+       ic:'<path d="M6.5 6.5H17.5M6.5 6.5V12a5 5 0 0 0 5 5H17.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" opacity=".4"/><circle cx="6.5" cy="6.5" r="3"/><circle cx="17.5" cy="6.5" r="3"/><circle cx="17.5" cy="17.5" r="3"/>'},
+      {t:"Data & Analytics",cls:"a-coral",id:"SYS-06",st:"SYNCED",
+       d:"Live dashboards and BI pipelines that give complete visibility into your operations, pipeline and performance. Fully automated and always current.",
+       r:"refresh ~<b>5 min</b> · <b>live</b> KPIs",
+       ic:'<rect x="2.5" y="3" width="19" height="18" rx="3" opacity=".3"/><rect x="6" y="12" width="2.6" height="5.5" rx="1.3"/><rect x="10.7" y="9" width="2.6" height="8.5" rx="1.3"/><rect x="15.4" y="6.5" width="2.6" height="11" rx="1.3"/>'}
+    ];
+    const N=svc.length;
+    const bob=document.getElementById('bob');
+    const dotsWrap=document.getElementById('dots');
+    let active=0, timer, els=[], dragStartX=null, dragMoved=false;
+
+    svc.forEach(function(s,i){
+      var c=document.createElement('article');
+      c.className='card '+s.cls;
+      c.setAttribute('role','group');
+      c.setAttribute('aria-roledescription','slide');
+      c.setAttribute('aria-label',(i+1)+' of '+N+': '+s.t);
+      c.innerHTML='<div class="face">'
+        +'<div class="toprow"><span class="modid">'+s.id+'</span>'
+        +'<span class="fd-status"><span class="fd-pulse"></span>'+s.st+'</span></div>'
+        +'<div class="ic"><svg viewBox="0 0 24 24" fill="currentColor">'+s.ic+'</svg></div>'
+        +'<h3 class="title">'+s.t+'</h3>'
+        +'<p class="desc">'+s.d+'</p>'
+        +'<div class="readout"><span class="arrow">▸</span>'+s.r+'</div>'
+        +'</div>';
+      c.addEventListener('click',function(){ if(dragMoved) return; if(i!==active) go(i); });
+      bob.appendChild(c); els.push(c);
+
+      var b=document.createElement('button');
+      b.className='fd-dot';
+      b.setAttribute('aria-label','Go to '+s.t);
+      b.addEventListener('click',function(){ go(i); });
+      dotsWrap.appendChild(b);
+    });
+
+    function layout(){
+      els.forEach(function(c,i){
+        var off=i-active;
+        if(off> N/2) off-=N;
+        if(off<-N/2) off+=N;
+        var a=Math.abs(off);
+        var x=off*168, y=-a*58, z=-a*240, ry=off*-30, rx=a*6, sc=1-a*0.13;
+        var op=a>=3?0:(off===0?1:Math.max(.32,1-a*.28));
+        c.style.transform='translate(-50%,-50%) translate3d('+x+'px,'+y+'px,'+z+'px) rotateY('+ry+'deg) rotateX('+rx+'deg) scale('+sc+')';
+        c.style.opacity=op;
+        c.style.zIndex=100-a;
+        c.style.filter=off===0?'none':'brightness('+(1-a*0.16)+') saturate(.85)';
+        c.style.pointerEvents=a>=3?'none':'auto';
+        c.setAttribute('aria-hidden',off===0?'false':'true');
+        c.classList.toggle('active',off===0);
+      });
+      Array.from(dotsWrap.children).forEach(function(d,i){
+        d.classList.toggle('on',i===active);
+        d.style.setProperty('--accent',getComputedStyle(els[active]).getPropertyValue('--accent'));
+      });
+      var rgb=getComputedStyle(els[active]).getPropertyValue('--rgb').trim();
+      document.body.style.setProperty('--env',rgb);
+      var lr=document.getElementById('live');
+      if(lr) lr.textContent='Showing '+svc[active].t+' ('+(active+1)+' of '+N+')';
+    }
+    function go(i){ active=(i+N)%N; layout(); play(); }
+    function next(){ go(active+1); }
+    function prev(){ go(active-1); }
+
+    var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var inView=true;
+    function play(){ clearInterval(timer); if(reduce||!inView||document.hidden) return; timer=setInterval(next,4400); }
+
+    document.getElementById('next').onclick=next;
+    document.getElementById('prev').onclick=prev;
+    document.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') prev();
+    });
+
+    var stage=document.getElementById('stage');
+    stage.addEventListener('pointerdown',function(e){ dragStartX=e.clientX; dragMoved=false; stage.style.cursor='grabbing'; });
+    stage.addEventListener('pointermove',function(e){ if(dragStartX!==null&&Math.abs(e.clientX-dragStartX)>8) dragMoved=true; });
+    window.addEventListener('pointerup',function(e){
+      if(dragStartX!==null){ var dx=e.clientX-dragStartX; if(dx<-45) next(); else if(dx>45) prev(); }
+      dragStartX=null; stage.style.cursor='grab';
+    });
+
+    var io=new IntersectionObserver(function(es){
+      inView=es[0].isIntersecting; inView?play():clearInterval(timer);
+    },{threshold:.25});
+    io.observe(stage);
+    document.addEventListener('visibilitychange',function(){ document.hidden?clearInterval(timer):play(); });
+
+    layout(); play();
+  })();
+  </script>
 </body>
 
 </html>
