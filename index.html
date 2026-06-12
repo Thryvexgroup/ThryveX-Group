@@ -3394,6 +3394,7 @@
       cursor: grab;
       margin-top: 10px;
       overflow: hidden;
+      contain: layout paint;
     }
     .env-glow {
       position: absolute;
@@ -3457,10 +3458,10 @@
       top: 50%;
       width: 360px;
       transform-style: preserve-3d;
-      will-change: transform, opacity;
       transition: transform .7s cubic-bezier(.2,.75,.2,1), opacity .7s, filter .7s;
       cursor: pointer;
     }
+    .card.active { will-change: transform; }
     .face {
       position: relative;
       border-radius: 20px;

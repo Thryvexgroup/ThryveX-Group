@@ -70,8 +70,8 @@
   gsap.registerPlugin(ScrollTrigger);
 
   lenis = new Lenis({
-    lerp: 0.35,               // high = settles almost immediately, minimal drift
-    wheelMultiplier: 1.15,    // close to native distance per wheel notch
+    lerp: 0.12,               // smooth but responsive — less choppy on trackpads
+    wheelMultiplier: 1.0,     // native distance per wheel notch
     smoothWheel: true
   });
 
