@@ -9,232 +9,228 @@
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Book Your Strategy Call | ThryveX Group">
   <meta property="og:description"
-    content="Book a free strategy call with ThryveX Group — AI automation systems that capture, qualify and convert.">
+    content="Book a free strategy call with ThryveX Group. AI automation, web development and Meta Ads systems that capture, qualify and convert.">
   <meta property="og:url" content="https://www.thryvexgroup.com/book">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.thryvexgroup.com/api/og">
-  <meta name="theme-color" content="#050508">
+  <meta name="theme-color" content="#fbfbfd">
   <link rel="canonical" href="https://www.thryvexgroup.com/book">
-  <title>Book Your Strategy Call — ThryveX Group</title>
+  <title>Book Your Strategy Call | ThryveX Group</title>
 
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=5">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=5">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
     rel="stylesheet">
 
   <style>
     :root {
-      --bg-0: #020204;
-      --bg-1: #050508;
-      --bg-2: #09090f;
-      --blue: #0EA5E9;
-      --blue-l: #38BDF8;
-      --purple: #7C3AED;
-      --cyan: #06B6D4;
-      --t0: #FFFFFF;
-      --t2: #E2E8F0;
-      --t3: #CBD5E1;
-      --tm: #64748B;
-      --cbr: rgba(255, 255, 255, .12);
-      --f: 'Plus Jakarta Sans', -apple-system, sans-serif;
-      --r-f: 9999px;
+      --w: #fbfbfd;
+      --ink: #11131a;
+      --grey: #6b7180;
+      --blue: #0071e3;
+      --grad: linear-gradient(100deg, #3F9FE6, #9FB4E8 38%, #E9B6C6 68%, #F4C9A1);
+      --gutter: clamp(1.25rem, 5vw, 4rem);
       --ease: cubic-bezier(.22, 1, .36, 1);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: var(--f);
-      background: var(--bg-1);
-      color: var(--t2);
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: radial-gradient(82% 74% at 50% 32%, #ffffff 0%, #eaeef6 60%, #d7dded 100%);
+      background-attachment: fixed;
+      color: var(--ink);
       line-height: 1.6;
       overflow-x: hidden;
       min-height: 100vh;
     }
     a { color: inherit; text-decoration: none; }
 
-    /* Background */
-    .bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-    .bg::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% -10%, #0a1326 0%, transparent 60%),
-        radial-gradient(circle at 12% 8%, rgba(14,165,233,.16), transparent 38%),
-        radial-gradient(circle at 88% 92%, rgba(124,58,237,.16), transparent 42%);
-      filter: blur(0);
-    }
+    /* Blueprint grid texture */
     .bg-grid {
-      position: absolute; inset: 0;
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image:
-        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
-      background-size: 64px 64px;
-      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000, transparent);
-      mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000, transparent);
+        linear-gradient(rgba(63,159,230,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(63,159,230,.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+      -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 20%, #000, transparent 75%);
+      mask-image: radial-gradient(ellipse 85% 70% at 50% 20%, #000, transparent 75%);
     }
-    .vignette {
-      position: fixed; inset: 0; z-index: 5; pointer-events: none;
-      box-shadow: inset 0 0 220px 40px rgba(0,0,0,.5);
+
+    .pill {
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(17,19,26,.08);
+      border-radius: 999px;
+      box-shadow: 0 8px 26px -12px rgba(20,30,60,.3);
     }
 
     /* Top bar */
     .topbar {
       position: relative; z-index: 10;
-      max-width: 1100px; margin: 0 auto;
-      padding: 22px 24px;
-      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1120px; margin: 0 auto;
+      padding: .9rem var(--gutter);
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     }
-    .brand { display: inline-flex; align-items: center; gap: 10px; }
-    .brand img { width: 34px; height: 34px; object-fit: contain; }
-    .brand span { font-size: 17px; font-weight: 600; color: var(--t0); }
+    .brand {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.05rem;
+      letter-spacing: -.02em; color: var(--ink);
+      padding: .42rem 1rem .42rem .5rem;
+    }
+    .brand img { width: 30px; height: 30px; object-fit: contain; }
     .back {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 9px 16px; border-radius: var(--r-f);
-      background: rgba(26,31,52,.7);
-      border: 1px solid rgba(255,255,255,.16);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
-      font-size: 13.5px; font-weight: 500; color: var(--t3);
-      transition: all .25s ease;
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .6rem 1.15rem;
+      font-family: 'Space Grotesk'; font-size: .84rem; font-weight: 600; color: var(--ink);
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease);
     }
-    .back:hover { color: #fff; border-color: rgba(56,189,248,.45); }
+    .back:hover { transform: translateY(-1px); box-shadow: 0 12px 30px -12px rgba(20,30,60,.35); }
     .back svg { width: 15px; height: 15px; }
 
     /* Header */
     .head {
       position: relative; z-index: 10;
       max-width: 760px; margin: 0 auto;
-      padding: 36px 24px 8px; text-align: center;
+      padding: 2.6rem var(--gutter) .5rem; text-align: center;
     }
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 7px 16px; margin-bottom: 22px;
-      border-radius: var(--r-f);
-      border: 1px solid rgba(14,165,233,.25);
-      background: rgba(7,10,22,.5);
-      font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--blue-l);
+    .eyb {
+      display: inline-flex; align-items: center; gap: .55rem;
+      font-family: 'Space Grotesk'; font-size: .74rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--grey);
+      margin-bottom: 1.5rem; padding: .55rem 1.05rem;
+      background: rgba(255,255,255,.8); border: 1px solid rgba(17,19,26,.09);
+      border-radius: 999px; box-shadow: 0 8px 22px -12px rgba(20,30,60,.22);
     }
-    .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #10B981; box-shadow: 0 0 10px #10B981; }
+    .eyb::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%;
+      background: linear-gradient(100deg, #5FB1E6, #EAB9C6, #F4C79F);
+      animation: pulse2 2.2s infinite;
+    }
+    @keyframes pulse2 {
+      0% { box-shadow: 0 0 0 0 rgba(95,177,230,.5); }
+      70% { box-shadow: 0 0 0 7px rgba(95,177,230,0); }
+      100% { box-shadow: 0 0 0 0 rgba(95,177,230,0); }
+    }
     .head h1 {
+      font-family: 'Space Grotesk'; font-weight: 700;
       font-size: clamp(2.3rem, 6vw, 3.6rem);
-      font-weight: 700; line-height: 1.05; letter-spacing: -.03em; color: var(--t0);
-      margin-bottom: 18px;
+      line-height: 1.05; letter-spacing: -.03em; color: var(--ink);
+      margin-bottom: 1.1rem;
     }
-    .head h1 .g {
-      background: linear-gradient(135deg, var(--blue), var(--purple) 50%, var(--cyan));
-      background-size: 220% 220%;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      animation: flow 9s ease-in-out infinite;
+    .head h1 .gw {
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
-    @keyframes flow { 0%,100% { background-position: 0% 50% } 50% { background-position: 100% 50% } }
     .head p {
-      font-size: clamp(1rem, 2vw, 1.12rem); color: var(--tm);
+      font-size: clamp(1rem, 2vw, 1.12rem); color: var(--grey);
       max-width: 600px; margin: 0 auto; line-height: 1.7;
     }
 
     /* Widget card */
     .widget-wrap {
       position: relative; z-index: 10;
-      max-width: 1040px; margin: 30px auto 60px;
-      padding: 0 16px;
+      max-width: 1040px; margin: 2rem auto 3.5rem;
+      padding: 0 var(--gutter);
     }
     .widget-card {
-      background: transparent;
-      border: none;
-      border-radius: 22px;
-      box-shadow: none;
+      position: relative;
+      background: #0b0e16;
+      border-radius: 24px;
+      box-shadow: 0 50px 110px -45px rgba(11,14,22,.7), 0 0 0 1px rgba(63,159,230,.12);
       padding: 0;
-      min-height: 800px;
       overflow: hidden;
+    }
+    /* gradient accent hairline along the top of the booking panel */
+    .widget-card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; z-index: 2;
+      background: var(--grad);
     }
     .widget-card iframe {
       width: 100%; border: none; overflow: hidden;
-      min-height: 780px; height: 780px; border-radius: 14px; display: block;
+      min-height: 780px; height: 780px; border-radius: 24px; display: block;
       background: transparent;
     }
+
     /* Contact section */
     .book-contact {
       position: relative; z-index: 10;
-      max-width: 920px; margin: 6px auto 0; padding: 26px 24px 8px; text-align: center;
+      max-width: 920px; margin: 0 auto; padding: .5rem var(--gutter) 1rem; text-align: center;
     }
     .book-contact h2 {
-      font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 700;
-      color: var(--t0); letter-spacing: -.02em; margin-bottom: 8px;
+      font-family: 'Space Grotesk'; font-weight: 700;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      color: var(--ink); letter-spacing: -.02em; margin-bottom: .5rem;
     }
-    .book-contact > p { color: var(--tm); font-size: .98rem; margin-bottom: 24px; }
-    .book-contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .book-contact > p { color: var(--grey); font-size: 1rem; margin-bottom: 1.6rem; }
+    .book-contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .bc-card {
-      display: flex; flex-direction: column; align-items: center; gap: 5px;
-      padding: 22px 16px; border-radius: 16px;
-      background: rgba(13,13,26,.5); border: 1px solid var(--cbr);
-      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+      display: flex; flex-direction: column; align-items: center; gap: .35rem;
+      padding: 1.6rem 1.1rem; border-radius: 18px;
+      background: rgba(255,255,255,.85); border: 1px solid rgba(17,19,26,.08);
+      box-shadow: 0 14px 40px -28px rgba(20,30,60,.4);
+      transition: transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
     }
     .bc-card:hover {
-      transform: translateY(-2px); border-color: rgba(56,189,248,.4);
-      background: rgba(20,24,40,.6);
+      transform: translateY(-3px);
+      border-color: rgba(63,159,230,.4);
+      box-shadow: 0 22px 50px -26px rgba(63,159,230,.5);
     }
     .bc-ico {
-      width: 42px; height: 42px; border-radius: 12px; margin-bottom: 6px;
+      width: 46px; height: 46px; border-radius: 14px; margin-bottom: .4rem;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(14,165,233,.12); color: var(--blue-l);
-      box-shadow: inset 0 0 0 1px rgba(14,165,233,.2);
+      background: linear-gradient(135deg, rgba(63,159,230,.16), rgba(244,201,161,.16));
+      color: #3F9FE6;
+      box-shadow: inset 0 0 0 1px rgba(63,159,230,.18);
     }
-    .bc-ico svg { width: 20px; height: 20px; }
-    .bc-lbl { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tm); }
-    .bc-val { font-size: 14px; color: var(--t2); font-weight: 500; word-break: break-word; }
+    .bc-ico svg { width: 21px; height: 21px; }
+    .bc-lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--grey);
+    }
+    .bc-val { font-size: 14px; color: var(--ink); font-weight: 500; word-break: break-word; }
     @media (max-width: 600px) { .book-contact-grid { grid-template-columns: 1fr; } }
 
     /* Footer */
     .foot {
       position: relative; z-index: 10;
-      max-width: 1100px; margin: 0 auto;
-      padding: 26px 24px 40px;
-      display: flex; flex-wrap: wrap; gap: 14px;
+      max-width: 1120px; margin: 0 auto;
+      padding: 1.6rem var(--gutter) 2.4rem;
+      display: flex; flex-wrap: wrap; gap: 1rem;
       align-items: center; justify-content: space-between;
-      border-top: 1px solid rgba(255,255,255,.06);
-      color: var(--tm); font-size: 13px;
+      border-top: 1px solid rgba(17,19,26,.08);
+      color: var(--grey);
+      font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
     }
-    .foot a { color: var(--t3); transition: color .2s; }
-    .foot a:hover { color: #fff; }
-    .foot-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .foot a { color: var(--ink); transition: color .2s; }
+    .foot a:hover { color: var(--blue); }
+
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
 
     @media (max-width: 600px) {
-      .topbar { padding: 16px; }
       .brand span { display: none; }
-      .head { padding-top: 20px; }
+      .head { padding-top: 1.4rem; }
       .widget-card iframe { min-height: 820px; }
     }
-
     @media (prefers-reduced-motion: reduce) {
-      .head h1 .g { animation: none; }
+      .eyb::before { animation: none; }
       html { scroll-behavior: auto; }
     }
-  </style>
-
-  <!-- Lenis smooth-scroll base styles (foundation) -->
-  <style>
-    html.lenis,
-    html.lenis body { height: auto; }
-    .lenis.lenis-smooth { scroll-behavior: auto !important; }
-    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-    .lenis.lenis-stopped { overflow: hidden; }
   </style>
 </head>
 
 <body>
-  <div class="bg" aria-hidden="true"><div class="bg-grid"></div></div>
-  <div class="vignette" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
 
   <!-- Top bar -->
   <header class="topbar">
-    <a class="brand" href="/" aria-label="ThryveX Group home">
-      <img src="/logo.png" alt="ThryveX Group">
+    <a class="brand pill" href="/" aria-label="ThryveX Group home">
+      <img src="/ThryveX%20Group%20Logo%20No%20BG.png" alt="ThryveX Group">
       <span>ThryveX Group</span>
     </a>
-    <a class="back" href="/">
+    <a class="back pill" href="/">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M19 12H5M12 19l-7-7 7-7" />
       </svg>
@@ -244,10 +240,10 @@
 
   <!-- Header -->
   <section class="head">
-    <div class="badge"><span class="dot" aria-hidden="true"></span> Free 60-min strategy call</div>
-    <h1>Book Your <span class="g">Strategy Call</span></h1>
+    <div class="eyb">Free 60-min strategy call</div>
+    <h1>Book Your <span class="gw">Strategy Call</span></h1>
     <p>Pick a time that works for you. We'll map your biggest automation opportunities and show you exactly where to
-      start — no pressure, just clarity.</p>
+      start. No pressure, just clarity.</p>
   </section>
 
   <!-- Booking widget -->
@@ -265,7 +261,7 @@
   <!-- Contact -->
   <section class="book-contact">
     <h2>Questions before booking?</h2>
-    <p>Reach out directly — we usually reply fast.</p>
+    <p>Reach out directly. We usually reply fast.</p>
     <div class="book-contact-grid">
       <a class="bc-card" href="mailto:services@thryvexgroup.com">
         <div class="bc-ico" aria-hidden="true">
@@ -303,18 +299,10 @@
   <!-- Footer -->
   <footer class="foot">
     <span>© 2026 ThryveX Group. All rights reserved.</span>
-    <div class="foot-links">
-      <a href="/">← Back to site</a>
-    </div>
+    <a href="/">&larr; Back to site</a>
   </footer>
 
   <script src="https://source.thryvexgroup.com/js/form_embed.js" type="text/javascript"></script>
-
-  <!-- ══ Scroll foundation: Lenis + GSAP/ScrollTrigger (synced) ══ -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
-  <script src="/scroll.js"></script>
 </body>
 
 </html>
