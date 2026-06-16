@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ThryveX — hero prototype v6 (3D display)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#ECF1F8; --ink:#11131A; --graphite:#565C6E; --hair:rgba(17,19,26,.09);
+    --blue:#3F9FE6; --blush:#EAB9C6; --peach:#F4C79F; --wa:#25D366;
+    --grad:linear-gradient(96deg,#2E97E6 0%,#E7B2C2 50%,#F4C49B 100%);
+    --card:#FFFFFF;
+    --sh:0 2px 4px rgba(24,38,78,.04),0 14px 30px -14px rgba(24,38,78,.18),0 50px 90px -55px rgba(24,38,78,.45);
+    --fd:'Fraunces',Georgia,serif; --fb:'Inter Tight',-apple-system,sans-serif; --fm:'JetBrains Mono',monospace;
+    --gutter:clamp(1.25rem,5vw,5rem);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.5;overflow-x:hidden}
+
+  .mesh{position:fixed;inset:-20%;z-index:0;pointer-events:none}
+  .mesh i{position:absolute;border-radius:50%;filter:blur(64px);opacity:.55;will-change:transform}
+  .mesh .b1{width:46vw;height:46vw;left:55%;top:-10%;background:radial-gradient(circle,rgba(63,159,230,.55),transparent 70%);animation:d1 22s ease-in-out infinite}
+  .mesh .b2{width:40vw;height:40vw;left:70%;top:52%;background:radial-gradient(circle,rgba(244,199,159,.5),transparent 70%);animation:d2 26s ease-in-out infinite}
+  .mesh .b3{width:38vw;height:38vw;left:-6%;top:60%;background:radial-gradient(circle,rgba(234,185,198,.5),transparent 70%);animation:d3 30s ease-in-out infinite}
+  @keyframes d1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7%,6%) scale(1.12)}}
+  @keyframes d2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-9%,-7%) scale(1.1)}}
+  @keyframes d3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8%,-5%) scale(1.14)}}
+  .grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(var(--hair) 1px,transparent 1px),linear-gradient(90deg,var(--hair) 1px,transparent 1px);
+    background-size:clamp(50px,6.5vw,94px) clamp(50px,6.5vw,94px);
+    -webkit-mask-image:radial-gradient(120% 90% at 60% 28%,#000 28%,transparent 84%);mask-image:radial-gradient(120% 90% at 60% 28%,#000 28%,transparent 84%);}
+  .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.3rem var(--gutter)}
+  .brand{font-family:var(--fd);font-weight:600;font-size:1.22rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.6rem}
+  .brand .mk{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;font-size:.8rem}
+  .navlinks{display:flex;gap:2rem;font-family:var(--fm);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--graphite)}
+  .navlinks a{color:inherit;text-decoration:none;transition:color .25s}.navlinks a:hover{color:var(--ink)}
+  .navcta{font-family:var(--fb);font-size:.85rem;font-weight:500;padding:.55rem 1rem;border:1px solid var(--hair);border-radius:999px;background:rgba(255,255,255,.6);backdrop-filter:blur(8px)}
+  @media(max-width:820px){.navlinks{display:none}}
+
+  .hero{position:relative;z-index:2;min-height:100svh;display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:2.5rem;padding:7rem var(--gutter) 4rem}
+  @media(max-width:980px){.hero{grid-template-columns:1fr;padding-top:6rem;gap:3.5rem}}
+
+  .eyebrow{font-family:var(--fm);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.6rem}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 0 rgba(63,159,230,.5);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,159,230,.5)}70%{box-shadow:0 0 0 11px rgba(63,159,230,0)}100%{box-shadow:0 0 0 0 rgba(63,159,230,0)}}
+  h1.title{font-family:var(--fd);font-weight:400;font-size:clamp(3rem,7.6vw,6.4rem);line-height:.92;letter-spacing:-.035em;margin-bottom:1.7rem;max-width:14ch}
+  h1.title .em{font-style:italic;font-weight:500;background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sheen 6s ease-in-out infinite}
+  @keyframes sheen{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+  .ln{display:block;overflow:hidden}.ln>span{display:block}
+  .sub{font-size:clamp(1.05rem,1.5vw,1.24rem);color:var(--graphite);max-width:44ch;margin-bottom:2.2rem}
+  .ctas{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.05rem 1.7rem;border-radius:999px;font-weight:500;font-size:1rem;text-decoration:none;cursor:pointer;transition:box-shadow .25s,border-color .25s;will-change:transform}
+  .btn svg{width:18px;height:18px}
+  .btn-primary{background:var(--ink);color:#fff;box-shadow:0 12px 30px -12px rgba(17,19,26,.5)}
+  .btn-ghost{color:var(--ink);border:1px solid var(--hair);background:rgba(255,255,255,.55);backdrop-filter:blur(8px)}.btn-ghost:hover{border-color:var(--ink)}
+  .meta{display:flex;gap:1.8rem;margin-top:2.6rem;font-family:var(--fm);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--graphite);flex-wrap:wrap}
+  .meta b{color:var(--ink);font-weight:500}
+
+  /* ---- 3D display ---- */
+  .stage{position:relative;perspective:1700px;perspective-origin:50% 40%;display:flex;justify-content:center;align-items:center}
+  .device{position:relative;width:min(560px,92%);transform-style:preserve-3d;transform:rotateX(7deg) rotateY(-15deg);will-change:transform}
+  .shadow{position:absolute;left:8%;right:8%;bottom:-46px;height:60px;border-radius:50%;background:radial-gradient(ellipse,rgba(24,38,78,.4),transparent 70%);filter:blur(18px);transform:translateZ(-60px)}
+  .monitor{position:relative;border-radius:20px;padding:12px;background:linear-gradient(145deg,#2b2f3a,#0e1016 60%);box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 40px 80px -40px rgba(10,16,40,.7);}
+  .monitor::after{content:"";position:absolute;inset:0;border-radius:20px;background:linear-gradient(125deg,rgba(255,255,255,.16),transparent 38%);pointer-events:none}
+  .display{position:relative;border-radius:11px;overflow:hidden;background:#fff;aspect-ratio:16/12.4;transition:filter .5s,opacity .5s}
+  .display.off{filter:brightness(.2) saturate(.4);opacity:.7}
+  .glare{position:absolute;inset:0;z-index:9;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.22),transparent 36%);mix-blend-mode:screen;will-change:transform}
+  .stand-neck{position:absolute;left:50%;bottom:-40px;width:74px;height:54px;transform:translateX(-50%) translateZ(-30px);background:linear-gradient(180deg,#c9ced8,#9aa2b0);border-radius:0 0 8px 8px;box-shadow:inset 0 -6px 12px rgba(0,0,0,.15)}
+  .stand-base{position:absolute;left:50%;bottom:-52px;width:180px;height:22px;transform:translateX(-50%) translateZ(-30px) rotateX(60deg);background:linear-gradient(180deg,#d6dae2,#aab0bd);border-radius:50%;box-shadow:0 14px 24px -8px rgba(24,38,78,.4)}
+
+  /* dashboard ON the screen */
+  .app{font-size:13px;display:flex;flex-direction:column;height:100%;background:linear-gradient(180deg,#fafcff,#eef3fa)}
+  .appbar{display:flex;align-items:center;gap:.5rem;padding:.55rem .7rem;border-bottom:1px solid var(--hair);background:rgba(255,255,255,.7)}
+  .dots{display:flex;gap:5px}.dots i{width:9px;height:9px;border-radius:50%;background:#d7dbe4}.dots i:nth-child(1){background:#f0a8a0}.dots i:nth-child(2){background:#f3cf9a}.dots i:nth-child(3){background:#a9d8b0}
+  .appbar .url{flex:1;font-family:var(--fm);font-size:.62rem;letter-spacing:.04em;color:var(--graphite);text-align:center}
+  .appbody{padding:.7rem .8rem .8rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+  .metric{display:flex;align-items:flex-end;justify-content:space-between;gap:.8rem;border-bottom:1px solid var(--hair);padding-bottom:.65rem}
+  .metric .lab{font-family:var(--fm);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--graphite)}
+  .metric .val{font-family:var(--fd);font-weight:500;font-size:1.45rem;line-height:1;letter-spacing:-.02em;margin-top:.2rem}
+  .metric .delta{font-family:var(--fm);font-size:.58rem;color:#1f9d57;margin-top:.3rem}
+  .spark{width:90px;height:38px;overflow:visible}
+  .spark path.line{fill:none;stroke:url(#sg);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:200;stroke-dashoffset:200}
+  .spark path.area{fill:url(#sa);opacity:.5}
+  .row{display:flex;align-items:center;gap:.55rem;background:#fff;border:1px solid var(--hair);border-radius:11px;padding:.42rem .55rem;box-shadow:0 6px 16px -12px rgba(24,38,78,.5);position:relative;overflow:hidden}
+  .row::after{content:"";position:absolute;inset:0;transform:translateX(-120%);background:linear-gradient(105deg,transparent,rgba(255,255,255,.6),transparent)}
+  .row.swept::after{animation:sweep .9s ease-out}@keyframes sweep{to{transform:translateX(120%)}}
+  .row .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:0 0 auto;background:linear-gradient(180deg,#fff,#eef4fb);border:1px solid var(--hair)}
+  .row .ic svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:1.9}
+  .row.wa .ic svg{stroke:var(--wa)}
+  .row .tx{flex:1;min-width:0}.row .tx .h{font-weight:600;font-size:.78rem;letter-spacing:-.01em}.row .tx .s{font-size:.66rem;color:var(--graphite)}
+  .row .rt{font-family:var(--fm);font-size:.54rem;color:var(--graphite);opacity:0;transition:opacity .3s}.row.done .rt{opacity:1}
+  .row .chk{width:18px;height:18px;border-radius:50%;background:#eef1f6;display:grid;place-items:center;flex:0 0 auto;transition:background .3s}
+  .row .chk svg{width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.6;opacity:0;transition:opacity .3s}
+  .row.done .chk{background:#23c46b}.row.done .chk svg{opacity:1}
+
+  .chip{position:absolute;left:-18px;top:-16px;z-index:5;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.75);border-radius:14px;padding:.55rem .8rem;box-shadow:var(--sh)}
+  .chip .n{font-family:var(--fd);font-weight:500;font-size:1.2rem;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .chip .l{font-family:var(--fm);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--graphite)}
+  @media(max-width:560px){.chip{display:none}}
+
+  @media(prefers-reduced-motion:reduce){.eyebrow .dot,.mesh i,h1.title .em{animation:none}}
+</style>
+</head>
+<body>
+  <div class="mesh"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+  <div class="grid"></div>
+
+  <nav>
+    <div class="brand"><span class="mk">∞</span> ThryveX Group</div>
+    <div class="navlinks"><a href="#">Work</a><a href="#">Services</a><a href="#">Process</a><a href="#">Contact</a></div>
+    <a href="#" class="navcta">Book a call</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-text">
+      <span class="eyebrow"><span class="dot"></span> AI automation · web · meta ads</span>
+      <h1 class="title">
+        <span class="ln"><span>Your business,</span></span>
+        <span class="ln"><span class="em">on&nbsp;autopilot.</span></span>
+      </h1>
+      <p class="sub">We design the website, run the ads, and build the AI systems behind it — capturing every lead, replying on WhatsApp in seconds, and booking the work while you sleep.</p>
+      <div class="ctas">
+        <a class="btn btn-primary mag" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg> Book a call</a>
+        <a class="btn btn-ghost mag" href="#">See the work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="meta"><span><b>01</b>&nbsp; AI Automation</span><span><b>02</b>&nbsp; Web Development</span><span><b>03</b>&nbsp; Meta Ads</span></div>
+    </div>
+
+    <div class="stage">
+      <div class="device" id="device">
+        <div class="shadow"></div>
+        <div class="stand-base"></div>
+        <div class="stand-neck"></div>
+        <div class="monitor">
+          <div class="display off" id="display">
+            <div class="glare" id="glare"></div>
+            <div class="app">
+              <div class="appbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.thryvexgroup.com — automation</span></div>
+              <div class="appbody">
+                <div class="metric">
+                  <div>
+                    <div class="lab">Revenue booked · this month</div>
+                    <div class="val" id="rev">$0</div>
+                    <div class="delta">▲ <span id="delta">+0%</span> vs manual</div>
+                  </div>
+                  <svg class="spark" viewBox="0 0 90 38">
+                    <defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3F9FE6"/><stop offset="1" stop-color="#F4C49B"/></linearGradient>
+                    <linearGradient id="sa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3F9FE6" stop-opacity=".5"/><stop offset="1" stop-color="#3F9FE6" stop-opacity="0"/></linearGradient></defs>
+                    <path class="area" d="M0,34 L8,30 L20,32 L32,24 L44,26 L56,17 L68,19 L80,9 L90,5 L90,38 L0,38 Z"/>
+                    <path class="line" d="M0,34 L8,30 L20,32 L32,24 L44,26 L56,17 L68,19 L80,9 L90,5"/>
+                  </svg>
+                </div>
+                <div class="row" data-i="0"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></svg></div><div class="tx"><div class="h">Meta Ad → new lead</div><div class="s">Instagram &amp; Facebook</div></div><span class="rt">0.2s</span><div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div>
+                <div class="row wa" data-i="1"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></div><div class="tx"><div class="h">WhatsApp auto-reply</div><div class="s">AI answers &amp; qualifies</div></div><span class="rt">9s</span><div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div>
+                <div class="row" data-i="2"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="tx"><div class="h">Call booked</div><div class="s">Straight to your calendar</div></div><span class="rt">live</span><div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div>
+                <div class="row" data-i="3"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg></div><div class="tx"><div class="h">Follow-up sequence</div><div class="s">Nurtures until they convert</div></div><span class="rt">auto</span><div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chip"><span class="n" id="chipn">+38%</span><span class="l">booked rate</span></div>
+    </div>
+  </header>
+
+  <section style="height:60vh;display:grid;place-items:center;position:relative;z-index:2"><p style="font-family:var(--fm);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite)">scroll — the rest of the site builds from here</p></section>
+
+  <div class="grain"></div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script>
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const rows = gsap.utils.toArray('.row');
+    function countUp(el,to,prefix='',suffix='',dur=1.5){const o={v:0};gsap.to(o,{v:to,duration:dur,ease:'power2.out',onUpdate(){el.textContent=prefix+Math.round(o.v).toLocaleString()+suffix}});}
+
+    if(!reduce){
+      gsap.set('.ln > span',{yPercent:115});
+      gsap.set('.sub,.ctas,.meta',{opacity:0,y:14});
+      gsap.set('.device',{opacity:0,y:30,rotateY:-30,scale:.94});
+      gsap.set('.chip',{opacity:0,x:-14,y:6});
+      gsap.set(rows,{opacity:0,y:10});
+
+      const tl=gsap.timeline({delay:.25,defaults:{ease:'power3.out'}});
+      tl.to('.ln > span',{yPercent:0,duration:1.05,ease:'expo.out',stagger:.13})
+        .to('.device',{opacity:1,y:0,rotateY:-15,scale:1,duration:1.1,ease:'power3.out'},'-=.7')
+        .add(()=>document.getElementById('display').classList.remove('off'),'-=.3') // power on
+        .to({},{duration:.25})
+      rows.forEach((r,i)=>{ tl.to(r,{opacity:1,y:0,duration:.4,ease:'back.out(1.5)'}, i===0?'>':'>-.02').add(()=>r.classList.add('done','swept')); });
+      tl.to('.sub',{opacity:1,y:0,duration:.6},'-=1.3')
+        .to('.ctas',{opacity:1,y:0,duration:.6},'-=1.0')
+        .to('.meta',{opacity:1,y:0,duration:.6},'-=.8')
+        .add(()=>{
+          gsap.to('.spark .line',{strokeDashoffset:0,duration:1.2,ease:'power2.out'});
+          gsap.to('.chip',{opacity:1,x:0,y:0,duration:.6,ease:'back.out(1.6)'});
+          countUp(document.getElementById('rev'),48250,'$','',1.6);
+          countUp(document.getElementById('delta'),312,'+','%',1.6);
+        },'-=.3');
+    } else {
+      document.getElementById('display').classList.remove('off');
+      document.getElementById('rev').textContent='$48,250';document.getElementById('delta').textContent='+312%';
+      rows.forEach(r=>r.classList.add('done'));gsap.set('.spark .line',{strokeDashoffset:0});
+    }
+
+    if(!reduce){
+      const device=document.getElementById('device'), glare=document.getElementById('glare');
+      addEventListener('pointermove',e=>{
+        const px=e.clientX/innerWidth-.5, py=e.clientY/innerHeight-.5;
+        gsap.to(device,{rotateY:-15+px*14,rotateX:7-py*8,duration:.7,ease:'power2.out'});
+        gsap.to(glare,{xPercent:px*40,duration:.7,ease:'power2.out'});
+      });
+      document.querySelectorAll('.mag').forEach(b=>{
+        b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.3,y:(e.clientY-r.top-r.height/2)*.4,duration:.4})});
+        b.addEventListener('pointerleave',()=>gsap.to(b,{x:0,y:0,duration:.5,ease:'elastic.out(1,.4)'}));
+      });
+    }
+  </script>
+</body>
+</html>
