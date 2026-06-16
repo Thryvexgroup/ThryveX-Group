@@ -152,8 +152,25 @@
     .widget-card iframe {
       width: 100%; border: none; overflow: hidden;
       min-height: 780px; height: 780px; border-radius: 24px; display: block;
-      background: transparent;
+      background: transparent; position: relative; z-index: 1;
     }
+    /* loading state shown until the GHL widget finishes loading */
+    .widget-loading {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem;
+      background: #ffffff; border-radius: 24px;
+      color: var(--grey); font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+      transition: opacity .5s ease;
+    }
+    .widget-loading.hidden { opacity: 0; pointer-events: none; }
+    .wspin {
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 3px solid rgba(63,159,230,.18); border-top-color: #3F9FE6;
+      animation: wspin .8s linear infinite;
+    }
+    @keyframes wspin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .wspin { animation: none; } }
 
     /* Contact section */
     .book-contact {
@@ -250,12 +267,17 @@
   <!-- Booking widget -->
   <div class="widget-wrap">
     <div class="widget-card">
+      <div class="widget-loading" id="wload">
+        <div class="wspin" aria-hidden="true"></div>
+        <span>Loading your booking calendar</span>
+      </div>
       <iframe
         src="https://source.thryvexgroup.com/widget/booking/GoaSvdUc3KUaJwvNIsMr?backgroundColor=%23FFFFFF&primaryColor=%233F9FE6"
         style="width:100%;border:none;overflow:hidden;min-height:780px"
         scrolling="no"
         id="GoaSvdUc3KUaJwvNIsMr_book"
-        title="Book a strategy call with ThryveX Group"></iframe>
+        title="Book a strategy call with ThryveX Group"
+        onload="var w=document.getElementById('wload');if(w){setTimeout(function(){w.classList.add('hidden')},600);}"></iframe>
     </div>
   </div>
 
