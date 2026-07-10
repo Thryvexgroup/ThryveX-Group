@@ -78,6 +78,20 @@
   .cur{position:fixed;top:0;left:0;width:13px;height:13px;border-radius:50%;background:rgba(63,159,230,.6);box-shadow:0 0 0 1px rgba(255,255,255,.35);z-index:9999;pointer-events:none;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s,opacity .25s}
   .cur.big{width:52px;height:52px;background:rgba(63,159,230,.14);box-shadow:0 0 0 1.5px rgba(63,159,230,.45)}
   @media(pointer:coarse){body{cursor:auto}.cur{display:none}}
+  /* ——— fx pass: cursor label, pointer glow, ghost word, grid beams ——— */
+  .cur-lb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.06em;color:#fff;opacity:0;transition:opacity .2s;text-transform:uppercase}
+  .cur.lab{width:48px;height:48px;background:rgba(63,159,230,.9);box-shadow:0 10px 24px -8px rgba(63,159,230,.7)}
+  .cur.lab .cur-lb{opacity:1}
+  .glowfx{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s ease;background:radial-gradient(280px circle at var(--gx,50%) var(--gy,50%),rgba(63,159,230,.13),transparent 65%);z-index:1}
+  .reason:hover .glowfx,.rcard:hover .glowfx,.dcard:hover .glowfx{opacity:1}
+  .rcard{position:relative}
+  #process{position:relative;overflow:hidden}
+  #process .wrap{position:relative;z-index:1}
+  .ghostw{position:absolute;top:.6rem;left:-2vw;z-index:0;font-family:'Space Grotesk';font-weight:700;font-size:clamp(5.5rem,16vw,14rem);line-height:1;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(63,159,230,.14);pointer-events:none;user-select:none;will-change:transform}
+  .beam{position:absolute;left:0;pointer-events:none;height:2px;width:210px;background:linear-gradient(90deg,transparent,rgba(63,159,230,.55),rgba(233,182,198,.35),transparent);border-radius:2px;animation:beamx 10s linear infinite}
+  @keyframes beamx{0%{transform:translateX(-230px)}100%{transform:translateX(105vw)}}
+  @media(prefers-reduced-motion:reduce){.beam,.ghostw{display:none}}
+  @media(max-width:760px){.ghostw{-webkit-text-stroke-width:1px}}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:.9rem var(--gutter);gap:1rem}
   .pill{background:rgba(255,255,255,.88);border:1px solid rgba(17,19,26,.08);border-radius:999px;box-shadow:0 8px 26px -12px rgba(20,30,60,.3)}
@@ -573,7 +587,7 @@
   <main class="content">
     <section class="sec" id="services">
       <div class="wrap">
-        <div class="stagefloor"></div>
+        <div class="stagefloor"><span class="beam" style="top:34%"></span><span class="beam" style="top:64%;animation-delay:5s"></span></div>
         <p class="eyb r">What we build</p>
         <h2 class="r">Everything your business needs to operate without limits.</h2>
         <p class="lead2 r">Five systems that click together into one machine, built around the tools you already use.</p>
@@ -596,6 +610,7 @@
     </section>
 
     <section class="sec" id="process">
+      <div class="ghostw" aria-hidden="true">AUTOMATION</div>
       <div class="wrap">
         <p class="eyb r">Process</p>
         <h2 class="r">A clear path from chaos to full automation.</h2>
@@ -1058,7 +1073,7 @@
         "AI automation, web development & Meta Ads for businesses that refuse to stay still.":"Automatización con IA, desarrollo web y Meta Ads para negocios que se niegan a quedarse quietos.","Panama City":"Ciudad de Panamá","Worldwide":"En todo el mundo","Working remotely, across every timezone":"Trabajando en remoto, en cada zona horaria",
         "Company":"Empresa","Get in touch":"Contacto","Website Development":"Desarrollo Web",
         "© 2026 ThryveX Group. All rights reserved.":"© 2026 ThryveX Group. Todos los derechos reservados.","Designed & built in-house, line by line.":"Diseñado y desarrollado internamente, línea por línea.",
-        "This week":"Esta semana","Leads this week":"Leads esta semana","Uptime":"Disponibilidad","Avg response":"Respuesta promedio","Coverage":"Cobertura"
+        "This week":"Esta semana","Leads this week":"Leads esta semana","Uptime":"Disponibilidad","Avg response":"Respuesta promedio","Coverage":"Cobertura","AUTOMATION":"AUTOMATIZACIÓN"
       };
       const norm=s=>s.replace(/\s+/g,' ').trim();
       const T=[];
@@ -1272,7 +1287,8 @@
         ['lead','New lead captured','WhatsApp click-to-chat',1],
         ['clock','Follow-up scheduled','Day-2 sequence',0]
       ];
-      let sec=10*3600+20*60+9, p=0, clockT=null, feedT=null;
+      const _now=new Date();
+      let sec=_now.getHours()*3600+_now.getMinutes()*60+_now.getSeconds(), p=0, clockT=null, feedT=null, synced=false;
       function fmt(s){s=((s%86400)+86400)%86400;const h=Math.floor(s/3600),m=Math.floor(s/60)%60,c=s%60;
         return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(c).padStart(2,'0');}
       function tick(){sec++;if(timeEl)timeEl.textContent=fmt(sec);}
@@ -1287,9 +1303,89 @@
         if(evs.length>5)evs[evs.length-1].remove();
         if(it[3]&&leadsEl){const n=parseInt(leadsEl.textContent,10)+1;leadsEl.textContent=n;leadsEl.classList.remove('bump');void leadsEl.offsetWidth;leadsEl.classList.add('bump');}
       }
-      function start(){if(reduce)return;stop();if(timeEl)timeEl.textContent=fmt(sec);clockT=setInterval(tick,1000);feedT=setInterval(push,3000);}
+      function start(){if(reduce)return;stop();
+        if(!synced){synced=true;const offs=[-246,-244,-239,-106,-9];con.querySelectorAll('.ev-tm').forEach((el,i)=>{if(offs[i]!=null)el.textContent=fmt(sec+offs[i]);});}
+        if(timeEl)timeEl.textContent=fmt(sec);clockT=setInterval(tick,1000);feedT=setInterval(push,3000);}
       function stop(){clearInterval(clockT);clearInterval(feedT);clockT=feedT=null;}
       new IntersectionObserver(es=>{es.forEach(e=>{e.isIntersecting?start():stop();});},{threshold:.25}).observe(con);
+    })();
+  </script>
+  <script>
+    // ——— fx pass: decrypt-in mono tags, pointer glow + tilt, ghost word scrub, deck drag + cursor label ———
+    (function(){
+      const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const fine=matchMedia('(pointer:fine)').matches;
+
+      // 1) mono tags decrypt into place on first reveal (the system decoding itself)
+      if(!reduce){
+        const CH='01<>#%&$*+=';
+        const map=new Map();
+        document.querySelectorAll('.eyb,.dtag,.pipe-num,.con-id,.stg-h').forEach(el=>{
+          const ns=[...el.childNodes].filter(n=>n.nodeType===3&&n.nodeValue.trim());
+          if(ns.length)map.set(el,ns);
+        });
+        const seen=new WeakSet();
+        const io=new IntersectionObserver(es=>es.forEach(e=>{
+          if(!e.isIntersecting)return;const el=e.target;io.unobserve(el);
+          (map.get(el)||[]).forEach(n=>{
+            if(seen.has(n))return;seen.add(n);
+            const txt=n.nodeValue,t0=performance.now(),D=620;
+            (function f(t){const pr=Math.min(1,(t-t0)/D);const k=Math.floor(pr*txt.length);let o=txt.slice(0,k);
+              for(let i=k;i<txt.length;i++){const c=txt[i];o+=(c===' '||c==='·')?c:CH[(Math.random()*CH.length)|0];}
+              n.nodeValue=o;if(pr<1)requestAnimationFrame(f);else n.nodeValue=txt;})(t0);
+          });
+        }),{threshold:.5});
+        map.forEach((_,el)=>io.observe(el));
+      }
+
+      // 2) pointer glow (all cards) + gentle 3D tilt (reason/stat cards; deck keeps its carousel transform)
+      if(fine){
+        document.querySelectorAll('.reason,.rcard,.dcard').forEach(c=>{
+          const g=document.createElement('span');g.className='glowfx';c.appendChild(g);
+          let rect=null;
+          c.addEventListener('pointerenter',()=>{rect=c.getBoundingClientRect();});
+          c.addEventListener('pointermove',e=>{
+            if(!rect)rect=c.getBoundingClientRect();
+            const x=(e.clientX-rect.left)/rect.width,y=(e.clientY-rect.top)/rect.height;
+            c.style.setProperty('--gx',(x*100).toFixed(1)+'%');c.style.setProperty('--gy',(y*100).toFixed(1)+'%');
+            if(!reduce&&!c.classList.contains('dcard')){
+              c.style.transform='translateY(-6px) perspective(720px) rotateX('+((.5-y)*4).toFixed(2)+'deg) rotateY('+((x-.5)*5).toFixed(2)+'deg)';
+            }
+          });
+          c.addEventListener('pointerleave',()=>{rect=null;c.style.transform='';});
+        });
+      }
+
+      // 3) ghost word drifts with scroll behind Process (transform-only, cached offsets)
+      const gh=document.querySelector('.ghostw');
+      if(gh&&!reduce){
+        const sec=gh.closest('section');let top=0,hh=1;
+        const meas=()=>{const r=sec.getBoundingClientRect();top=r.top+window.scrollY;hh=r.height;};
+        meas();addEventListener('resize',meas,{passive:true});setTimeout(meas,900);
+        let tk=false;
+        addEventListener('scroll',()=>{if(tk)return;tk=true;requestAnimationFrame(()=>{tk=false;
+          const p=(window.scrollY+innerHeight-top)/(innerHeight+hh);
+          if(p<-0.1||p>1.1)return;
+          gh.style.transform='translate3d('+(((.5-Math.min(1,Math.max(0,p)))*24).toFixed(2))+'vw,0,0)';});
+        },{passive:true});
+      }
+
+      // 4) deck: real drag/swipe + talking cursor
+      const deck=document.getElementById('deck');
+      if(deck){
+        let sx=null;
+        deck.addEventListener('pointerdown',e=>{sx=e.clientX;},{passive:true});
+        addEventListener('pointerup',e=>{
+          if(sx==null)return;const dx=e.clientX-sx;sx=null;
+          if(Math.abs(dx)>55){const b=document.getElementById(dx<0?'dnext':'dprev');if(b)b.click();}
+        },{passive:true});
+        const cur=document.getElementById('cur');
+        if(cur&&fine){
+          const lb=document.createElement('span');lb.className='cur-lb';cur.appendChild(lb);
+          deck.addEventListener('pointerenter',()=>{lb.textContent=document.documentElement.lang==='es'?'Arrastra':'Drag';cur.classList.add('lab');});
+          deck.addEventListener('pointerleave',()=>cur.classList.remove('lab'));
+        }
+      }
     })();
   </script>
 </body>
