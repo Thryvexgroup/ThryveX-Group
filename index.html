@@ -92,6 +92,35 @@
   @keyframes beamx{0%{transform:translateX(-230px)}100%{transform:translateX(105vw)}}
   @media(prefers-reduced-motion:reduce){.beam,.ghostw{display:none}}
   @media(max-width:760px){.ghostw{-webkit-text-stroke-width:1px}}
+  /* ——— fx pass 2: boot sequence, capability ticker, cursor-lit grid ——— */
+  .boot{position:fixed;inset:0;z-index:300;background:var(--w);display:flex;align-items:center;justify-content:center;transition:opacity .4s ease}
+  .boot.off{opacity:0;pointer-events:none}
+  .boot-in{font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:2;color:var(--grey);min-width:240px}
+  .boot .bl{display:block;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s}
+  .boot .bl.on{opacity:1;transform:none}
+  .boot .bl i{font-style:normal;color:rgba(107,113,128,.55)}
+  .boot .bl b{color:#10b981;font-weight:500;float:right;margin-left:2rem}
+  .boot .bl:first-child{color:var(--ink);font-weight:500;margin-bottom:.35rem}
+  .boot .bl-live{color:var(--ink)}
+  .boot .bl-live::after{content:"▊";color:#3F9FE6;animation:bcaret .7s steps(1) infinite;margin-left:2px}
+  @keyframes bcaret{50%{opacity:0}}
+  /* hold the hero entrance while the boot screen is up, release on lift */
+  html.booting .ln>span,html.booting .ey,html.booting .sub,html.booting .ctas,html.booting #c,html.booting .scrollcue{animation-play-state:paused!important}
+  .pulsecta{position:relative}
+  .pulsecta::after{content:"";position:absolute;inset:0;border-radius:999px;pointer-events:none;animation:ctaping 3.8s cubic-bezier(.3,0,.4,1) infinite}
+  @keyframes ctaping{0%{box-shadow:0 0 0 0 rgba(63,159,230,.38)}55%{box-shadow:0 0 0 13px rgba(63,159,230,0)}100%{box-shadow:0 0 0 0 rgba(63,159,230,0)}}
+  @media(prefers-reduced-motion:reduce){.pulsecta::after{animation:none}}
+  .tick{overflow:hidden;border-top:1px solid rgba(17,19,26,.07);border-bottom:1px solid rgba(17,19,26,.07);padding:.95rem 0;position:relative;z-index:3;background:rgba(255,255,255,.55)}
+  .tick-in{display:flex;width:max-content;animation:tickx 38s linear infinite}
+  .tick-g{display:flex;align-items:center;gap:2.4rem;padding-right:2.4rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);white-space:nowrap}
+  .tick-g i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:.85rem;letter-spacing:0}
+  @keyframes tickx{to{transform:translateX(-50%)}}
+  .tick:hover .tick-in{animation-play-state:paused}
+  .gridspot{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s ease;background:radial-gradient(360px circle at var(--mx,50%) var(--my,40%),rgba(63,159,230,.09),transparent 70%);z-index:0}
+  #why:hover .gridspot,#pipeline:hover .gridspot{opacity:1}
+  #why,#pipeline{position:relative}
+  #why .wrap,#pipeline .wrap{position:relative;z-index:1}
+  @media(prefers-reduced-motion:reduce){.tick-in{animation:none}.boot{display:none}}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:.9rem var(--gutter);gap:1rem}
   .pill{background:rgba(255,255,255,.88);border:1px solid rgba(17,19,26,.08);border-radius:999px;box-shadow:0 8px 26px -12px rgba(20,30,60,.3)}
@@ -549,6 +578,27 @@
 </style>
 </head>
 <body>
+  <div class="boot" id="boot" aria-hidden="true"><div class="boot-in">
+    <span class="bl">THRYVEX OS <i>v2.0</i></span>
+    <span class="bl">&gt; lead capture <b>OK</b></span>
+    <span class="bl">&gt; ai agents <b>OK</b></span>
+    <span class="bl">&gt; crm sync <b>OK</b></span>
+    <span class="bl bl-live">&gt; all systems live</span>
+  </div></div>
+  <script>
+    // boot plays once per session; remove instantly (pre-paint) on repeat views
+    (function(){var b=document.getElementById('boot');
+      try{
+        if(sessionStorage.getItem('tvxboot')||matchMedia('(prefers-reduced-motion: reduce)').matches){b.remove();return;}
+        sessionStorage.setItem('tvxboot','1');
+        document.documentElement.classList.add('booting');
+        var ls=b.querySelectorAll('.bl');
+        ls.forEach(function(l,i){setTimeout(function(){l.classList.add('on');},80+i*150);});
+        setTimeout(function(){b.classList.add('off');document.documentElement.classList.remove('booting');},1150);
+        setTimeout(function(){b.remove();},1600);
+      }catch(e){if(b)b.remove();}
+    })();
+  </script>
   <div class="scrollprog" aria-hidden="true"><i id="scrollprogbar"></i></div>
   <div class="cur" id="cur"></div>
   <div class="floor"></div>
@@ -580,11 +630,15 @@
     <p class="ey">Scale Without Limits</p>
     <h1><span class="ln"><span>Built to run without</span></span><span class="ln"><span>you.</span></span></h1>
     <p class="sub">AI automation, web development &amp; Meta Ads. One system that answers every lead in seconds, even the ones that arrive at 2am.</p>
-    <div class="ctas"><a class="btn mag" href="/book">Book a Call</a><a class="btn ghost mag" href="#services">See What We Build</a></div>
+    <div class="ctas"><a class="btn mag pulsecta" href="/book">Book a Call</a><a class="btn ghost mag" href="#services">See What We Build</a></div>
   </header>
   <div class="scrollcue"><span>Scroll</span><span class="ln2"></span></div>
 
   <main class="content">
+    <div class="tick"><div class="tick-in">
+      <div class="tick-g"><span>AI Follow-up</span><i>∞</i><span>WhatsApp Agents</span><i>∞</i><span>CRM Automation</span><i>∞</i><span>Meta Ads</span><i>∞</i><span>Web Development</span><i>∞</i><span>24/7 Booking</span><i>∞</i></div>
+      <div class="tick-g"><span>AI Follow-up</span><i>∞</i><span>WhatsApp Agents</span><i>∞</i><span>CRM Automation</span><i>∞</i><span>Meta Ads</span><i>∞</i><span>Web Development</span><i>∞</i><span>24/7 Booking</span><i>∞</i></div>
+    </div></div>
     <section class="sec" id="services">
       <div class="wrap">
         <div class="stagefloor"><span class="beam" style="top:34%"></span><span class="beam" style="top:64%;animation-delay:5s"></span></div>
@@ -1073,7 +1127,7 @@
         "AI automation, web development & Meta Ads for businesses that refuse to stay still.":"Automatización con IA, desarrollo web y Meta Ads para negocios que se niegan a quedarse quietos.","Panama City":"Ciudad de Panamá","Worldwide":"En todo el mundo","Working remotely, across every timezone":"Trabajando en remoto, en cada zona horaria",
         "Company":"Empresa","Get in touch":"Contacto","Website Development":"Desarrollo Web",
         "© 2026 ThryveX Group. All rights reserved.":"© 2026 ThryveX Group. Todos los derechos reservados.","Designed & built in-house, line by line.":"Diseñado y desarrollado internamente, línea por línea.",
-        "This week":"Esta semana","Leads this week":"Leads esta semana","Uptime":"Disponibilidad","Avg response":"Respuesta promedio","Coverage":"Cobertura","AUTOMATION":"AUTOMATIZACIÓN"
+        "This week":"Esta semana","Leads this week":"Leads esta semana","Uptime":"Disponibilidad","Avg response":"Respuesta promedio","Coverage":"Cobertura","AUTOMATION":"AUTOMATIZACIÓN","AI Follow-up":"Seguimiento con IA","WhatsApp Agents":"Agentes de WhatsApp","CRM Automation":"Automatización de CRM","24/7 Booking":"Agendamiento 24/7"
       };
       const norm=s=>s.replace(/\s+/g,' ').trim();
       const T=[];
@@ -1385,6 +1439,42 @@
           deck.addEventListener('pointerenter',()=>{lb.textContent=document.documentElement.lang==='es'?'Arrastra':'Drag';cur.classList.add('lab');});
           deck.addEventListener('pointerleave',()=>cur.classList.remove('lab'));
         }
+      }
+
+      // 5) cursor-lit blueprint grid in the alt sections
+      if(fine){
+        ['why','pipeline'].forEach(id=>{
+          const s=document.getElementById(id);if(!s)return;
+          const g=document.createElement('div');g.className='gridspot';s.appendChild(g);
+          let rect=null,tk=false,ex=0,ey=0;
+          s.addEventListener('pointerenter',()=>{rect=s.getBoundingClientRect();});
+          s.addEventListener('pointermove',e=>{
+            ex=e.clientX;ey=e.clientY;
+            if(tk||window.__scrolling)return;tk=true;
+            requestAnimationFrame(()=>{tk=false;
+              if(!rect)rect=s.getBoundingClientRect();
+              g.style.setProperty('--mx',(((ex-rect.left)/rect.width)*100).toFixed(1)+'%');
+              g.style.setProperty('--my',(((ey-rect.top)/rect.height)*100).toFixed(1)+'%');
+            });
+          });
+          s.addEventListener('pointerleave',()=>{rect=null;});
+        });
+      }
+
+      // 6) nav links scramble on hover (micro-delight)
+      if(fine&&!reduce){
+        const CH2='01<>#%&$*+=';
+        document.querySelectorAll('.nl a').forEach(a=>{
+          const n=[...a.childNodes].find(x=>x.nodeType===3&&x.nodeValue.trim());
+          if(!n)return;let busy=false;
+          a.addEventListener('pointerenter',()=>{
+            if(busy)return;busy=true;
+            const txt=n.nodeValue,t0=performance.now(),D=300;
+            (function f(t){const pr=Math.min(1,(t-t0)/D);const k=Math.floor(pr*txt.length);let o=txt.slice(0,k);
+              for(let i=k;i<txt.length;i++){const c=txt[i];o+=c===' '?' ':CH2[(Math.random()*CH2.length)|0];}
+              n.nodeValue=o;if(pr<1)requestAnimationFrame(f);else{n.nodeValue=txt;busy=false;}})(t0);
+          });
+        });
       }
     })();
   </script>
