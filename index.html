@@ -110,10 +110,14 @@
   .pulsecta::after{content:"";position:absolute;inset:0;border-radius:999px;pointer-events:none;animation:ctaping 3.8s cubic-bezier(.3,0,.4,1) infinite}
   @keyframes ctaping{0%{box-shadow:0 0 0 0 rgba(63,159,230,.38)}55%{box-shadow:0 0 0 13px rgba(63,159,230,0)}100%{box-shadow:0 0 0 0 rgba(63,159,230,0)}}
   @media(prefers-reduced-motion:reduce){.pulsecta::after{animation:none}}
-  .tick{overflow:hidden;border-top:1px solid rgba(17,19,26,.07);border-bottom:1px solid rgba(17,19,26,.07);padding:.95rem 0;position:relative;z-index:3;background:rgba(255,255,255,.55)}
+  .tick{position:relative;z-index:3;padding:1.05rem 0;background:rgba(255,255,255,.6)}
+  .tick::before,.tick::after{content:"";position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(63,159,230,.45) 18%,rgba(233,182,198,.4) 50%,rgba(244,201,161,.45) 82%,transparent)}
+  .tick::before{top:0}
+  .tick::after{bottom:0}
+  .tick-mask{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
   .tick-in{display:flex;width:max-content;animation:tickx 38s linear infinite}
-  .tick-g{display:flex;align-items:center;gap:2.4rem;padding-right:2.4rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);white-space:nowrap}
-  .tick-g i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:.85rem;letter-spacing:0}
+  .tick-g{display:flex;align-items:center;gap:2.4rem;padding-right:2.4rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#565c68;white-space:nowrap}
+  .tick-g i{font-style:normal;font-family:'Space Grotesk';font-weight:700;font-size:1.1rem;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0;transform:translateY(-1px)}
   @keyframes tickx{to{transform:translateX(-50%)}}
   .tick:hover .tick-in{animation-play-state:paused}
   .gridspot{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s ease;background:radial-gradient(360px circle at var(--mx,50%) var(--my,40%),rgba(63,159,230,.09),transparent 70%);z-index:0}
@@ -635,10 +639,10 @@
   <div class="scrollcue"><span>Scroll</span><span class="ln2"></span></div>
 
   <main class="content">
-    <div class="tick"><div class="tick-in">
+    <div class="tick"><div class="tick-mask"><div class="tick-in">
       <div class="tick-g"><span>AI Follow-up</span><i>∞</i><span>WhatsApp Agents</span><i>∞</i><span>CRM Automation</span><i>∞</i><span>Meta Ads</span><i>∞</i><span>Web Development</span><i>∞</i><span>24/7 Booking</span><i>∞</i></div>
       <div class="tick-g"><span>AI Follow-up</span><i>∞</i><span>WhatsApp Agents</span><i>∞</i><span>CRM Automation</span><i>∞</i><span>Meta Ads</span><i>∞</i><span>Web Development</span><i>∞</i><span>24/7 Booking</span><i>∞</i></div>
-    </div></div>
+    </div></div></div>
     <section class="sec" id="services">
       <div class="wrap">
         <div class="stagefloor"><span class="beam" style="top:34%"></span><span class="beam" style="top:64%;animation-delay:5s"></span></div>
