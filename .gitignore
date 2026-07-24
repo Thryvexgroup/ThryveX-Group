@@ -4,5 +4,5 @@ node_modules/
 .DS_Store
 _proto-*.html
 transmission-city.html
-Assets/
+brand-source/
 *.log
