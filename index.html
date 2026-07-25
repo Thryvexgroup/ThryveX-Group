@@ -551,6 +551,12 @@
   .fin-btn{margin-top:clamp(1.7rem,4.2vh,2.8rem)}
   @media(prefers-reduced-motion:reduce){.fin-dot{animation:none}}
   @media(max-width:520px){.bigmail{white-space:normal;font-size:clamp(1.4rem,8.5vw,2.4rem)}}
+  /* ——— wavehead: move + shimmer signature on the live-system heading ——— */
+  .wavehead .wl{display:inline-block;white-space:pre;animation:whlift 3.6s ease-in-out infinite;animation-delay:calc(var(--i)*.045s)}
+  @keyframes whlift{0%,62%,100%{transform:translateY(0)}31%{transform:translateY(-.07em)}}
+  .wavehead.lit{background:linear-gradient(100deg,var(--ink) 0,var(--ink) 40%,#3F9FE6 47%,#9FB4E8 50%,#E9B6C6 53%,var(--ink) 60%,var(--ink) 100%);background-size:280% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:whsh 5s linear infinite}
+  @keyframes whsh{0%{background-position:130% 0}100%{background-position:-30% 0}}
+  @media(prefers-reduced-motion:reduce){.wavehead .wl,.wavehead.lit{animation:none}}
   footer{position:relative;z-index:5;padding:5rem 0 2.4rem;border-top:1px solid rgba(17,19,26,.08);background:linear-gradient(180deg,#fff,#f6f8fc)}
   .fwrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.25rem,3vw,2.5rem)}
   .ftop{display:flex;flex-wrap:wrap;align-items:flex-start;gap:2.5rem clamp(2rem,4vw,3.5rem)}
@@ -758,7 +764,7 @@
 
     <section class="sec" id="command"><div class="wrap" style="text-align:center">
       <p class="eyb r">Live system</p>
-      <h2 class="r" style="margin:0 auto">Watch your business run itself.</h2>
+      <h2 class="r wavehead" style="margin:0 auto">Watch your business run itself.</h2>
       <p class="lead2 r" style="margin:1.1rem auto 0">This is an ordinary Tuesday with AI on your front desk: leads answered, qualified and booked while you're busy doing the actual work.</p>
       <div class="console r">
         <div class="con-top">
@@ -1099,7 +1105,7 @@
       // word-by-word reveal for section headings
       function splitWords(el){const t=el.textContent.trim();el.textContent='';el.classList.add('wordsplit');const parts=t.split(/\s+/);
         parts.forEach((tok,i)=>{const w=document.createElement('span');w.className='word';const s=document.createElement('span');s.textContent=tok;if(i===parts.length-1)s.classList.add('gw');w.appendChild(s);el.appendChild(w);if(i<parts.length-1)el.appendChild(document.createTextNode(' '));});}
-      const heads=[...document.querySelectorAll('.content h2')];
+      const heads=[...document.querySelectorAll('.content h2:not(.wavehead)')];
       heads.forEach(h=>{h.classList.remove('r');h.setAttribute('data-en',h.textContent.trim());splitWords(h);});
       const hio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.word>span').forEach((s,i)=>s.style.transitionDelay=Math.min(i*0.05,.6)+'s');e.target.classList.add('win');}else e.target.classList.remove('win');}),{threshold:.25});
       heads.forEach(h=>hio.observe(h));
@@ -1150,11 +1156,12 @@
       const norm=s=>s.replace(/\s+/g,' ').trim();
       const T=[];
       ['header','nav','#navmobile','main','footer'].forEach(sel=>{const r=document.querySelector(sel);if(!r)return;
-        const tw=document.createTreeWalker(r,NodeFilter.SHOW_TEXT,{acceptNode(n){if(!n.nodeValue.trim())return 2;const p=n.parentElement;if(!p||p.closest('script,style,.wordsplit'))return 2;return ES[norm(n.nodeValue)]!==undefined?1:2;}});
+        const tw=document.createTreeWalker(r,NodeFilter.SHOW_TEXT,{acceptNode(n){if(!n.nodeValue.trim())return 2;const p=n.parentElement;if(!p||p.closest('script,style,.wordsplit,.wavehead'))return 2;return ES[norm(n.nodeValue)]!==undefined?1:2;}});
         let n;while(n=tw.nextNode())T.push({node:n,en:n.nodeValue,es:ES[norm(n.nodeValue)]});});
       function setLang(lang){const es=lang==='es';
         T.forEach(o=>{o.node.nodeValue=es?o.es:o.en;});
-        document.querySelectorAll('.content h2[data-en]').forEach(h=>{const en=h.getAttribute('data-en');const tr=ES[norm(en)];h.textContent=(es&&tr)?tr:en;splitWords(h);h.classList.add('win');});
+        document.querySelectorAll('.content h2[data-en]:not(.wavehead)').forEach(h=>{const en=h.getAttribute('data-en');const tr=ES[norm(en)];h.textContent=(es&&tr)?tr:en;splitWords(h);h.classList.add('win');});
+        if(window.__wavehead)window.__wavehead(es);
         document.documentElement.lang=lang;}
       window.__setLang=setLang;
       const cue=document.querySelector('.scrollcue');
@@ -1395,6 +1402,20 @@
           el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();var x=(e.clientX-(r.left+r.width/2))/r.width;var y=(e.clientY-(r.top+r.height/2))/Math.max(1,r.height);el.style.transform='translate('+(x*16).toFixed(1)+'px,'+(y*8).toFixed(1)+'px)';});
           el.addEventListener('pointerleave',function(){el.style.transform='';});
         });
+      }
+      // wavehead: per-letter lift + gradient current on "Watch your business run itself."
+      var wh=document.querySelector('.wavehead');
+      if(wh){
+        var WH_EN="Watch your business run itself.",WH_ES="Mira tu negocio funcionar solo.";
+        wh.setAttribute('data-en',WH_EN);
+        function buildWave(es){
+          var txt=es?WH_ES:WH_EN;
+          if(reduce){wh.textContent=txt;return;}
+          wh.textContent='';wh.classList.add('lit');
+          [].forEach.call(txt,function(c,i){var s=document.createElement('span');s.className='wl';s.textContent=c;s.style.setProperty('--i',i);wh.appendChild(s);});
+        }
+        buildWave(document.documentElement.lang==='es');
+        window.__wavehead=buildWave;
       }
     })();
   </script>
