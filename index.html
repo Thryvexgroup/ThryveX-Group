@@ -67,14 +67,14 @@
   :root{--w:#fbfbfd;--ink:#11131a;--grey:#6b7180;--blue:#0071e3;--gutter:clamp(1.25rem,5vw,4rem);--max:1120px;--grad:linear-gradient(100deg,#3F9FE6,#9FB4E8 38%,#E9B6C6 68%,#F4C9A1)}
   *{margin:0;padding:0;box-sizing:border-box}
   html{-webkit-font-smoothing:antialiased}
-  body{background:radial-gradient(82% 74% at 50% 32%, #ffffff 0%, #eaeef6 60%, #d7dded 100%);background-attachment:fixed;color:var(--ink);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none}
+  body{background:radial-gradient(82% 74% at 50% 32%, #ffffff 0%, #eaeef6 60%, #d7dded 100%);background-attachment:fixed;color:var(--ink);font-family:'Inter',sans-serif;overflow-x:hidden}
   .floor{position:fixed;left:50%;top:58%;width:60vw;height:32vh;transform:translateX(-50%);z-index:0;pointer-events:none;
     background:radial-gradient(ellipse at center, rgba(34,44,76,.24), rgba(34,44,76,.07) 45%, transparent 72%);filter:blur(46px)}
   .grain{display:none;position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.04;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  a{cursor:none}
+  a{cursor:pointer}
   /* custom magnetic cursor */
-  .cur{position:fixed;top:0;left:0;width:13px;height:13px;border-radius:50%;background:rgba(63,159,230,.6);box-shadow:0 0 0 1px rgba(255,255,255,.35);z-index:9999;pointer-events:none;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s,opacity .25s}
+  .cur{display:none!important}
   .cur.big{width:52px;height:52px;background:rgba(63,159,230,.14);box-shadow:0 0 0 1.5px rgba(63,159,230,.45)}
   @media(pointer:coarse){body{cursor:auto}.cur{display:none}}
   /* ——— fx pass: cursor label, pointer glow, ghost word, grid beams ——— */
@@ -221,8 +221,8 @@
   .r{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
   .r.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.r{opacity:1;transform:none;filter:none}}
-  /* freeze all CSS animations while actively scrolling — keeps scroll buttery, resumes on idle */
-  html.scrolling *,html.scrolling *::before,html.scrolling *::after{animation-play-state:paused!important}
+  /* animations run through scroll — GPU transforms don't hurt native scroll, and freezing
+     them mid-reveal left titles stuck half-appeared. WebGL still skips renders while scrolling. */
   /* word-by-word heading reveal */
   .word{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em}
   .word>span{display:inline-block;transform:translateY(110%);transition:transform .85s cubic-bezier(.22,1,.36,1)}
@@ -533,39 +533,25 @@
   .cta .btn{background:#fff;color:var(--ink);font-family:'Space Grotesk';font-weight:600;padding:1rem 2rem;border-radius:999px;text-decoration:none;font-size:1.02rem}
   .cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
   .cta .micro{margin-top:1.4rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.04em;color:rgba(255,255,255,.5)}
-  /* ——— finale: the "let's build" contact crescendo ——— */
+  /* ——— brand text selection ——— */
   ::selection{background:rgba(63,159,230,.85);color:#fff}
   ::-moz-selection{background:rgba(63,159,230,.85);color:#fff}
-  .cta.finale{max-width:none;min-height:min(80vh,760px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(2.5rem,8vh,6rem) 0}
-  .fin-btn{align-self:center}
-  .fin-eyb{font-family:'Space Grotesk';font-weight:500;font-size:clamp(1rem,2.4vw,1.55rem);color:rgba(255,255,255,.5);margin-bottom:clamp(1.3rem,3.4vh,2.4rem)}
-  .bigmail{display:inline-block;position:relative;font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.15rem,6vw,5rem);letter-spacing:-.03em;line-height:1;color:#fff;text-decoration:none;white-space:nowrap;max-width:96vw;transition:transform .5s cubic-bezier(.22,1,.36,1);will-change:transform}
-  .bm-arrow{display:inline-block;margin-left:.14em;color:#5FB1E6;transition:transform .45s cubic-bezier(.22,1,.36,1)}
-  .bigmail::after{content:"";position:absolute;left:0;right:0;bottom:-.14em;height:clamp(3px,.55vw,7px);border-radius:999px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.22,1,.36,1)}
-  .bigmail:hover::after,.bigmail:focus-visible::after{transform:scaleX(1)}
-  .bigmail:hover .bm-arrow,.bigmail:focus-visible .bm-arrow{transform:translate(.24em,-.05em)}
-  .fin-status{margin-top:clamp(1.5rem,3.8vh,2.6rem);display:flex;gap:.75rem;justify-content:center;align-items:center;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:clamp(.62rem,1.05vw,.78rem);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-  .fin-status b{color:rgba(255,255,255,.82);font-weight:500}
-  .fin-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:finpulse 2.4s infinite}
-  @keyframes finpulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
-  .fin-sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.24)}
-  .fin-btn{margin-top:clamp(1.7rem,4.2vh,2.8rem)}
-  @media(prefers-reduced-motion:reduce){.fin-dot{animation:none}}
-  @media(max-width:520px){.bigmail{white-space:normal;font-size:clamp(1.4rem,8.5vw,2.4rem)}}
-  /* ——— wavehead: move + shimmer signature on the live-system heading ——— */
-  .wavehead .wl{display:inline-block;white-space:pre;animation:whlift 3.6s ease-in-out infinite;animation-delay:calc(var(--i)*.045s)}
-  @keyframes whlift{0%,62%,100%{transform:translateY(0)}31%{transform:translateY(-.07em)}}
-  .wavehead.lit{background:linear-gradient(100deg,var(--ink) 0,var(--ink) 40%,#3F9FE6 47%,#9FB4E8 50%,#E9B6C6 53%,var(--ink) 60%,var(--ink) 100%);background-size:280% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:whsh 5s linear infinite}
-  @keyframes whsh{0%{background-position:130% 0}100%{background-position:-30% 0}}
-  @media(prefers-reduced-motion:reduce){.wavehead .wl,.wavehead.lit{animation:none}}
+  /* ——— wavehead: a clean lift wave with a single brand-blue crest riding across ——— */
+  .wavehead .ww{display:inline-block;white-space:nowrap}
+  .wavehead .wl{display:inline-block;color:var(--ink);animation:whlift 3.4s ease-in-out infinite calc(var(--i)*.06s),whglow 3.4s ease-in-out infinite calc(var(--i)*.06s)}
+  @keyframes whlift{0%,50%,100%{transform:translateY(0)}25%{transform:translateY(-.08em)}}
+  @keyframes whglow{0%,22%,32%,100%{color:var(--ink)}27%{color:var(--hl,#3F9FE6)}}
+  @media(prefers-reduced-motion:reduce){.wavehead .wl{animation:none;color:var(--ink)}}
   footer{position:relative;z-index:5;padding:5rem 0 2.4rem;border-top:1px solid rgba(17,19,26,.08);background:linear-gradient(180deg,#fff,#f6f8fc)}
-  .fwrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.25rem,3vw,2.5rem)}
-  .ftop{display:flex;flex-wrap:wrap;align-items:flex-start;gap:2.5rem clamp(2rem,4vw,3.5rem)}
+  .fwrap{max-width:1200px;margin:0 auto;padding:0 clamp(1.25rem,3vw,2.5rem)}
+  /* grid keeps the footer identical regardless of language length (no flex-wrap reflow) */
+  .ftop{display:grid;grid-template-columns:minmax(280px,auto) 1fr;align-items:start;gap:2.5rem clamp(1.6rem,3vw,3rem)}
+  @media(max-width:820px){.ftop{grid-template-columns:1fr}}
   footer .fb{display:flex;gap:.55rem;align-items:center;font-family:'Space Grotesk';font-weight:700;font-size:1.1rem}
   footer .fb img{height:28px}
   footer .ft{color:var(--grey);font-size:.9rem;max-width:34ch;margin:1rem 0 1.7rem;line-height:1.6}
   /* location callout + rotating globe */
-  .fbrand{flex:0 1 auto;min-width:280px}
+  .fbrand{min-width:0}
   .floc{display:inline-flex;align-items:center;gap:1.1rem;width:fit-content;max-width:100%;margin:1.5rem 0 0}
   .floc-from,.floc-to{white-space:nowrap}
   .globe3d{position:relative;width:132px;height:132px;flex:0 0 auto}
@@ -584,7 +570,8 @@
   footer a.fl{display:block;color:var(--ink);text-decoration:none;font-size:.9rem;margin-bottom:.6rem;opacity:.8;transition:opacity .25s ease,transform .25s ease}
   footer a.fl:hover{opacity:1;transform:translateX(3px)}
   .fbottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:3.2rem;padding-top:1.6rem;border-top:1px solid rgba(17,19,26,.07);font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.03em;color:var(--grey)}
-  .dcard{position:absolute;top:50%;left:50%;width:min(360px,80vw);height:330px;background:#fff;border:1px solid rgba(17,19,26,.09);border-radius:24px;padding:1.9rem;box-shadow:0 40px 80px -44px rgba(20,30,60,.55);transform-style:preserve-3d;transition:transform .8s cubic-bezier(.22,1,.36,1),opacity .6s ease;will-change:transform,opacity}
+  .dcard{position:absolute;top:50%;left:50%;width:min(360px,80vw);height:342px;background:#fff;border:1px solid rgba(17,19,26,.09);border-radius:24px;padding:1.9rem;box-shadow:none;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.22,1,.36,1),opacity .6s ease;will-change:transform,opacity}
+  .dcard.front{box-shadow:0 30px 60px -38px rgba(20,30,60,.5)}
   .dcard .cic{width:46px;height:46px;border-radius:13px;background:linear-gradient(180deg,#fff,#eef3fb);border:1px solid rgba(17,19,26,.08);display:grid;place-items:center;margin-bottom:1.1rem}
   .dcard .cic svg{width:27px;height:27px;stroke:var(--blue);fill:none;stroke-width:1.7}
   .dcard h3{font-family:'Space Grotesk';font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.5rem}
@@ -631,7 +618,7 @@
   <div class="scrim"></div>
   <div class="grain"></div>
   <nav>
-    <a class="brand pill" href="#"><img src="/ThryveX%20Group%20Logo%20No%20BG.png" alt="ThryveX Group"/> <span>ThryveX Group</span></a>
+    <a class="brand pill" href="#"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=2" alt="ThryveX Group"/> <span>ThryveX Group</span></a>
     <div class="nl pill"><a class="mag" href="#services">Services</a><a class="mag" href="#process">Process</a><a class="mag" href="#why">Why ThryveX</a><a class="mag" href="#contact">Contact</a></div>
     <div class="navend">
       <div class="langdd">
@@ -657,7 +644,6 @@
     <p class="sub">AI automation, web development &amp; Meta Ads. One system that answers every lead in seconds, even the ones that arrive at 2am.</p>
     <div class="ctas"><a class="btn mag pulsecta" href="/book">Book a Call</a><a class="btn ghost mag" href="#services">See What We Build</a></div>
   </header>
-  <div class="scrollcue"><span>Scroll</span><span class="ln2"></span></div>
 
   <main class="content">
     <div class="tick"><div class="tick-mask"><div class="tick-in">
@@ -765,7 +751,7 @@
 
     <section class="sec" id="command"><div class="wrap" style="text-align:center">
       <p class="eyb r">Live system</p>
-      <h2 class="r wavehead" style="margin:0 auto">Watch your business run itself.</h2>
+      <h2 class="wavehead" style="margin:0 auto">Watch your business run itself.</h2>
       <p class="lead2 r" style="margin:1.1rem auto 0">This is an ordinary Tuesday with AI on your front desk: leads answered, qualified and booked while you're busy doing the actual work.</p>
       <div class="console r">
         <div class="con-top">
@@ -896,11 +882,11 @@
       </div>
     </div></section>
 
-    <section class="sec" id="contact"><div class="wrap"><div class="cta finale">
-      <p class="fin-eyb r">Let's build the system.</p>
-      <a href="mailto:services@thryvexgroup.com" class="bigmail r magbig">services@thryvexgroup.com<span class="bm-arrow" aria-hidden="true">&#8594;</span></a>
-      <div class="fin-status r"><span class="fin-dot" aria-hidden="true"></span><span>Available for new projects</span><span class="fin-sep" aria-hidden="true"></span><span>Panama <b id="finclock">--:--</b></span><span class="fin-sep" aria-hidden="true"></span><span>Replies in under 24h</span></div>
-      <a href="/book" class="btn fin-btn r">Book a 60-minute call</a>
+    <section class="sec" id="contact"><div class="wrap"><div class="cta">
+      <h2 class="r">Ready to scale without limits?</h2>
+      <p class="r">Book a free 60-minute strategy call. We'll map your biggest automation opportunities and show you exactly where to start. You'll leave with a plan, whether or not we work together.</p>
+      <div class="row2 r"><a href="/book" class="btn mag">Book a Call</a><a href="#services" class="btn ghost mag">See all services</a></div>
+      <p class="micro r">Free · 60 minutes · Remote, worldwide</p>
     </div></div></section>
   </main>
 
@@ -908,7 +894,7 @@
     <div class="fwrap">
       <div class="ftop">
       <div class="fbrand">
-        <div class="fb"><img src="/ThryveX%20Group%20Logo%20No%20BG.png" alt="ThryveX Group" /> ThryveX Group</div>
+        <div class="fb"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=2" alt="ThryveX Group" /> ThryveX Group</div>
         <p class="ft">AI automation, web development &amp; Meta Ads for businesses that refuse to stay still.</p>
         <div class="floc">
           <div id="globe3d" class="globe3d"><svg class="globe" viewBox="0 0 120 120" role="img" aria-label="Based in Panama City, working with clients worldwide">
@@ -1113,11 +1099,11 @@
       // ── bilingual EN / ES ──────────────────────────────────────
       const ES={
         "Services":"Servicios","Why ThryveX":"Por qué ThryveX","Process":"Proceso","Contact":"Contacto","Book a Call":"Agenda una llamada","See What We Build":"Mira lo que construimos","See all services":"Ver todos los servicios","Build this for my business →":"Quiero esto para mi negocio →",
-        "Built to run without":"Hecho para funcionar sin","you.":"ti.","AI automation, web development & Meta Ads. One system that answers every lead in seconds, even the ones that arrive at 2am.":"Automatización con IA, desarrollo web y Meta Ads. Un sistema que responde a cada lead en segundos, incluso a los que llegan a las 2 de la mañana.",
+        "Built to run without":"Tu negocio en","you.":"piloto automático.","AI automation, web development & Meta Ads. One system that answers every lead in seconds, even the ones that arrive at 2am.":"Automatización con IA, desarrollo web y Meta Ads. Un sistema que responde a cada lead en segundos, incluso a los que llegan a las 2 de la mañana.",
         "What we build":"Lo que construimos","Everything your business needs to operate without limits.":"Todo lo que tu negocio necesita para operar sin límites.","Five systems that click together into one machine, built around the tools you already use.":"Cinco sistemas que encajan en una sola máquina, construida alrededor de las herramientas que ya usas.",
         "Active":"Activo","Live":"En vivo","Running":"En marcha","Synced":"Sincronizado",
         "AI Automation":"Automatización con IA","The engine that works your leads around the clock.":"El motor que atiende tus leads las 24 horas.","WhatsApp auto-replies":"Respuestas automáticas en WhatsApp","AI front desk & chatbots":"Recepción con IA y chatbots","Instant lead follow-up":"Seguimiento instantáneo de leads",
-        "Web Development":"Desarrollo Web","Hand-coded sites built to convert. You're on one right now.":"Sitios programados a mano, hechos para convertir. Estás en uno ahora mismo.","Designed & coded from scratch":"Diseñado y programado desde cero","Built for speed & SEO":"Optimizado para velocidad y SEO","You own everything":"Todo es tuyo",
+        "Web Development":"Desarrollo Web","Hand-coded sites built to convert. You're on one right now.":"Programados a mano para convertir. Estás en uno ahora.","Designed & coded from scratch":"Diseñado y programado desde cero","Built for speed & SEO":"Optimizado para velocidad y SEO","You own everything":"Todo es tuyo",
         "Campaigns that fill the pipeline your system answers.":"Campañas que llenan el pipeline que tu sistema atiende.","Creative & copy":"Creativos y textos","Audience & targeting":"Audiencia y segmentación","Lead-gen funnels":"Embudos de captación",
         "One organized pipeline, zero manual data entry.":"Un pipeline organizado, cero entrada manual de datos.","Pipeline & stages":"Pipeline y etapas","Automatic data capture":"Captura automática de datos","Tool integrations":"Integraciones de herramientas",
         "AI Chatbots":"Chatbots con IA","Always-on agents that answer, qualify, and book.":"Agentes siempre activos que responden, califican y agendan.","24/7 instant replies":"Respuestas instantáneas 24/7","Lead qualification":"Calificación de leads","Calendar booking":"Agendamiento en calendario",
@@ -1165,7 +1151,8 @@
         T.forEach(o=>{o.node.nodeValue=es?o.es:o.en;});
         document.querySelectorAll('.content h2[data-en]:not(.wavehead)').forEach(h=>{const en=h.getAttribute('data-en');const tr=ES[norm(en)];h.textContent=(es&&tr)?tr:en;splitWords(h);h.classList.add('win');});
         if(window.__wavehead)window.__wavehead(es);
-        document.documentElement.lang=lang;}
+        document.documentElement.lang=lang;
+        try{localStorage.setItem('tvxlang',lang);}catch(e){}}
       window.__setLang=setLang;
       const cue=document.querySelector('.scrollcue');
       const progbar=document.getElementById('scrollprogbar');
@@ -1199,8 +1186,8 @@
         const dots=[...dw.children];
         function render(){cards.forEach((c,i)=>{let off=i-idx;if(off>cards.length/2)off-=cards.length;if(off<-cards.length/2)off+=cards.length;
           const a=Math.abs(off);
-          c.style.transform=`translate(-50%,-50%) translateX(${off*230}px) translateZ(${-a*180}px) rotateY(${off*-22}deg) scale(${1-a*0.08})`;
-          c.style.opacity=a>2?'0':String(1-a*0.44);c.style.filter=a===0?'none':`blur(${a*2.5}px)`;c.style.zIndex=String(20-a);c.style.pointerEvents=off===0?'auto':'none';c.classList.toggle('front',off===0);});
+          c.style.transform=`translate(-50%,-50%) translateX(${off*265}px) translateZ(${-a*210}px) rotateY(${off*-24}deg) scale(${1-a*0.1})`;
+          c.style.opacity=a>1.6?'0':String(Math.max(0,1-a*0.66));c.style.filter='none';c.style.zIndex=String(20-a);c.style.pointerEvents=off===0?'auto':'none';c.classList.toggle('front',off===0);});
           dots.forEach((d,i)=>d.classList.toggle('on',i===idx));}
         function go(n){idx=(idx+n+cards.length)%cards.length;render();}
         function start(){clearInterval(timer);if(!reduce)timer=setInterval(()=>go(1),4500);}
@@ -1231,6 +1218,15 @@
         addEventListener('click',closeNav);
         addEventListener('keydown',e=>{if(e.key==='Escape')closeNav();});
       }
+      // restore the visitor's saved language across reloads — Spanish stays Spanish
+      try{ var _sv=localStorage.getItem('tvxlang');
+        if(_sv==='es'||_sv==='en'){ setLang(_sv);
+          var _lbl=_sv==='es'?'ES':'EN';
+          if(lb) lb.childNodes[0].nodeValue=_lbl;
+          if(lm) lm.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x.dataset.l===_lbl);});
+          document.querySelectorAll('.navmobile-lang button').forEach(function(x){x.classList.toggle('on',x.dataset.l===_lbl);});
+        }
+      }catch(e){}
     })();
   </script>
   <script>
@@ -1279,6 +1275,8 @@
     const mount=document.getElementById('globe3d');
     const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(mount && !reduce){
+      let built=false;
+      const buildGlobe=()=>{ if(built)return; built=true;
       try{
         const size=()=>({w:mount.clientWidth||104,h:mount.clientHeight||104});
         let {w,h}=size();
@@ -1329,14 +1327,20 @@
           buildDots(getLand);
         };
         img.onerror=()=>{renderer.render(scene,cam);};
-        img.src='/assets/earth-blue-marble.jpg';
+        img.src='/assets/earth-blue-marble.jpg?v=2';
         let on=true,run=false,t=0;
-        function frame(){if(!on){run=false;return;}if(window.__scrolling){requestAnimationFrame(frame);return;}t++;g.rotation.y+=0.005;const s=1+Math.sin(t*0.07)*0.22;glow.scale.setScalar(s);glow.material.opacity=Math.max(0,.45-(s-1)*1.1);renderer.render(scene,cam);requestAnimationFrame(frame);}
+        function frame(){if(!on){run=false;return;}if(window.__scrolling){requestAnimationFrame(frame);return;}t++;g.rotation.y=Math.sin(t*0.006)*0.4;const s=1+Math.sin(t*0.07)*0.22;glow.scale.setScalar(s);glow.material.opacity=Math.max(0,.45-(s-1)*1.1);renderer.render(scene,cam);requestAnimationFrame(frame);}
         function start(){if(!run){run=true;requestAnimationFrame(frame);}}
         renderer.render(scene,cam);
         new IntersectionObserver(es=>{on=es[0].isIntersecting;if(on)start();},{threshold:0}).observe(mount);
         addEventListener('resize',()=>{const n=size();renderer.setSize(n.w,n.h,false);cam.aspect=n.w/n.h;cam.updateProjectionMatrix();renderer.render(scene,cam);});
       }catch(e){const svg=mount.querySelector('svg'); if(svg) svg.style.display='';}
+      };
+      // build off the critical path: as soon as the footer nears, or shortly after load — whichever comes first
+      const gio=new IntersectionObserver((es,ob)=>{if(es[0].isIntersecting){ob.disconnect();buildGlobe();}},{rootMargin:'500px'});
+      gio.observe(mount);
+      const kick=()=>setTimeout(()=>{gio.disconnect();buildGlobe();},1400);
+      if(document.readyState==='complete')kick(); else addEventListener('load',kick);
     }
   </script>
   <script>
@@ -1395,29 +1399,28 @@
     })();
   </script>
   <script>
-    // finale: live Panama clock + gentle magnetic on the big email
+    // wavehead: per-letter lift wave on "Watch your business run itself."
+    // letters are grouped per word (nowrap) so a word never breaks mid-way
     (function(){
       var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var fine=matchMedia('(pointer:fine)').matches;
-      var clk=document.getElementById('finclock');
-      function tick(){ if(!clk)return; try{clk.textContent=new Date().toLocaleTimeString('en-US',{timeZone:'America/Panama',hour:'2-digit',minute:'2-digit',hour12:false});}catch(e){clk.textContent='';} }
-      tick(); setInterval(tick,20000);
-      if(fine&&!reduce){
-        document.querySelectorAll('.magbig').forEach(function(el){
-          el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();var x=(e.clientX-(r.left+r.width/2))/r.width;var y=(e.clientY-(r.top+r.height/2))/Math.max(1,r.height);el.style.transform='translate('+(x*16).toFixed(1)+'px,'+(y*8).toFixed(1)+'px)';});
-          el.addEventListener('pointerleave',function(){el.style.transform='';});
-        });
-      }
-      // wavehead: per-letter lift + gradient current on "Watch your business run itself."
       var wh=document.querySelector('.wavehead');
       if(wh){
-        var WH_EN="Watch your business run itself.",WH_ES="Mira tu negocio funcionar solo.";
+        var WH_EN="Watch your business run itself.",WH_ES="Mira tu negocio operar solo.";
         wh.setAttribute('data-en',WH_EN);
         function buildWave(es){
           var txt=es?WH_ES:WH_EN;
           if(reduce){wh.textContent=txt;return;}
           wh.textContent='';wh.classList.add('lit');
-          [].forEach.call(txt,function(c,i){var s=document.createElement('span');s.className='wl';s.textContent=c;s.style.setProperty('--i',i);wh.appendChild(s);});
+          var i=0,words=txt.split(' '),tot=txt.replace(/ /g,'').length;
+          // sample the logo gradient (blue→lavender→blush→peach) at each letter's position
+          var STOPS=[[63,159,230],[159,180,232],[233,182,198],[244,201,161]],POS=[0,.4,.7,1];
+          function grad(f){var k=0;while(k<3&&f>POS[k+1])k++;var t=(f-POS[k])/((POS[k+1]-POS[k])||1),a=STOPS[k],b=STOPS[k+1];return 'rgb('+Math.round(a[0]+(b[0]-a[0])*t)+','+Math.round(a[1]+(b[1]-a[1])*t)+','+Math.round(a[2]+(b[2]-a[2])*t)+')';}
+          words.forEach(function(word,wi){
+            var ww=document.createElement('span');ww.className='ww';
+            [].forEach.call(word,function(c){var s=document.createElement('span');s.className='wl';s.textContent=c;s.style.setProperty('--i',i);s.style.setProperty('--hl',grad(tot>1?i/(tot-1):0));i++;ww.appendChild(s);});
+            wh.appendChild(ww);
+            if(wi<words.length-1)wh.appendChild(document.createTextNode(' '));
+          });
         }
         buildWave(document.documentElement.lang==='es');
         window.__wavehead=buildWave;
@@ -1501,8 +1504,9 @@
         }
       }
 
-      // 5) cursor-lit blueprint grid in the alt sections
-      if(fine){
+      // 5) cursor-lit blueprint grid — pointer-follow glow disabled; the per-move section
+      //    repaint was a needless jank source. The static blueprint grid stays.
+      if(false){
         ['why','pipeline'].forEach(id=>{
           const s=document.getElementById(id);if(!s)return;
           const g=document.createElement('div');g.className='gridspot';s.appendChild(g);
