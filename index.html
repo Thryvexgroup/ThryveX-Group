@@ -215,6 +215,10 @@
   .card li::before{content:"";width:17px;height:17px;border-radius:50%;flex:0 0 auto;background:#eaf4ff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230071e3' stroke-width='3'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/11px no-repeat}
   .r{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
   .r.in{opacity:1;transform:none}
+  /* phones: content is visible immediately, no scroll-triggered reveals */
+  @media(max-width:760px){
+    .r,.r.in,.wordsplit .word>span{opacity:1!important;transform:none!important;transition:none!important;filter:none!important}
+  }
   @media(prefers-reduced-motion:reduce){.r{opacity:1;transform:none;filter:none}}
   /* animations run through scroll — GPU transforms don't hurt native scroll, and freezing
      them mid-reveal left titles stuck half-appeared. WebGL still skips renders while scrolling. */
@@ -780,6 +784,14 @@
     .auto-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) 0}
     .auto-rail{display:grid;grid-template-columns:1fr;gap:1rem;transform:none!important;padding:0 var(--gutter)}
     .acard,.acard.ctacard{width:auto;min-height:0;transform:none!important}
+    .acard.ctacard{gap:.9rem}
+    .acard.ctacard p{margin-top:0}
+    .actabtn{margin-top:.4rem}
+    .auto-stick{padding-bottom:clamp(1.6rem,4vh,2.4rem)}
+    .intgstrip{padding-top:clamp(1.4rem,3vw,2rem)}
+    .intgstrip .autonote{text-align:left}
+    .intgstrip .autonote b{display:block;margin-top:.45rem;color:var(--ink)}
+    .intgstrip .intg{justify-content:flex-start}
     .auto-wheelclip{display:none}
   }
   @media(prefers-reduced-motion:reduce){
@@ -787,6 +799,14 @@
     .auto-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) 0}
     .auto-rail{display:grid;grid-template-columns:1fr;gap:1rem;transform:none!important;padding:0 var(--gutter)}
     .acard,.acard.ctacard{width:auto;min-height:0;transform:none!important}
+    .acard.ctacard{gap:.9rem}
+    .acard.ctacard p{margin-top:0}
+    .actabtn{margin-top:.4rem}
+    .auto-stick{padding-bottom:clamp(1.6rem,4vh,2.4rem)}
+    .intgstrip{padding-top:clamp(1.4rem,3vw,2rem)}
+    .intgstrip .autonote{text-align:left}
+    .intgstrip .autonote b{display:block;margin-top:.45rem;color:var(--ink)}
+    .intgstrip .intg{justify-content:flex-start}
     .auto-wheelclip{display:none}
   }
   .acard h3{font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.1rem,1.5vw,1.3rem);margin-bottom:.55rem;color:#3F9FE6}
@@ -1014,6 +1034,61 @@
   .svcrow .svc-m p{color:var(--grey);font-size:clamp(.95rem,1.2vw,1.05rem);margin:0;max-width:52ch}
   .svc-arr{font-family:'Space Grotesk';font-weight:700;font-size:1.6rem;color:rgba(17,19,26,.35)}
   @media(max-width:700px){.svcrow{grid-template-columns:minmax(0,1fr) auto}.svc-num{display:none}}
+  /* ——— Live system: task chips converge into the two-card payoff ——— */
+  .cmd-track{position:relative;height:300vh;background:#0b0e16}
+  .cmd-stick{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--gutter)}
+  .cmd-head{max-width:760px}
+  #command .eyb{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.72)}
+  #command .lead2{color:rgba(255,255,255,.62);max-width:52ch}
+  #command .wavehead .wl{color:#fff}
+  @keyframes whglowdark{0%,22%,32%,100%{color:#fff}27%{color:var(--hl,#7DC0EF)}}
+  #command .wavehead.play .wl{animation:whlift 3.4s ease-in-out 2 calc(var(--i)*.06s),whglowdark 3.4s ease-in-out 2 calc(var(--i)*.06s)}
+  @media(prefers-reduced-motion:reduce){#command .wavehead.play .wl{animation:none;color:#fff}}
+  .cmd-stage{position:relative;width:100%;max-width:1000px;height:clamp(300px,42vh,420px);margin:clamp(1.4rem,3.5vh,2.6rem) auto 0}
+  .cchip{position:absolute;display:flex;align-items:center;gap:.85rem;width:min(310px,46%);text-align:left;
+    background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.11);border-radius:16px;padding:.85rem .95rem;
+    backdrop-filter:blur(6px);box-shadow:0 20px 44px -28px rgba(0,0,0,.9);will-change:transform,opacity}
+  .cchip[data-i="0"]{left:2%;top:2%}
+  .cchip[data-i="1"]{right:2%;top:24%}
+  .cchip[data-i="2"]{left:8%;top:50%}
+  .cchip[data-i="3"]{right:7%;top:72%}
+  .cc-ic{flex:0 0 auto;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--tint) 22%,transparent)}
+  .cc-ic svg{width:19px;height:19px;fill:none;stroke:var(--tint);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .cc-tx{min-width:0;display:flex;flex-direction:column;gap:.1rem}
+  .cc-tm{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:var(--tint)}
+  .cc-tx b{font-family:'Space Grotesk';font-weight:600;font-size:.95rem;color:#fff;line-height:1.25}
+  .cc-tx i{font-style:normal;font-size:.78rem;color:rgba(255,255,255,.5)}
+  .cc-ok{flex:0 0 auto;margin-left:auto;width:22px;height:22px;border-radius:50%;background:rgba(90,200,150,.16);display:grid;place-items:center}
+  .cc-ok svg{width:12px;height:12px;fill:none;stroke:#5AC896;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+  .csum{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(860px,100%);
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(.9rem,2vw,1.4rem);opacity:0;will-change:transform,opacity}
+  .csum-card{border-radius:20px;padding:clamp(1.3rem,2.4vw,1.9rem);text-align:left;display:flex;flex-direction:column;gap:.5rem;min-height:150px;justify-content:center}
+  .csum-card.sys{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);position:relative}
+  .csum-card.sys::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:var(--grad);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.55;pointer-events:none}
+  .csum-card.you{background:#fff}
+  .cs-lab{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.14em;text-transform:uppercase}
+  .csum-card.sys .cs-lab{color:rgba(255,255,255,.5)}
+  .csum-card.you .cs-lab{color:rgba(17,19,26,.45)}
+  .cs-big{font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.25rem,2.4vw,1.85rem);letter-spacing:-.02em;line-height:1.15}
+  .csum-card.sys .cs-big{color:#fff}
+  .csum-card.sys .cs-big i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .csum-card.you .cs-big{color:var(--ink)}
+  #command .cmdcta{margin-top:clamp(1.2rem,3vh,2rem)}
+  @media(max-width:760px){
+    .cmd-track{height:auto}
+    .cmd-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) var(--gutter)}
+    .cmd-stage{height:auto;display:flex;flex-direction:column;gap:.7rem;margin-top:1.8rem}
+    .cchip{position:static;width:auto;opacity:1!important;transform:none!important}
+    .csum{position:static;transform:none!important;opacity:1!important;grid-template-columns:1fr;margin-top:1.1rem;width:auto}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .cmd-track{height:auto}
+    .cmd-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) var(--gutter)}
+    .cmd-stage{height:auto;display:flex;flex-direction:column;gap:.7rem;margin-top:1.8rem}
+    .cchip{position:static;width:auto;opacity:1!important;transform:none!important}
+    .csum{position:static;transform:none!important;opacity:1!important;grid-template-columns:1fr;margin-top:1.1rem;width:auto}
+  }
   /* Lenis (inertia scroll) */
   html.lenis,html.lenis body{height:auto}
   .lenis.lenis-smooth{scroll-behavior:auto!important}
@@ -1194,36 +1269,48 @@
       </div>
     </div>
 
-    <section class="sec" id="command">
-      <div class="wrap" style="text-align:center">
-      <p class="eyb r"><span class="sysn">SYS.03</span>Live system</p>
-      <h2 class="wavehead" style="margin:0 auto">Nobody's at their desk.</h2>
-      <p class="lead2 r" style="margin:1.1rem auto 0">An ordinary Tuesday: leads answered, invoices sent, reports delivered, all while you do the actual work.</p>
-      <div class="console r">
-        <div class="con-top">
-          <div class="con-id"><span class="con-mk">∞</span> ThryveX OS · Operations</div>
-          <div class="con-meta"><span class="con-time">10:20:02</span><span class="con-live"><span class="con-dot"></span> Live</span></div>
+    <section id="command" class="cmd-track">
+      <div class="cmd-stick">
+        <div class="cmd-head">
+          <p class="eyb r"><span class="sysn">SYS.03</span>Live system</p>
+          <h2 class="wavehead" style="margin:0 auto">Nobody's at their desk.</h2>
+          <p class="lead2 r" style="margin:1.1rem auto 0">An ordinary Tuesday: leads answered, invoices sent, reports delivered, all while you do the actual work.</p>
         </div>
-        <div class="con-grid">
-          <div class="con-feed">
-            <div class="con-h">Real-time activity</div>
-            <div class="ev"><span class="ev-tm">10:16:02</span><span class="ev-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span><div class="ev-tx"><b>New lead captured</b><i>Meta Ad · Instagram</i></div><span class="ev-st ok">Done</span></div>
-            <div class="ev"><span class="ev-tm">10:16:04</span><span class="ev-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div class="ev-tx"><b>Appointment rescheduled</b><i>Confirmed for Friday</i></div><span class="ev-st ok">Done</span></div>
-            <div class="ev"><span class="ev-tm">10:16:09</span><span class="ev-ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></span><div class="ev-tx"><b>WhatsApp reply sent</b><i>Auto-response in 5 seconds</i></div><span class="ev-st ok">Done</span></div>
-            <div class="ev"><span class="ev-tm">10:18:22</span><span class="ev-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><div class="ev-tx"><b>Invoice sent</b><i>Payment link delivered</i></div><span class="ev-st ok">Done</span></div>
-            <div class="ev live"><span class="ev-tm">10:20:00</span><span class="ev-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div class="ev-tx"><b>Weekly report generated</b><i>Delivered to your inbox</i></div><span class="ev-st run">Running</span></div>
+        <div class="cmd-stage" id="cmdstage">
+          <div class="cchip" data-i="0" style="--tint:#3F9FE6">
+            <span class="cc-ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></span>
+            <div class="cc-tx"><span class="cc-tm">09:02</span><b>New enquiry answered</b><i>WhatsApp &middot; 4 seconds</i></div>
+            <span class="cc-ok"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span>
           </div>
-          <div class="con-stats">
-            <div class="con-h">Today</div>
-            <div class="cstat"><span class="cs-l">Tasks completed</span><span class="cs-v" id="cs-leads">128</span><span class="cs-d">▲ 24% vs avg</span></div>
-            <div class="cstat"><span class="cs-l">Avg response time</span><span class="cs-v">0.8<i>s</i></span><span class="cs-d">across all channels</span></div>
-            <div class="cstat"><span class="cs-l">Calls booked</span><span class="cs-v">19</span><span class="cs-d">▲ 6 vs avg</span></div>
+          <div class="cchip" data-i="1" style="--tint:#9FB4E8">
+            <span class="cc-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+            <div class="cc-tx"><span class="cc-tm">09:14</span><b>Appointment booked</b><i>Confirmed for Thursday</i></div>
+            <span class="cc-ok"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span>
+          </div>
+          <div class="cchip" data-i="2" style="--tint:#E9B6C6">
+            <span class="cc-ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+            <div class="cc-tx"><span class="cc-tm">11:38</span><b>Invoice sent</b><i>Payment link delivered</i></div>
+            <span class="cc-ok"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span>
+          </div>
+          <div class="cchip" data-i="3" style="--tint:#F4C9A1">
+            <span class="cc-ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span>
+            <div class="cc-tx"><span class="cc-tm">17:00</span><b>Report delivered</b><i>Straight to your inbox</i></div>
+            <span class="cc-ok"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span>
+          </div>
+          <div class="csum" id="csum">
+            <div class="csum-card sys">
+              <span class="cs-lab">The system did</span>
+              <span class="cs-big"><i id="cmdcount">0</i> tasks today</span>
+            </div>
+            <div class="csum-card you">
+              <span class="cs-lab">You did</span>
+              <span class="cs-big">The work only you can do</span>
+            </div>
           </div>
         </div>
-        <div class="con-foot"><span class="con-fdot"></span>All systems operational<span class="con-fsep"></span>Meta · WhatsApp · CRM wired in<span class="con-fsep"></span>Panama City · 24/7</div>
+        <a href="/book" class="cmdcta r mag">Build this for my business &rarr;</a>
       </div>
-      <a href="/book" class="cmdcta r mag">Build this for my business →</a>
-    </div></section>
+    </section>
 
     <section class="sec" id="changes">
       <div class="wrap">
@@ -1691,7 +1778,7 @@
         "Selected work":"Trabajo destacado","Sites we've shipped.":"Sitios que hemos lanzado.",
         "Hand-built sites, coded from scratch, tuned for speed and wired to convert.":"Sitios programados a mano, desde cero, optimizados para velocidad y listos para convertir.",
         "The signal path":"El recorrido del lead","Follow one lead through the machine.":"Sigue a un lead por dentro de la máquina.","Scroll · the lead moves with you":"Haz scroll · el lead avanza contigo","Instagram ad":"Anuncio de Instagram","Lead captured":"Lead capturado","Stored in CRM":"Registrado en el CRM","AI qualification":"Calificación con IA","Automated follow-up":"Seguimiento automático","Appointment booked":"Cita agendada",
-        "Coming soon":"Próximamente","Project One":"Proyecto uno","Project Two":"Proyecto dos","Project Three":"Proyecto tres","Aesthetic clinic":"Clínica estética","Dental practice":"Consultorio dental","Local business":"Negocio local","Start your site":"Empieza tu sitio","Placeholder previews · real client sites go here":"Vistas de ejemplo · aquí irán los sitios reales de clientes","Websites built to convert, not just to look good. You're on one right now.":"Sitios web hechos para convertir, no solo para verse bien. Estás en uno ahora mismo.","The engine that answers, books and follows up while you work.":"El motor que responde, agenda y hace seguimiento mientras tú trabajas.","Only essentials":"Solo esenciales","We value your privacy":"Valoramos tu privacidad","We use cookies to keep the site working properly, remember your preferences, and understand how visitors use it, so we can improve it. Marketing cookies are only set if you accept.":"Usamos cookies para que el sitio funcione correctamente, recordar tus preferencias y entender cómo lo usan los visitantes, para poder mejorarlo. Las cookies de marketing solo se activan si aceptas.","Read more":"Leer más","Hide details":"Ocultar detalles","Essential":"Esenciales","Language and your cookie choice. Always active.":"El idioma y tu elección de cookies. Siempre activas.","Analytics":"Analítica","Anonymous statistics about visits and usage.":"Estadísticas anónimas de visitas y uso.","Measures how our ads perform, for example the Meta Pixel.":"Mide el rendimiento de nuestros anuncios, por ejemplo el píxel de Meta.","Accept all":"Aceptar todas","We use cookies to understand how the site is used and to improve it.":"Usamos cookies para entender cómo se usa el sitio y mejorarlo.","Every week without a system is a day of work you're not getting back.":"Cada semana sin un sistema es un día de trabajo que no vas a recuperar.","The half your clients feel":"La mitad que sienten tus clientes","The half that eats your week":"La mitad que se come tu semana","Start today.":"Empieza hoy.","Because in six months, today is the day you'll wish you'd started.":"Porque dentro de seis meses, hoy será el día en el que desearás haber empezado.","We build your system inside the tools you already use.":"Construimos tu sistema dentro de las herramientas que ya usas. ","Don't see yours here? We can almost certainly connect it.":"¿No ves la tuya aquí? Casi seguro que podemos conectarla.","Appointment rescheduled":"Cita reprogramada","Confirmed for Friday":"Confirmada para el viernes","Tasks completed":"Tareas completadas","Book a free audit":"Reserva una auditoría gratis","Every week you wait, someone does it all again by hand.":"Cada semana que esperas, alguien vuelve a hacerlo todo a mano.","Start now":"Empieza ahora","If it repeats, it can run on its own.":"Si se repite, puede funcionar solo.","From the first enquiry to the final invoice, built into the tools you already use.":"Desde la primera consulta hasta la última factura, integrado en las herramientas que ya usas.","Lead follow-up":"Seguimiento de leads","Every enquiry gets answered and followed up until it books.":"Cada consulta se responde y recibe seguimiento hasta que reserva.","Appointment booking":"Reserva de citas","Clients book, reschedule and get reminded without a phone call.":"Los clientes reservan, reprograman y reciben recordatorios sin una sola llamada.","Invoicing and payments":"Facturación y pagos","The invoice goes out when the job closes, and late ones chase themselves.":"La factura sale cuando se cierra el trabajo, y las impagadas se reclaman solas.","Client communication":"Comunicación con clientes","Confirmations, updates and review requests sent at the right moment.":"Confirmaciones, avisos y solicitudes de reseña enviados en el momento justo.","Reports and numbers":"Informes y números","Your key numbers land in your inbox on schedule.":"Tus números clave llegan a tu correo puntualmente.","Records and CRM":"Registros y CRM","Every job, payment and conversation logs itself.":"Cada trabajo, pago y conversación se registra solo.","Clients get answers. You get your week back.":"Tus clientes reciben respuestas. Tú recuperas tu semana.","No big project. We start with one workflow and grow from there.":"Sin megaproyectos. Empezamos con un solo flujo y crecemos desde ahí.","Map the real work":"Mapear el trabajo real","A free audit. We find where the hours actually go.":"Una auditoría gratuita. Encontramos a dónde se van las horas de verdad.","Build the first system":"Construir el primer sistema","One workflow first, built into the tools that fit your business.":"Primero un solo flujo, construido en las herramientas que mejor le sirven a tu negocio.","Run it and improve":"Ponerlo en marcha y mejorarlo","You approve it, it runs, and we improve it after real use.":"Tú lo apruebas, funciona, y lo mejoramos con el uso real.","Less manual work":"Menos trabajo manual","Quotes, invoices and follow-ups go out from the workflow, not from someone's memory.":"Cotizaciones, facturas y seguimientos salen del flujo de trabajo, no de la memoria de alguien.","Faster responses":"Respuestas más rápidas","Enquiries are answered in seconds, on any channel, at any hour.":"Las consultas se responden en segundos, en cualquier canal y a cualquier hora.","Cleaner records":"Registros más limpios","Jobs, payments and conversations log themselves. The CRM stays current without anyone typing.":"Trabajos, pagos y conversaciones se registran solos. El CRM se mantiene al día sin que nadie escriba.","Clearer visibility":"Visibilidad más clara","Your numbers arrive on schedule. You see what is moving and what is stuck.":"Tus números llegan puntuales. Ves qué avanza y qué está trabado.","Smoother client experience":"Mejor experiencia para el cliente","Confirmations, reminders and updates arrive on time, on both sides of the relationship.":"Confirmaciones, recordatorios y avisos llegan a tiempo, de los dos lados de la relación.","More hours back":"Más horas recuperadas","The hours admin used to eat go back into the actual work.":"Las horas que se comía la administración vuelven al trabajo de verdad.","What changes":"Qué cambia","What changes when AI actually works.":"Qué cambia cuando la IA de verdad funciona.","About 40% of the work in a small business is repetitive and rule based. This is what changes when it runs on its own.":"Cerca del 40% del trabajo en un negocio pequeño es repetitivo y sigue reglas. Esto es lo que cambia cuando funciona solo.","Industry research on manual work in small businesses":"Investigación del sector sobre trabajo manual en negocios pequeños","Onboarding":"Onboarding","Invoicing":"Facturación","Reporting":"Reportes","Scheduling":"Agenda","Follow-up":"Seguimiento","Data Entry":"Carga de datos","AI automation, integrated into how your business works.":"Automatización con IA, integrada en cómo funciona tu negocio.","AI automation · Web · Meta Ads":"Automatización con IA · Web · Meta Ads","Replies in seconds, not Monday morning.":"Responde en segundos, no el lunes por la mañana.","Books them while they are still interested.":"Los agenda mientras siguen interesados.","Answers at 2am without waking anyone.":"Responde a las 2am sin despertar a nadie.","Invoices out the day the job finishes.":"Factura el mismo día que termina el trabajo.","Monday’s report, ready Sunday night.":"El reporte del lunes, listo el domingo por la noche.","A CRM that is still clean in six months.":"Un CRM que sigue limpio dentro de seis meses.","Same system.":"El mismo sistema.","Both halves.":"Las dos mitades.","How it works":"Cómo funciona","Three steps.":"Tres pasos.","STEP 01":"PASO 01","STEP 02":"PASO 02","STEP 03":"PASO 03","Why us":"Por qué nosotros","One person owns your build":"Una sola persona a cargo de tu proyecto","From the first audit to go-live. You always know exactly who to call.":"Desde la auditoría hasta el lanzamiento. Siempre sabes exactamente a quién llamar.","We only build what pays for itself":"Solo construimos lo que se paga solo","If a workflow doesn't save time or make money, we don't build it.":"Si un flujo no ahorra tiempo ni genera dinero, no lo construimos.","Run by an operator":"Dirigido por un operador","Not a sales team. Someone who has sat where you sit.":"No un equipo de ventas. Alguien que ha estado donde tú estás.","The impact":"El impacto","What changes when it runs.":"Qué cambia cuando funciona.","The same work, done the same way, without anyone doing it.":"El mismo trabajo, hecho igual, sin que nadie lo haga.","Hours back every week":"Horas recuperadas cada semana","First reply, any channel":"Primera respuesta, en cualquier canal","Nights, weekends, holidays":"Noches, fines de semana y feriados","Nothing falls through":"Nada se pierde por el camino","The work still gets done. You just stop doing it.":"El trabajo se sigue haciendo. Tú simplemente dejas de hacerlo.",
+        "Coming soon":"Próximamente","Project One":"Proyecto uno","Project Two":"Proyecto dos","Project Three":"Proyecto tres","Aesthetic clinic":"Clínica estética","Dental practice":"Consultorio dental","Local business":"Negocio local","Start your site":"Empieza tu sitio","Placeholder previews · real client sites go here":"Vistas de ejemplo · aquí irán los sitios reales de clientes","New enquiry answered":"Nueva consulta respondida","WhatsApp · 4 seconds":"WhatsApp · 4 segundos","Confirmed for Thursday":"Confirmada para el jueves","Report delivered":"Reporte entregado","Straight to your inbox":"Directo a tu correo","The system did":"El sistema hizo","tasks today":"tareas hoy","You did":"Tú hiciste","The work only you can do":"El trabajo que solo tú puedes hacer","Websites built to convert, not just to look good. You're on one right now.":"Sitios web hechos para convertir, no solo para verse bien. Estás en uno ahora mismo.","The engine that answers, books and follows up while you work.":"El motor que responde, agenda y hace seguimiento mientras tú trabajas.","Only essentials":"Solo esenciales","We value your privacy":"Valoramos tu privacidad","We use cookies to keep the site working properly, remember your preferences, and understand how visitors use it, so we can improve it. Marketing cookies are only set if you accept.":"Usamos cookies para que el sitio funcione correctamente, recordar tus preferencias y entender cómo lo usan los visitantes, para poder mejorarlo. Las cookies de marketing solo se activan si aceptas.","Read more":"Leer más","Hide details":"Ocultar detalles","Essential":"Esenciales","Language and your cookie choice. Always active.":"El idioma y tu elección de cookies. Siempre activas.","Analytics":"Analítica","Anonymous statistics about visits and usage.":"Estadísticas anónimas de visitas y uso.","Measures how our ads perform, for example the Meta Pixel.":"Mide el rendimiento de nuestros anuncios, por ejemplo el píxel de Meta.","Accept all":"Aceptar todas","We use cookies to understand how the site is used and to improve it.":"Usamos cookies para entender cómo se usa el sitio y mejorarlo.","Every week without a system is a day of work you're not getting back.":"Cada semana sin un sistema es un día de trabajo que no vas a recuperar.","The half your clients feel":"La mitad que sienten tus clientes","The half that eats your week":"La mitad que se come tu semana","Start today.":"Empieza hoy.","Because in six months, today is the day you'll wish you'd started.":"Porque dentro de seis meses, hoy será el día en el que desearás haber empezado.","We build your system inside the tools you already use.":"Construimos tu sistema dentro de las herramientas que ya usas. ","Don't see yours here? We can almost certainly connect it.":"¿No ves la tuya aquí? Casi seguro que podemos conectarla.","Appointment rescheduled":"Cita reprogramada","Confirmed for Friday":"Confirmada para el viernes","Tasks completed":"Tareas completadas","Book a free audit":"Reserva una auditoría gratis","Every week you wait, someone does it all again by hand.":"Cada semana que esperas, alguien vuelve a hacerlo todo a mano.","Start now":"Empieza ahora","If it repeats, it can run on its own.":"Si se repite, puede funcionar solo.","From the first enquiry to the final invoice, built into the tools you already use.":"Desde la primera consulta hasta la última factura, integrado en las herramientas que ya usas.","Lead follow-up":"Seguimiento de leads","Every enquiry gets answered and followed up until it books.":"Cada consulta se responde y recibe seguimiento hasta que reserva.","Appointment booking":"Reserva de citas","Clients book, reschedule and get reminded without a phone call.":"Los clientes reservan, reprograman y reciben recordatorios sin una sola llamada.","Invoicing and payments":"Facturación y pagos","The invoice goes out when the job closes, and late ones chase themselves.":"La factura sale cuando se cierra el trabajo, y las impagadas se reclaman solas.","Client communication":"Comunicación con clientes","Confirmations, updates and review requests sent at the right moment.":"Confirmaciones, avisos y solicitudes de reseña enviados en el momento justo.","Reports and numbers":"Informes y números","Your key numbers land in your inbox on schedule.":"Tus números clave llegan a tu correo puntualmente.","Records and CRM":"Registros y CRM","Every job, payment and conversation logs itself.":"Cada trabajo, pago y conversación se registra solo.","Clients get answers. You get your week back.":"Tus clientes reciben respuestas. Tú recuperas tu semana.","No big project. We start with one workflow and grow from there.":"Sin megaproyectos. Empezamos con un solo flujo y crecemos desde ahí.","Map the real work":"Mapear el trabajo real","A free audit. We find where the hours actually go.":"Una auditoría gratuita. Encontramos a dónde se van las horas de verdad.","Build the first system":"Construir el primer sistema","One workflow first, built into the tools that fit your business.":"Primero un solo flujo, construido en las herramientas que mejor le sirven a tu negocio.","Run it and improve":"Ponerlo en marcha y mejorarlo","You approve it, it runs, and we improve it after real use.":"Tú lo apruebas, funciona, y lo mejoramos con el uso real.","Less manual work":"Menos trabajo manual","Quotes, invoices and follow-ups go out from the workflow, not from someone's memory.":"Cotizaciones, facturas y seguimientos salen del flujo de trabajo, no de la memoria de alguien.","Faster responses":"Respuestas más rápidas","Enquiries are answered in seconds, on any channel, at any hour.":"Las consultas se responden en segundos, en cualquier canal y a cualquier hora.","Cleaner records":"Registros más limpios","Jobs, payments and conversations log themselves. The CRM stays current without anyone typing.":"Trabajos, pagos y conversaciones se registran solos. El CRM se mantiene al día sin que nadie escriba.","Clearer visibility":"Visibilidad más clara","Your numbers arrive on schedule. You see what is moving and what is stuck.":"Tus números llegan puntuales. Ves qué avanza y qué está trabado.","Smoother client experience":"Mejor experiencia para el cliente","Confirmations, reminders and updates arrive on time, on both sides of the relationship.":"Confirmaciones, recordatorios y avisos llegan a tiempo, de los dos lados de la relación.","More hours back":"Más horas recuperadas","The hours admin used to eat go back into the actual work.":"Las horas que se comía la administración vuelven al trabajo de verdad.","What changes":"Qué cambia","What changes when AI actually works.":"Qué cambia cuando la IA de verdad funciona.","About 40% of the work in a small business is repetitive and rule based. This is what changes when it runs on its own.":"Cerca del 40% del trabajo en un negocio pequeño es repetitivo y sigue reglas. Esto es lo que cambia cuando funciona solo.","Industry research on manual work in small businesses":"Investigación del sector sobre trabajo manual en negocios pequeños","Onboarding":"Onboarding","Invoicing":"Facturación","Reporting":"Reportes","Scheduling":"Agenda","Follow-up":"Seguimiento","Data Entry":"Carga de datos","AI automation, integrated into how your business works.":"Automatización con IA, integrada en cómo funciona tu negocio.","AI automation · Web · Meta Ads":"Automatización con IA · Web · Meta Ads","Replies in seconds, not Monday morning.":"Responde en segundos, no el lunes por la mañana.","Books them while they are still interested.":"Los agenda mientras siguen interesados.","Answers at 2am without waking anyone.":"Responde a las 2am sin despertar a nadie.","Invoices out the day the job finishes.":"Factura el mismo día que termina el trabajo.","Monday’s report, ready Sunday night.":"El reporte del lunes, listo el domingo por la noche.","A CRM that is still clean in six months.":"Un CRM que sigue limpio dentro de seis meses.","Same system.":"El mismo sistema.","Both halves.":"Las dos mitades.","How it works":"Cómo funciona","Three steps.":"Tres pasos.","STEP 01":"PASO 01","STEP 02":"PASO 02","STEP 03":"PASO 03","Why us":"Por qué nosotros","One person owns your build":"Una sola persona a cargo de tu proyecto","From the first audit to go-live. You always know exactly who to call.":"Desde la auditoría hasta el lanzamiento. Siempre sabes exactamente a quién llamar.","We only build what pays for itself":"Solo construimos lo que se paga solo","If a workflow doesn't save time or make money, we don't build it.":"Si un flujo no ahorra tiempo ni genera dinero, no lo construimos.","Run by an operator":"Dirigido por un operador","Not a sales team. Someone who has sat where you sit.":"No un equipo de ventas. Alguien que ha estado donde tú estás.","The impact":"El impacto","What changes when it runs.":"Qué cambia cuando funciona.","The same work, done the same way, without anyone doing it.":"El mismo trabajo, hecho igual, sin que nadie lo haga.","Hours back every week":"Horas recuperadas cada semana","First reply, any channel":"Primera respuesta, en cualquier canal","Nights, weekends, holidays":"Noches, fines de semana y feriados","Nothing falls through":"Nada se pierde por el camino","The work still gets done. You just stop doing it.":"El trabajo se sigue haciendo. Tú simplemente dejas de hacerlo.",
         "What we automate":"Qué automatizamos",
         
         "Lead capture & follow-up":"Captación y seguimiento de leads","Every enquiry answered, qualified and chased until it books.":"Cada consulta respondida, calificada y con seguimiento hasta que agenda.",
@@ -2410,6 +2497,60 @@
       });
       document.getElementById('ckyes').addEventListener('click',function(){choose('yes');});
       document.getElementById('ckno').addEventListener('click',function(){choose('no');});
+    })();
+  </script>
+  <script>
+    // Live system: chips drift in, converge, resolve into the two-card payoff
+    (function(){
+      var track=document.getElementById('command'); if(!track)return;
+      var stage=document.getElementById('cmdstage'), sum=document.getElementById('csum');
+      var count=document.getElementById('cmdcount');
+      if(!stage||!sum)return;
+      var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var mobile=matchMedia('(max-width:760px)').matches;
+      var chips=[].slice.call(stage.querySelectorAll('.cchip'));
+      if(reduce||mobile){if(count)count.textContent='47';return;}
+      var OFF=[[-70,-40],[80,-30],[-80,30],[70,45]];
+      function clamp(v){return Math.max(0,Math.min(1,v));}
+      function win(p,a,b){return clamp((p-a)/(b-a));}
+      function ease(t){return 1-Math.pow(1-t,3);}
+      var geo=null;
+      function measure(){
+        var sr=stage.getBoundingClientRect();
+        geo=chips.map(function(c){var r=c.getBoundingClientRect();
+          return {dx:(sr.left+sr.width/2)-(r.left+r.width/2),dy:(sr.top+sr.height/2)-(r.top+r.height/2)};});
+      }
+      function apply(p){
+        if(!geo)measure();
+        chips.forEach(function(c,i){
+          var inT=ease(win(p,0.04+i*0.06,0.30+i*0.06));
+          var cv=ease(win(p,0.56+i*0.02,0.80+i*0.02));
+          var ox=OFF[i][0]*(1-inT), oy=OFF[i][1]*(1-inT);
+          var x=ox+geo[i].dx*cv, y=oy+geo[i].dy*cv;
+          var sc=(0.94+0.06*inT)*(1-0.42*cv);
+          c.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) scale('+sc.toFixed(3)+')';
+          c.style.opacity=(inT*(1-cv)).toFixed(3);
+        });
+        var s=ease(win(p,0.72,0.93));
+        sum.style.opacity=s.toFixed(3);
+        sum.style.transform='translate(-50%,-50%) scale('+(0.93+0.07*s).toFixed(3)+')';
+        if(count)count.textContent=String(Math.round(47*ease(win(p,0.76,0.99))));
+      }
+      var target=0,smooth=0,raf=null,active=true;
+      window.__cmdapply=function(v){target=v;smooth=v;apply(v);};
+      function progress(){var r=track.getBoundingClientRect();var total=r.height-innerHeight;var v=total>0?(-r.top)/total:0;return clamp(v/0.9);}
+      function tick(){
+        raf=null;
+        smooth+=(target-smooth)*0.08;
+        if(Math.abs(target-smooth)<0.0008)smooth=target;
+        apply(smooth);
+        if(active&&smooth!==target)raf=requestAnimationFrame(tick);
+      }
+      function kick(){target=progress();if(!raf)raf=requestAnimationFrame(tick);}
+      addEventListener('scroll',function(){if(active)kick();},{passive:true});
+      addEventListener('resize',function(){geo=null;if(active)kick();});
+      new IntersectionObserver(function(e){active=e[0].isIntersecting;if(active)kick();},{threshold:0}).observe(track);
+      apply(0);
     })();
   </script>
 </body>
