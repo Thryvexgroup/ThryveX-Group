@@ -2556,9 +2556,15 @@
           apply(v);
           if(v<1)requestAnimationFrame(play);
         }
-        new IntersectionObserver(function(e){
-          if(e[0].isIntersecting&&!played){played=true;geo=null;requestAnimationFrame(play);}
-        },{threshold:0.35}).observe(stage);
+        function start(){if(played)return;played=true;geo=null;requestAnimationFrame(play);}
+        function centred(){var r=stage.getBoundingClientRect();
+          return r.top<innerHeight*0.75&&r.bottom>innerHeight*0.25;}
+        // fire when the scene is actually in the middle of the screen, not at its first pixel
+        new IntersectionObserver(function(e){if(e[0].isIntersecting)start();},
+          {threshold:0,rootMargin:'-25% 0px -25% 0px'}).observe(stage);
+        // safety net: if the observer never fires, never leave the scene blank
+        addEventListener('scroll',function(){if(!played&&centred())start();},{passive:true});
+        setTimeout(function(){if(!played&&centred())start();},1200);
         addEventListener('resize',function(){geo=null;if(played)apply(1);});
         apply(0);
         return;
