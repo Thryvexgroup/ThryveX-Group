@@ -2514,7 +2514,7 @@
       if(saved==='yes')loadTrackers();
       if(saved!==null)return;
       bar.hidden=false;
-      setTimeout(function(){bar.classList.add('show');},400);
+      setTimeout(function(){bar.classList.add('show');},2500);
       function choose(v){
         try{localStorage.setItem(KEY,v);}catch(e){}
         window.__cookieConsent=v;
