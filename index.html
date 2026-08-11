@@ -84,7 +84,7 @@
   .glowfx{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s ease;background:radial-gradient(280px circle at var(--gx,50%) var(--gy,50%),rgba(63,159,230,.13),transparent 65%);z-index:1}
   .reason:hover .glowfx,.rcard:hover .glowfx,.dcard:hover .glowfx{opacity:1}
   .rcard{position:relative}
-  #process{position:relative;overflow:hidden}
+  #process{position:relative}
   #process .wrap{position:relative;z-index:1}
   .ghostw{position:absolute;top:.6rem;left:-2vw;z-index:0;font-family:'Space Grotesk';font-weight:700;font-size:clamp(5.5rem,16vw,14rem);line-height:1;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(63,159,230,.14);pointer-events:none;user-select:none;will-change:transform}
   .beam{position:absolute;left:0;pointer-events:none;height:2px;width:210px;background:linear-gradient(90deg,transparent,rgba(63,159,230,.55),rgba(233,182,198,.35),transparent);border-radius:2px;animation:beamx 10s linear infinite}
@@ -109,20 +109,14 @@
   .pulsecta::after{content:"";position:absolute;inset:0;border-radius:999px;pointer-events:none;animation:ctaping 3.8s cubic-bezier(.3,0,.4,1) infinite}
   @keyframes ctaping{0%{box-shadow:0 0 0 0 rgba(63,159,230,.38)}55%{box-shadow:0 0 0 13px rgba(63,159,230,0)}100%{box-shadow:0 0 0 0 rgba(63,159,230,0)}}
   @media(prefers-reduced-motion:reduce){.pulsecta::after{animation:none}}
-  .tick{position:relative;z-index:3;padding:2.2rem 0 2.4rem;background:transparent}
-  .tick-mask{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-  .tick-in{display:flex;width:max-content;animation:tickx 38s linear infinite}
-  .tick-g{display:flex;align-items:center;gap:2.4rem;padding-right:2.4rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);white-space:nowrap}
-  .tick-dot{width:7px;height:7px;border-radius:50%;background:linear-gradient(100deg,#5FB1E6,#EAB9C6,#F4C79F);flex:none}
-  @keyframes tickx{to{transform:translateX(-50%)}}
-  .tick:hover .tick-in{animation-play-state:paused}
   .gridspot{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s ease;background:radial-gradient(360px circle at var(--mx,50%) var(--my,40%),rgba(63,159,230,.09),transparent 70%);z-index:0}
   #why:hover .gridspot,#pipeline:hover .gridspot{opacity:1}
   #why,#pipeline{position:relative}
   #why .wrap,#pipeline .wrap{position:relative;z-index:1}
   @media(prefers-reduced-motion:reduce){.tick-in{animation:none}.boot{display:none}}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:.9rem var(--gutter);gap:1rem}
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:.9rem var(--gutter);gap:1rem;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+  @media(prefers-reduced-motion:reduce){nav{transition:none}}
   .pill{background:rgba(255,255,255,.88);border:1px solid rgba(17,19,26,.08);border-radius:999px;box-shadow:0 8px 26px -12px rgba(20,30,60,.3)}
   .brand{font-family:'Space Grotesk';font-weight:700;font-size:1.05rem;letter-spacing:-.02em;display:flex;gap:.5rem;align-items:center;text-decoration:none;color:var(--ink);padding:.42rem 1rem .42rem .5rem}
   .brand img{height:30px;width:auto;display:block}
@@ -197,14 +191,15 @@
   .sec .wrap{max-width:1120px;margin:0 auto;position:relative;z-index:1}
   .sec.alt{background:#eef1f7}
   /* blueprint grid texture — gives the light sections a technical, "system" feel (less Apple-plain) */
-  #process,#why,#pipeline,#results{position:relative;overflow:hidden}
+  #why{position:relative;overflow:hidden}
   #process::before,#why::before,#pipeline::before,#results::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background-image:linear-gradient(rgba(63,159,230,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(63,159,230,.07) 1px,transparent 1px);
     background-size:48px 48px;
     -webkit-mask-image:radial-gradient(ellipse 85% 65% at 50% 35%,#000,transparent 78%);mask-image:radial-gradient(ellipse 85% 65% at 50% 35%,#000,transparent 78%)}
   #process::before{background-size:42px 42px;background-image:linear-gradient(rgba(63,159,230,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(63,159,230,.09) 1px,transparent 1px)}
   .eyb{font-family:'Space Grotesk';font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:.55rem;padding:.55rem 1.05rem;background:rgba(255,255,255,.8);border:1px solid rgba(17,19,26,.09);border-radius:999px;box-shadow:0 8px 22px -12px rgba(20,30,60,.22)}
-  .eyb::before{content:"";width:8px;height:8px;border-radius:50%;background:linear-gradient(100deg,#5FB1E6,#EAB9C6,#F4C79F);box-shadow:0 0 0 0 rgba(95,177,230,.5);animation:pulse2 2.2s infinite}
+  .eyb::before{content:"";width:8px;height:8px;border-radius:50%;background:linear-gradient(100deg,#5FB1E6,#EAB9C6,#F4C79F);box-shadow:0 0 0 0 rgba(95,177,230,.5)}
+  .eyb.on::before{animation:pulse2 2.2s infinite}
   h2{font-family:'Space Grotesk';font-weight:700;font-size:clamp(2.1rem,4.6vw,3.4rem);line-height:1.05;letter-spacing:-.03em;max-width:20ch}
   .lead2{font-size:clamp(1.05rem,1.6vw,1.28rem);color:var(--grey);max-width:52ch;margin-top:1.1rem;line-height:1.5}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:3.2rem}
@@ -523,33 +518,514 @@
   .rcard .h{font-weight:600;margin-top:.6rem}.rcard .s{color:var(--grey);font-size:.85rem;margin-top:.25rem;line-height:1.45}
   /* contact CTA + footer */
   /* contact — full-bleed dark band (not a floating box) */
-  #contact{background:linear-gradient(180deg,#fbfbfd 0,#0b0e16 11px,#0b0e16 calc(100% - 13px),#fff 100%);position:relative;overflow:hidden}
-  #contact::before{content:"";position:absolute;left:50%;top:-8%;width:78%;height:78%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(95,177,230,.3),rgba(234,185,198,.16) 45%,transparent 70%);filter:blur(72px);pointer-events:none;z-index:0}
+  #contact{background:transparent;position:relative}
+  #contact::before{content:none}
   .cta{color:#fff;text-align:center;max-width:640px;margin:0 auto;position:relative;z-index:1;padding:clamp(1rem,3vw,2.5rem) 0}
   .cta>*{position:relative}
   .cta h2{color:#fff;max-width:18ch;margin:0 auto}
-  .cta p{color:rgba(255,255,255,.72);font-size:1.15rem;margin:1.2rem auto 2rem;max-width:44ch}
+  .cta p{color:rgba(255,255,255,.78);font-size:1.15rem;margin:1.2rem auto 2rem;max-width:44ch}
   .cta .row2{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
   .cta .btn{background:#fff;color:var(--ink);font-family:'Space Grotesk';font-weight:600;padding:1rem 2rem;border-radius:999px;text-decoration:none;font-size:1.02rem}
-  .cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
+  .cta .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
   .cta .micro{margin-top:1.4rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.04em;color:rgba(255,255,255,.5)}
   /* ——— brand text selection ——— */
   ::selection{background:rgba(63,159,230,.85);color:#fff}
   ::-moz-selection{background:rgba(63,159,230,.85);color:#fff}
   /* ——— wavehead: a clean lift wave with a single brand-blue crest riding across ——— */
   .wavehead .ww{display:inline-block;white-space:nowrap}
-  .wavehead .wl{display:inline-block;color:var(--ink);animation:whlift 3.4s ease-in-out infinite calc(var(--i)*.06s),whglow 3.4s ease-in-out infinite calc(var(--i)*.06s)}
+  /* the wave plays on arrival then rests (was looping forever: 54 always-on animations) */
+  .wavehead .wl{display:inline-block;color:var(--ink)}
+  .wavehead.play .wl{animation:whlift 3.4s ease-in-out 2 calc(var(--i)*.06s),whglow 3.4s ease-in-out 2 calc(var(--i)*.06s)}
   @keyframes whlift{0%,50%,100%{transform:translateY(0)}25%{transform:translateY(-.08em)}}
   @keyframes whglow{0%,22%,32%,100%{color:var(--ink)}27%{color:var(--hl,#3F9FE6)}}
-  @media(prefers-reduced-motion:reduce){.wavehead .wl{animation:none;color:var(--ink)}}
-  footer{position:relative;z-index:5;padding:5rem 0 2.4rem;border-top:1px solid rgba(17,19,26,.08);background:linear-gradient(180deg,#fff,#f6f8fc)}
+  @media(prefers-reduced-motion:reduce){.wavehead.play .wl{animation:none;color:var(--ink)}}
+  /* ——— Meta Ads band: fanned Ads-Manager mockups ——— */
+  .ads-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+  .ads-copy .lead2{max-width:44ch}
+  .ads-points{list-style:none;margin:1.5rem 0 0;padding:0;display:flex;flex-direction:column;gap:.7rem}
+  .ads-points li{display:flex;align-items:center;gap:.6rem;font-size:1rem;color:var(--ink)}
+  .ads-points .ap-ic{flex:none;width:20px;height:20px;border-radius:50%;background:rgba(8,102,255,.11);color:#0866FF;display:flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:700}
+  .ads-note{margin:1.6rem 0 1.9rem;padding-left:1rem;border-left:2.5px solid #3F9FE6;font-family:'Space Grotesk';font-weight:500;font-size:1.05rem;line-height:1.42;color:var(--ink);max-width:33ch}
+  .ads-stack{position:relative;height:clamp(374px,40vw,438px)}
+  .ads-stack>div{position:absolute;background:#fff;border:1px solid rgba(17,19,26,.09);will-change:transform,opacity}
+  .ad-dash{left:0;top:0;width:min(90%,512px);border-radius:14px;box-shadow:0 40px 82px -46px rgba(20,30,60,.5);z-index:1;overflow:hidden;font-family:'Inter',system-ui,sans-serif}
+  .adh{display:flex;align-items:center;gap:.5rem;font-weight:600;font-size:.85rem;color:var(--ink);padding:.6rem 1.05rem;border-bottom:1px solid rgba(17,19,26,.08)}
+  .adh b{font-weight:700}
+  .adh-mk{width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex:none}
+  .adh-mk img{width:100%;height:100%;object-fit:contain;display:block}
+  .adh-date{margin-left:auto;display:flex;align-items:center;font-size:.62rem;color:var(--grey);border:1px solid rgba(17,19,26,.12);border-radius:6px;padding:.24rem .45rem}
+  .adh-date::after{content:"▾";font-size:.5rem;margin-left:.3rem}
+  .adtabs{display:flex;gap:1.1rem;padding:0 1.05rem;border-bottom:1px solid rgba(17,19,26,.08);font-size:.7rem;color:var(--grey)}
+  .adtabs span{padding:.5rem 0;display:flex;align-items:center;gap:.3rem}
+  .adtabs span em{font-style:normal;background:rgba(17,19,26,.08);border-radius:20px;padding:0 .35rem;font-size:.56rem}
+  .adtabs span.on{color:#0866FF;font-weight:600;box-shadow:inset 0 -2px 0 #0866FF}
+  .adtabs span.on em{background:rgba(8,102,255,.12);color:#0866FF}
+  .adbar{display:flex;align-items:center;gap:.4rem;padding:.5rem 1.05rem;font-size:.62rem;color:var(--ink)}
+  .adcreate{background:#0866FF;color:#fff;font-weight:600;border-radius:6px;padding:.32rem .55rem;display:flex;align-items:center;gap:.22rem}
+  .adcreate::before{content:"+";font-weight:700;font-size:.8rem;line-height:1}
+  .adbtn{border:1px solid rgba(17,19,26,.14);border-radius:6px;padding:.32rem .5rem}
+  .adbar-r{margin-left:auto;color:var(--grey);border:1px solid rgba(17,19,26,.12);border-radius:6px;padding:.32rem .5rem;display:flex;align-items:center;white-space:nowrap}
+  .adbar-r::after{content:"▾";font-size:.5rem;margin-left:.3rem}
+  .adhead,.adrow{display:grid;grid-template-columns:26px minmax(64px,1fr) 66px 66px 64px 56px;align-items:center;gap:.5rem;padding:0 .85rem}
+  .adhead{font-size:.57rem;color:var(--grey);padding:.5rem 1.05rem}
+  .adhead span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .adhead span:nth-child(n+4),.adrow .num{text-align:right}
+  .adrow{padding:.5rem 1.05rem;border-top:1px solid rgba(17,19,26,.06);font-size:.73rem;color:var(--ink)}
+  .tgl{width:26px;height:16px;border-radius:999px;background:#0866FF;flex:none;display:flex;align-items:center;justify-content:flex-end;padding:0 2px;box-sizing:border-box}
+  .tgl i{width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.45),0 0 0 .5px rgba(0,0,0,.04)}
+  .adc-name{font-weight:500;color:#0f1524;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .adc-del{display:flex;align-items:center;gap:.3rem;font-size:.68rem}
+  .mdot{width:7px;height:7px;border-radius:50%;background:#31a24c;flex:none}
+  .adrow .num{font-variant-numeric:tabular-nums;font-size:.72rem;line-height:1.2}
+  .adrow .num i{display:block;font-style:normal;font-size:.55rem;color:var(--grey);font-weight:400;line-height:1.4}
+  .adrow.tot{font-weight:700;border-top:1.5px solid rgba(17,19,26,.14);background:rgba(17,19,26,.02)}
+  .ad-cap{padding:.5rem 1.05rem .6rem;text-align:right;font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(17,19,26,.3)}
+  .ad-phone{right:3%;top:33%;width:min(29%,152px);border-radius:26px;box-shadow:0 42px 70px -40px rgba(20,30,60,.55);padding:.5rem;z-index:2}
+  .ap-top{display:flex;align-items:center;gap:.4rem;padding:.25rem .3rem .45rem}
+  .ap-av{width:22px;height:22px;border-radius:50%;background:var(--grad);flex:none}
+  .ap-top b{font-size:.62rem;display:block;line-height:1.15}
+  .ap-top i{font-size:.5rem;color:var(--grey);font-style:normal}
+  .ap-media{aspect-ratio:1/1;border-radius:12px;background:linear-gradient(135deg,#e9f1fb,#f6ecf1);display:flex;align-items:flex-end;padding:.65rem;position:relative;overflow:hidden}
+  .ap-media::before{content:"";position:absolute;inset:0;background:radial-gradient(130px circle at 72% 22%,rgba(63,159,230,.28),transparent 68%)}
+  .ap-hl{position:relative;font-family:'Space Grotesk';font-weight:700;font-size:.74rem;line-height:1.14;color:var(--ink)}
+  .ap-cta{margin:.45rem .1rem .15rem;background:#0866FF;color:#fff;text-align:center;font-size:.58rem;font-weight:600;padding:.42rem;border-radius:8px}
+  .ap-actions{display:flex;gap:.55rem;padding:.15rem .35rem .25rem;color:var(--grey);font-size:.72rem}
+  .ad-chip{left:1%;bottom:3%;width:min(36%,152px);border-radius:16px;box-shadow:0 26px 52px -26px rgba(8,102,255,.5);padding:.8rem .95rem;z-index:3}
+  .ad-chip::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1.4px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.65;pointer-events:none}
+  .ac-v{display:block;font-family:'Space Grotesk';font-weight:700;font-size:1.55rem;letter-spacing:-.02em;color:var(--ink);line-height:1}
+  .ac-l{display:block;font-size:.72rem;color:var(--ink);margin-top:.18rem}
+  .ac-s{display:block;font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.05em;text-transform:uppercase;color:var(--grey);margin-top:.35rem}
+  /* assemble reveal — GPU transforms, fired once by .in from the shared observer */
+  .ads-stack .ad-dash{opacity:0;transform:translateY(26px) scale(.98);transition:opacity .7s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+  .ads-stack .ad-phone{opacity:0;transform:translateY(40px) rotate(9deg) scale(.94);transition:opacity .7s ease .12s,transform .85s cubic-bezier(.22,1,.36,1) .12s}
+  .ads-stack .ad-chip{opacity:0;transform:translateY(18px) scale(.82);transition:opacity .55s ease .28s,transform .7s cubic-bezier(.34,1.4,.5,1) .28s}
+  .ads-stack.in .ad-dash{opacity:1;transform:none}
+  .ads-stack.in .ad-phone{opacity:1;transform:rotate(4deg)}
+  .ads-stack.in .ad-chip{opacity:1;transform:rotate(-3deg)}
+  @media(prefers-reduced-motion:reduce){.ads-stack .ad-dash,.ads-stack .ad-phone,.ads-stack .ad-chip{opacity:1;transition:none}.ads-stack .ad-dash{transform:none}.ads-stack .ad-phone{transform:rotate(4deg)}.ads-stack .ad-chip{transform:rotate(-3deg)}}
+  @media(max-width:900px){.ads-grid{grid-template-columns:1fr;gap:2.4rem}.ads-stack{height:clamp(360px,92vw,430px);max-width:520px;width:100%;margin:0 auto}}
+  /* ——— Work: laptop showreel of shipped sites (placeholder previews for now) ——— */
+  .work-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  @media(max-width:900px){.work-grid{grid-template-columns:1fr;gap:2.4rem}}
+  .work-copy .lead2{max-width:40ch}
+  .work-list{list-style:none;margin:1.6rem 0 0;padding:0}
+  .work-item{display:flex;align-items:baseline;gap:.7rem;padding:.7rem .1rem;border-top:1px solid rgba(17,19,26,.08);cursor:pointer;position:relative;transition:padding-left .35s cubic-bezier(.22,1,.36,1)}
+  .work-item:last-child{border-bottom:1px solid rgba(17,19,26,.08)}
+  .work-item .wi-n{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--grey);width:1.5rem;flex:none}
+  .work-item .wi-t{font-family:'Space Grotesk';font-weight:600;font-size:1.02rem;color:var(--ink)}
+  .work-item .wi-ty{margin-left:auto;font-size:.82rem;color:var(--grey)}
+  .work-item::before{content:"";position:absolute;left:-.15rem;top:50%;width:0;height:2px;border-radius:2px;background:var(--grad);transform:translateY(-50%);transition:width .35s cubic-bezier(.22,1,.36,1)}
+  .work-item.on{padding-left:1rem}
+  .work-item.on::before{width:.7rem}
+  .work-item.on .wi-t{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .work-cap{margin-top:.9rem;font-family:'JetBrains Mono',monospace;font-size:.54rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(17,19,26,.34)}
+  .laptop{width:100%;max-width:600px;margin:0 auto}
+  .lap-lid{background:linear-gradient(160deg,#2a2e39,#14161d);border-radius:16px 16px 7px 7px;padding:9px 9px 0;box-shadow:0 44px 90px -46px rgba(20,30,60,.55),inset 0 0 0 1px rgba(255,255,255,.05)}
+  .lap-screen{position:relative;border-radius:7px;overflow:hidden;background:#fff;aspect-ratio:16/10}
+  .lap-chrome{position:absolute;inset:0 0 auto 0;height:24px;background:#f2f4f8;border-bottom:1px solid rgba(17,19,26,.06);display:flex;align-items:center;gap:5px;padding:0 10px;z-index:4}
+  .lap-chrome i{width:7px;height:7px;border-radius:50%;background:#d5dae2;flex:none}
+  .lap-chrome .url{margin-left:10px;height:12px;border-radius:6px;background:#e4e8ef;flex:1;max-width:62%}
+  .lap-view{position:absolute;inset:24px 0 0 0;overflow:hidden;background:#fff}
+  .wsite{position:absolute;inset:0;opacity:0;transition:opacity .55s ease}
+  .wsite.on{opacity:1}
+  .wsite-inner{position:absolute;top:0;left:0;width:100%}
+  .wsite.on .wsite-inner{animation:wscroll 7.5s cubic-bezier(.5,0,.5,1) both}
+  @keyframes wscroll{0%,9%{transform:translateY(0)}91%,100%{transform:translateY(-58%)}}
+  .lap-base{position:relative;height:13px;margin:0 -3.2%;background:linear-gradient(#ccd2dd,#a9b1c0);border-radius:0 0 13px 13px;box-shadow:0 22px 34px -22px rgba(20,30,60,.45)}
+  .lap-base::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:15%;height:5px;background:rgba(17,19,26,.16);border-radius:0 0 8px 8px}
+  /* placeholder mock-site blocks (swap for real full-page screenshots later) */
+  .ms{--acc:#3F9FE6;background:#fff}
+  .ms-nav{display:flex;align-items:center;padding:11px 16px;border-bottom:1px solid #eef1f6}
+  .ms-logo{width:26px;height:9px;border-radius:3px;background:var(--acc)}
+  .ms-nav .lk{margin-left:auto;display:flex;gap:8px}
+  .ms-nav .lk i{width:22px;height:6px;border-radius:3px;background:#dfe4ec}
+  .ms-hero{padding:28px 18px 30px;background:linear-gradient(180deg,#eef3fb,#fff)}
+  .ms-hero .t{height:15px;border-radius:4px;background:#131722}
+  .ms-hero .t.a{width:72%;margin-bottom:7px}.ms-hero .t.b{width:46%;margin-bottom:14px}
+  .ms-hero .p{height:8px;border-radius:3px;background:#c9d0dc;margin-bottom:6px}
+  .ms-hero .p.a{width:84%}.ms-hero .p.b{width:66%}
+  .ms-hero .cta{margin-top:16px;width:104px;height:26px;border-radius:7px;background:var(--acc)}
+  .ms-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:18px}
+  .ms-cards span{height:72px;border-radius:9px;background:#f1f4f9;border:1px solid #e6eaf1}
+  .ms-strip{height:128px;margin:4px 18px 18px;border-radius:11px;background:linear-gradient(120deg,var(--acc),#cdd6e8)}
+  .ms-rows{padding:2px 18px 20px}
+  .ms-rows span{display:block;height:9px;border-radius:3px;background:#dfe4ec;margin-bottom:9px}
+  .ms-rows span:nth-child(2){width:90%}.ms-rows span:nth-child(3){width:74%}.ms-rows span:nth-child(4){width:82%}
+  .ms-foot{height:96px;background:#0f1524}
+  @media(prefers-reduced-motion:reduce){.wsite.on .wsite-inner{animation:none;transform:translateY(-20%)}.wsite{transition:none}}
+  /* ——— Signal Path: pinned scroll-scrub — one lead travels through the system ——— */
+  .sig-track{position:relative;height:300vh}
+  .sig-stick{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(180deg,#fbfbfd,#f2f5fb);padding:0 var(--gutter)}
+  .sig-inner{width:100%;max-width:1120px}
+  .sig-head{text-align:center;margin-bottom:clamp(1.4rem,4vh,2.8rem)}
+  .sig-head h2{font-size:clamp(1.8rem,4.2vw,3.4rem);max-width:none;margin-left:auto;margin-right:auto}
+  .sig-sub{margin-top:.7rem;font-size:clamp(.92rem,1.5vw,1.05rem);color:var(--grey);max-width:46ch;margin-left:auto;margin-right:auto}
+  .sig-hint{margin-top:.55rem;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);transition:opacity .5s}
+  .sig-hint.gone{opacity:0}
+  .sigwrap{position:relative;width:100%;height:clamp(230px,29vw,320px)}
+  .sigwrap::before{content:"";position:absolute;left:50%;top:50%;width:72%;height:130%;transform:translate(-50%,-50%);pointer-events:none;background:radial-gradient(ellipse at center,rgba(63,159,230,.08),rgba(233,182,198,.05) 55%,transparent 75%)}
+  .sigpath{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .sigpath .pb{fill:none;stroke:rgba(17,19,26,.12);stroke-width:2;stroke-dasharray:5 7;vector-effect:non-scaling-stroke}
+  .sigpath .plg{fill:none;stroke:url(#siggrad);stroke-width:11;stroke-linecap:round;opacity:.16}
+  .sigpath .pl{fill:none;stroke:url(#siggrad);stroke-width:3.5;stroke-linecap:round}
+  .signode{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.42;transition:opacity .4s ease,transform .4s cubic-bezier(.22,1,.36,1);z-index:2}
+  .signode .sn-ic{position:relative;width:48px;height:48px;border-radius:15px;background:#fff;border:1px solid rgba(17,19,26,.1);box-shadow:0 12px 26px -16px rgba(20,30,60,.4);display:flex;align-items:center;justify-content:center}
+  .signode .sn-ic svg{width:21px;height:21px;fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .signode b{font-family:'Space Grotesk';font-size:.74rem;font-weight:600;color:var(--ink);white-space:nowrap}
+  .signode.lit{opacity:1;transform:translate(-50%,-50%) scale(1.07)}
+  .signode.lit .sn-ic{box-shadow:0 14px 30px -14px rgba(63,159,230,.55)}
+  .signode.lit .sn-ic::after{content:"";position:absolute;inset:-3px;border-radius:18px;padding:2.5px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+  .signode.sn-core .sn-ic{width:64px;height:64px;border-radius:50%}
+  .signode.sn-core .sn-ic img{width:34px;height:34px;object-fit:contain}
+  .signode.sn-core.lit .sn-ic::after{border-radius:50%}
+  .signode.sn-core.lit .sn-ring{position:absolute;inset:-2.5px;border-radius:50%;border:1.6px solid rgba(63,159,230,.55);animation:sigrip 2s ease-out infinite}
+  @keyframes sigrip{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.65);opacity:0}}
+  .sig-caprow{margin-top:clamp(1.2rem,3.4vh,2.1rem);display:flex;flex-direction:column;align-items:center;gap:.7rem}
+  .sig-cap{display:inline-flex;align-items:center;gap:.8rem;padding:.62rem 1.15rem;background:rgba(255,255,255,.92);border:1px solid rgba(17,19,26,.08);border-radius:999px;box-shadow:0 18px 40px -22px rgba(20,30,60,.35);min-height:2.6em}
+  .sig-cap b{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:600;letter-spacing:.05em;color:#3F9FE6;flex:none}
+  .sig-cap .sc-sep{width:4px;height:4px;border-radius:50%;background:rgba(17,19,26,.2);flex:none}
+  .sig-cap span#sig-msg{font-size:clamp(.92rem,1.5vw,1.08rem);font-weight:500;color:var(--ink);transition:opacity .25s ease}
+  .sig-cap i#sig-step{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;color:var(--grey);flex:none}
+  .sig-cap.swap span#sig-msg{opacity:0}
+  .sig-prog{width:min(300px,60%);height:2.5px;border-radius:99px;background:rgba(17,19,26,.08);overflow:hidden}
+  .sig-prog i{display:block;height:100%;border-radius:inherit;background:var(--grad);transform:scaleX(0);transform-origin:left;will-change:transform}
+  @media(max-width:760px){
+    .sig-track{height:auto}
+    .sig-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) var(--gutter)}
+    .sigwrap{height:auto;display:flex;flex-direction:column;gap:1rem;align-items:flex-start;padding-left:.4rem}
+    .sigpath{display:none}
+    .signode{position:static;transform:none;flex-direction:row;gap:.8rem}
+    .signode.lit{transform:scale(1.03)}
+    .sig-hint{display:none}
+    .sig-caprow{align-items:flex-start}
+  }
+  @media(prefers-reduced-motion:reduce){.signode{opacity:1;transition:none}.sn-core .sn-ring{display:none}}
+  /* ——— One System: the rail (one signal runs the whole page) + module index ——— */
+  .sec{position:relative}
+  .eyb .sysn{color:transparent;background:var(--grad);-webkit-background-clip:text;background-clip:text;font-weight:700;padding-right:.55rem;border-right:1px solid rgba(17,19,26,.15)}
+  /* ——— coming-soon tape across Selected Work ——— */
+  #work{overflow:hidden}
+  .cs-tape{position:absolute;left:-6%;right:-6%;top:50%;z-index:3;transform:translateY(-50%) rotate(-5deg);background:var(--grad);box-shadow:0 34px 70px -32px rgba(63,159,230,.5);pointer-events:none;overflow:hidden}
+  .cs-tape::before,.cs-tape::after{content:"";position:absolute;left:0;right:0;height:8px;background:repeating-linear-gradient(-45deg,rgba(17,19,26,.32) 0 12px,transparent 12px 24px);z-index:1}
+  .cs-tape::before{top:0}.cs-tape::after{bottom:0}
+  .cs-in{display:flex;width:max-content;animation:csx 30s linear infinite}
+  .cs-g{display:flex;align-items:center;gap:clamp(1.3rem,2.6vw,2.4rem);padding-right:clamp(1.3rem,2.6vw,2.4rem)}
+  .cs-g span{font-family:'Space Grotesk';font-weight:700;font-size:clamp(2rem,4.8vw,3.9rem);letter-spacing:.05em;text-transform:uppercase;color:#fff;white-space:nowrap;text-shadow:0 2px 16px rgba(17,19,26,.22);padding:clamp(1rem,2vw,1.6rem) 0}
+  .cs-lg{flex:none;width:clamp(2.5rem,4.6vw,3.7rem);height:clamp(2.5rem,4.6vw,3.7rem);border-radius:50%;background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px -6px rgba(17,19,26,.28)}
+  .cs-lg img{width:60%;height:auto;display:block}
+  @keyframes csx{to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.cs-in{animation:none}}
+  /* ——— MODERN PASS: living color, gradient-lit cards, brand icons, button energy ——— */
+  /* gradient accent words sit still (the flow was 8 more always-on animations) */
+  .rcard{overflow:hidden;transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s ease}
+  .rcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+  .rcard:hover{transform:translateY(-6px);box-shadow:0 30px 60px -32px rgba(63,159,230,.5)}
+  .console::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);z-index:5}
+  .ad-dash::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);z-index:5}
+  .dcard:nth-child(1) .cic{background:rgba(63,159,230,.12);border-color:rgba(63,159,230,.28)}
+  .dcard:nth-child(1) .cic svg{stroke:#3F9FE6}
+  .dcard:nth-child(2) .cic{background:rgba(123,143,224,.12);border-color:rgba(123,143,224,.3)}
+  .dcard:nth-child(2) .cic svg{stroke:#7B8FE0}
+  .dcard:nth-child(3) .cic{background:rgba(217,121,155,.11);border-color:rgba(217,121,155,.28)}
+  .dcard:nth-child(3) .cic svg{stroke:#D9799B}
+  .dcard:nth-child(4) .cic{background:rgba(227,154,99,.12);border-color:rgba(227,154,99,.3)}
+  .dcard:nth-child(4) .cic svg{stroke:#E39A63}
+  .dcard:nth-child(5) .cic{background:rgba(52,169,123,.12);border-color:rgba(52,169,123,.3)}
+  .dcard:nth-child(5) .cic svg{stroke:#34A97B}
+  .dcard.front::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.55;pointer-events:none}
+  .btn{position:relative;overflow:hidden}
+  .btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 32%,rgba(255,255,255,.28) 50%,transparent 68%);transform:translateX(-130%);transition:transform .65s ease;pointer-events:none}
+  .btn:hover::after{transform:translateX(130%)}
+  .btn.ghost:hover{border-color:transparent;background:linear-gradient(var(--w),var(--w)) padding-box,var(--grad) border-box}
+  .cta .btn.ghost:hover{background:linear-gradient(#0b0e16,#0b0e16) padding-box,var(--grad) border-box;color:#fff}
+  .cta .btn{transition:box-shadow .4s ease}
+  .cta .btn:hover{box-shadow:0 0 0 3px rgba(255,255,255,.14),0 24px 60px -22px rgba(95,177,230,.65)}
+  #contact::after{content:"";position:absolute;right:-12%;bottom:-24%;width:64%;height:74%;background:radial-gradient(ellipse,rgba(244,201,161,.22),rgba(233,182,198,.1) 48%,transparent 72%);filter:blur(80px);pointer-events:none;z-index:0}
+  #services{position:relative}
+  #services::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(620px 400px at 6% 10%,rgba(63,159,230,.07),transparent 66%),radial-gradient(560px 380px at 94% 88%,rgba(244,201,161,.09),transparent 66%)}
+  #results::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(560px 360px at 90% 12%,rgba(233,182,198,.1),transparent 64%),radial-gradient(520px 360px at 8% 90%,rgba(159,180,232,.09),transparent 64%)}
+  .reason{transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s ease}
+  .reason:hover{transform:translateY(-5px);box-shadow:0 28px 56px -28px rgba(99,120,180,.38)}
+  @media(prefers-reduced-motion:reduce){.rcard:hover,.reason:hover{transform:none}}
+  /* ——— What we automate: the breadth grid ——— */
+  .autogrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.8rem,1.5vw,1.15rem);margin-top:clamp(2.2rem,4vw,3.2rem)}
+  @media(max-width:1000px){.autogrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:560px){.autogrid{grid-template-columns:1fr}}
+  .autocard{position:relative;background:#fff;border:1px solid rgba(17,19,26,.08);border-radius:16px;padding:1.25rem 1.15rem 1.35rem;overflow:hidden;transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s ease,border-color .35s ease}
+  .autocard::before{content:"";position:absolute;top:0;left:0;right:0;height:2.5px;background:var(--ac,#3F9FE6);opacity:.85}
+  .autocard:hover{transform:translateY(-5px);box-shadow:0 26px 52px -28px rgba(20,30,60,.4);border-color:rgba(17,19,26,.14)}
+  .autocard .ai{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;margin-bottom:.85rem;background:rgba(63,159,230,.1);border:1px solid rgba(63,159,230,.2)}
+  .autocard .ai svg{width:19px;height:19px;fill:none;stroke:var(--ac,#3F9FE6);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .autocard h4{font-family:'Space Grotesk';font-size:.98rem;font-weight:600;color:var(--ink);margin-bottom:.35rem;line-height:1.25}
+  .autocard p{font-size:.85rem;color:var(--grey);line-height:1.5}
+  /* ——— What we automate: pinned rail, cards slide as you scroll ——— */
+  .auto-track{position:relative;height:320vh}
+  .auto-stick{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+  .auto-head{width:100%;max-width:1120px;margin:0 auto;padding:0 var(--gutter)}
+  .auto-railwrap{margin-top:clamp(2.2rem,5vh,3.6rem);position:relative;z-index:1}
+  .auto-rail .acard{transition:opacity .7s ease}
+  .auto-wheelclip{position:absolute;left:0;top:0;right:0;overflow:hidden;pointer-events:none}
+  .auto-wheel{position:absolute;pointer-events:none;will-change:transform}
+  .auto-wheel .spk{position:absolute;left:0;top:50%;width:100%;height:0;border-top:1px solid rgba(17,19,26,.1);transform-origin:50% 50%}
+  .auto-rail{display:flex;gap:clamp(1.8rem,3.5vw,3.5rem);padding-left:max(var(--gutter),calc((100vw - 1120px)/2));padding-right:max(var(--gutter),calc((100vw - 1120px)/2));will-change:transform}
+  .acard{flex:0 0 auto;width:min(390px,84vw);min-height:240px;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(17,19,26,.05);border-radius:24px;padding:clamp(1.7rem,2.4vw,2.5rem);box-shadow:0 22px 50px -40px rgba(20,30,60,.25)}
+  .acard.ctacard{width:min(560px,88vw);background:#0b0e16;border-color:transparent;display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+  .acard.ctacard h3{color:#fff}
+  .acard.ctacard p{color:rgba(255,255,255,.85);margin-top:1.1rem;max-width:40ch;font-size:clamp(1.02rem,1.3vw,1.15rem)}
+  .actabtn{margin-top:auto;align-self:flex-start;display:inline-block;background:#fff;color:#11131a;font-family:'Space Grotesk';font-weight:600;font-size:.9rem;padding:.6rem 1.2rem;border-radius:999px;text-decoration:none;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+  .actabtn:hover{transform:translateY(-2px)}
+  .intgstrip{padding:clamp(2.2rem,4vw,3rem) 0 clamp(3.5rem,6vw,5rem)}
+  @media(max-width:760px){
+    .auto-track{height:auto}
+    .auto-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) 0}
+    .auto-rail{display:grid;grid-template-columns:1fr;gap:1rem;transform:none!important;padding:0 var(--gutter)}
+    .acard,.acard.ctacard{width:auto;min-height:0;transform:none!important}
+    .auto-wheelclip{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .auto-track{height:auto}
+    .auto-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) 0}
+    .auto-rail{display:grid;grid-template-columns:1fr;gap:1rem;transform:none!important;padding:0 var(--gutter)}
+    .acard,.acard.ctacard{width:auto;min-height:0;transform:none!important}
+    .auto-wheelclip{display:none}
+  }
+  .acard h3{font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.1rem,1.5vw,1.3rem);margin-bottom:.55rem;color:#3F9FE6}
+  .acard p{font-size:clamp(.95rem,1.15vw,1.05rem);color:var(--ink);line-height:1.5;margin-top:auto}
+  .autonote{margin-top:clamp(1.7rem,3vw,2.4rem);text-align:center;font-size:1.05rem;color:var(--grey)}
+  .autonote b{color:var(--ink);font-weight:600}
+  /* ——— Integrations strip ——— */
+  .intg{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:clamp(1.8rem,3.4vw,2.6rem)}
+  .intg span{font-family:'Space Grotesk';font-weight:500;font-size:.92rem;color:var(--ink);background:#fff;border:1px solid rgba(17,19,26,.09);border-radius:999px;padding:.62rem 1.1rem;box-shadow:0 8px 20px -14px rgba(20,30,60,.3);transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s}
+  .intg span:hover{transform:translateY(-3px);border-color:rgba(63,159,230,.4)}
+  .intg span.more{background:var(--grad);color:#fff;border-color:transparent;font-weight:600}
+  @media(prefers-reduced-motion:reduce){.autocard:hover,.intg span:hover{transform:none}}
+  /* ——— The problem: their pain, before our pitch ——— */
+  #changes{background:linear-gradient(180deg,#f7f8fc,#eef1f8)}
+  .problist{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.9rem,2vw,1.4rem);margin-top:clamp(2rem,4vw,2.8rem);max-width:960px}
+  @media(max-width:760px){.problist{grid-template-columns:1fr}}
+  .probitem{display:flex;gap:.85rem;align-items:flex-start;background:rgba(255,255,255,.7);border:1px solid rgba(17,19,26,.07);border-radius:14px;padding:1.05rem 1.2rem;font-size:clamp(.95rem,1.4vw,1.05rem);color:var(--ink);line-height:1.45}
+  .probitem i{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(52,169,123,.12);color:#2f9c72;display:grid;place-items:center;font-style:normal;font-size:.8rem;font-weight:700;margin-top:.1rem}
+  .probpunch{margin-top:clamp(1.8rem,3.5vw,2.6rem);font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.3rem,2.8vw,2rem);color:var(--ink)}
+  .probpunch em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  /* ——— #automate as a dark band (matches the contact band treatment) ——— */
+  .venn-track{position:relative;height:320vh}
+  .venn-intro{background:linear-gradient(180deg,#eef1f7 0,#0b0e16 12px,#0b0e16 100%);padding:clamp(6rem,14vh,9rem) 0 clamp(2rem,6vh,4rem)}
+  .venn-stick{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;
+    background:#0b0e16}
+  .venn-head{width:100%;max-width:1120px;margin:0 auto;padding:0 var(--gutter)}
+  .venn-stick .venn{max-width:min(1600px,96vw,calc((100vh - 130px)*2));margin:0 auto}
+  .venn--scrub,.venn--scrub .vc,.venn--scrub .vfill,.venn--scrub .vl,.venn--scrub .vd,.venn--scrub .vlab,.venn--scrub .vmid,.venn--scrub .vlogo,.venn-stick .vpunch{transition:none!important}
+  .venn-stick .vpunch{margin-top:clamp(1.2rem,2.5vh,2rem)}
+  @media(max-width:760px){.venn-track{height:auto}.venn-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) 0}}
+  @media(prefers-reduced-motion:reduce){.venn-track{height:auto}.venn-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) 0}}
+  #bothhalves::after{content:"";position:absolute;left:50%;top:42%;width:72%;height:80%;transform:translate(-50%,-50%);pointer-events:none;z-index:0;
+    background:radial-gradient(ellipse at center,rgba(63,159,230,.16),rgba(233,182,198,.07) 46%,transparent 72%)}
+  #bothhalves .wrap{position:relative;z-index:1}
+  #bothhalves .eyb{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.72)}
+  #bothhalves h2{color:#fff;max-width:none}
+  #bothhalves .lead2{color:rgba(255,255,255,.68)}
+  #bothhalves .vmid em{color:#fff}
+  #bothhalves .vlab span{color:rgba(255,255,255,.9)}
+  #bothhalves .vsvg .vl{stroke:rgba(255,255,255,.3)}
+  #bothhalves .vsvg .vc.a{stroke:rgba(95,177,230,.85)}
+  #bothhalves .vsvg .vc.b{stroke:rgba(244,201,161,.7)}
+    #bothhalves .vpunch{color:#fff}
+            @media(max-width:860px){
+    #bothhalves .vmid{border-bottom-color:rgba(95,177,230,.55)}
+    #bothhalves .vmid.b{border-bottom-color:rgba(244,201,161,.6)}
+    #bothhalves .vlab{border-left-color:rgba(255,255,255,.16)}
+  }
+  /* ——— Venn: two halves of the business, connectors draw on scroll ——— */
+  .venn{position:relative;width:100%;max-width:1180px;margin:clamp(2.4rem,5vw,3.6rem) auto 0;aspect-ratio:2/1}
+  .vsvg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .vsvg .vc{fill:none;stroke-width:1.4;opacity:0;transition:opacity 1s ease}
+  .venn.in .vsvg .vc{opacity:1}
+  .vsvg .vc.a{stroke:rgba(63,159,230,.55)}
+  .vsvg .vc.b{stroke:rgba(226,150,96,.5);transition-delay:.12s}
+  .vsvg .vfill{opacity:0;transition:opacity 1.1s ease .1s}
+  .venn.in .vsvg .vfill{opacity:1}
+  .vsvg .vl{fill:none;stroke:rgba(17,19,26,.3);stroke-width:1.3;stroke-dasharray:var(--len,500);stroke-dashoffset:var(--len,500);transition:stroke-dashoffset 1s cubic-bezier(.22,1,.36,1)}
+  .venn.in .vsvg .vl{stroke-dashoffset:0}
+  .vsvg .vl.d2{transition-delay:.12s}.vsvg .vl.d3{transition-delay:.24s}
+  .vsvg .vd{opacity:0;transition:opacity .45s ease .5s}
+  .venn.in .vsvg .vd{opacity:1}
+  .vlab{position:absolute;width:16.5%;opacity:0;transform:translateY(10px);transition:opacity .75s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+  .venn.in .vlab{opacity:1;transform:none}
+  .vlab strong{display:block;font-family:'Space Grotesk';font-weight:700;font-size:clamp(.9rem,1.25vw,1.06rem);color:var(--ink);line-height:1.25;margin-bottom:.22rem}
+  .vlab span{display:block;font-size:clamp(.85rem,1.1vw,1.02rem);color:var(--ink);line-height:1.45;font-weight:500}
+  .vlab.l{left:.5%;text-align:right}
+  .vlab.r{right:.5%;text-align:left}
+  .vlab.t{bottom:79.5%}.vlab.m{bottom:52.5%}.vlab.b{bottom:25.5%}
+  .venn.in .vlab.m{transition-delay:.42s}
+  .venn.in .vlab.b{transition-delay:.56s}
+  .vmid{position:absolute;top:50%;transform:translateY(-50%);width:18%;text-align:center;opacity:0;transition:opacity .9s ease .28s}
+  .venn.in .vmid{opacity:1}
+  .vmid.a{left:24.5%}.vmid.b{right:24.5%}
+  .vmid b{display:block;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:.5rem}
+  .vmid em{font-style:normal;font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.3rem,2.3vw,2.05rem);line-height:1.18;color:var(--ink)}
+  .vlogo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.75);width:clamp(70px,6.5vw,96px);height:auto;display:grid;place-items:center;z-index:3;opacity:0;transition:opacity .6s ease .6s,transform .7s cubic-bezier(.34,1.4,.5,1) .6s}
+  .vlogo img{width:100%;height:auto;display:block}
+  .venn.in .vlogo{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .vpunch{text-align:center;margin-top:clamp(1.6rem,3vw,2.4rem);font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.2rem,2.6vw,1.85rem);color:var(--ink)}
+  .vpunch em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  @media(max-width:860px){
+    .venn{aspect-ratio:auto;display:grid;gap:.5rem;max-width:480px}
+    .vsvg,.vlogo{display:none}
+    .vlab,.vmid{position:static;width:auto;text-align:left!important;opacity:1;transform:none}
+    .vmid{margin-top:1.6rem;padding-bottom:.5rem;border-bottom:2px solid rgba(63,159,230,.4)}
+    .vmid.b{border-bottom-color:rgba(226,150,96,.55)}
+    .vlab{padding-left:1rem;border-left:2px solid rgba(17,19,26,.09);padding-block:.35rem}
+    /* group each half with its own points */
+    .vmid.a{order:1}
+    .vlab.l.t{order:2}.vlab.l.m{order:3}.vlab.l.b{order:4}
+    .vmid.b{order:5}
+    .vlab.r.t{order:6}.vlab.r.m{order:7}.vlab.r.b{order:8}
+    .vlab.l{border-left-color:rgba(63,159,230,.45)}
+    .vlab.r{border-left-color:rgba(226,150,96,.5)}
+  }
+  @media(prefers-reduced-motion:reduce){.vlab,.vmid,.vlogo,.vsvg .vc,.vsvg .vfill,.vsvg .vd{opacity:1;transform:none;transition:none}.vsvg .vl{stroke-dashoffset:0;transition:none}.vlogo{transform:translate(-50%,-50%)}}
+  /* ——— Rail: the three steps, connected ——— */
+  .rail{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.4vw,2rem);margin-top:clamp(2.4rem,4.5vw,3.4rem)}
+  @media(max-width:760px){.rail{grid-template-columns:1fr;gap:2rem}}
+  .railline{position:absolute;left:12%;right:12%;top:29px;height:2px;background:var(--grad);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform 1.1s cubic-bezier(.22,1,.36,1)}
+  .rail.in .railline{transform:scaleX(1)}
+  @media(max-width:760px){.railline{display:none}}
+  .railstep{text-align:center;opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+  .rail.in .railstep{opacity:1;transform:none}
+  .rail.in .railstep:nth-child(3){transition-delay:.18s}
+  .rail.in .railstep:nth-child(4){transition-delay:.36s}
+  .rnode{position:relative;z-index:1;width:58px;height:58px;margin:0 auto 1.2rem;border-radius:50%;background:#fff;border:1px solid rgba(17,19,26,.09);box-shadow:0 12px 28px -14px rgba(20,30,60,.4);display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:600;color:#3F9FE6}
+  .railstep h4{font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.1rem,1.9vw,1.35rem);color:var(--ink);margin-bottom:.4rem}
+  .railstep p{font-size:.94rem;color:var(--grey);line-height:1.5;max-width:26ch;margin:0 auto}
+  @media(prefers-reduced-motion:reduce){.vcircle,.vlogo,.railstep{opacity:1;transform:none;transition:none}.railline{transform:scaleX(1)}.vlogo{transform:translate(-50%,-50%)}}
+  /* ——— outcomes: numbered, MQP register ——— */
+  .outgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.8rem,3.2vw,2.8rem) clamp(1.6rem,3vw,3rem);margin-top:clamp(2.2rem,4vw,3.2rem);max-width:1040px}
+  @media(max-width:960px){.outgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:600px){.outgrid{grid-template-columns:1fr}}
+  .outitem{padding-top:1.1rem;border-top:1px solid rgba(17,19,26,.12)}
+  .outitem b{display:block;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:.62rem;letter-spacing:.08em;color:rgba(17,19,26,.4);margin-bottom:.6rem}
+  .outitem h4{font-family:'Space Grotesk';font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:.45rem}
+  .outitem p{font-size:.93rem;color:var(--grey);line-height:1.55}
+  .probsrc{margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(17,19,26,.35)}
+  /* ——— How it works: three steps ——— */
+  .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.4vw,2rem);margin-top:clamp(2.2rem,4vw,3rem)}
+  @media(max-width:760px){.steps3{grid-template-columns:1fr}}
+  .step3{position:relative;background:#fff;border:1px solid rgba(17,19,26,.08);border-radius:18px;padding:clamp(1.5rem,2.6vw,2rem);overflow:hidden}
+  .step3::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+  .step3 b{display:block;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;color:var(--grey);margin-bottom:1.1rem}
+  .step3 h4{font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.15rem,2vw,1.45rem);color:var(--ink);margin-bottom:.45rem}
+  .step3 p{font-size:.95rem;color:var(--grey);line-height:1.5}
+  /* ——— Why us: three lines ——— */
+  .why3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.4vw,2.2rem);margin-top:clamp(2rem,4vw,2.8rem)}
+  @media(max-width:760px){.why3{grid-template-columns:1fr}}
+  .why3 div{padding-top:1.2rem;border-top:2.5px solid #3F9FE6}
+  .why3 div:nth-child(2){border-top-color:#C2AEDC}
+  .why3 div:nth-child(3){border-top-color:#F4C9A1}
+  .why3 h4{font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.1rem,1.9vw,1.35rem);color:var(--ink);line-height:1.25;margin-bottom:.4rem}
+  .why3 p{font-size:.95rem;color:var(--grey);line-height:1.5}
+  /* ——— How it works: pinned band, steps slide as you scroll ——— */
+  .steps-track{position:relative;height:240vh;z-index:3}
+  .steps-stick{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;
+    background:linear-gradient(180deg,#f7f8fc 0,#0b0e16 12px,#0b0e16 calc(100% - 12px),#eef1f7 100%)}
+  .steps-head{width:100%;max-width:1120px;margin:0 auto;padding:0 var(--gutter)}
+  #process .eyb{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.72)}
+  #process h2{color:#fff;max-width:none}
+  #process .lead2{color:rgba(255,255,255,.65)}
+  .steps-railwrap{position:relative;margin-top:clamp(2.4rem,5vh,4rem)}
+  .steps-line{position:absolute;left:0;right:0;top:43px;height:2px;background:linear-gradient(90deg,#3F9FE6,#9FB4E8 38%,#E9B6C6 68%,#F4C9A1);opacity:.35;pointer-events:none}
+  .steps-rail{display:flex;gap:clamp(4rem,10vw,9rem);padding-left:max(var(--gutter),calc((100vw - 1120px)/2));padding-right:60vw;will-change:transform}
+  .spanel{flex:0 0 auto;width:min(460px,70vw);opacity:.4;transition:opacity .45s ease}
+  .spanel.on{opacity:1}
+  .snode{position:relative;width:88px;height:88px;border-radius:50%;background:#fff;display:grid;place-items:center;z-index:2;
+    box-shadow:0 0 0 6px rgba(11,14,22,.9),0 18px 44px -14px rgba(95,177,230,.55)}
+  .snode img{width:56%;height:auto;display:block}
+  .spanel.on .snode::after{content:"";position:absolute;inset:-4px;border-radius:50%;padding:2px;background:var(--grad);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+  .spanel b{display:block;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:.68rem;letter-spacing:.16em;color:rgba(255,255,255,.45);margin:1.5rem 0 .5rem}
+  .spanel h4{font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.5rem,2.8vw,2.3rem);letter-spacing:-.02em;color:#fff;margin-bottom:.55rem}
+  .spanel p{font-size:clamp(.95rem,1.3vw,1.08rem);color:rgba(255,255,255,.62);line-height:1.55;max-width:34ch}
+  .steps-prog{position:absolute;left:50%;bottom:clamp(2rem,5vh,3.4rem);transform:translateX(-50%);width:min(280px,50%);height:2px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden}
+  .steps-prog i{display:block;height:100%;background:var(--grad);transform:scaleX(0);transform-origin:left;will-change:transform}
+  @media(max-width:760px){
+    .steps-track{height:auto}
+    .steps-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) 0}
+    .steps-rail{flex-direction:column;gap:2.6rem;transform:none!important;padding:0 var(--gutter)}
+    .spanel{width:auto;opacity:1}
+    .steps-line,.steps-prog{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .steps-track{height:auto}
+    .steps-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) 0}
+    .steps-rail{flex-direction:column;gap:2.6rem;transform:none!important;padding:0 var(--gutter)}
+    .spanel{width:auto;opacity:1}
+    .steps-line,.steps-prog{display:none}
+  }
+  /* ——— curtain reveal: dark band lifts to uncover Why, contact slides over ——— */
+  .rwrap{position:relative;z-index:1;margin-top:-100vh}
+  .rwrap .rpad{height:250vh}
+  #why{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+  .endblock{position:relative;z-index:6;margin-top:-100vh;background:#0b0e16;overflow:hidden}
+  @media(max-width:760px){
+    .rwrap{margin-top:0}.rwrap .rpad{display:none}
+    #why{position:relative;min-height:0;display:block}
+    .endblock{margin-top:0}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .rwrap{margin-top:0}.rwrap .rpad{display:none}
+    #why{position:relative;min-height:0;display:block}
+    .endblock{margin-top:0}
+  }
+  /* ——— hero index: what we do, bottom left (MQP style) ——— */
+  .hero{position:relative}
+  .heroidx{position:absolute;left:var(--gutter);bottom:clamp(1.6rem,4.5vh,3.2rem);z-index:5;display:flex;flex-direction:column;width:192px}
+  .heroidx a{display:flex;align-items:center;gap:.85rem;padding:.6rem .2rem .6rem 0;border-top:1px solid rgba(17,19,26,.09);color:var(--ink);text-decoration:none;font-family:'Space Grotesk';font-weight:600;font-size:.95rem;transition:transform .35s cubic-bezier(.22,1,.36,1),color .3s}
+  .heroidx a:last-child{border-bottom:1px solid rgba(17,19,26,.09)}
+  .heroidx a:hover{transform:translateX(5px);color:#3F9FE6}
+  @media(max-width:900px){.heroidx{display:none}}
+  .endlines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+  .endlines path{fill:none;vector-effect:non-scaling-stroke}
+  /* ——— cookie consent ——— */
+  .ckbar{position:fixed;left:clamp(.9rem,2vw,1.6rem);bottom:clamp(.9rem,2vw,1.6rem);z-index:90;max-width:390px;
+    background:#fff;border:1px solid rgba(17,19,26,.08);border-radius:18px;padding:1.15rem 1.25rem;
+    box-shadow:0 24px 60px -30px rgba(20,30,60,.4);opacity:0;transform:translateY(14px);
+    transition:opacity .5s ease,transform .55s cubic-bezier(.22,1,.36,1)}
+  .ckbar.show{opacity:1;transform:none}
+  .ck-hd{font-family:'Space Grotesk';font-weight:700;font-size:1rem;color:var(--ink);margin:0 0 .5rem}
+  .ck-tx{font-size:.84rem;color:rgba(17,19,26,.72);line-height:1.55;margin:0 0 .7rem}
+  .ck-more{background:none;border:none;padding:0;margin:0 0 .8rem;font-size:.82rem;font-weight:600;color:#3F9FE6;cursor:pointer;font-family:inherit}
+  .ck-more:hover{text-decoration:underline}
+  .ck-det{margin:0 0 .9rem;display:flex;flex-direction:column;gap:.55rem;border-top:1px solid rgba(17,19,26,.08);padding-top:.75rem}
+  .ck-det[hidden]{display:none}
+  .ck-item{font-size:.8rem;line-height:1.45}
+  .ck-item b{display:block;color:var(--ink);font-weight:600;margin-bottom:.1rem}
+  .ck-item span{color:rgba(17,19,26,.62)}
+  .ck-row{display:flex;gap:.55rem}
+  .ck-btn{font-family:'Space Grotesk';font-weight:600;font-size:.85rem;padding:.55rem 1.15rem;border-radius:999px;cursor:pointer;transition:transform .25s ease}
+  .ck-btn:hover{transform:translateY(-1px)}
+  .ck-yes{background:var(--ink);color:#fff;border:none}
+  .ck-no{background:#eef1f6;color:var(--ink);border:1px solid rgba(17,19,26,.18)}
+  @media(max-width:520px){.ckbar{left:.8rem;right:.8rem;max-width:none}}
+  /* ——— services: MQP-style rows ——— */
+  .svcrows{margin-top:clamp(2rem,4vw,3rem);position:relative;z-index:1;max-width:920px}
+  .svcrow{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:clamp(1rem,3vw,2.5rem);padding:clamp(1.5rem,3vw,2.2rem) .4rem;border-top:1px solid rgba(17,19,26,.1);text-decoration:none;color:var(--ink)}
+  .svcrow:last-child{border-bottom:1px solid rgba(17,19,26,.1)}
+  .svc-num{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:rgba(17,19,26,.4)}
+  .svcrow h3{font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.5rem,2.8vw,2.2rem);letter-spacing:-.02em;margin:0 0 .35rem;transition:color .3s ease}
+  .svcrow .svc-m p{color:var(--grey);font-size:clamp(.95rem,1.2vw,1.05rem);margin:0;max-width:52ch}
+  .svc-arr{font-family:'Space Grotesk';font-weight:700;font-size:1.6rem;color:rgba(17,19,26,.35)}
+  @media(max-width:700px){.svcrow{grid-template-columns:minmax(0,1fr) auto}.svc-num{display:none}}
+  /* Lenis (inertia scroll) */
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto!important}
+  .lenis.lenis-stopped{overflow:hidden}
+  footer{position:relative;z-index:5;padding:5rem 0 2.4rem;background:transparent}
   .fwrap{max-width:1200px;margin:0 auto;padding:0 clamp(1.25rem,3vw,2.5rem)}
   /* grid keeps the footer identical regardless of language length (no flex-wrap reflow) */
   .ftop{display:grid;grid-template-columns:minmax(280px,auto) 1fr;align-items:start;gap:2.5rem clamp(1.6rem,3vw,3rem)}
   @media(max-width:820px){.ftop{grid-template-columns:1fr}}
-  footer .fb{display:flex;gap:.55rem;align-items:center;font-family:'Space Grotesk';font-weight:700;font-size:1.1rem}
+  footer .fb{display:flex;gap:.55rem;align-items:center;font-family:'Space Grotesk';font-weight:700;font-size:1.1rem;color:#fff}
   footer .fb img{height:28px}
-  footer .ft{color:var(--grey);font-size:.9rem;max-width:34ch;margin:1rem 0 1.7rem;line-height:1.6}
+  footer .ft{color:rgba(255,255,255,.72);font-size:.9rem;max-width:34ch;margin:1rem 0 1.7rem;line-height:1.6}
   /* location callout + rotating globe */
   .fbrand{min-width:0}
   .floc{display:inline-flex;align-items:center;gap:1.1rem;width:fit-content;max-width:100%;margin:1.5rem 0 0}
@@ -559,17 +1035,17 @@
   .globe{width:100%;height:100%;filter:drop-shadow(0 14px 26px rgba(20,30,60,.22))}
   .floc-tx{display:flex;flex-direction:column;gap:.25rem;min-width:0}
   .floc-line{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
-  .floc-from{font-family:'Space Grotesk';font-weight:700;font-size:1rem;letter-spacing:-.01em;color:var(--ink)}
+  .floc-from{font-family:'Space Grotesk';font-weight:700;font-size:1rem;letter-spacing:-.01em;color:#fff}
   .floc-arr{font-family:'Space Grotesk';font-weight:700;font-size:1.05rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .floc-to{font-family:'Space Grotesk';font-weight:700;font-size:1rem;letter-spacing:-.01em;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .floc small{color:var(--grey);font-size:.78rem;line-height:1.4}
+  .floc small{color:rgba(255,255,255,.55);font-size:.78rem;line-height:1.4}
   .fcols{flex:1 1 auto;display:flex;flex-wrap:nowrap;justify-content:space-between;gap:clamp(1.3rem,2.4vw,2.2rem)}
   .fcols>div{flex:0 0 auto}
   @media(max-width:640px){.fcols{flex-wrap:wrap;justify-content:flex-start;gap:1.8rem 2rem}}
-  footer h5{font-family:'JetBrains Mono',monospace;font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--grey);margin-bottom:1rem}
-  footer a.fl{display:block;color:var(--ink);text-decoration:none;font-size:.9rem;margin-bottom:.6rem;opacity:.8;transition:opacity .25s ease,transform .25s ease}
+  footer h5{font-family:'JetBrains Mono',monospace;font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:1rem}
+  footer a.fl{display:block;color:#fff;text-decoration:none;font-size:.9rem;margin-bottom:.6rem;opacity:.8;transition:opacity .25s ease,transform .25s ease}
   footer a.fl:hover{opacity:1;transform:translateX(3px)}
-  .fbottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:3.2rem;padding-top:1.6rem;border-top:1px solid rgba(17,19,26,.07);font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.03em;color:var(--grey)}
+  .fbottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:3.2rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.16);font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.03em;color:rgba(255,255,255,.55)}
   .dcard{position:absolute;top:50%;left:50%;width:min(360px,80vw);height:342px;background:#fff;border:1px solid rgba(17,19,26,.09);border-radius:24px;padding:1.9rem;box-shadow:none;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.22,1,.36,1),opacity .6s ease;will-change:transform,opacity}
   .dcard.front{box-shadow:0 30px 60px -38px rgba(20,30,60,.5)}
   .dcard .cic{width:46px;height:46px;border-radius:13px;background:linear-gradient(180deg,#fff,#eef3fb);border:1px solid rgba(17,19,26,.08);display:grid;place-items:center;margin-bottom:1.1rem}
@@ -618,8 +1094,8 @@
   <div class="scrim"></div>
   <div class="grain"></div>
   <nav>
-    <a class="brand pill" href="#"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=2" alt="ThryveX Group"/> <span>ThryveX Group</span></a>
-    <div class="nl pill"><a class="mag" href="#services">Services</a><a class="mag" href="#process">Process</a><a class="mag" href="#why">Why ThryveX</a><a class="mag" href="#contact">Contact</a></div>
+    <a class="brand pill" href="#"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt="ThryveX Group"/> <span>ThryveX Group</span></a>
+    <div class="nl pill"><a href="#services">Services</a><a href="#automate">Automation</a><a href="#process">Process</a><a href="#why">Why ThryveX</a><a href="#contact">Contact</a></div>
     <div class="navend">
       <div class="langdd">
         <button class="langbtn pill" id="langbtn" aria-haspopup="listbox" aria-expanded="false">EN<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
@@ -631,6 +1107,7 @@
   </nav>
   <div class="navmobile" id="navmobile">
     <a href="#services">Services</a>
+    <a href="#automate">Automation</a>
     <a href="#process">Process</a>
     <a href="#why">Why ThryveX</a>
     <a href="#contact">Contact</a>
@@ -639,120 +1116,89 @@
   </div>
 
   <header class="hero">
-    <p class="ey">Scale Without Limits</p>
+    <p class="ey">AI automation &middot; Web &middot; Meta Ads</p>
     <h1><span class="ln"><span>Built to run without</span></span><span class="ln"><span>you.</span></span></h1>
-    <p class="sub">AI automation, web development &amp; Meta Ads. One system that answers every lead in seconds, even the ones that arrive at 2am.</p>
+    <p class="sub">AI automation, integrated into how your business works.</p>
     <div class="ctas"><a class="btn mag pulsecta" href="/book">Book a Call</a><a class="btn ghost mag" href="#services">See What We Build</a></div>
+    <div class="heroidx" role="navigation" aria-label="What we do">
+      <a href="#automate">AI Automation</a>
+      <a href="#work">Web Development</a>
+      <a href="#ads">Meta Ads</a>
+    </div>
   </header>
 
-  <main class="content">
-    <div class="tick"><div class="tick-mask"><div class="tick-in">
-      <div class="tick-g"><span>AI Follow-up</span><i class="tick-dot"></i><span>WhatsApp Agents</span><i class="tick-dot"></i><span>CRM Automation</span><i class="tick-dot"></i><span>Meta Ads</span><i class="tick-dot"></i><span>Web Development</span><i class="tick-dot"></i><span>24/7 Booking</span><i class="tick-dot"></i></div>
-      <div class="tick-g"><span>AI Follow-up</span><i class="tick-dot"></i><span>WhatsApp Agents</span><i class="tick-dot"></i><span>CRM Automation</span><i class="tick-dot"></i><span>Meta Ads</span><i class="tick-dot"></i><span>Web Development</span><i class="tick-dot"></i><span>24/7 Booking</span><i class="tick-dot"></i></div>
-    </div></div></div>
-    <section class="sec" id="services">
+  <main class="content"></div>
+    <section class="sec alt" id="services">
       <div class="wrap">
         <div class="stagefloor"><span class="beam" style="top:34%"></span><span class="beam" style="top:64%;animation-delay:5s"></span></div>
-        <p class="eyb r">What we build</p>
-        <h2 class="r">Everything your business needs to operate without limits.</h2>
-        <p class="lead2 r">Five systems that click together into one machine, built around the tools you already use.</p>
-        <div class="deckwrap r">
-          <div class="deckglow"></div>
-          <div class="deck" id="deck">
-            <article class="dcard"><div class="dtag">SYS-01<span class="don">Active</span></div><div class="cic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div><h3>AI Automation</h3><p>The engine that works your leads around the clock.</p><ul><li>WhatsApp auto-replies</li><li>AI front desk &amp; chatbots</li><li>Instant lead follow-up</li></ul></article>
-            <article class="dcard"><div class="dtag">SYS-02<span class="don">Live</span></div><div class="cic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M6 6.5h.01"/></svg></div><h3>Web Development</h3><p>Hand-coded sites built to convert. You're on one right now.</p><ul><li>Designed &amp; coded from scratch</li><li>Built for speed &amp; SEO</li><li>You own everything</li></ul></article>
-            <article class="dcard"><div class="dtag">SYS-03<span class="don">Running</span></div><div class="cic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></svg></div><h3>Meta Ads</h3><p>Campaigns that fill the pipeline your system answers.</p><ul><li>Creative &amp; copy</li><li>Audience &amp; targeting</li><li>Lead-gen funnels</li></ul></article>
-            <article class="dcard"><div class="dtag">SYS-04<span class="don">Synced</span></div><div class="cic"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>CRM Implementation</h3><p>One organized pipeline, zero manual data entry.</p><ul><li>Pipeline &amp; stages</li><li>Automatic data capture</li><li>Tool integrations</li></ul></article>
-            <article class="dcard"><div class="dtag">SYS-05<span class="don">24/7</span></div><div class="cic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></div><h3>AI Chatbots</h3><p>Always-on agents that answer, qualify, and book.</p><ul><li>24/7 instant replies</li><li>Lead qualification</li><li>Calendar booking</li></ul></article>
-          </div>
-          <div class="dcontrols">
-            <button class="dnav" id="dprev" aria-label="Previous service">‹</button>
-            <div class="dtabs" id="ddots"></div>
-            <button class="dnav" id="dnext" aria-label="Next service">›</button>
+        <p class="eyb r"><span class="sysn">SYS.01</span>What we build</p>
+        <h2 class="r">Three services. One system.</h2>
+        <p class="lead2 r">Three services that click together into one system, built around the tools you already use.</p>
+        <div class="svcrows">
+          <a class="svcrow r" href="#automate">
+            <span class="svc-num">01</span>
+            <div class="svc-m">
+              <h3>AI Automation</h3>
+              <p>The engine that answers, books and follows up while you work.</p>
+            </div>
+            <span class="svc-arr">&rarr;</span>
+          </a>
+          <a class="svcrow r" href="#work">
+            <span class="svc-num">02</span>
+            <div class="svc-m">
+              <h3>Web Development</h3>
+              <p>Websites built to convert, not just to look good. You're on one right now.</p>
+            </div>
+            <span class="svc-arr">&rarr;</span>
+          </a>
+          <a class="svcrow r" href="#ads">
+            <span class="svc-num">03</span>
+            <div class="svc-m">
+              <h3>Meta Ads</h3>
+              <p>Campaigns that fill the pipeline your system answers.</p>
+            </div>
+            <span class="svc-arr">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="automate" class="auto-track">
+      <div class="auto-stick">
+        <div class="auto-wheelclip" aria-hidden="true"><div class="auto-wheel"></div></div>
+        <div class="auto-head">
+          <p class="eyb r"><span class="sysn">SYS.02</span>What we automate</p>
+          <h2 class="r">If it repeats, it can run on its own.</h2>
+          <p class="lead2 r">From the first enquiry to the final invoice, built into the tools you already use.</p>
+        </div>
+        <div class="auto-railwrap">
+          <div class="auto-rail" id="autorail">
+            <div class="acard r"><h3>Lead follow-up</h3><p>Every enquiry gets answered and followed up until it books.</p></div>
+            <div class="acard r"><h3>Appointment booking</h3><p>Clients book, reschedule and get reminded without a phone call.</p></div>
+            <div class="acard r"><h3>Invoicing and payments</h3><p>The invoice goes out when the job closes, and late ones chase themselves.</p></div>
+            <div class="acard r"><h3>Client communication</h3><p>Confirmations, updates and review requests sent at the right moment.</p></div>
+            <div class="acard r"><h3>Reports and numbers</h3><p>Your key numbers land in your inbox on schedule.</p></div>
+            <div class="acard r"><h3>Records and CRM</h3><p>Every job, payment and conversation logs itself.</p></div>
+            <div class="acard ctacard r"><h3>Start today.</h3><p>Because in six months, today is the day you'll wish you'd started.</p><a class="actabtn" href="#contact">Book a free audit</a></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="sec" id="process">
-      <div class="ghostw" aria-hidden="true">AUTOMATION</div>
+    <div class="intgstrip">
       <div class="wrap">
-        <p class="eyb r">Process</p>
-        <h2 class="r">A clear path from chaos to full automation.</h2>
-        <p class="lead2 r">A structured, hands-on process that turns your existing tools and workflows into a connected, intelligent system.</p>
-        <div class="proc r">
-          <div class="proc-steps">
-            <button class="ps active" data-i="0"><span class="ps-n">01</span><span class="ps-tx"><b>Discovery &amp; Audit</b><i>We map your workflows, tools and pain points to find where manual work leaks time.</i></span><span class="ps-bar"><i></i></span></button>
-            <button class="ps" data-i="1"><span class="ps-n">02</span><span class="ps-tx"><b>Strategy &amp; Blueprint</b><i>A custom automation architecture. Every system, data flow and AI layer mapped first.</i></span><span class="ps-bar"><i></i></span></button>
-            <button class="ps" data-i="2"><span class="ps-n">03</span><span class="ps-tx"><b>Build &amp; Integrate</b><i>We wire the full stack: tools, CRM pipelines and AI agents, all connected.</i></span><span class="ps-bar"><i></i></span></button>
-            <button class="ps" data-i="3"><span class="ps-n">04</span><span class="ps-tx"><b>Launch &amp; Optimize</b><i>Tested against real scenarios, then monitored and fine-tuned continuously.</i></span><span class="ps-bar"><i></i></span></button>
-          </div>
-          <div class="proc-stage">
-            <div class="stg active" data-i="0">
-              <div class="stg-h"><span class="stg-dot warn"></span>Audit findings · current state</div>
-              <div class="finds">
-                <div class="find bad"><div class="find-r"><span class="find-l">Avg lead response</span><b class="find-v">4.2<i>hrs</i></b></div><div class="find-b"><div class="find-bar"><span style="width:84%"></span></div><span class="find-t">Too slow</span></div></div>
-                <div class="find bad"><div class="find-r"><span class="find-l">Leads followed up</span><b class="find-v">41<i>%</i></b></div><div class="find-b"><div class="find-bar"><span style="width:41%"></span></div><span class="find-t">Leaking</span></div></div>
-                <div class="find warn"><div class="find-r"><span class="find-l">Manual admin</span><b class="find-v">22<i>hrs/wk</i></b></div><div class="find-b"><div class="find-bar"><span style="width:70%"></span></div><span class="find-t">Costly</span></div></div>
-                <div class="find warn"><div class="find-r"><span class="find-l">Tools connected</span><b class="find-v">2<i>/ 9</i></b></div><div class="find-b"><div class="find-bar"><span style="width:22%"></span></div><span class="find-t">Siloed</span></div></div>
-              </div>
-            </div>
-            <div class="stg" data-i="1">
-              <div class="stg-h"><span class="stg-dot"></span>System architecture</div>
-              <div class="arch">
-                <div class="tier"><span class="tier-l">Channels</span><div class="tier-c"><span>Meta Ads</span><span>Website</span><span>WhatsApp</span></div></div>
-                <div class="tierarrow"></div>
-                <div class="tier hot"><span class="tier-l">AI&nbsp;layer</span><div class="tier-c"><span>Qualify</span><span>Route</span><span>Respond</span></div></div>
-                <div class="tierarrow"></div>
-                <div class="tier"><span class="tier-l">CRM&nbsp;·&nbsp;data</span><div class="tier-c"><span>Pipeline</span><span>Records</span><span>Tags</span></div></div>
-                <div class="tierarrow"></div>
-                <div class="tier"><span class="tier-l">Outcomes</span><div class="tier-c"><span>Booked calls</span><span>Follow-ups</span></div></div>
-              </div>
-            </div>
-            <div class="stg" data-i="2">
-              <div class="stg-h"><span class="stg-dot"></span>Wiring the system</div>
-              <div class="stg-list">
-                <div class="srow"><span class="sname">Meta Ads → CRM</span><span class="schip ok">Connected</span></div>
-                <div class="srow"><span class="sname">Omnichannel AI agent<span class="ssub">WhatsApp · SMS · Email · Voice</span></span><span class="schip ok">Connected</span></div>
-                <div class="srow"><span class="sname">CRM pipelines</span><span class="schip ok">Connected</span></div>
-                <div class="srow"><span class="sname">Calendar sync</span><span class="schip ok">Connected</span></div>
-              </div>
-              <div class="stg-prog">Deploying automations<i><b></b></i></div>
-            </div>
-            <div class="stg" data-i="3">
-              <div class="stg-h"><span class="stg-dot"></span>Live &amp; optimizing</div>
-              <div class="stg-grid">
-                <div class="mtile"><span class="mt-v">99.7<i>%</i></span><span class="mt-l">Uptime</span></div>
-                <div class="mtile"><span class="mt-v">0.8<i>s</i></span><span class="mt-l">Avg response</span></div>
-                <div class="mtile"><span class="mt-v">128</span><span class="mt-l">Leads this week</span></div>
-                <div class="mtile"><span class="mt-v">24/7</span><span class="mt-l">Coverage</span></div>
-              </div>
-            </div>
-          </div>
+        <p class="autonote r">We build your system inside the tools you already use. <b>Don't see yours here? We can almost certainly connect it.</b></p>
+        <div class="intg r">
+          <span>WhatsApp</span><span>Meta Ads</span><span>Instagram</span><span>Gmail</span><span>Google Sheets</span><span>Calendly</span><span>Stripe</span><span>Slack</span><span>Airtable</span><span>Make</span><span>Zapier</span><span>OpenAI</span><span>Twilio</span><span class="more">+ hundreds more via API</span>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="sec alt" id="why">
-      <div class="wrap why-grid">
-        <div>
-          <p class="eyb r">Why ThryveX Group</p>
-          <h2 class="r">We treat your pipeline like it's our own.</h2>
-          <p class="lead2 r">Every hour spent on manual work is revenue leaking through the cracks. We close those leaks permanently.</p>
-        </div>
-        <div class="reasons">
-          <div class="reason r" data-n="01"><div class="reason-top"><span class="ri">01</span><span class="ric"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span></div><h4>Nothing you don't need</h4><p>If a workflow doesn't save time or make money, we don't build it. You will never pay us for shelf-ware.</p></div>
-          <div class="reason r" data-n="02"><div class="reason-top"><span class="ri">02</span><span class="ric"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span></div><h4>Operator mindset</h4><p>ThryveX is run by a founder who has sat where you sit: watching good leads go cold because the day ran out of hours.</p></div>
-          <div class="reason r" data-n="03"><div class="reason-top"><span class="ri">03</span><span class="ric"><svg viewBox="0 0 24 24"><path d="M9 15l6-6"/><path d="M10.5 6.5 13 4a4 4 0 0 1 6 6l-2.5 2.5"/><path d="M13.5 17.5 11 20a4 4 0 0 1-6-6l2.5-2.5"/></svg></span></div><h4>End-to-end ownership</h4><p>One person answers for the whole build, from the first audit to go-live. You always know exactly who to call.</p></div>
-          <div class="reason r" data-n="04"><div class="reason-top"><span class="ri">04</span><span class="ric"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 8h4v4"/></svg></span></div><h4>Systems that compound</h4><p>What we wire in month one keeps paying out in month twelve. Add channels, add volume; the system absorbs it.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec" id="command"><div class="wrap" style="text-align:center">
-      <p class="eyb r">Live system</p>
-      <h2 class="wavehead" style="margin:0 auto">Watch your business run itself.</h2>
-      <p class="lead2 r" style="margin:1.1rem auto 0">This is an ordinary Tuesday with AI on your front desk: leads answered, qualified and booked while you're busy doing the actual work.</p>
+    <section class="sec" id="command">
+      <div class="wrap" style="text-align:center">
+      <p class="eyb r"><span class="sysn">SYS.03</span>Live system</p>
+      <h2 class="wavehead" style="margin:0 auto">Nobody's at their desk.</h2>
+      <p class="lead2 r" style="margin:1.1rem auto 0">An ordinary Tuesday: leads answered, invoices sent, reports delivered, all while you do the actual work.</p>
       <div class="console r">
         <div class="con-top">
           <div class="con-id"><span class="con-mk">∞</span> ThryveX OS · Operations</div>
@@ -762,173 +1208,243 @@
           <div class="con-feed">
             <div class="con-h">Real-time activity</div>
             <div class="ev"><span class="ev-tm">10:16:02</span><span class="ev-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span><div class="ev-tx"><b>New lead captured</b><i>Meta Ad · Instagram</i></div><span class="ev-st ok">Done</span></div>
-            <div class="ev"><span class="ev-tm">10:16:04</span><span class="ev-ic"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/><circle cx="12" cy="12" r="3"/></svg></span><div class="ev-tx"><b>AI qualified the lead</b><i>Score 92 · high intent</i></div><span class="ev-st ok">Done</span></div>
+            <div class="ev"><span class="ev-tm">10:16:04</span><span class="ev-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div class="ev-tx"><b>Appointment rescheduled</b><i>Confirmed for Friday</i></div><span class="ev-st ok">Done</span></div>
             <div class="ev"><span class="ev-tm">10:16:09</span><span class="ev-ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></span><div class="ev-tx"><b>WhatsApp reply sent</b><i>Auto-response in 5 seconds</i></div><span class="ev-st ok">Done</span></div>
-            <div class="ev"><span class="ev-tm">10:18:22</span><span class="ev-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><div class="ev-tx"><b>Call booked</b><i>Added to your calendar</i></div><span class="ev-st ok">Done</span></div>
-            <div class="ev live"><span class="ev-tm">10:20:00</span><span class="ev-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div class="ev-tx"><b>Follow-up scheduled</b><i>Day-2 nurture sequence</i></div><span class="ev-st run">Running</span></div>
+            <div class="ev"><span class="ev-tm">10:18:22</span><span class="ev-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><div class="ev-tx"><b>Invoice sent</b><i>Payment link delivered</i></div><span class="ev-st ok">Done</span></div>
+            <div class="ev live"><span class="ev-tm">10:20:00</span><span class="ev-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div class="ev-tx"><b>Weekly report generated</b><i>Delivered to your inbox</i></div><span class="ev-st run">Running</span></div>
           </div>
           <div class="con-stats">
             <div class="con-h">Today</div>
-            <div class="cstat"><span class="cs-l">Leads handled</span><span class="cs-v" id="cs-leads">128</span><span class="cs-d">▲ 24% vs avg</span></div>
+            <div class="cstat"><span class="cs-l">Tasks completed</span><span class="cs-v" id="cs-leads">128</span><span class="cs-d">▲ 24% vs avg</span></div>
             <div class="cstat"><span class="cs-l">Avg response time</span><span class="cs-v">0.8<i>s</i></span><span class="cs-d">across all channels</span></div>
             <div class="cstat"><span class="cs-l">Calls booked</span><span class="cs-v">19</span><span class="cs-d">▲ 6 vs avg</span></div>
           </div>
         </div>
-        <div class="con-foot"><span class="con-fdot"></span>All systems operational<span class="con-fsep"></span>Meta · WhatsApp · GoHighLevel wired in<span class="con-fsep"></span>Panama City · 24/7</div>
+        <div class="con-foot"><span class="con-fdot"></span>All systems operational<span class="con-fsep"></span>Meta · WhatsApp · CRM wired in<span class="con-fsep"></span>Panama City · 24/7</div>
       </div>
       <a href="/book" class="cmdcta r mag">Build this for my business →</a>
     </div></section>
 
-    <section class="sec alt" id="pipeline"><div class="wrap">
-      <p class="eyb r">The automation pipeline</p>
-      <h2 class="r">Every lead captured. Every step automated.</h2>
-      <p class="lead2 r">From first click to booked call, the system runs the whole journey and nobody on your team has to touch a thing.</p>
-      <div class="pipe-track r">
-        <div class="pipe-step">
-          <div class="pipe-icon pi-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" fill="currentColor" opacity=".1"/><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5" fill="currentColor" opacity=".18"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><line x1="12" y1="3" x2="12" y2="7" stroke-width="1.6"/><line x1="12" y1="17" x2="12" y2="21" stroke-width="1.6"/><line x1="3" y1="12" x2="7" y2="12" stroke-width="1.6"/><line x1="17" y1="12" x2="21" y2="12" stroke-width="1.6"/></svg></div>
-          <span class="pipe-num">Step 01</span>
-          <h3 class="pipe-title">Lead Captured</h3>
-          <p class="pipe-desc">Every touchpoint (website, ads, WhatsApp, social) feeds one unified pipeline the instant a prospect engages.</p>
-          <div class="pipe-mock">
-            <div class="pm-head"><span class="pm-dot pm-dot-g"></span><span class="pm-head-lbl">New Lead</span></div>
-            <div class="pm-row"><span class="pm-k">Name</span><span class="pm-v">Daniela Herrera</span></div>
-            <div class="pm-row"><span class="pm-k">Source</span><span class="pm-tag pm-tag-blue">Website Form</span></div>
-            <div class="pm-row"><span class="pm-k">Time</span><span class="pm-v">Just now</span></div>
-          </div>
+    <section class="sec" id="changes">
+      <div class="wrap">
+        <p class="eyb r"><span class="sysn">SYS.04</span>What changes</p>
+        <h2 class="r">What changes when AI actually works.</h2>
+        <p class="lead2 r">About 40% of the work in a small business is repetitive and rule based. This is what changes when it runs on its own.</p>
+        <div class="outgrid">
+          <div class="outitem r"><b>01</b><h4>Less manual work</h4><p>Quotes, invoices and follow-ups go out from the workflow, not from someone's memory.</p></div>
+          <div class="outitem r"><b>02</b><h4>Faster responses</h4><p>Enquiries are answered in seconds, on any channel, at any hour.</p></div>
+          <div class="outitem r"><b>03</b><h4>Cleaner records</h4><p>Jobs, payments and conversations log themselves. The CRM stays current without anyone typing.</p></div>
+          <div class="outitem r"><b>04</b><h4>Clearer visibility</h4><p>Your numbers arrive on schedule. You see what is moving and what is stuck.</p></div>
+          <div class="outitem r"><b>05</b><h4>Smoother client experience</h4><p>Confirmations, reminders and updates arrive on time, on both sides of the relationship.</p></div>
+          <div class="outitem r"><b>06</b><h4>More hours back</h4><p>The hours admin used to eat go back into the actual work.</p></div>
         </div>
-        <div class="pipe-conn"><div class="pipe-conn-line"></div><div class="pipe-conn-dot"></div></div>
-        <div class="pipe-step">
-          <div class="pipe-icon pi-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" fill="currentColor" opacity=".25" stroke="none"/><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" fill="currentColor" opacity=".1" stroke="none"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg></div>
-          <span class="pipe-num">Step 02</span>
-          <h3 class="pipe-title">Stored in CRM</h3>
-          <p class="pipe-desc">Contact data is structured, tagged and stored before you have even seen the notification.</p>
-          <div class="pipe-mock">
-            <div class="pm-head"><span class="pm-dot pm-dot-p"></span><span class="pm-head-lbl">CRM</span></div>
-            <div class="pm-row"><span class="pm-k">Pipeline</span><span class="pm-tag pm-tag-blue">New Lead</span></div>
-            <div class="pm-row"><span class="pm-k">Status</span><span class="pm-v">Unqualified</span></div>
-            <div class="pm-row"><span class="pm-k">Owner</span><span class="pm-v">Automation</span></div>
-          </div>
+        <p class="probsrc r">Industry research on manual work in small businesses</p>
+      </div>
+    </section>
+
+    <section id="bothhalves" class="venn-track">
+      <div class="venn-intro">
+        <div class="venn-head">
+          <h2 class="r">Clients get answers. You get your week back.</h2>
         </div>
-        <div class="pipe-conn"><div class="pipe-conn-line"></div><div class="pipe-conn-dot"></div></div>
-        <div class="pipe-step">
-          <div class="pipe-icon pi-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" opacity=".15"/><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1" fill="currentColor" opacity=".3" stroke="none"/><line x1="9.5" y1="2" x2="9.5" y2="7"/><line x1="14.5" y1="2" x2="14.5" y2="7"/><line x1="9.5" y1="17" x2="9.5" y2="22"/><line x1="14.5" y1="17" x2="14.5" y2="22"/><line x1="2" y1="9.5" x2="7" y2="9.5"/><line x1="2" y1="14.5" x2="7" y2="14.5"/><line x1="17" y1="9.5" x2="22" y2="9.5"/><line x1="17" y1="14.5" x2="22" y2="14.5"/></svg></div>
-          <span class="pipe-num">Step 03</span>
-          <h3 class="pipe-title">AI Qualification</h3>
-          <p class="pipe-desc">AI scores each lead on budget, intent and ICP fit, then routes high-value prospects forward and filters out poor fits.</p>
-          <div class="pipe-mock">
-            <div class="pm-head"><span class="pm-dot pm-dot-b"></span><span class="pm-head-lbl">AI Score</span></div>
-            <div class="pm-score">
-              <div class="pm-score-lbl">Lead Quality</div>
-              <div class="pm-score-track"><div class="pm-score-fill"></div></div>
-              <div class="pm-score-num">87 / 100</div>
-            </div>
-            <div class="pm-checks">
-              <div class="pm-chk"><span class="pm-chk-ico">✓</span><span>Budget confirmed</span></div>
-              <div class="pm-chk"><span class="pm-chk-ico">✓</span><span>ICP match</span></div>
-              <div class="pm-chk"><span class="pm-chk-ico">✓</span><span>High intent</span></div>
-            </div>
-          </div>
+      </div>
+      <div class="venn-stick">
+        <div class="venn">
+          <svg class="vsvg" viewBox="0 0 1600 800" aria-hidden="true">
+            <defs>
+              <clipPath id="vcA"><circle class="mova" cx="585" cy="400" r="300"/></clipPath>
+              <clipPath id="vcB"><circle class="movb" cx="1015" cy="400" r="300"/></clipPath>
+            </defs>
+            <g class="vfill" clip-path="url(#vcA)"><g clip-path="url(#vcB)"><circle cx="785" cy="233" r="1.32" fill="#fff" fill-opacity="0.040"/><circle cx="799" cy="233" r="1.37" fill="#fff" fill-opacity="0.040"/><circle cx="813" cy="233" r="1.33" fill="#fff" fill-opacity="0.040"/><circle cx="771" cy="247" r="1.35" fill="#fff" fill-opacity="0.040"/><circle cx="785" cy="247" r="1.47" fill="#fff" fill-opacity="0.050"/><circle cx="799" cy="247" r="1.52" fill="#fff" fill-opacity="0.056"/><circle cx="813" cy="247" r="1.48" fill="#fff" fill-opacity="0.051"/><circle cx="827" cy="247" r="1.37" fill="#fff" fill-opacity="0.040"/><circle cx="771" cy="261" r="1.49" fill="#fff" fill-opacity="0.051"/><circle cx="785" cy="261" r="1.61" fill="#fff" fill-opacity="0.068"/><circle cx="799" cy="261" r="1.66" fill="#fff" fill-opacity="0.074"/><circle cx="813" cy="261" r="1.62" fill="#fff" fill-opacity="0.069"/><circle cx="827" cy="261" r="1.51" fill="#fff" fill-opacity="0.054"/><circle cx="757" cy="275" r="1.40" fill="#fff" fill-opacity="0.041"/><circle cx="771" cy="275" r="1.61" fill="#fff" fill-opacity="0.068"/><circle cx="785" cy="275" r="1.74" fill="#fff" fill-opacity="0.084"/><circle cx="799" cy="275" r="1.79" fill="#fff" fill-opacity="0.091"/><circle cx="813" cy="275" r="1.75" fill="#fff" fill-opacity="0.086"/><circle cx="827" cy="275" r="1.63" fill="#fff" fill-opacity="0.071"/><circle cx="841" cy="275" r="1.44" fill="#fff" fill-opacity="0.045"/><circle cx="757" cy="289" r="1.52" fill="#fff" fill-opacity="0.055"/><circle cx="771" cy="289" r="1.72" fill="#fff" fill-opacity="0.082"/><circle cx="785" cy="289" r="1.86" fill="#fff" fill-opacity="0.100"/><circle cx="799" cy="289" r="1.90" fill="#fff" fill-opacity="0.106"/><circle cx="813" cy="289" r="1.87" fill="#fff" fill-opacity="0.101"/><circle cx="827" cy="289" r="1.75" fill="#fff" fill-opacity="0.086"/><circle cx="841" cy="289" r="1.55" fill="#fff" fill-opacity="0.060"/><circle cx="743" cy="303" r="1.33" fill="#fff" fill-opacity="0.040"/><circle cx="757" cy="303" r="1.61" fill="#fff" fill-opacity="0.068"/><circle cx="771" cy="303" r="1.83" fill="#fff" fill-opacity="0.096"/><circle cx="785" cy="303" r="1.96" fill="#fff" fill-opacity="0.113"/><circle cx="799" cy="303" r="2.01" fill="#fff" fill-opacity="0.120"/><circle cx="813" cy="303" r="1.97" fill="#fff" fill-opacity="0.115"/><circle cx="827" cy="303" r="1.85" fill="#fff" fill-opacity="0.099"/><circle cx="841" cy="303" r="1.65" fill="#fff" fill-opacity="0.073"/><circle cx="855" cy="303" r="1.37" fill="#fff" fill-opacity="0.040"/><circle cx="743" cy="317" r="1.41" fill="#fff" fill-opacity="0.042"/><circle cx="757" cy="317" r="1.70" fill="#fff" fill-opacity="0.079"/><circle cx="771" cy="317" r="1.92" fill="#fff" fill-opacity="0.107"/><circle cx="785" cy="317" r="2.05" fill="#fff" fill-opacity="0.125"/><circle cx="799" cy="317" r="2.11" fill="#fff" fill-opacity="0.132"/><circle cx="813" cy="317" r="2.07" fill="#fff" fill-opacity="0.127"/><circle cx="827" cy="317" r="1.94" fill="#fff" fill-opacity="0.111"/><circle cx="841" cy="317" r="1.74" fill="#fff" fill-opacity="0.084"/><circle cx="855" cy="317" r="1.46" fill="#fff" fill-opacity="0.048"/><circle cx="743" cy="331" r="1.49" fill="#fff" fill-opacity="0.051"/><circle cx="757" cy="331" r="1.78" fill="#fff" fill-opacity="0.089"/><circle cx="771" cy="331" r="2.00" fill="#fff" fill-opacity="0.118"/><circle cx="785" cy="331" r="2.14" fill="#fff" fill-opacity="0.136"/><circle cx="799" cy="331" r="2.19" fill="#fff" fill-opacity="0.143"/><circle cx="813" cy="331" r="2.15" fill="#fff" fill-opacity="0.137"/><circle cx="827" cy="331" r="2.02" fill="#fff" fill-opacity="0.121"/><circle cx="841" cy="331" r="1.81" fill="#fff" fill-opacity="0.094"/><circle cx="855" cy="331" r="1.53" fill="#fff" fill-opacity="0.057"/><circle cx="743" cy="345" r="1.54" fill="#fff" fill-opacity="0.059"/><circle cx="757" cy="345" r="1.84" fill="#fff" fill-opacity="0.097"/><circle cx="771" cy="345" r="2.06" fill="#fff" fill-opacity="0.126"/><circle cx="785" cy="345" r="2.20" fill="#fff" fill-opacity="0.145"/><circle cx="799" cy="345" r="2.26" fill="#fff" fill-opacity="0.152"/><circle cx="813" cy="345" r="2.22" fill="#fff" fill-opacity="0.146"/><circle cx="827" cy="345" r="2.09" fill="#fff" fill-opacity="0.129"/><circle cx="841" cy="345" r="1.87" fill="#fff" fill-opacity="0.102"/><circle cx="855" cy="345" r="1.59" fill="#fff" fill-opacity="0.065"/><circle cx="743" cy="359" r="1.59" fill="#fff" fill-opacity="0.065"/><circle cx="757" cy="359" r="1.89" fill="#fff" fill-opacity="0.103"/><circle cx="771" cy="359" r="2.11" fill="#fff" fill-opacity="0.133"/><circle cx="785" cy="359" r="2.26" fill="#fff" fill-opacity="0.152"/><circle cx="799" cy="359" r="2.32" fill="#fff" fill-opacity="0.159"/><circle cx="813" cy="359" r="2.27" fill="#fff" fill-opacity="0.154"/><circle cx="827" cy="359" r="2.14" fill="#fff" fill-opacity="0.136"/><circle cx="841" cy="359" r="1.92" fill="#fff" fill-opacity="0.108"/><circle cx="855" cy="359" r="1.64" fill="#fff" fill-opacity="0.071"/><circle cx="743" cy="373" r="1.62" fill="#fff" fill-opacity="0.069"/><circle cx="757" cy="373" r="1.92" fill="#fff" fill-opacity="0.108"/><circle cx="771" cy="373" r="2.15" fill="#fff" fill-opacity="0.137"/><circle cx="785" cy="373" r="2.30" fill="#fff" fill-opacity="0.157"/><circle cx="799" cy="373" r="2.36" fill="#fff" fill-opacity="0.165"/><circle cx="813" cy="373" r="2.31" fill="#fff" fill-opacity="0.159"/><circle cx="827" cy="373" r="2.17" fill="#fff" fill-opacity="0.141"/><circle cx="841" cy="373" r="1.96" fill="#fff" fill-opacity="0.113"/><circle cx="855" cy="373" r="1.67" fill="#fff" fill-opacity="0.075"/><circle cx="743" cy="387" r="1.64" fill="#fff" fill-opacity="0.072"/><circle cx="757" cy="387" r="1.94" fill="#fff" fill-opacity="0.110"/><circle cx="771" cy="387" r="2.17" fill="#fff" fill-opacity="0.140"/><circle cx="785" cy="387" r="2.32" fill="#fff" fill-opacity="0.160"/><circle cx="799" cy="387" r="2.39" fill="#fff" fill-opacity="0.169"/><circle cx="813" cy="387" r="2.34" fill="#fff" fill-opacity="0.162"/><circle cx="827" cy="387" r="2.20" fill="#fff" fill-opacity="0.144"/><circle cx="841" cy="387" r="1.98" fill="#fff" fill-opacity="0.115"/><circle cx="855" cy="387" r="1.69" fill="#fff" fill-opacity="0.078"/><circle cx="869" cy="387" r="1.33" fill="#fff" fill-opacity="0.040"/><circle cx="743" cy="401" r="1.65" fill="#fff" fill-opacity="0.073"/><circle cx="757" cy="401" r="1.95" fill="#fff" fill-opacity="0.111"/><circle cx="771" cy="401" r="2.18" fill="#fff" fill-opacity="0.141"/><circle cx="785" cy="401" r="2.33" fill="#fff" fill-opacity="0.161"/><circle cx="799" cy="401" r="2.40" fill="#fff" fill-opacity="0.170"/><circle cx="813" cy="401" r="2.35" fill="#fff" fill-opacity="0.163"/><circle cx="827" cy="401" r="2.20" fill="#fff" fill-opacity="0.145"/><circle cx="841" cy="401" r="1.98" fill="#fff" fill-opacity="0.116"/><circle cx="855" cy="401" r="1.69" fill="#fff" fill-opacity="0.079"/><circle cx="869" cy="401" r="1.34" fill="#fff" fill-opacity="0.040"/><circle cx="743" cy="415" r="1.64" fill="#fff" fill-opacity="0.072"/><circle cx="757" cy="415" r="1.94" fill="#fff" fill-opacity="0.110"/><circle cx="771" cy="415" r="2.17" fill="#fff" fill-opacity="0.140"/><circle cx="785" cy="415" r="2.32" fill="#fff" fill-opacity="0.160"/><circle cx="799" cy="415" r="2.39" fill="#fff" fill-opacity="0.168"/><circle cx="813" cy="415" r="2.34" fill="#fff" fill-opacity="0.162"/><circle cx="827" cy="415" r="2.20" fill="#fff" fill-opacity="0.143"/><circle cx="841" cy="415" r="1.98" fill="#fff" fill-opacity="0.115"/><circle cx="855" cy="415" r="1.69" fill="#fff" fill-opacity="0.078"/><circle cx="869" cy="415" r="1.33" fill="#fff" fill-opacity="0.040"/><circle cx="743" cy="429" r="1.62" fill="#fff" fill-opacity="0.069"/><circle cx="757" cy="429" r="1.92" fill="#fff" fill-opacity="0.107"/><circle cx="771" cy="429" r="2.14" fill="#fff" fill-opacity="0.137"/><circle cx="785" cy="429" r="2.30" fill="#fff" fill-opacity="0.156"/><circle cx="799" cy="429" r="2.36" fill="#fff" fill-opacity="0.164"/><circle cx="813" cy="429" r="2.31" fill="#fff" fill-opacity="0.158"/><circle cx="827" cy="429" r="2.17" fill="#fff" fill-opacity="0.140"/><circle cx="841" cy="429" r="1.95" fill="#fff" fill-opacity="0.112"/><circle cx="855" cy="429" r="1.67" fill="#fff" fill-opacity="0.075"/><circle cx="743" cy="443" r="1.59" fill="#fff" fill-opacity="0.064"/><circle cx="757" cy="443" r="1.88" fill="#fff" fill-opacity="0.103"/><circle cx="771" cy="443" r="2.11" fill="#fff" fill-opacity="0.132"/><circle cx="785" cy="443" r="2.25" fill="#fff" fill-opacity="0.151"/><circle cx="799" cy="443" r="2.31" fill="#fff" fill-opacity="0.158"/><circle cx="813" cy="443" r="2.27" fill="#fff" fill-opacity="0.153"/><circle cx="827" cy="443" r="2.13" fill="#fff" fill-opacity="0.135"/><circle cx="841" cy="443" r="1.92" fill="#fff" fill-opacity="0.107"/><circle cx="855" cy="443" r="1.63" fill="#fff" fill-opacity="0.070"/><circle cx="743" cy="457" r="1.54" fill="#fff" fill-opacity="0.058"/><circle cx="757" cy="457" r="1.83" fill="#fff" fill-opacity="0.096"/><circle cx="771" cy="457" r="2.05" fill="#fff" fill-opacity="0.125"/><circle cx="785" cy="457" r="2.20" fill="#fff" fill-opacity="0.144"/><circle cx="799" cy="457" r="2.25" fill="#fff" fill-opacity="0.151"/><circle cx="813" cy="457" r="2.21" fill="#fff" fill-opacity="0.145"/><circle cx="827" cy="457" r="2.08" fill="#fff" fill-opacity="0.128"/><circle cx="841" cy="457" r="1.87" fill="#fff" fill-opacity="0.101"/><circle cx="855" cy="457" r="1.58" fill="#fff" fill-opacity="0.064"/><circle cx="743" cy="471" r="1.48" fill="#fff" fill-opacity="0.050"/><circle cx="757" cy="471" r="1.77" fill="#fff" fill-opacity="0.088"/><circle cx="771" cy="471" r="1.99" fill="#fff" fill-opacity="0.117"/><circle cx="785" cy="471" r="2.13" fill="#fff" fill-opacity="0.135"/><circle cx="799" cy="471" r="2.18" fill="#fff" fill-opacity="0.142"/><circle cx="813" cy="471" r="2.14" fill="#fff" fill-opacity="0.136"/><circle cx="827" cy="471" r="2.01" fill="#fff" fill-opacity="0.120"/><circle cx="841" cy="471" r="1.80" fill="#fff" fill-opacity="0.093"/><circle cx="855" cy="471" r="1.52" fill="#fff" fill-opacity="0.056"/><circle cx="743" cy="485" r="1.40" fill="#fff" fill-opacity="0.041"/><circle cx="757" cy="485" r="1.69" fill="#fff" fill-opacity="0.078"/><circle cx="771" cy="485" r="1.91" fill="#fff" fill-opacity="0.106"/><circle cx="785" cy="485" r="2.05" fill="#fff" fill-opacity="0.124"/><circle cx="799" cy="485" r="2.10" fill="#fff" fill-opacity="0.131"/><circle cx="813" cy="485" r="2.06" fill="#fff" fill-opacity="0.126"/><circle cx="827" cy="485" r="1.93" fill="#fff" fill-opacity="0.109"/><circle cx="841" cy="485" r="1.73" fill="#fff" fill-opacity="0.083"/><circle cx="855" cy="485" r="1.45" fill="#fff" fill-opacity="0.047"/><circle cx="757" cy="499" r="1.60" fill="#fff" fill-opacity="0.067"/><circle cx="771" cy="499" r="1.82" fill="#fff" fill-opacity="0.094"/><circle cx="785" cy="499" r="1.95" fill="#fff" fill-opacity="0.112"/><circle cx="799" cy="499" r="2.00" fill="#fff" fill-opacity="0.118"/><circle cx="813" cy="499" r="1.96" fill="#fff" fill-opacity="0.113"/><circle cx="827" cy="499" r="1.84" fill="#fff" fill-opacity="0.097"/><circle cx="841" cy="499" r="1.64" fill="#fff" fill-opacity="0.071"/><circle cx="855" cy="499" r="1.36" fill="#fff" fill-opacity="0.040"/><circle cx="757" cy="513" r="1.50" fill="#fff" fill-opacity="0.054"/><circle cx="771" cy="513" r="1.71" fill="#fff" fill-opacity="0.081"/><circle cx="785" cy="513" r="1.84" fill="#fff" fill-opacity="0.098"/><circle cx="799" cy="513" r="1.89" fill="#fff" fill-opacity="0.104"/><circle cx="813" cy="513" r="1.86" fill="#fff" fill-opacity="0.099"/><circle cx="827" cy="513" r="1.74" fill="#fff" fill-opacity="0.084"/><circle cx="841" cy="513" r="1.54" fill="#fff" fill-opacity="0.058"/><circle cx="757" cy="527" r="1.39" fill="#fff" fill-opacity="0.040"/><circle cx="771" cy="527" r="1.60" fill="#fff" fill-opacity="0.066"/><circle cx="785" cy="527" r="1.73" fill="#fff" fill-opacity="0.083"/><circle cx="799" cy="527" r="1.77" fill="#fff" fill-opacity="0.089"/><circle cx="813" cy="527" r="1.74" fill="#fff" fill-opacity="0.084"/><circle cx="827" cy="527" r="1.62" fill="#fff" fill-opacity="0.069"/><circle cx="841" cy="527" r="1.43" fill="#fff" fill-opacity="0.044"/><circle cx="771" cy="541" r="1.47" fill="#fff" fill-opacity="0.050"/><circle cx="785" cy="541" r="1.60" fill="#fff" fill-opacity="0.066"/><circle cx="799" cy="541" r="1.64" fill="#fff" fill-opacity="0.072"/><circle cx="813" cy="541" r="1.61" fill="#fff" fill-opacity="0.067"/><circle cx="827" cy="541" r="1.49" fill="#fff" fill-opacity="0.052"/><circle cx="771" cy="555" r="1.33" fill="#fff" fill-opacity="0.040"/><circle cx="785" cy="555" r="1.46" fill="#fff" fill-opacity="0.048"/><circle cx="799" cy="555" r="1.50" fill="#fff" fill-opacity="0.054"/><circle cx="813" cy="555" r="1.47" fill="#fff" fill-opacity="0.049"/><circle cx="827" cy="555" r="1.36" fill="#fff" fill-opacity="0.040"/><circle cx="799" cy="569" r="1.35" fill="#fff" fill-opacity="0.040"/></g></g>
+            <circle class="vfill mova" cx="585" cy="400" r="300" fill="rgba(95,177,230,.05)"/>
+            <circle class="vfill movb" cx="1015" cy="400" r="300" fill="rgba(244,201,161,.04)"/>
+            <circle class="vc a mova" cx="585" cy="400" r="300"/>
+            <circle class="vc b movb" cx="1015" cy="400" r="300"/>
+            <path class="vl" style="--len:520" d="M339,229 L281,184 L8,184"/>
+            <path class="vl d2" style="--len:430" d="M285,400 L8,400"/>
+            <path class="vl d3" style="--len:520" d="M339,571 L281,616 L8,616"/>
+            <path class="vl" style="--len:520" d="M1261,229 L1319,184 L1592,184"/>
+            <path class="vl d2" style="--len:430" d="M1315,400 L1592,400"/>
+            <path class="vl d3" style="--len:520" d="M1261,571 L1319,616 L1592,616"/>
+            <circle class="vd" cx="339" cy="229" r="4.5" fill="#7DC0EF"/><circle class="vd" cx="285" cy="400" r="4.5" fill="#7DC0EF"/><circle class="vd" cx="339" cy="571" r="4.5" fill="#7DC0EF"/>
+            <circle class="vd" cx="1261" cy="229" r="4.5" fill="#F4C9A1"/><circle class="vd" cx="1315" cy="400" r="4.5" fill="#F4C9A1"/><circle class="vd" cx="1261" cy="571" r="4.5" fill="#F4C9A1"/>
+          </svg>
+          <p class="vmid a"><em>The half your clients feel</em></p>
+          <p class="vmid b"><em>The half that eats your week</em></p>
+          <p class="vlab l t"><span>Replies in seconds, not Monday morning.</span></p>
+          <p class="vlab l m"><span>Books them while they are still interested.</span></p>
+          <p class="vlab l b"><span>Answers at 2am without waking anyone.</span></p>
+          <p class="vlab r t"><span>Invoices out the day the job finishes.</span></p>
+          <p class="vlab r m"><span>Monday&rsquo;s report, ready Sunday night.</span></p>
+          <p class="vlab r b"><span>A CRM that is still clean in six months.</span></p>
+          <span class="vlogo" aria-hidden="true"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt=""></span>
         </div>
-        <div class="pipe-conn"><div class="pipe-conn-line"></div><div class="pipe-conn-dot"></div></div>
-        <div class="pipe-step">
-          <div class="pipe-icon pi-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="currentColor" opacity=".15" stroke="none"/><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M13 5l-3.5 6.5h3l-2.5 5 4.5-6h-3.5z" fill="currentColor" stroke="none"/></svg></div>
-          <span class="pipe-num">Step 04</span>
-          <h3 class="pipe-title">Automated Follow-up</h3>
-          <p class="pipe-desc">Personalized messages go out automatically, at the right moment, on the right channel, every time.</p>
-          <div class="pipe-mock">
-            <div class="pm-head"><span class="pm-dot pm-dot-g"></span><span class="pm-head-lbl">Messages Sent</span></div>
-            <div class="pm-msgs">
-              <div class="pm-msg pm-msg-out">Hi Daniela! Thanks for reaching out…</div>
-              <div class="pm-msg pm-msg-in">Sounds great, when can we…</div>
-              <div class="pm-msg pm-msg-out">Let's lock in a time →</div>
-            </div>
-            <div class="pm-via"><span>Email</span><span>·</span><span>WhatsApp</span><span>·</span><span>SMS</span></div>
-          </div>
+        <p class="vpunch r">Same system. <em>Both halves.</em></p>
+      </div>
+    </section>
+
+    <section class="sec alt" id="ads">
+      <div class="wrap ads-grid">
+        <div class="ads-copy">
+          <p class="eyb r"><span class="sysn">SYS.05</span>Meta Ads</p>
+          <h2 class="r">Ads that bring you clients, not just clicks.</h2>
+          <p class="lead2 r">Your next clients are scrolling right now. We get you in front of them, then turn the click into a real inquiry.</p>
+          <ul class="ads-points">
+            <li class="r"><span class="ap-ic">&#10003;</span>Creative &amp; copy that stops the scroll</li>
+            <li class="r"><span class="ap-ic">&#10003;</span>Audience &amp; retargeting that finds real intent</li>
+            <li class="r"><span class="ap-ic">&#10003;</span>Every lead wired straight into your CRM</li>
+          </ul>
+          <p class="ads-note r">The best business in town still loses to the one people can actually find.</p>
+          <a href="/book" class="btn mag r">Book a Call</a>
         </div>
-        <div class="pipe-conn"><div class="pipe-conn-line"></div><div class="pipe-conn-dot"></div></div>
-        <div class="pipe-step">
-          <div class="pipe-icon pi-5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" fill="currentColor" opacity=".12"/><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><rect x="9" y="13" width="6" height="5.5" rx="1" fill="currentColor" opacity=".3"/><path d="m10.2 15.7 1.3 1.3 2.8-2.8" stroke-width="1.6"/></svg></div>
-          <span class="pipe-num">Step 05</span>
-          <h3 class="pipe-title">Appointment Booked</h3>
-          <p class="pipe-desc">Qualified leads pick a slot straight from your live calendar, and the confirmation goes out on its own.</p>
-          <div class="pipe-mock">
-            <div class="pm-head"><span class="pm-dot pm-dot-g"></span><span class="pm-head-lbl">Confirmed</span></div>
-            <div class="pm-cal">
-              <div class="pm-cal-mo">This week</div>
-              <div class="pm-slots">
-                <div class="pm-slot pm-slot-dis">10:00</div>
-                <div class="pm-slot pm-slot-dis">11:00</div>
-                <div class="pm-slot pm-slot-act">2:00 PM</div>
-                <div class="pm-slot pm-slot-dis">3:00 PM</div>
+        <div class="ads-stack">
+          <div class="ad-dash">
+            <div class="adh"><span class="adh-mk"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt="ThryveX Group"></span><b>Ads Manager</b><span class="adh-date">Last 7 days</span></div>
+            <div class="adtabs"><span class="on">Campaigns <em>3</em></span><span>Ad sets</span><span>Ads</span></div>
+            <div class="adbar"><span class="adcreate">Create</span><span class="adbtn">Duplicate</span><span class="adbtn">Edit</span><span class="adbar-r">Columns: Performance</span></div>
+            <div class="adhead"><span></span><span>Campaign</span><span>Delivery</span><span>Results</span><span>Cost per result</span><span>Amount spent</span></div>
+            <div class="adrow"><span class="tgl"><i></i></span><span class="adc-name">Lead Gen · New inquiries</span><span class="adc-del"><span class="mdot"></span>Active</span><span class="num">128<i>Leads</i></span><span class="num">$9.20</span><span class="num">$1,178</span></div>
+            <div class="adrow"><span class="tgl"><i></i></span><span class="adc-name">Retargeting · Warm audience</span><span class="adc-del"><span class="mdot"></span>Active</span><span class="num">61<i>Leads</i></span><span class="num">$12.80</span><span class="num">$781</span></div>
+            <div class="adrow"><span class="tgl"><i></i></span><span class="adc-name">Awareness · Local reach</span><span class="adc-del"><span class="mdot"></span>Active</span><span class="num">44<i>Leads</i></span><span class="num">$7.10</span><span class="num">$312</span></div>
+            <div class="adrow tot"><span></span><span>Results from 3 campaigns</span><span></span><span class="num">233</span><span class="num">$9.18</span><span class="num">$2,140</span></div>
+            <div class="ad-cap">Representative dashboard</div>
+          </div>
+          <div class="ad-phone">
+            <div class="ap-top"><span class="ap-av"></span><div><b>yourbrand</b><i>Sponsored</i></div></div>
+            <div class="ap-media"><span class="ap-hl">Get started this week</span></div>
+            <div class="ap-cta">Book Now</div>
+            <div class="ap-actions"><span>&#9825;</span><span>&#9711;</span><span>&#10148;</span></div>
+          </div>
+          <div class="ad-chip"><span class="ac-v">&#8595; 41%</span><span class="ac-l">cost per lead</span><span class="ac-s">vs. manual follow-up</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="work">
+      <div class="cs-tape" aria-hidden="false" role="note"><div class="cs-in">
+        <div class="cs-g"><span>Coming soon</span><span class="cs-lg"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt=""></span><span>Coming soon</span><span class="cs-lg"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt=""></span><span>Coming soon</span><span class="cs-lg"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt=""></span><span>Coming soon</span><span class="cs-lg"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt=""></span></div>
+        <div class="cs-g" aria-hidden="true"><span>Coming soon</span><span class="cs-lg"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt=""></span><span>Coming soon</span><span class="cs-lg"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt=""></span><span>Coming soon</span><span class="cs-lg"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt=""></span><span>Coming soon</span><span class="cs-lg"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt=""></span></div>
+      </div></div>
+      <div class="wrap work-grid">
+        <div class="work-copy">
+          <p class="eyb r"><span class="sysn">SYS.06</span>Selected work</p>
+          <h2 class="r">Sites we've shipped.</h2>
+          <p class="lead2 r">Hand-built sites, coded from scratch, tuned for speed and wired to convert.</p>
+          <ul class="work-list r">
+            <li class="work-item on" data-i="0"><span class="wi-n">01</span><span class="wi-t">Project One</span><span class="wi-ty">Aesthetic clinic</span></li>
+            <li class="work-item" data-i="1"><span class="wi-n">02</span><span class="wi-t">Project Two</span><span class="wi-ty">Dental practice</span></li>
+            <li class="work-item" data-i="2"><span class="wi-n">03</span><span class="wi-t">Project Three</span><span class="wi-ty">Local business</span></li>
+          </ul>
+          <a href="/book" class="btn mag r work-cta">Start your site</a>
+        </div>
+        <div class="work-stage r">
+          <div class="laptop">
+            <div class="lap-lid">
+              <div class="lap-screen">
+                <div class="lap-chrome"><i></i><i></i><i></i><span class="url"></span></div>
+                <div class="lap-view">
+                  <div class="wsite on" data-i="0"><div class="wsite-inner ms" style="--acc:#3F9FE6"><div class="ms-nav"><span class="ms-logo"></span><span class="lk"><i></i><i></i><i></i></span></div><div class="ms-hero"><div class="t a"></div><div class="t b"></div><div class="p a"></div><div class="p b"></div><div class="cta"></div></div><div class="ms-cards"><span></span><span></span><span></span></div><div class="ms-strip"></div><div class="ms-rows"><span></span><span></span><span></span><span></span></div><div class="ms-cards"><span></span><span></span><span></span></div><div class="ms-rows"><span></span><span></span><span></span></div><div class="ms-foot"></div></div></div>
+                  <div class="wsite" data-i="1"><div class="wsite-inner ms" style="--acc:#E39A63"><div class="ms-nav"><span class="ms-logo"></span><span class="lk"><i></i><i></i><i></i></span></div><div class="ms-hero"><div class="t a"></div><div class="t b"></div><div class="p a"></div><div class="p b"></div><div class="cta"></div></div><div class="ms-strip"></div><div class="ms-cards"><span></span><span></span><span></span></div><div class="ms-rows"><span></span><span></span><span></span><span></span></div><div class="ms-rows"><span></span><span></span><span></span></div><div class="ms-cards"><span></span><span></span><span></span></div><div class="ms-foot"></div></div></div>
+                  <div class="wsite" data-i="2"><div class="wsite-inner ms" style="--acc:#3FB389"><div class="ms-nav"><span class="ms-logo"></span><span class="lk"><i></i><i></i><i></i></span></div><div class="ms-hero"><div class="t a"></div><div class="t b"></div><div class="p a"></div><div class="p b"></div><div class="cta"></div></div><div class="ms-cards"><span></span><span></span><span></span></div><div class="ms-rows"><span></span><span></span><span></span><span></span></div><div class="ms-strip"></div><div class="ms-cards"><span></span><span></span><span></span></div><div class="ms-rows"><span></span><span></span><span></span></div><div class="ms-foot"></div></div></div>
+                </div>
               </div>
             </div>
-            <div class="pm-cal-conf"><span class="pm-cal-conf-dot"></span><span>Appointment confirmed</span></div>
+            <div class="lap-base"></div>
           </div>
+          <p class="work-cap">Placeholder previews · real client sites go here</p>
         </div>
       </div>
-      <div class="pipe-note r">
-        <div class="pipe-note-inner"><span>You do nothing.</span><span class="pipe-note-sep"></span><strong>It runs itself.</strong><span class="pipe-note-sep"></span><span>Day and night, on every channel.</span></div>
-      </div>
-    </div></section>
+    </section>
 
-    <section class="sec" id="results"><div class="wrap">
-      <p class="eyb r">Before &amp; after</p>
-      <h2 class="r">What changes when automation runs the operation.</h2>
-      <div class="rgrid">
-        <div class="rcard r"><div class="v"><span class="ct" data-to="0.8" data-dec="1">0</span><span class="u">s</span></div><div class="h">First reply, any channel</div><div class="s">In audits we usually find 4+ hour waits</div></div>
-        <div class="rcard r"><div class="v"><span class="ct" data-to="100">0</span><span class="u">%</span></div><div class="h">Leads followed up</div><div class="s">Every single enquiry gets an answer</div></div>
-        <div class="rcard r"><div class="v">24<span class="u">/7</span></div><div class="h">The system never clocks out</div><div class="s">Weekends, holidays and 3am included</div></div>
-        <div class="rcard r"><div class="v"><span class="ct" data-to="20">0</span><span class="u">h+</span></div><div class="h">Of weekly admin, automated</div><div class="s">Based on what our audits keep finding</div></div>
-      </div>
-    </div></section>
+    
 
-    <section class="sec" id="contact"><div class="wrap"><div class="cta">
-      <h2 class="r">Ready to scale without limits?</h2>
-      <p class="r">Book a free 60-minute strategy call. We'll map your biggest automation opportunities and show you exactly where to start. You'll leave with a plan, whether or not we work together.</p>
+    <section id="process" class="steps-track">
+      <div class="steps-stick">
+        <div class="steps-head">
+          <p class="eyb r"><span class="sysn">SYS.07</span>How it works</p>
+          <h2 class="r">Three steps.</h2>
+          <p class="lead2 r">No big project. We start with one workflow and grow from there.</p>
+        </div>
+        <div class="steps-railwrap">
+          <span class="steps-line" aria-hidden="true"></span>
+          <div class="steps-rail" id="steprail">
+            <div class="spanel"><span class="snode"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt=""></span><b>STEP 01</b><h4>Map the real work</h4><p>A free audit. We find where the hours actually go.</p></div>
+            <div class="spanel"><span class="snode"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt=""></span><b>STEP 02</b><h4>Build the first system</h4><p>One workflow first, built into the tools that fit your business.</p></div>
+            <div class="spanel"><span class="snode"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt=""></span><b>STEP 03</b><h4>Run it and improve</h4><p>You approve it, it runs, and we improve it after real use.</p></div>
+          </div>
+        </div>
+        <div class="steps-prog" aria-hidden="true"><i id="stepbar"></i></div>
+      </div>
+    </section>
+
+    <div class="rwrap">
+    <section class="sec alt" id="why">
+      <div class="wrap">
+        <p class="eyb r"><span class="sysn">SYS.08</span>Why us</p>
+        <h2 class="r">We treat your business like it's our own.</h2>
+        <div class="why3">
+          <div class="r"><h4>One person owns your build</h4><p>From the first audit to go-live. You always know exactly who to call.</p></div>
+          <div class="r"><h4>We only build what pays for itself</h4><p>If a workflow doesn't save time or make money, we don't build it.</p></div>
+          <div class="r"><h4>Run by an operator</h4><p>Not a sales team. Someone who has sat where you sit.</p></div>
+        </div>
+      </div>
+    </section>
+    <div class="rpad" aria-hidden="true"></div>
+    </div>
+
+  </main>
+
+  <div class="endblock">
+    <svg class="endlines" viewBox="0 0 1600 1500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M-120,1240 C 480,1120 900,520 1720,260" stroke="rgba(63,159,230,0.3)" stroke-width="1.4"/>
+      <path d="M-80,430 C 280,370 500,170 700,-100" stroke="rgba(244,201,161,0.3)" stroke-width="1"/>
+      <path d="M1260,-120 C 1030,420 1520,780 1290,1600" stroke="rgba(159,180,232,0.3)" stroke-width="1"/>
+      <path d="M-120,1560 C 620,1430 1180,1260 1720,960" stroke="rgba(233,182,198,0.3)" stroke-width="1.2"/>
+      <path d="M170,860 C 400,650 580,950 830,760 C 1080,570 1220,860 1470,700" stroke="rgba(63,159,230,0.3)" stroke-width="1"/>
+      <path d="M-100,90 C 500,160 1000,40 1720,140" stroke="rgba(159,180,232,0.3)" stroke-width="1"/>
+    </svg>
+    <section class="sec" id="contact">
+      <div class="wrap"><div class="cta">
+      <h2 class="r">Start with one workflow.</h2>
+      <p class="r">Every week without a system is a day of work you're not getting back.</p>
       <div class="row2 r"><a href="/book" class="btn mag">Book a Call</a><a href="#services" class="btn ghost mag">See all services</a></div>
       <p class="micro r">Free · 60 minutes · Remote, worldwide</p>
     </div></div></section>
-  </main>
 
   <footer>
     <div class="fwrap">
       <div class="ftop">
       <div class="fbrand">
-        <div class="fb"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=2" alt="ThryveX Group" /> ThryveX Group</div>
-        <p class="ft">AI automation, web development &amp; Meta Ads for businesses that refuse to stay still.</p>
+        <div class="fb"><img src="/ThryveX%20Group%20Logo%20No%20BG.png?v=3" alt="ThryveX Group" /> ThryveX Group</div>
         <div class="floc">
-          <div id="globe3d" class="globe3d"><svg class="globe" viewBox="0 0 120 120" role="img" aria-label="Based in Panama City, working with clients worldwide">
-            <defs>
-              <radialGradient id="gsph" cx="38%" cy="30%" r="78%"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d7e4f5"/></radialGradient>
-              <clipPath id="gcl"><circle cx="60" cy="60" r="50"/></clipPath>
-            </defs>
-            <circle cx="60" cy="60" r="50" fill="url(#gsph)" stroke="rgba(63,159,230,.35)"/>
-            <g clip-path="url(#gcl)" fill="none" stroke="rgba(63,159,230,.42)" stroke-width="1">
-              <line x1="10" y1="60" x2="110" y2="60"/>
-              <ellipse cx="60" cy="60" rx="50" ry="24"/>
-              <ellipse cx="60" cy="60" rx="50" ry="42"/>
-              <ellipse cx="60" cy="60" ry="50" rx="46"><animate attributeName="rx" values="46;4;46" dur="7s" repeatCount="indefinite"/></ellipse>
-              <ellipse cx="60" cy="60" ry="50" rx="46"><animate attributeName="rx" values="46;4;46" dur="7s" begin="-2.33s" repeatCount="indefinite"/></ellipse>
-              <ellipse cx="60" cy="60" ry="50" rx="46"><animate attributeName="rx" values="46;4;46" dur="7s" begin="-4.66s" repeatCount="indefinite"/></ellipse>
-            </g>
-            <circle cx="47" cy="50" r="3.2" fill="#0ea5e9"/>
-            <circle cx="47" cy="50" r="3.2" fill="none" stroke="#0ea5e9" stroke-width="1.4"><animate attributeName="r" values="3.2;11" dur="2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;0" dur="2.4s" repeatCount="indefinite"/></circle>
-          </svg></div>
           <div class="floc-tx">
-            <div class="floc-line"><span class="floc-from">Panama City</span><span class="floc-arr">→</span><span class="floc-to">Worldwide</span></div>
+            <div class="floc-line"><span class="floc-from">Panama City</span><span class="floc-arr">&rarr;</span><span class="floc-to">Worldwide</span></div>
             <small>Working remotely, across every timezone</small>
           </div>
         </div>
       </div>
       <div class="fcols">
-        <div><h5>Services</h5><a class="fl" href="#services">AI Automation</a><a class="fl" href="#services">CRM Implementation</a><a class="fl" href="#services">Website Development</a><a class="fl" href="#services">AI Chatbots</a><a class="fl" href="#services">Meta Ads</a></div>
-        <div><h5>Company</h5><a class="fl" href="#process">Process</a><a class="fl" href="#pipeline">Pipeline</a><a class="fl" href="#why">Why ThryveX</a><a class="fl" href="#contact">Contact</a></div>
-        <div><h5>Get in touch</h5><a class="fl" href="mailto:services@thryvexgroup.com">services@thryvexgroup.com</a><a class="fl" href="https://instagram.com/thryvexgroup">@thryvexgroup</a><a class="fl" href="/book">Book a Call</a></div>
+        <div>
+          <a class="fl" href="#automate">AI Automation</a>
+          <a class="fl" href="#work">Web Development</a>
+          <a class="fl" href="#ads">Meta Ads</a>
+        </div>
+        <div>
+          <a class="fl" href="#process">Process</a>
+          <a class="fl" href="#why">Why ThryveX</a>
+          <a class="fl" href="#contact">Contact</a>
+        </div>
+        <div>
+          <a class="fl" href="mailto:services@thryvexgroup.com">services@thryvexgroup.com</a>
+          <a class="fl" href="https://www.instagram.com/thryvexgroup" target="_blank" rel="noopener">@thryvexgroup</a>
+          <a class="fl" href="/book">Book a Call</a>
+        </div>
       </div>
       </div>
       <div class="fbottom"><span>© 2026 ThryveX Group. All rights reserved.</span><span>Designed &amp; built in-house, line by line.</span></div>
     </div>
   </footer>
+  </div>
 
   <script type="importmap">{ "imports": { "three":"/assets/vendor/three/three.module.min.js", "three/addons/":"/assets/vendor/three/addons/" } }</script>
   <script type="module">
@@ -1045,15 +1561,33 @@
       b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.3}px,${(e.clientY-r.top-r.height/2)*.4}px)`;});
     });
   </script>
+  <script src="/assets/vendor/lenis/lenis.min.js"></script>
   <script>
     (function(){
       const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('in',e.isIntersecting)),{threshold:.16});
       document.querySelectorAll('.r').forEach((el,i)=>{el.style.transitionDelay=Math.min((i%4)*0.08,.32)+'s';io.observe(el);});
+      // Meta Ads panels assemble when the stack scrolls into view
+      const _adstack=document.querySelector('.ads-stack');if(_adstack)io.observe(_adstack);
+      document.querySelectorAll('.venn,.rail').forEach(el=>io.observe(el));
+      // calm motion: looping accents only run while they're actually on screen
+      const mio=new IntersectionObserver(es=>es.forEach(e=>{
+        const t=e.target;
+        if(t.classList.contains('wavehead')){
+          if(e.isIntersecting){t.classList.remove('play');void t.offsetWidth;t.classList.add('play');}
+        } else t.classList.toggle('on',e.isIntersecting);
+      }),{threshold:.25});
+      document.querySelectorAll('.eyb,.wavehead').forEach(el=>mio.observe(el));
       const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
       // buttery smooth (inertia) scrolling — premium scroll feel
       let lenis;
-      const USE_LENIS=false; // native scroll — JS scroll-hijacking (Lenis) was causing the lag; flip to true to re-enable
-      if(USE_LENIS && !reduce && window.Lenis){lenis=new Lenis({duration:1.15,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});(function raf(t){lenis.raf(t);requestAnimationFrame(raf);})();window.__lenis=lenis;}
+      // Lenis inertia scroll (self-hosted). Scrolls the real page, so sticky/scrollY logic stays exact.
+      // Touch is left native; disabled entirely under reduced-motion.
+      const USE_LENIS=true;
+      if(USE_LENIS && !reduce && window.Lenis && matchMedia('(pointer:fine)').matches){
+        lenis=new Lenis({lerp:0.075,smoothWheel:true,wheelMultiplier:0.9,syncTouch:false});
+        (function raf(t){lenis.raf(t);requestAnimationFrame(raf);})();
+        window.__lenis=lenis;
+      }
       // premium one-shot eased scroll — recomputes target each frame so it stays accurate
       // even with content-visibility sections rendering in; cancels if the user scrolls.
       let animScroll=false;
@@ -1062,6 +1596,8 @@
       function glideTo(getY){
         const startY=window.scrollY, endY=getY();
         if(reduce){scrollTo(0,endY);return;}
+        // let Lenis own the tween when it's driving, so the two never fight
+        if(lenis){lenis.scrollTo(endY,{duration:1.1,easing:p=>p<0.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2});return;}
         // deliberate ease-in-out tween (slow→fast→slow) for a smooth "swipe" feel;
         // recomputes target each frame so lazy-rendered sections can't throw it off
         const dur=Math.min(1400,Math.max(750,Math.abs(endY-startY)*0.55));
@@ -1092,22 +1628,22 @@
       // word-by-word reveal for section headings
       function splitWords(el){const t=el.textContent.trim();el.textContent='';el.classList.add('wordsplit');const parts=t.split(/\s+/);
         parts.forEach((tok,i)=>{const w=document.createElement('span');w.className='word';const s=document.createElement('span');s.textContent=tok;if(i===parts.length-1)s.classList.add('gw');w.appendChild(s);el.appendChild(w);if(i<parts.length-1)el.appendChild(document.createTextNode(' '));});}
-      const heads=[...document.querySelectorAll('.content h2:not(.wavehead)')];
+      const heads=[...document.querySelectorAll('.content h2:not(.wavehead), .endblock h2:not(.wavehead)')];
       heads.forEach(h=>{h.classList.remove('r');h.setAttribute('data-en',h.textContent.trim());splitWords(h);});
       const hio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.word>span').forEach((s,i)=>s.style.transitionDelay=Math.min(i*0.05,.6)+'s');e.target.classList.add('win');}else e.target.classList.remove('win');}),{threshold:.25});
       heads.forEach(h=>hio.observe(h));
       // ── bilingual EN / ES ──────────────────────────────────────
       const ES={
         "Services":"Servicios","Why ThryveX":"Por qué ThryveX","Process":"Proceso","Contact":"Contacto","Book a Call":"Agenda una llamada","See What We Build":"Mira lo que construimos","See all services":"Ver todos los servicios","Build this for my business →":"Quiero esto para mi negocio →",
-        "Built to run without":"Tu negocio en","you.":"piloto automático.","AI automation, web development & Meta Ads. One system that answers every lead in seconds, even the ones that arrive at 2am.":"Automatización con IA, desarrollo web y Meta Ads. Un sistema que responde a cada lead en segundos, incluso a los que llegan a las 2 de la mañana.",
-        "What we build":"Lo que construimos","Everything your business needs to operate without limits.":"Todo lo que tu negocio necesita para operar sin límites.","Five systems that click together into one machine, built around the tools you already use.":"Cinco sistemas que encajan en una sola máquina, construida alrededor de las herramientas que ya usas.",
+        "Built to run without":"Hecho para funcionar sin","you.":"ti.",
+        "What we build":"Lo que construimos","Three services. One system.":"Cinco sistemas. Una máquina.","Three services that click together into one system, built around the tools you already use.":"Tres servicios que encajan en un solo sistema, construido alrededor de las herramientas que ya usas.",
         "Active":"Activo","Live":"En vivo","Running":"En marcha","Synced":"Sincronizado",
-        "AI Automation":"Automatización con IA","The engine that works your leads around the clock.":"El motor que atiende tus leads las 24 horas.","WhatsApp auto-replies":"Respuestas automáticas en WhatsApp","AI front desk & chatbots":"Recepción con IA y chatbots","Instant lead follow-up":"Seguimiento instantáneo de leads",
-        "Web Development":"Desarrollo Web","Hand-coded sites built to convert. You're on one right now.":"Programados a mano para convertir. Estás en uno ahora.","Designed & coded from scratch":"Diseñado y programado desde cero","Built for speed & SEO":"Optimizado para velocidad y SEO","You own everything":"Todo es tuyo",
+        "AI Automation":"Automatización con IA","WhatsApp auto-replies":"Respuestas automáticas en WhatsApp","AI front desk & chatbots":"Recepción con IA y chatbots","Instant lead follow-up":"Seguimiento instantáneo de leads",
+        "Web Development":"Desarrollo Web","Designed & coded from scratch":"Diseñado y programado desde cero","Built for speed & SEO":"Optimizado para velocidad y SEO","You own everything":"Todo es tuyo",
         "Campaigns that fill the pipeline your system answers.":"Campañas que llenan el pipeline que tu sistema atiende.","Creative & copy":"Creativos y textos","Audience & targeting":"Audiencia y segmentación","Lead-gen funnels":"Embudos de captación",
-        "One organized pipeline, zero manual data entry.":"Un pipeline organizado, cero entrada manual de datos.","Pipeline & stages":"Pipeline y etapas","Automatic data capture":"Captura automática de datos","Tool integrations":"Integraciones de herramientas",
+        "One organized pipeline, zero manual data entry.":"Un pipeline organizado, sin carga manual de datos.","Pipeline & stages":"Pipeline y etapas","Automatic data capture":"Captura automática de datos","Tool integrations":"Integraciones de herramientas",
         "AI Chatbots":"Chatbots con IA","Always-on agents that answer, qualify, and book.":"Agentes siempre activos que responden, califican y agendan.","24/7 instant replies":"Respuestas instantáneas 24/7","Lead qualification":"Calificación de leads","Calendar booking":"Agendamiento en calendario",
-        "A clear path from chaos to full automation.":"Un camino claro del caos a la automatización total.","A structured, hands-on process that turns your existing tools and workflows into a connected, intelligent system.":"Un proceso estructurado y práctico que convierte tus herramientas y flujos actuales en un sistema conectado e inteligente.",
+        "From audit to live in weeks.":"De la auditoría a producción en semanas.","A structured, hands-on process that turns your existing tools and workflows into a connected, intelligent system.":"Un proceso estructurado y práctico que convierte tus herramientas y flujos actuales en un sistema conectado e inteligente.",
         "Discovery & Audit":"Descubrimiento y auditoría","We map your workflows, tools and pain points to find where manual work leaks time.":"Mapeamos tus flujos, herramientas y puntos de dolor para encontrar dónde el trabajo manual desperdicia tiempo.",
         "Strategy & Blueprint":"Estrategia y plano","A custom automation architecture. Every system, data flow and AI layer mapped first.":"Una arquitectura de automatización a medida. Cada sistema, flujo de datos y capa de IA, mapeados primero.",
         "Build & Integrate":"Construcción e integración","We wire the full stack: tools, CRM pipelines and AI agents, all connected.":"Conectamos todo el stack: herramientas, pipelines de CRM y agentes de IA, todo integrado.",
@@ -1115,42 +1651,75 @@
         "Audit findings · current state":"Hallazgos de auditoría · estado actual","Avg lead response":"Respuesta promedio a leads","Too slow":"Muy lento","Leads followed up":"Leads con seguimiento","Leaking":"Se escapan","Manual admin":"Trabajo manual","Costly":"Costoso","Tools connected":"Herramientas conectadas","Siloed":"Aisladas",
         "System architecture":"Arquitectura del sistema","Channels":"Canales","AI layer":"Capa de IA","Qualify":"Califica","Route":"Enruta","Respond":"Responde","CRM · data":"CRM · datos","Records":"Registros","Tags":"Etiquetas","Outcomes":"Resultados","Booked calls":"Llamadas agendadas","Follow-ups":"Seguimientos",
         "Wiring the system":"Conectando el sistema","Omnichannel AI agent":"Agente de IA omnicanal","WhatsApp · SMS · Email · Voice":"WhatsApp · SMS · Email · Voz","Connected":"Conectado","CRM pipelines":"Pipelines de CRM","Calendar sync":"Sincronización de calendario",
-        "Live & optimizing":"En vivo y optimizando","Leads handled":"Leads gestionados","Avg response time":"Tiempo de respuesta promedio","across all channels":"en todos los canales","Calls booked":"Llamadas agendadas",
-        "Why ThryveX Group":"Por qué ThryveX Group","We treat your pipeline like it's our own.":"Cuidamos tu pipeline como si fuera nuestro.","Every hour spent on manual work is revenue leaking through the cracks. We close those leaks permanently.":"Cada hora en trabajo manual es dinero que se escapa. Cerramos esas fugas para siempre.",
+        "Live & optimizing":"En vivo y optimizando","Avg response time":"Tiempo de respuesta promedio","across all channels":"en todos los canales","Calls booked":"Llamadas agendadas",
+        "Why ThryveX Group":"Por qué ThryveX Group","We treat your business like it's our own.":"Cuidamos tu negocio como si fuera nuestro.","Every hour spent on manual work is revenue leaking through the cracks. We close those leaks permanently.":"Cada hora en trabajo manual es dinero que se escapa. Cerramos esas fugas para siempre.",
         "Nothing you don't need":"Nada que no necesites","If a workflow doesn't save time or make money, we don't build it. You will never pay us for shelf-ware.":"Si un flujo no ahorra tiempo o genera dinero, no lo construimos. Nunca nos pagarás por software que no se usa.",
         "Operator mindset":"Mentalidad de operador","ThryveX is run by a founder who has sat where you sit: watching good leads go cold because the day ran out of hours.":"ThryveX lo dirige un fundador que ha estado en tu lugar: viendo buenos leads enfriarse porque al día se le acabaron las horas.",
         "End-to-end ownership":"Responsabilidad total","One person answers for the whole build, from the first audit to go-live. You always know exactly who to call.":"Una sola persona responde por todo el proyecto, desde la primera auditoría hasta el lanzamiento. Siempre sabes exactamente a quién llamar.",
         "Systems that compound":"Sistemas que se multiplican","What we wire in month one keeps paying out in month twelve. Add channels, add volume; the system absorbs it.":"Lo que conectamos en el mes uno sigue rindiendo en el mes doce. Suma canales, suma volumen; el sistema lo absorbe.",
-        "Live system":"Sistema en vivo","Watch your business run itself.":"Mira tu negocio funcionar solo.","This is an ordinary Tuesday with AI on your front desk: leads answered, qualified and booked while you're busy doing the actual work.":"Así es un martes cualquiera con IA en tu recepción: leads respondidos, calificados y agendados mientras tú haces el trabajo de verdad.",
-        "Real-time activity":"Actividad en tiempo real","Today":"Hoy","All systems operational":"Todos los sistemas operativos","Meta · WhatsApp · GoHighLevel wired in":"Meta · WhatsApp · GoHighLevel conectados","Panama City · 24/7":"Ciudad de Panamá · 24/7",
+        "Live system":"Sistema en vivo","This is an ordinary Tuesday with AI on your front desk: leads answered, qualified and booked while you're busy doing the actual work.":"Así es un martes cualquiera con IA en tu recepción: leads respondidos, calificados y agendados mientras tú haces el trabajo de verdad.",
+        "Real-time activity":"Actividad en tiempo real","Today":"Hoy","All systems operational":"Todos los sistemas operativos","Meta · WhatsApp · CRM wired in":"Meta · WhatsApp · CRM conectados","Panama City · 24/7":"Ciudad de Panamá · 24/7",
         "The automation pipeline":"El flujo de automatización","Every lead captured. Every step automated.":"Cada lead capturado. Cada paso automatizado.","From first click to booked call, the system runs the whole journey and nobody on your team has to touch a thing.":"Del primer clic a la llamada agendada, el sistema recorre todo el camino sin que nadie de tu equipo tenga que tocar nada.",
         "Lead Captured":"Lead capturado","Stored in CRM":"Guardado en el CRM","AI Qualification":"Calificación con IA","Automated Follow-up":"Seguimiento automático","Appointment Booked":"Cita agendada",
         "Every touchpoint (website, ads, WhatsApp, social) feeds one unified pipeline the instant a prospect engages.":"Cada punto de contacto (sitio web, anuncios, WhatsApp, redes) alimenta un pipeline unificado en el instante en que un prospecto interactúa.",
         "Contact data is structured, tagged and stored before you have even seen the notification.":"Los datos de contacto se estructuran, etiquetan y guardan antes de que siquiera hayas visto la notificación.",
         "AI scores each lead on budget, intent and ICP fit, then routes high-value prospects forward and filters out poor fits.":"La IA califica cada lead por presupuesto, intención y ajuste al ICP, luego envía a los prospectos de alto valor y filtra los que no encajan.",
         "Personalized messages go out automatically, at the right moment, on the right channel, every time.":"Los mensajes personalizados se envían automáticamente, en el momento correcto, por el canal correcto, siempre.",
-        "Qualified leads pick a slot straight from your live calendar, and the confirmation goes out on its own.":"Los leads calificados eligen un horario directo de tu calendario en vivo, y la confirmación se envía sola.",
+        "Qualified leads pick a slot straight from your live calendar, and the confirmation goes out on its own.":"Los leads calificados eligen un horario directamente de tu calendario en vivo, y la confirmación se envía sola.",
         "New Lead":"Nuevo lead","Name":"Nombre","Source":"Fuente","Website Form":"Formulario web","Time":"Hora","Just now":"Justo ahora","Status":"Estado","Unqualified":"Sin calificar","Owner":"Responsable","Automation":"Automatización","AI Score":"Puntaje IA","Lead Quality":"Calidad del lead","Budget confirmed":"Presupuesto confirmado","ICP match":"Coincide con ICP","High intent":"Alta intención","Messages Sent":"Mensajes enviados","Confirmed":"Confirmada","Appointment confirmed":"Cita confirmada",
         "You do nothing.":"Tú no haces nada.","It runs itself.":"Funciona solo.","Day and night, on every channel.":"De día y de noche, en todos los canales.",
         "Before & after":"Antes y después","What changes when automation runs the operation.":"Qué cambia cuando la automatización opera tu negocio.","First reply, any channel":"Primera respuesta, en cualquier canal","In audits we usually find 4+ hour waits":"En las auditorías solemos encontrar esperas de más de 4 horas","Every single enquiry gets an answer":"Cada consulta recibe respuesta, sin excepción","The system never clocks out":"El sistema nunca descansa","Weekends, holidays and 3am included":"Fines de semana, feriados y las 3 de la mañana incluidos","Of weekly admin, automated":"De trabajo manual semanal, automatizado","Based on what our audits keep finding":"Según lo que nuestras auditorías encuentran una y otra vez",
-        "Ready to scale without limits?":"¿Listo para escalar sin límites?","Book a free 60-minute strategy call. We'll map your biggest automation opportunities and show you exactly where to start. You'll leave with a plan, whether or not we work together.":"Agenda una llamada estratégica gratuita de 60 minutos. Mapeamos tus mayores oportunidades de automatización y te mostramos exactamente por dónde empezar. Te llevas un plan, trabajemos juntos o no.","Free · 60 minutes · Remote, worldwide":"Gratis · 60 minutos · Remoto, en todo el mundo",
-        "AI automation, web development & Meta Ads for businesses that refuse to stay still.":"Automatización con IA, desarrollo web y Meta Ads para negocios que se niegan a quedarse quietos.","Panama City":"Ciudad de Panamá","Worldwide":"En todo el mundo","Working remotely, across every timezone":"Trabajando en remoto, en cada zona horaria",
+        "Start with one workflow.":"Empieza con un solo flujo.","Free · 60 minutes · Remote, worldwide":"Gratis · 60 minutos · Remoto, en todo el mundo",
+        "AI automation, web development & Meta Ads for businesses that refuse to stay still.":"Automatización con IA, desarrollo web y Meta Ads para negocios que se niegan a quedarse quietos.","Panama City":"Ciudad de Panamá","Worldwide":"En todo el mundo","Working remotely, across every timezone":"Trabajando en remoto, en todas las zonas horarias",
         "Company":"Empresa","Get in touch":"Contacto","Website Development":"Desarrollo Web",
         "© 2026 ThryveX Group. All rights reserved.":"© 2026 ThryveX Group. Todos los derechos reservados.","Designed & built in-house, line by line.":"Diseñado y desarrollado internamente, línea por línea.",
-        "This week":"Esta semana","Leads this week":"Leads esta semana","Uptime":"Disponibilidad","Avg response":"Respuesta promedio","Coverage":"Cobertura","AUTOMATION":"AUTOMATIZACIÓN","AI Follow-up":"Seguimiento con IA","WhatsApp Agents":"Agentes de WhatsApp","CRM Automation":"Automatización de CRM","24/7 Booking":"Agendamiento 24/7",
+        "This week":"Esta semana","Leads this week":"Leads esta semana","Uptime":"Disponibilidad","Avg response":"Respuesta promedio","Coverage":"Cobertura","AUTOMATION":"AUTOMATIZACIÓN",
         "Let's build the system.":"Construyamos el sistema.","Available for new projects":"Disponible para nuevos proyectos","Replies in under 24h":"Respuesta en menos de 24h","Book a 60-minute call":"Agenda una llamada de 60 minutos",
-        "Scale Without Limits":"Escala sin límites","CRM Implementation":"Implementación de CRM","Panama":"Panamá","ThryveX OS · Operations":"ThryveX OS · Operaciones","Operations":"Operaciones","Done":"Listo","Running":"En marcha",
-        "New lead captured":"Nuevo lead capturado","AI qualified the lead":"La IA calificó el lead","Score 92 · high intent":"Puntaje 92 · alta intención","WhatsApp reply sent":"Respuesta de WhatsApp enviada","Auto-response in 5 seconds":"Respuesta automática en 5 segundos","Call booked":"Llamada agendada","Added to your calendar":"Añadida a tu calendario","Follow-up scheduled":"Seguimiento programado","Day-2 nurture sequence":"Secuencia de seguimiento día 2"
+        "CRM Implementation":"Implementación de CRM","Panama":"Panamá","ThryveX OS · Operations":"ThryveX OS · Operaciones","Operations":"Operaciones","Done":"Listo","Running":"En marcha",
+        "New lead captured":"Nuevo lead capturado","WhatsApp reply sent":"Respuesta de WhatsApp enviada","Auto-response in 5 seconds":"Respuesta automática en 5 segundos","Call booked":"Llamada agendada","Added to your calendar":"Añadida a tu calendario","Follow-up scheduled":"Seguimiento programado","Day-2 nurture sequence":"Secuencia de seguimiento día 2",
+        "Ads that bring you clients, not just clicks.":"Anuncios que te traen clientes, no solo clics.",
+        "Your next clients are scrolling right now. We get you in front of them, then turn the click into a real inquiry.":"Tus próximos clientes están scrolleando ahora mismo. Te ponemos frente a ellos y convertimos el clic en una consulta real.",
+        "Creative & copy that stops the scroll":"Creativos y textos que frenan el scroll",
+        "Audience & retargeting that finds real intent":"Audiencias y retargeting que detectan intención real",
+        "Every lead wired straight into your CRM":"Cada lead conectado directo a tu CRM",
+        "The best business in town still loses to the one people can actually find.":"El mejor negocio de la ciudad pierde ante el que la gente sí encuentra.",
+        "Ads Manager":"Administrador de anuncios","Live":"En vivo","Campaign":"Campaña","Results":"Resultados","Cost":"Costo",
+        "Lead Gen · New inquiries":"Captación · Consultas nuevas","Retargeting · Warm audience":"Retargeting · Audiencia tibia","Awareness · Local reach":"Reconocimiento · Alcance local",
+        "Spend $2,140 · 233 leads · Avg cost per lead $9.18":"Inversión $2,140 · 233 leads · Costo por lead prom. $9.18",
+        "Representative dashboard":"Panel ilustrativo","Sponsored":"Publicidad","Get started this week":"Empieza esta semana","yourbrand":"tunegocio","Book Now":"Reservar","cost per lead":"costo por lead","vs. manual follow-up":"vs. seguimiento manual",
+        "Last 7 days":"Últimos 7 días","Campaigns":"Campañas","Ad sets":"Conjuntos de anuncios","Ads":"Anuncios","Create":"Crear","Duplicate":"Duplicar","Edit":"Editar","Columns: Performance":"Columnas: Rendimiento","Delivery":"Entrega","Cost per result":"Costo por resultado","Amount spent":"Importe gastado","Active":"Activa","Results from 3 campaigns":"Resultados de 3 campañas",
+        "Selected work":"Trabajo destacado","Sites we've shipped.":"Sitios que hemos lanzado.",
+        "Hand-built sites, coded from scratch, tuned for speed and wired to convert.":"Sitios programados a mano, desde cero, optimizados para velocidad y listos para convertir.",
+        "The signal path":"El recorrido del lead","Follow one lead through the machine.":"Sigue a un lead por dentro de la máquina.","Scroll · the lead moves with you":"Haz scroll · el lead avanza contigo","Instagram ad":"Anuncio de Instagram","Lead captured":"Lead capturado","Stored in CRM":"Registrado en el CRM","AI qualification":"Calificación con IA","Automated follow-up":"Seguimiento automático","Appointment booked":"Cita agendada",
+        "Coming soon":"Próximamente","Project One":"Proyecto uno","Project Two":"Proyecto dos","Project Three":"Proyecto tres","Aesthetic clinic":"Clínica estética","Dental practice":"Consultorio dental","Local business":"Negocio local","Start your site":"Empieza tu sitio","Placeholder previews · real client sites go here":"Vistas de ejemplo · aquí irán los sitios reales de clientes","Websites built to convert, not just to look good. You're on one right now.":"Sitios web hechos para convertir, no solo para verse bien. Estás en uno ahora mismo.","The engine that answers, books and follows up while you work.":"El motor que responde, agenda y hace seguimiento mientras tú trabajas.","Only essentials":"Solo esenciales","We value your privacy":"Valoramos tu privacidad","We use cookies to keep the site working properly, remember your preferences, and understand how visitors use it, so we can improve it. Marketing cookies are only set if you accept.":"Usamos cookies para que el sitio funcione correctamente, recordar tus preferencias y entender cómo lo usan los visitantes, para poder mejorarlo. Las cookies de marketing solo se activan si aceptas.","Read more":"Leer más","Hide details":"Ocultar detalles","Essential":"Esenciales","Language and your cookie choice. Always active.":"El idioma y tu elección de cookies. Siempre activas.","Analytics":"Analítica","Anonymous statistics about visits and usage.":"Estadísticas anónimas de visitas y uso.","Measures how our ads perform, for example the Meta Pixel.":"Mide el rendimiento de nuestros anuncios, por ejemplo el píxel de Meta.","Accept all":"Aceptar todas","We use cookies to understand how the site is used and to improve it.":"Usamos cookies para entender cómo se usa el sitio y mejorarlo.","Every week without a system is a day of work you're not getting back.":"Cada semana sin un sistema es un día de trabajo que no vas a recuperar.","The half your clients feel":"La mitad que sienten tus clientes","The half that eats your week":"La mitad que se come tu semana","Start today.":"Empieza hoy.","Because in six months, today is the day you'll wish you'd started.":"Porque dentro de seis meses, hoy será el día en el que desearás haber empezado.","We build your system inside the tools you already use.":"Construimos tu sistema dentro de las herramientas que ya usas. ","Don't see yours here? We can almost certainly connect it.":"¿No ves la tuya aquí? Casi seguro que podemos conectarla.","Appointment rescheduled":"Cita reprogramada","Confirmed for Friday":"Confirmada para el viernes","Tasks completed":"Tareas completadas","Book a free audit":"Reserva una auditoría gratis","Every week you wait, someone does it all again by hand.":"Cada semana que esperas, alguien vuelve a hacerlo todo a mano.","Start now":"Empieza ahora","If it repeats, it can run on its own.":"Si se repite, puede funcionar solo.","From the first enquiry to the final invoice, built into the tools you already use.":"Desde la primera consulta hasta la última factura, integrado en las herramientas que ya usas.","Lead follow-up":"Seguimiento de leads","Every enquiry gets answered and followed up until it books.":"Cada consulta se responde y recibe seguimiento hasta que reserva.","Appointment booking":"Reserva de citas","Clients book, reschedule and get reminded without a phone call.":"Los clientes reservan, reprograman y reciben recordatorios sin una sola llamada.","Invoicing and payments":"Facturación y pagos","The invoice goes out when the job closes, and late ones chase themselves.":"La factura sale cuando se cierra el trabajo, y las impagadas se reclaman solas.","Client communication":"Comunicación con clientes","Confirmations, updates and review requests sent at the right moment.":"Confirmaciones, avisos y solicitudes de reseña enviados en el momento justo.","Reports and numbers":"Informes y números","Your key numbers land in your inbox on schedule.":"Tus números clave llegan a tu correo puntualmente.","Records and CRM":"Registros y CRM","Every job, payment and conversation logs itself.":"Cada trabajo, pago y conversación se registra solo.","Clients get answers. You get your week back.":"Tus clientes reciben respuestas. Tú recuperas tu semana.","No big project. We start with one workflow and grow from there.":"Sin megaproyectos. Empezamos con un solo flujo y crecemos desde ahí.","Map the real work":"Mapear el trabajo real","A free audit. We find where the hours actually go.":"Una auditoría gratuita. Encontramos a dónde se van las horas de verdad.","Build the first system":"Construir el primer sistema","One workflow first, built into the tools that fit your business.":"Primero un solo flujo, construido en las herramientas que mejor le sirven a tu negocio.","Run it and improve":"Ponerlo en marcha y mejorarlo","You approve it, it runs, and we improve it after real use.":"Tú lo apruebas, funciona, y lo mejoramos con el uso real.","Less manual work":"Menos trabajo manual","Quotes, invoices and follow-ups go out from the workflow, not from someone's memory.":"Cotizaciones, facturas y seguimientos salen del flujo de trabajo, no de la memoria de alguien.","Faster responses":"Respuestas más rápidas","Enquiries are answered in seconds, on any channel, at any hour.":"Las consultas se responden en segundos, en cualquier canal y a cualquier hora.","Cleaner records":"Registros más limpios","Jobs, payments and conversations log themselves. The CRM stays current without anyone typing.":"Trabajos, pagos y conversaciones se registran solos. El CRM se mantiene al día sin que nadie escriba.","Clearer visibility":"Visibilidad más clara","Your numbers arrive on schedule. You see what is moving and what is stuck.":"Tus números llegan puntuales. Ves qué avanza y qué está trabado.","Smoother client experience":"Mejor experiencia para el cliente","Confirmations, reminders and updates arrive on time, on both sides of the relationship.":"Confirmaciones, recordatorios y avisos llegan a tiempo, de los dos lados de la relación.","More hours back":"Más horas recuperadas","The hours admin used to eat go back into the actual work.":"Las horas que se comía la administración vuelven al trabajo de verdad.","What changes":"Qué cambia","What changes when AI actually works.":"Qué cambia cuando la IA de verdad funciona.","About 40% of the work in a small business is repetitive and rule based. This is what changes when it runs on its own.":"Cerca del 40% del trabajo en un negocio pequeño es repetitivo y sigue reglas. Esto es lo que cambia cuando funciona solo.","Industry research on manual work in small businesses":"Investigación del sector sobre trabajo manual en negocios pequeños","Onboarding":"Onboarding","Invoicing":"Facturación","Reporting":"Reportes","Scheduling":"Agenda","Follow-up":"Seguimiento","Data Entry":"Carga de datos","AI automation, integrated into how your business works.":"Automatización con IA, integrada en cómo funciona tu negocio.","AI automation · Web · Meta Ads":"Automatización con IA · Web · Meta Ads","Replies in seconds, not Monday morning.":"Responde en segundos, no el lunes por la mañana.","Books them while they are still interested.":"Los agenda mientras siguen interesados.","Answers at 2am without waking anyone.":"Responde a las 2am sin despertar a nadie.","Invoices out the day the job finishes.":"Factura el mismo día que termina el trabajo.","Monday’s report, ready Sunday night.":"El reporte del lunes, listo el domingo por la noche.","A CRM that is still clean in six months.":"Un CRM que sigue limpio dentro de seis meses.","Same system.":"El mismo sistema.","Both halves.":"Las dos mitades.","How it works":"Cómo funciona","Three steps.":"Tres pasos.","STEP 01":"PASO 01","STEP 02":"PASO 02","STEP 03":"PASO 03","Why us":"Por qué nosotros","One person owns your build":"Una sola persona a cargo de tu proyecto","From the first audit to go-live. You always know exactly who to call.":"Desde la auditoría hasta el lanzamiento. Siempre sabes exactamente a quién llamar.","We only build what pays for itself":"Solo construimos lo que se paga solo","If a workflow doesn't save time or make money, we don't build it.":"Si un flujo no ahorra tiempo ni genera dinero, no lo construimos.","Run by an operator":"Dirigido por un operador","Not a sales team. Someone who has sat where you sit.":"No un equipo de ventas. Alguien que ha estado donde tú estás.","The impact":"El impacto","What changes when it runs.":"Qué cambia cuando funciona.","The same work, done the same way, without anyone doing it.":"El mismo trabajo, hecho igual, sin que nadie lo haga.","Hours back every week":"Horas recuperadas cada semana","First reply, any channel":"Primera respuesta, en cualquier canal","Nights, weekends, holidays":"Noches, fines de semana y feriados","Nothing falls through":"Nada se pierde por el camino","The work still gets done. You just stop doing it.":"El trabajo se sigue haciendo. Tú simplemente dejas de hacerlo.",
+        "What we automate":"Qué automatizamos",
+        
+        "Lead capture & follow-up":"Captación y seguimiento de leads","Every enquiry answered, qualified and chased until it books.":"Cada consulta respondida, calificada y con seguimiento hasta que agenda.",
+        "Client onboarding":"Onboarding de clientes","Welcome sequences, forms, contracts and kickoff, all on rails.":"Bienvenidas, formularios, contratos y arranque, todo sobre rieles.",
+        "Scheduling & reminders":"Agenda y recordatorios","Booking, confirmations and no-show reminders without the back-and-forth.":"Reservas, confirmaciones y recordatorios sin ir y venir de mensajes.",
+        "Quotes, proposals & invoicing":"Cotizaciones, propuestas y facturación","Documents built, sent, signed and chased for payment automatically.":"Documentos creados, enviados, firmados y cobrados automáticamente.",
+        "Reporting & dashboards":"Reportes y paneles","Your numbers pulled together and delivered, no spreadsheet nights.":"Tus números reunidos y entregados, sin noches de hojas de cálculo.",
+        "Data entry & CRM hygiene":"Datos y orden en el CRM","Records created, tagged and kept clean without anyone typing.":"Registros creados, etiquetados y siempre limpios sin que nadie escriba.",
+        "Customer support":"Atención al cliente","Chat, email and voice answered instantly, escalated when it matters.":"Chat, correo y voz respondidos al instante, escalados cuando importa.",
+        "Internal ops & approvals":"Operación interna y aprobaciones","Handoffs, checklists and sign-offs that move on their own.":"Entregas, checklists y aprobaciones que avanzan solas.",
+        
+        "Your stack":"Tu stack","We build on the tools you already pay for.":"Construimos sobre las herramientas que ya pagas.",
+        "No rip-and-replace. If it has an API, we can wire it in.":"Sin cambiarlo todo. Si tiene API, la integramos.",
+        "+ hundreds more via API":"+ cientos más vía API",
+        "An ordinary Tuesday: leads answered, invoices sent, reports delivered, all while you do the actual work.":"Un martes cualquiera: leads respondidos, facturas enviadas, reportes entregados, todo mientras tú haces el trabajo de verdad.",
+        "Invoice sent":"Factura enviada","Payment link delivered":"Link de pago entregado","Weekly report generated":"Reporte semanal generado","Delivered to your inbox":"Entregado a tu correo",
+        "One workflow, start to finish. We build these for any process you run.":"Un flujo completo, de principio a fin. Construimos estos para cualquier proceso que tengas."
       };
       const norm=s=>s.replace(/\s+/g,' ').trim();
       const T=[];
       ['header','nav','#navmobile','main','footer'].forEach(sel=>{const r=document.querySelector(sel);if(!r)return;
-        const tw=document.createTreeWalker(r,NodeFilter.SHOW_TEXT,{acceptNode(n){if(!n.nodeValue.trim())return 2;const p=n.parentElement;if(!p||p.closest('script,style,.wordsplit,.wavehead'))return 2;return ES[norm(n.nodeValue)]!==undefined?1:2;}});
+        const tw=document.createTreeWalker(r,NodeFilter.SHOW_TEXT,{acceptNode(n){if(!n.nodeValue.trim())return 2;const p=n.parentElement;if(!p||p.closest('script,style,.wordsplit,.wavehead,.sig-cap'))return 2;return ES[norm(n.nodeValue)]!==undefined?1:2;}});
         let n;while(n=tw.nextNode())T.push({node:n,en:n.nodeValue,es:ES[norm(n.nodeValue)]});});
       function setLang(lang){const es=lang==='es';
         T.forEach(o=>{o.node.nodeValue=es?o.es:o.en;});
-        document.querySelectorAll('.content h2[data-en]:not(.wavehead)').forEach(h=>{const en=h.getAttribute('data-en');const tr=ES[norm(en)];h.textContent=(es&&tr)?tr:en;splitWords(h);h.classList.add('win');});
+        document.querySelectorAll('.content h2[data-en]:not(.wavehead), .endblock h2[data-en]:not(.wavehead)').forEach(h=>{const en=h.getAttribute('data-en');const tr=ES[norm(en)];h.textContent=(es&&tr)?tr:en;splitWords(h);h.classList.add('win');});
         if(window.__wavehead)window.__wavehead(es);
+        if(window.__siglang)window.__siglang();
         document.documentElement.lang=lang;
         try{localStorage.setItem('tvxlang',lang);}catch(e){}}
       window.__setLang=setLang;
@@ -1362,16 +1931,21 @@
       };
       const POOL=[
         ['lead','New lead captured','Meta Ad · Instagram',1,'Nuevo lead capturado','Meta Ad · Instagram'],
-        ['ai','AI qualified the lead','Score 94 · high intent',0,'La IA calificó el lead','Puntaje 94 · alta intención'],
-        ['chat','WhatsApp reply sent','Auto-response in 5s',0,'Respuesta de WhatsApp enviada','Respuesta automática en 5s'],
-        ['phone','Voice agent answered','Inbound call handled',0,'Agente de voz respondió','Llamada entrante atendida'],
-        ['lead','New lead captured','Website form',1,'Nuevo lead capturado','Formulario web'],
-        ['mail','Email sequence started','Day-1 nurture',0,'Secuencia de email iniciada','Seguimiento día 1'],
-        ['cal','Call booked','Added to calendar',0,'Llamada agendada','Añadida al calendario'],
-        ['ai','Lead routed to sales','High priority',0,'Lead enviado a ventas','Alta prioridad'],
-        ['chat','SMS follow-up sent','Reminder · 24h',0,'Seguimiento por SMS enviado','Recordatorio · 24h'],
+        ['ai','Payment reconciled','Matched to invoice 0231',1,'Pago conciliado','Cruzado con la factura 0231'],
+        ['chat','WhatsApp reply sent','Auto-response in 5s',1,'Respuesta de WhatsApp enviada','Respuesta automática en 5s'],
+        ['phone','Voice agent answered','Inbound call handled',1,'Agente de voz respondió','Llamada entrante atendida'],
+        ['cal','Appointment rescheduled','Confirmed for Friday',1,'Cita reprogramada','Confirmada para el viernes'],
+        ['mail','Email sequence started','Day-1 nurture',1,'Secuencia de email iniciada','Seguimiento día 1'],
+        ['cal','Call booked','Added to calendar',1,'Llamada agendada','Añadida al calendario'],
+        ['chat','Review request sent','2 hours after job closed',1,'Solicitud de reseña enviada','2 horas después de cerrar el trabajo'],
+        ['chat','SMS reminder sent','Tomorrow\'s appointment',1,'Recordatorio por SMS enviado','Cita de mañana'],
+        ['mail','Invoice sent','Payment link delivered',1,'Factura enviada','Link de pago entregado'],
+        ['ai','Weekly report generated','Delivered to your inbox',1,'Reporte semanal generado','Entregado a tu correo'],
+        ['mail','Client onboarding started','Welcome sequence sent',1,'Onboarding de cliente iniciado','Secuencia de bienvenida enviada'],
+        ['mail','Proposal sent for signature','Awaiting client',1,'Propuesta enviada para firma','Esperando al cliente'],
+        ['ai','CRM records cleaned','42 duplicates merged',1,'Registros del CRM depurados','42 duplicados unificados'],
         ['lead','New lead captured','WhatsApp click-to-chat',1,'Nuevo lead capturado','WhatsApp click-to-chat'],
-        ['clock','Follow-up scheduled','Day-2 sequence',0,'Seguimiento programado','Secuencia día 2']
+        ['clock','Follow-up scheduled','Day-2 sequence',1,'Seguimiento programado','Secuencia día 2']
       ];
       const _now=new Date();
       let sec=_now.getHours()*3600+_now.getMinutes()*60+_now.getSeconds(), p=0, clockT=null, feedT=null, synced=false;
@@ -1405,7 +1979,7 @@
       var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
       var wh=document.querySelector('.wavehead');
       if(wh){
-        var WH_EN="Watch your business run itself.",WH_ES="Mira tu negocio operar solo.";
+        var WH_EN="Nobody's at their desk.",WH_ES="Nadie está en su escritorio.";
         wh.setAttribute('data-en',WH_EN);
         function buildWave(es){
           var txt=es?WH_ES:WH_EN;
@@ -1540,6 +2114,302 @@
           });
         });
       }
+    })();
+  </script>
+  <script>
+    // Work showreel — cycle projects, scroll each site, click list to switch, start when in view
+    (function(){
+      var stage=document.querySelector('.work-stage'); if(!stage)return;
+      var sites=[].slice.call(stage.querySelectorAll('.wsite'));
+      var items=[].slice.call(document.querySelectorAll('.work-item'));
+      if(!sites.length)return;
+      var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var i=0,timer,started=false;
+      function show(n){i=(n+sites.length)%sites.length;sites.forEach(function(s,k){s.classList.toggle('on',k===i);});items.forEach(function(it,k){it.classList.toggle('on',k===i);});}
+      function start(){clearInterval(timer);if(!reduce)timer=setInterval(function(){show(i+1);},7500);}
+      items.forEach(function(it,k){it.addEventListener('click',function(){show(k);start();});});
+      new IntersectionObserver(function(es,ob){if(es[0].isIntersecting&&!started){started=true;ob.disconnect();show(0);start();}},{threshold:.25}).observe(stage);
+    })();
+  </script>
+  <script>
+    // Signal Path — scroll-scrubbed lead journey (auto-plays on mobile, static under reduced-motion)
+    (function(){
+      var track=document.getElementById('signal'); if(!track)return;
+      var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var lit=track.querySelector('.sigpath .pl'), glow=track.querySelector('.sigpath .plg'), pulse=track.querySelector('.sigpulse');
+      var nodes=[].slice.call(track.querySelectorAll('.signode'));
+      var capB=document.getElementById('sig-time'), capS=document.getElementById('sig-msg'), cap=track.querySelector('.sig-cap');
+      var stepEl=document.getElementById('sig-step'), barEl=document.getElementById('sig-bar');
+      var hint=track.querySelector('.sig-hint');
+      if(!lit||!pulse||!nodes.length)return;
+      var L=lit.getTotalLength()||1;
+      [lit,glow].forEach(function(p){if(p){p.style.strokeDasharray=L+' '+L;p.style.strokeDashoffset=String(L);}});
+      var TH=[0.04,0.22,0.42,0.62,0.8,0.96];
+      var TIMES=["2:14 AM","2:14 AM","2:14 AM","2:15 AM","2:16 AM","8:00 AM"];
+      var MSG_EN=["Someone taps your ad on Instagram.","Captured instantly. Straight into one pipeline.","Tagged and stored before anyone's seen it.","The AI qualifies and answers. Nobody's awake.","Day-2 follow-up already queued.","You wake up to a booked appointment."];
+      var MSG_ES=["Alguien hace clic en tu anuncio de Instagram.","Capturado al instante. Directo al pipeline.","Etiquetado y registrado antes de que nadie lo vea.","La IA lo califica y le responde. Nadie está despierto.","El seguimiento del día 2 ya quedó programado.","Te despiertas con una cita agendada."];
+      var lastStage=-1,ticking=false,active=true,mobile=matchMedia('(max-width:760px)').matches;
+      function setStage(st){
+        if(st===lastStage)return; lastStage=st;
+        nodes.forEach(function(n,i){n.classList.toggle('lit',i<=st);});
+        cap.classList.add('swap');
+        setTimeout(function(){
+          var es=document.documentElement.lang==='es';
+          capB.textContent=TIMES[st]; capS.textContent=(es?MSG_ES:MSG_EN)[st];
+          if(stepEl)stepEl.textContent='0'+(st+1)+' / 0'+TH.length;
+          cap.classList.remove('swap');
+        },150);
+      }
+      function apply(p){
+        var off=String(L*(1-p));
+        lit.style.strokeDashoffset=off; if(glow)glow.style.strokeDashoffset=off;
+        var pt=lit.getPointAtLength(L*p);
+        pulse.setAttribute('transform','translate('+pt.x.toFixed(1)+' '+pt.y.toFixed(1)+')');
+        if(barEl)barEl.style.transform='scaleX('+p.toFixed(3)+')';
+        var st=0; for(var i=0;i<TH.length;i++){if(p>=TH[i])st=i;}
+        setStage(st);
+        if(hint)hint.classList.toggle('gone',p>0.08);
+      }
+      window.__sigapply=apply;
+      window.__siglang=function(){var s=lastStage<0?0:lastStage;lastStage=-1;setStage(s);};
+      if(reduce){apply(1);nodes.forEach(function(n){n.classList.add('lit');});return;}
+      if(mobile){
+        var st=0,timer=null;
+        apply(TH[0]+0.01);
+        new IntersectionObserver(function(es){
+          if(es[0].isIntersecting){ if(!timer)timer=setInterval(function(){st=(st+1)%TH.length;apply(Math.min(TH[st]+0.01,1));},1700); }
+          else {clearInterval(timer);timer=null;}
+        },{threshold:.3}).observe(track);
+        return;
+      }
+      function progress(){var r=track.getBoundingClientRect();var total=r.height-innerHeight;var p=total>0?(-r.top)/total:0;return Math.max(0,Math.min(1,p));}
+      function update(){ticking=false;if(!active)return;apply(progress());}
+      addEventListener('scroll',function(){if(!active||ticking)return;ticking=true;requestAnimationFrame(update);},{passive:true});
+      new IntersectionObserver(function(es){active=es[0].isIntersecting;if(active){ticking=true;requestAnimationFrame(update);}},{threshold:0}).observe(track);
+      apply(0);
+    })();
+  </script>
+  <script>
+    // How it works: pinned band, rail slides horizontally with scroll
+    (function(){
+      var track=document.getElementById('process'); if(!track)return;
+      var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var mobile=matchMedia('(max-width:760px)').matches;
+      var stick=track.querySelector('.steps-stick'), rail=document.getElementById('steprail'), bar=document.getElementById('stepbar');
+      var panels=[].slice.call(track.querySelectorAll('.spanel'));
+      if(!stick||!rail)return;
+      if(reduce||mobile){panels.forEach(function(p){p.classList.add('on');});return;}
+      var ticking=false,active=true;
+      function progress(){var r=track.getBoundingClientRect();var total=r.height-innerHeight;var p=total>0?(-r.top)/total:0;return Math.max(0,Math.min(1,p));}
+      var S=null,E=null;
+      function measure(){var prev=rail.style.transform;rail.style.transform='translateX(0)';var mid=innerWidth/2;var a=panels[0].getBoundingClientRect(),b=panels[panels.length-1].getBoundingClientRect();S=mid-(a.left+a.width/2);E=(b.left+b.width/2)-mid;rail.style.transform=prev;}
+      function apply(p){
+        if(S===null)measure();
+        rail.style.transform='translateX('+(S-p*(S+E)).toFixed(1)+'px)';
+        if(bar)bar.style.transform='scaleX('+p.toFixed(3)+')';
+        var mid=innerWidth*0.5;
+        panels.forEach(function(pl){var c=pl.getBoundingClientRect();var cx=c.left+c.width/2;pl.classList.toggle('on',Math.abs(cx-mid)<Math.max(c.width*0.9,innerWidth*0.3));});
+      }
+      var target=0,smooth=0,raf=null;
+      window.__stepsapply=function(p){target=p;smooth=p;apply(p);};
+      function tick(){
+        raf=null;
+        smooth+=(target-smooth)*0.09;
+        if(Math.abs(target-smooth)<0.0008)smooth=target;
+        apply(smooth);
+        if(active&&smooth!==target)raf=requestAnimationFrame(tick);
+      }
+      function kick(){target=progress();if(!raf)raf=requestAnimationFrame(tick);}
+      addEventListener('scroll',function(){if(active)kick();},{passive:true});
+      addEventListener('resize',function(){S=null;if(active)kick();});
+      new IntersectionObserver(function(es){active=es[0].isIntersecting;if(active)kick();},{threshold:0}).observe(track);
+      apply(0);
+    })();
+  </script>
+  <script>
+    // What we automate: pinned venn, circles merge apart and lines draw as you scroll
+    (function(){
+      var track=document.getElementById('bothhalves'); if(!track)return;
+      var stick=track.querySelector('.venn-stick'), venn=track.querySelector('.venn');
+      if(!stick||!venn)return;
+      var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var mobile=matchMedia('(max-width:760px)').matches;
+      if(reduce||mobile)return;
+      venn.classList.add('venn--scrub');
+      var A=[].slice.call(venn.querySelectorAll('.mova')), B=[].slice.call(venn.querySelectorAll('.movb'));
+      var logo=venn.querySelector('.vlogo');
+      var mids=[].slice.call(venn.querySelectorAll('.vmid'));
+      var fills=[].slice.call(venn.querySelectorAll('.vfill'));
+      var lines=[].slice.call(venn.querySelectorAll('.vl'));
+      var dots=[].slice.call(venn.querySelectorAll('.vd'));
+      var labs=[].slice.call(venn.querySelectorAll('.vlab'));
+      var punch=track.querySelector('.vpunch');
+      function clamp(v){return Math.max(0,Math.min(1,v));}
+      function win(p,a,b){return clamp((p-a)/(b-a));}
+      function ease(t){return 1-Math.pow(1-t,3);}
+      function apply(s){
+        var t1=ease(win(s,0,.30));
+        var t2=ease(win(s,.28,.55));
+        venn.style.opacity=win(s,0,.16);
+        venn.style.transform='scale('+(0.55+0.45*t1).toFixed(4)+')';
+        var cxa=(800-215*t2).toFixed(1), cxb=(800+215*t2).toFixed(1);
+        A.forEach(function(el){el.setAttribute('cx',cxa);});
+        B.forEach(function(el){el.setAttribute('cx',cxb);});
+        var fo=win(s,.15,.4);
+        fills.forEach(function(el){el.style.opacity=fo;});
+        var lo=ease(win(s,.5,.6));
+        if(logo){logo.style.opacity=lo;logo.style.transform='translate(-50%,-50%) scale('+(0.75+0.25*lo).toFixed(3)+')';}
+        mids.forEach(function(el,i){el.style.opacity=ease(win(s,.55+i*.03,.67+i*.03));});
+        lines.forEach(function(el,i){
+          var row=i%3, a=.58+row*.07;
+          var w=ease(win(s,a,a+.14));
+          var len=parseFloat((el.getAttribute('style')||'').replace(/.*--len:\s*([\d.]+).*/,'$1'))||500;
+          el.style.strokeDasharray=len;
+          el.style.strokeDashoffset=(len*(1-w)).toFixed(1);
+        });
+        dots.forEach(function(el,i){
+          var row=i%3, end=.58+row*.07+.14;
+          el.style.opacity=win(s,end-.03,end);
+        });
+        labs.forEach(function(el,i){
+          var row=i%3, a=.64+row*.07;
+          var w=ease(win(s,a,a+.12));
+          el.style.opacity=w;
+          el.style.transform='translateY('+(10*(1-w)).toFixed(1)+'px)';
+        });
+        if(punch){
+          var pw=ease(win(s,.86,.97));
+          punch.style.opacity=pw;
+          punch.style.transform='translateY('+(14*(1-pw)).toFixed(1)+'px)';
+        }
+      }
+      window.__vennapply=function(p){target=p;smooth=p;apply(p);};
+      var target=0, smooth=0, raf=null, active=true;
+      function progress(){var r=track.getBoundingClientRect();var intro=track.querySelector('.venn-intro');var ih=intro?intro.offsetHeight:0;var total=r.height-innerHeight-ih;var p=total>0?((-r.top)-ih)/total:0;return clamp(p/0.78);}
+      function tick(){
+        raf=null;
+        smooth+=(target-smooth)*0.1;
+        if(Math.abs(target-smooth)<0.0008)smooth=target;
+        apply(smooth);
+        if(active&&smooth!==target)raf=requestAnimationFrame(tick);
+      }
+      function kick(){target=progress();if(!raf)raf=requestAnimationFrame(tick);}
+      addEventListener('scroll',function(){if(active)kick();},{passive:true});
+      addEventListener('resize',function(){if(active)kick();});
+      new IntersectionObserver(function(es){active=es[0].isIntersecting;if(active)kick();},{threshold:0}).observe(track);
+      apply(0);
+    })();
+  </script>
+  <script>
+    // What we automate: pinned rail, cards slide horizontally with scroll
+    (function(){
+      var track=document.getElementById('automate'); if(!track)return;
+      var stick=track.querySelector('.auto-stick'), rail=document.getElementById('autorail');
+      if(!stick||!rail)return;
+      var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var mobile=matchMedia('(max-width:760px)').matches;
+      if(reduce||mobile)return;
+      var cards=[].slice.call(rail.children);
+      var wheel=track.querySelector('.auto-wheel');
+      var D=1050, R=2600;
+      var flowsC=null,a0=null,rotStart=0,rotEnd=0,Px=0;
+      function measure(){
+        cards.forEach(function(c){c.style.transform='';});
+        var rects=cards.map(function(c){return c.getBoundingClientRect();});
+        flowsC=rects.map(function(r){return r.left+r.width/2;});
+        Px=innerWidth*0.55;
+        a0=flowsC.map(function(x,i){return (-35+i*30)*Math.PI/180;});
+        var pr=Math.max(24,(innerWidth-1120)/2);
+        var last=cards.length-1;
+        rotStart=Math.atan((innerWidth*0.62+rects[0].width/2-Px)/D)-a0[0];
+        rotEnd=Math.atan((innerWidth*0.52-Px)/D)-a0[last];
+        if(wheel){
+          var wrapR=track.querySelector('.auto-railwrap').getBoundingClientRect();
+          var stickR=stick.getBoundingClientRect();
+          var rowY=wrapR.top-stickR.top+wrapR.height/2;
+          var clipEl=track.querySelector('.auto-wheelclip');
+          if(clipEl)clipEl.style.height='100%';
+          wheel.style.width=(R*2)+'px';wheel.style.height=(R*2)+'px';
+          wheel.style.left=(Px-R)+'px';wheel.style.top=(rowY-D-R)+'px';
+          wheel.innerHTML='';
+          a0.forEach(function(a){
+            var s=document.createElement('div');s.className='spk';
+            s.style.transform='rotate('+(90-a*180/Math.PI).toFixed(3)+'deg)';
+            wheel.appendChild(s);
+          });
+        }
+      }
+      function progress(){var r=track.getBoundingClientRect();var total=r.height-innerHeight;var p=total>0?(-r.top)/total:0;return Math.max(0,Math.min(1,p));}
+      function apply(p){
+        if(!flowsC)measure();
+        var rot=rotStart+(rotEnd-rotStart)*p;
+        cards.forEach(function(c,i){
+          var ang=Math.max(-1.51,Math.min(1.51,a0[i]+rot));
+          var x=Px+D*Math.tan(ang);
+          c.style.transform='translateX('+(x-flowsC[i]).toFixed(1)+'px)';
+        });
+        if(wheel)wheel.style.transform='rotate('+(-(rot*180/Math.PI)).toFixed(3)+'deg)';
+      }
+      var target=0,smooth=0,raf=null,active=true;
+      window.__autoapply=function(p){target=p;smooth=p;apply(p);};
+      function tick(){
+        raf=null;
+        smooth+=(target-smooth)*0.05;
+        if(Math.abs(target-smooth)<0.0008)smooth=target;
+        apply(smooth);
+        if(active&&smooth!==target)raf=requestAnimationFrame(tick);
+      }
+      function kick(){target=progress();if(!raf)raf=requestAnimationFrame(tick);}
+      addEventListener('scroll',function(){if(active)kick();},{passive:true});
+      addEventListener('resize',function(){flowsC=null;if(active)kick();});
+      new IntersectionObserver(function(es){active=es[0].isIntersecting;if(active)kick();},{threshold:0}).observe(track);
+      apply(0);
+    })();
+  </script>
+    <div class="ckbar" id="ckbar" role="dialog" aria-label="Cookies" hidden>
+    <p class="ck-hd">We value your privacy</p>
+    <p class="ck-tx">We use cookies to keep the site working properly, remember your preferences, and understand how visitors use it, so we can improve it. Marketing cookies are only set if you accept.</p>
+    <button class="ck-more" id="ckmore" aria-expanded="false"><span class="ck-m1">Read more</span><span class="ck-m2" hidden>Hide details</span></button>
+    <div class="ck-det" id="ckdet" hidden>
+      <div class="ck-item"><b>Essential</b><span>Language and your cookie choice. Always active.</span></div>
+      <div class="ck-item"><b>Analytics</b><span>Anonymous statistics about visits and usage.</span></div>
+      <div class="ck-item"><b>Marketing</b><span>Measures how our ads perform, for example the Meta Pixel.</span></div>
+    </div>
+    <div class="ck-row">
+      <button class="ck-btn ck-yes" id="ckyes">Accept all</button>
+      <button class="ck-btn ck-no" id="ckno">Only essentials</button>
+    </div>
+  </div>
+  <script>
+    // cookie consent: remembered choice, gate for any future trackers
+    (function(){
+      var bar=document.getElementById('ckbar'); if(!bar)return;
+      var KEY='thryvex-consent';
+      var saved=null;
+      try{saved=localStorage.getItem(KEY);}catch(e){}
+      window.__cookieConsent=saved;
+      function loadTrackers(){/* Meta Pixel / analytics go here, only called after Accept */}
+      if(saved==='yes')loadTrackers();
+      if(saved!==null)return;
+      bar.hidden=false;
+      setTimeout(function(){bar.classList.add('show');},400);
+      function choose(v){
+        try{localStorage.setItem(KEY,v);}catch(e){}
+        window.__cookieConsent=v;
+        bar.classList.remove('show');
+        setTimeout(function(){bar.hidden=true;},550);
+        if(v==='yes')loadTrackers();
+      }
+      var more=document.getElementById('ckmore'),det=document.getElementById('ckdet');
+      if(more&&det)more.addEventListener('click',function(){
+        var open=det.hidden;
+        det.hidden=!open;
+        more.setAttribute('aria-expanded',open?'true':'false');
+        more.querySelector('.ck-m1').hidden=open;
+        more.querySelector('.ck-m2').hidden=!open;
+      });
+      document.getElementById('ckyes').addEventListener('click',function(){choose('yes');});
+      document.getElementById('ckno').addEventListener('click',function(){choose('no');});
     })();
   </script>
 </body>
