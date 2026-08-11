@@ -1043,7 +1043,7 @@
   .svc-arr{font-family:'Space Grotesk';font-weight:700;font-size:1.6rem;color:rgba(17,19,26,.35)}
   @media(max-width:700px){.svcrow{grid-template-columns:minmax(0,1fr) auto}.svc-num{display:none}}
   /* ——— Live system: task chips converge into the two-card payoff ——— */
-  .cmd-track{position:relative;height:300vh;background:#0b0e16}
+  .cmd-track{position:relative;height:165vh;background:#0b0e16}
   .cmd-stick{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--gutter)}
   .cmd-head{max-width:760px}
   #command .eyb{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.72)}
@@ -2525,7 +2525,6 @@
       var count=document.getElementById('cmdcount');
       if(!stage||!sum)return;
       var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var mobile=matchMedia('(max-width:760px)').matches;
       var chips=[].slice.call(stage.querySelectorAll('.cchip'));
       if(reduce){if(count)count.textContent='47';return;}
       var OFF=[[-70,-40],[80,-30],[-80,30],[70,45]];
@@ -2554,42 +2553,26 @@
         sum.style.transform='translate(-50%,-50%) scale('+(0.93+0.07*s).toFixed(3)+')';
         if(count)count.textContent=String(Math.round(47*ease(win(p,0.76,0.99))));
       }
-      var target=0,smooth=0,raf=null,active=true;
-      window.__cmdapply=function(v){target=v;smooth=v;apply(v);};
-      if(mobile){
-        // phones: the scene plays itself once when it comes into view (no scroll scrubbing)
-        var t0=null,played=false,DUR=6200;
-        function play(ts){
-          if(t0===null)t0=ts;
-          var v=Math.min(1,(ts-t0)/DUR);
-          apply(v);
-          if(v<1)requestAnimationFrame(play);
-        }
-        function start(){if(played)return;played=true;geo=null;requestAnimationFrame(play);}
-        function centred(){var r=stage.getBoundingClientRect();
-          return r.top<innerHeight*0.75&&r.bottom>innerHeight*0.25;}
-        // fire when the scene is actually in the middle of the screen, not at its first pixel
-        new IntersectionObserver(function(e){if(e[0].isIntersecting)start();},
-          {threshold:0,rootMargin:'-25% 0px -25% 0px'}).observe(stage);
-        // safety net: if the observer never fires, never leave the scene blank
-        addEventListener('scroll',function(){if(!played&&centred())start();},{passive:true});
-        setTimeout(function(){if(!played&&centred())start();},1200);
-        addEventListener('resize',function(){geo=null;if(played)apply(1);});
-        apply(0);
-        return;
+      // this section is a story with a punchline, so it plays at its own pace
+      // rather than being scrubbed by the scroll wheel
+      var t0=null,played=false,DUR=6200;
+      window.__cmdapply=function(v){played=true;apply(v);};
+      function play(ts){
+        if(t0===null)t0=ts;
+        var v=Math.min(1,(ts-t0)/DUR);
+        apply(v);
+        if(v<1)requestAnimationFrame(play);
       }
-      function progress(){var r=track.getBoundingClientRect();var total=r.height-innerHeight;var v=total>0?(-r.top)/total:0;return clamp(v/0.9);}
-      function tick(){
-        raf=null;
-        smooth+=(target-smooth)*0.08;
-        if(Math.abs(target-smooth)<0.0008)smooth=target;
-        apply(smooth);
-        if(active&&smooth!==target)raf=requestAnimationFrame(tick);
-      }
-      function kick(){target=progress();if(!raf)raf=requestAnimationFrame(tick);}
-      addEventListener('scroll',function(){if(active)kick();},{passive:true});
-      addEventListener('resize',function(){geo=null;if(active)kick();});
-      new IntersectionObserver(function(e){active=e[0].isIntersecting;if(active)kick();},{threshold:0}).observe(track);
+      function start(){if(played)return;played=true;geo=null;requestAnimationFrame(play);}
+      function centred(){var r=stage.getBoundingClientRect();
+        return r.top<innerHeight*0.75&&r.bottom>innerHeight*0.25;}
+      // fire when the scene reaches the middle of the screen, not at its first pixel
+      new IntersectionObserver(function(e){if(e[0].isIntersecting)start();},
+        {threshold:0,rootMargin:'-25% 0px -25% 0px'}).observe(stage);
+      // safety nets: never leave the scene blank if the observer does not fire
+      addEventListener('scroll',function(){if(!played&&centred())start();},{passive:true});
+      setTimeout(function(){if(!played&&centred())start();},1200);
+      addEventListener('resize',function(){geo=null;if(played)apply(1);});
       apply(0);
     })();
   </script>
