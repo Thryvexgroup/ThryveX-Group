@@ -217,7 +217,7 @@
   .r.in{opacity:1;transform:none}
   /* phones: content is visible immediately, no scroll-triggered reveals */
   @media(max-width:760px){
-    .r,.r.in,.wordsplit .word>span{opacity:1!important;transform:none!important;transition:none!important;filter:none!important}
+    .r:not(.cchip):not(.csum),.r.in,.wordsplit .word>span{opacity:1!important;transform:none!important;transition:none!important;filter:none!important}
   }
   @media(prefers-reduced-motion:reduce){.r{opacity:1;transform:none;filter:none}}
   /* animations run through scroll — GPU transforms don't hurt native scroll, and freezing
@@ -1077,17 +1077,26 @@
   #command .cmdcta{margin-top:clamp(1.2rem,3vh,2rem)}
   @media(max-width:760px){
     .cmd-track{height:auto}
-    .cmd-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) var(--gutter)}
-    .cmd-stage{height:auto;display:flex;flex-direction:column;gap:.7rem;margin-top:1.8rem}
-    .cchip{position:static;width:auto;opacity:1!important;transform:none!important}
-    .csum{position:static;transform:none!important;opacity:1!important;grid-template-columns:1fr;margin-top:1.1rem;width:auto}
+    .cmd-stick{position:relative;height:auto;padding:clamp(3.5rem,8vh,5rem) var(--gutter)}
+    .cmd-stage{height:clamp(360px,58vh,440px);margin-top:1.6rem}
+    .cchip{width:min(290px,84%);padding:.75rem .85rem;gap:.7rem}
+    .cchip[data-i="0"]{left:0;top:1%}
+    .cchip[data-i="1"]{right:0;left:auto;top:26%}
+    .cchip[data-i="2"]{left:3%;top:51%}
+    .cchip[data-i="3"]{right:1%;left:auto;top:76%}
+    .cc-ic{width:34px;height:34px;border-radius:10px}
+    .cc-tx b{font-size:.9rem}
+    .cc-tx i{font-size:.74rem}
+    .csum{width:100%;grid-template-columns:1fr;gap:.7rem}
+    .csum-card{min-height:0;padding:1.1rem 1.2rem}
+    .cs-big{font-size:clamp(1.15rem,5.2vw,1.5rem)}
   }
   @media(prefers-reduced-motion:reduce){
-    .cmd-track{height:auto}
+    .cmd-track{height:auto!important}
     .cmd-stick{position:relative;height:auto;padding:clamp(4rem,9vh,6rem) var(--gutter)}
-    .cmd-stage{height:auto;display:flex;flex-direction:column;gap:.7rem;margin-top:1.8rem}
-    .cchip{position:static;width:auto;opacity:1!important;transform:none!important}
-    .csum{position:static;transform:none!important;opacity:1!important;grid-template-columns:1fr;margin-top:1.1rem;width:auto}
+    .cmd-stage{height:auto!important;display:flex;flex-direction:column;gap:.7rem;margin-top:1.8rem}
+    .cchip{position:static!important;width:auto;opacity:1!important;transform:none!important}
+    .csum{position:static!important;transform:none!important;opacity:1!important;grid-template-columns:1fr;margin-top:1.1rem;width:auto}
   }
   /* Lenis (inertia scroll) */
   html.lenis,html.lenis body{height:auto}
@@ -2509,7 +2518,7 @@
       var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
       var mobile=matchMedia('(max-width:760px)').matches;
       var chips=[].slice.call(stage.querySelectorAll('.cchip'));
-      if(reduce||mobile){if(count)count.textContent='47';return;}
+      if(reduce){if(count)count.textContent='47';return;}
       var OFF=[[-70,-40],[80,-30],[-80,30],[70,45]];
       function clamp(v){return Math.max(0,Math.min(1,v));}
       function win(p,a,b){return clamp((p-a)/(b-a));}
@@ -2538,6 +2547,22 @@
       }
       var target=0,smooth=0,raf=null,active=true;
       window.__cmdapply=function(v){target=v;smooth=v;apply(v);};
+      if(mobile){
+        // phones: the scene plays itself once when it comes into view (no scroll scrubbing)
+        var t0=null,played=false,DUR=6200;
+        function play(ts){
+          if(t0===null)t0=ts;
+          var v=Math.min(1,(ts-t0)/DUR);
+          apply(v);
+          if(v<1)requestAnimationFrame(play);
+        }
+        new IntersectionObserver(function(e){
+          if(e[0].isIntersecting&&!played){played=true;geo=null;requestAnimationFrame(play);}
+        },{threshold:0.35}).observe(stage);
+        addEventListener('resize',function(){geo=null;if(played)apply(1);});
+        apply(0);
+        return;
+      }
       function progress(){var r=track.getBoundingClientRect();var total=r.height-innerHeight;var v=total>0?(-r.top)/total:0;return clamp(v/0.9);}
       function tick(){
         raf=null;
