@@ -2493,7 +2493,24 @@
       var saved=null;
       try{saved=localStorage.getItem(KEY);}catch(e){}
       window.__cookieConsent=saved;
-      function loadTrackers(){/* Meta Pixel / analytics go here, only called after Accept */}
+      var PIXEL_ID='2567788833723526';
+      function loadTrackers(){
+        if(window.__fbqReady)return; window.__fbqReady=true;
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+        (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init',PIXEL_ID);
+        fbq('track','PageView');
+      }
+      // booking clicks are the conversion worth optimising for
+      document.addEventListener('click',function(e){
+        var t=e.target;
+        if(!t||!t.closest)return;
+        var a=t.closest('a[href^="/book"]');
+        if(a&&window.fbq)fbq('track','Lead',{content_name:(a.textContent||'').trim().slice(0,60)});
+      },{passive:true});
       if(saved==='yes')loadTrackers();
       if(saved!==null)return;
       bar.hidden=false;
