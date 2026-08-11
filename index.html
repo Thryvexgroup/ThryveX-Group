@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="description" content="ThryveX Group builds AI automation, custom websites and Meta Ads systems that capture leads, qualify prospects and help modern businesses scale without limits." />
 <meta name="keywords" content="AI automation, CRM implementation, workflow automation, web development, AI chatbots, Meta Ads, ThryveX Group" />
 <meta name="author" content="ThryveX Group" />
@@ -66,7 +66,8 @@
 <style>
   :root{--w:#fbfbfd;--ink:#11131a;--grey:#6b7180;--blue:#0071e3;--gutter:clamp(1.25rem,5vw,4rem);--max:1120px;--grad:linear-gradient(100deg,#3F9FE6,#9FB4E8 38%,#E9B6C6 68%,#F4C9A1)}
   *{margin:0;padding:0;box-sizing:border-box}
-  html{-webkit-font-smoothing:antialiased}
+  html{-webkit-font-smoothing:antialiased;background:#eaeef6;overscroll-behavior-y:none}
+  body{overscroll-behavior-y:none}
   body{background:radial-gradient(82% 74% at 50% 32%, #ffffff 0%, #eaeef6 60%, #d7dded 100%);background-attachment:fixed;color:var(--ink);font-family:'Inter',sans-serif;overflow-x:hidden}
   .floor{position:fixed;left:50%;top:58%;width:60vw;height:32vh;transform:translateX(-50%);z-index:0;pointer-events:none;
     background:radial-gradient(ellipse at center, rgba(34,44,76,.24), rgba(34,44,76,.07) 45%, transparent 72%);filter:blur(46px)}
@@ -1102,7 +1103,8 @@
   html.lenis,html.lenis body{height:auto}
   .lenis.lenis-smooth{scroll-behavior:auto!important}
   .lenis.lenis-stopped{overflow:hidden}
-  footer{position:relative;z-index:5;padding:5rem 0 2.4rem;background:transparent}
+  footer{position:relative;z-index:5;padding:5rem 0 2.4rem;background:transparent;padding-bottom:calc(2.4rem + env(safe-area-inset-bottom))}
+  .endblock{padding-bottom:env(safe-area-inset-bottom)}
   .fwrap{max-width:1200px;margin:0 auto;padding:0 clamp(1.25rem,3vw,2.5rem)}
   /* grid keeps the footer identical regardless of language length (no flex-wrap reflow) */
   .ftop{display:grid;grid-template-columns:minmax(280px,auto) 1fr;align-items:start;gap:2.5rem clamp(1.6rem,3vw,3rem)}
@@ -2582,6 +2584,41 @@
       addEventListener('resize',function(){geo=null;if(active)kick();});
       new IntersectionObserver(function(e){active=e[0].isIntersecting;if(active)kick();},{threshold:0}).observe(track);
       apply(0);
+    })();
+  </script>
+  <script>
+    // browser UI tint follows the section at the screen edges (kills the white bar over dark sections)
+    (function(){
+      var meta=document.querySelector('meta[name=theme-color]'); if(!meta)return;
+      var DARK='#0b0e16', LIGHT='#fbfbfd', cur=null, ticking=false;
+      function isDark(el){
+        while(el&&el!==document.body){
+          if(el.classList&&(el.classList.contains('endblock')||el.classList.contains('cmd-stick')||
+             el.classList.contains('venn-stick')||el.classList.contains('steps-stick')))return true;
+          el=el.parentElement;
+        }
+        return false;
+      }
+      function darkAt(y){
+        var x=Math.round(innerWidth/2);
+        var els=document.elementsFromPoint?document.elementsFromPoint(x,y):[document.elementFromPoint(x,y)];
+        for(var i=0;i<els.length;i++){
+          var el=els[i]; if(!el)continue;
+          // skip the fixed nav / cursor overlays that sit above every section
+          if(getComputedStyle(el).position==='fixed')continue;
+          return isDark(el);
+        }
+        return false;
+      }
+      function update(){
+        ticking=false;
+        var want=(darkAt(innerHeight-3)||darkAt(3))?DARK:LIGHT;
+        if(want!==cur){cur=want;meta.setAttribute('content',want);}
+      }
+      window.__themeprobe=function(){return{top:darkAt(3),bottom:darkAt(innerHeight-3)};};
+      addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+      addEventListener('resize',update,{passive:true});
+      update();
     })();
   </script>
 </body>
