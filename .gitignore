@@ -7,3 +7,6 @@ transmission-city.html
 brand-source/
 *.log
 _*.html
+
+# local Claude Code guidance, never deploy (would be public at /CLAUDE.md)
+CLAUDE.md
