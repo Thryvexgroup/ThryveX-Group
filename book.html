@@ -201,7 +201,10 @@
     }
     .bc-ico svg { width: 21px; height: 21px; }
     /* the real app icons: brand surface, white glyph */
-    .bc-ico.ico-mail { background: var(--grad); }
+    .bc-ico.ico-mail {
+      background: linear-gradient(180deg, #3FBDFF 0%, #1E86F7 52%, #0B62E8 100%);
+    }
+    .bc-ico.ico-mail svg { width: 24px; height: 24px; }
     .bc-ico.ico-wa { background: #25D366; }
     .bc-ico.ico-ig {
       background: radial-gradient(circle at 30% 107%,
@@ -292,9 +295,9 @@
     <div class="book-contact-grid">
       <a class="bc-card" href="mailto:services@thryvexgroup.com">
         <div class="bc-ico ico-mail" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-            <polyline points="22,6 12,13 2,6" />
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="5" width="20" height="14" rx="3.4" />
+            <path d="M3.4 7.4 12 13.4l8.6-6" />
           </svg>
         </div>
         <span class="bc-lbl">Email</span>
