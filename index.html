@@ -2283,19 +2283,42 @@
       }
 
       // 6) nav links scramble on hover (micro-delight)
+      // a nav label must never be left unreadable, so every path back to the real
+      // text is covered: pointer out, window blur, tab hide, and a timer that fires
+      // even when rAF is paused. a frozen label would also poison the translator,
+      // which looks words up by the text it finds in the node.
       if(fine&&!reduce){
-        const CH2='01<>#%&$*+=';
+        const CH2='01<>#%&$*+=',D=300,restorers=[];
         document.querySelectorAll('.nl a').forEach(a=>{
           const n=[...a.childNodes].find(x=>x.nodeType===3&&x.nodeValue.trim());
-          if(!n)return;let busy=false;
+          if(!n)return;
+          let raf=0,fail=0,real='';
+          function restore(){
+            if(!real)return;
+            cancelAnimationFrame(raf);clearTimeout(fail);
+            n.nodeValue=real;real='';
+          }
+          restorers.push(restore);
           a.addEventListener('pointerenter',()=>{
-            if(busy)return;busy=true;
-            const txt=n.nodeValue,t0=performance.now(),D=300;
-            (function f(t){const pr=Math.min(1,(t-t0)/D);const k=Math.floor(pr*txt.length);let o=txt.slice(0,k);
-              for(let i=k;i<txt.length;i++){const c=txt[i];o+=c===' '?' ':CH2[(Math.random()*CH2.length)|0];}
-              n.nodeValue=o;if(pr<1)requestAnimationFrame(f);else{n.nodeValue=txt;busy=false;}})(t0);
+            if(real)return;
+            real=n.nodeValue;
+            const t0=performance.now();
+            fail=setTimeout(restore,D+150);
+            raf=requestAnimationFrame(function f(t){
+              if(!real)return;
+              const pr=Math.min(1,(t-t0)/D),k=Math.floor(pr*real.length);
+              let o=real.slice(0,k);
+              for(let i=k;i<real.length;i++){o+=real[i]===' '?' ':CH2[(Math.random()*CH2.length)|0];}
+              n.nodeValue=o;
+              if(pr<1)raf=requestAnimationFrame(f);else restore();
+            });
           });
+          a.addEventListener('pointerleave',restore);
         });
+        function restoreAll(){restorers.forEach(r=>r());}
+        addEventListener('visibilitychange',function(){if(document.hidden)restoreAll();});
+        addEventListener('blur',restoreAll);
+        document.querySelectorAll('[data-l]').forEach(b=>b.addEventListener('pointerdown',restoreAll));
       }
     })();
   </script>
