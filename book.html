@@ -86,6 +86,16 @@
     }
     .back:hover { transform: translateY(-1px); box-shadow: 0 12px 30px -12px rgba(20,30,60,.35); }
     .back svg { width: 15px; height: 15px; }
+    .topright { display: flex; align-items: center; gap: .6rem; }
+    .lang { display: flex; gap: .1rem; padding: .28rem; }
+    .lang button {
+      border: 0; background: none; cursor: pointer;
+      font-family: 'Space Grotesk'; font-weight: 600; font-size: .8rem; letter-spacing: .02em;
+      color: var(--grey); padding: .42rem .7rem; border-radius: 999px;
+      transition: background .2s, color .2s;
+    }
+    .lang button:hover { color: var(--ink); }
+    .lang button.on { background: var(--ink); color: #fff; }
 
     /* Header */
     .head {
@@ -236,6 +246,8 @@
 
     @media (max-width: 600px) {
       .brand span { display: none; }
+      .back span { display: none; }
+      .back { padding: .6rem .8rem; }
       .head { padding-top: 1.4rem; }
       .widget-card iframe { min-height: 820px; }
     }
@@ -255,12 +267,18 @@
       <img src="/ThryveX%20Group%20Logo%20No%20BG.png" alt="ThryveX Group">
       <span>ThryveX Group</span>
     </a>
-    <a class="back pill" href="/">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="M19 12H5M12 19l-7-7 7-7" />
-      </svg>
-      <span>Back to site</span>
-    </a>
+    <div class="topright">
+      <div class="lang pill" role="group" aria-label="Language">
+        <button type="button" data-l="en" class="on" aria-pressed="true">EN</button>
+        <button type="button" data-l="es" aria-pressed="false">ES</button>
+      </div>
+      <a class="back pill" href="/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        <span>Back to site</span>
+      </a>
+    </div>
   </header>
 
   <!-- Header -->
@@ -331,6 +349,56 @@
   </footer>
 
   <script src="https://source.thryvexgroup.com/js/form_embed.js" type="text/javascript"></script>
+  <script>
+    // Spanish. Same mechanism and the same saved preference as the main site,
+    // so a visitor who chose Español there lands here in Español.
+    (function(){
+      var ES={
+        "Back to site":"Volver al sitio",
+        "\u2190 Back to site":"\u2190 Volver al sitio",
+        "Free 60-min strategy call":"Llamada estrat\u00e9gica gratuita de 60 min",
+        "Book Your":"Reserva tu",
+        "Strategy Call":"llamada estrat\u00e9gica",
+        "Pick a time that works for you. We'll map your biggest automation opportunities and show you exactly where to start. No pressure, just clarity.":"Elige un horario que te funcione. Mapearemos tus mayores oportunidades de automatizaci\u00f3n y te mostraremos exactamente por d\u00f3nde empezar. Sin presi\u00f3n, solo claridad.",
+        "Loading your booking calendar":"Cargando tu calendario de reservas",
+        "Questions before booking?":"\u00bfPreguntas antes de reservar?",
+        "Reach out directly. We reply fast.":"Escr\u00edbenos directamente. Respondemos r\u00e1pido.",
+        "Email":"Correo",
+        "\u00a9 2026 ThryveX Group. All rights reserved.":"\u00a9 2026 ThryveX Group. Todos los derechos reservados."
+      };
+      var META={
+        title:{en:"Book Your Strategy Call | ThryveX Group",es:"Reserva tu llamada estrat\u00e9gica | ThryveX Group"},
+        desc:{en:"Book your free strategy call with ThryveX Group. We'll map your biggest automation opportunities and show you exactly where to start.",
+              es:"Reserva una llamada estrat\u00e9gica gratuita con ThryveX Group. Mapearemos tus mayores oportunidades de automatizaci\u00f3n y te mostraremos exactamente por d\u00f3nde empezar."},
+        frame:{en:"Book a strategy call with ThryveX Group",es:"Reserva una llamada estrat\u00e9gica con ThryveX Group"}
+      };
+      var norm=function(s){return s.replace(/\s+/g,' ').trim();};
+      var T=[];
+      var tw=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+        if(!n.nodeValue.trim())return NodeFilter.FILTER_REJECT;
+        var p=n.parentElement;if(!p||p.closest('script,style'))return NodeFilter.FILTER_REJECT;
+        return ES[norm(n.nodeValue)]!==undefined?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
+      var n;while(n=tw.nextNode()){
+        // keep the whitespace that sits around inline tags, e.g. "Book Your " before the gradient span
+        var v=n.nodeValue,lead=v.match(/^\s*/)[0],trail=v.match(/\s*$/)[0];
+        T.push({node:n,en:v,es:lead+ES[norm(v)]+trail});
+      }
+      var btns=document.querySelectorAll('.lang button');
+      function setLang(lang){
+        var es=lang==='es';
+        T.forEach(function(o){o.node.nodeValue=es?o.es:o.en;});
+        document.documentElement.lang=lang;
+        document.title=META.title[lang];
+        var d=document.querySelector('meta[name=description]');if(d)d.setAttribute('content',META.desc[lang]);
+        var f=document.querySelector('.widget-card iframe');if(f)f.setAttribute('title',META.frame[lang]);
+        btns.forEach(function(b){var on=b.dataset.l===lang;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');});
+        try{localStorage.setItem('tvxlang',lang);}catch(e){}
+      }
+      btns.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l);});});
+      var saved=null;try{saved=localStorage.getItem('tvxlang');}catch(e){}
+      if(saved==='es')setLang('es');
+    })();
+  </script>
 </body>
 
 </html>
