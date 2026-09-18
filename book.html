@@ -296,13 +296,33 @@
         <div class="wspin" aria-hidden="true"></div>
         <span>Loading your booking calendar</span>
       </div>
+      <!-- one calendar per language; the right one is chosen before anything loads -->
       <iframe
-        src="https://source.thryvexgroup.com/widget/booking/GoaSvdUc3KUaJwvNIsMr?backgroundColor=%23FFFFFF&primaryColor=%233F9FE6"
+        src="about:blank"
+        data-cal-en="GoaSvdUc3KUaJwvNIsMr"
+        data-cal-es="Xk4R0IAoI7kfu7iGSHNw"
         style="width:100%;border:none;overflow:hidden;min-height:780px"
         scrolling="no"
         id="GoaSvdUc3KUaJwvNIsMr_book"
         title="Book a strategy call with ThryveX Group"
-        onload="var w=document.getElementById('wload');if(w){setTimeout(function(){w.classList.add('hidden')},600);}"></iframe>
+        onload="if(this.src.indexOf('about:blank')<0){var w=document.getElementById('wload');if(w){setTimeout(function(){w.classList.add('hidden')},600);}}"></iframe>
+      <script>
+        (function(){
+          var f=document.querySelector('.widget-card iframe');
+          var lang='en';try{if(localStorage.getItem('tvxlang')==='es')lang='es';}catch(e){}
+          window.__bookCal=function(l){
+            var id=f.getAttribute('data-cal-'+l);if(!id||f.id===id+'_book')return;
+            var w=document.getElementById('wload');if(w)w.classList.remove('hidden');
+            f.id=id+'_book';
+            f.src='https://source.thryvexgroup.com/widget/booking/'+id+'?backgroundColor=%23FFFFFF&primaryColor=%233F9FE6';
+          };
+          f.id='';window.__bookCal(lang);
+        })();
+      </script>
+      <noscript>
+        <iframe src="https://source.thryvexgroup.com/widget/booking/GoaSvdUc3KUaJwvNIsMr?backgroundColor=%23FFFFFF&primaryColor=%233F9FE6"
+          style="width:100%;border:none;overflow:hidden;min-height:780px" scrolling="no" title="Book a strategy call with ThryveX Group"></iframe>
+      </noscript>
     </div>
   </div>
 
@@ -391,6 +411,7 @@
         document.title=META.title[lang];
         var d=document.querySelector('meta[name=description]');if(d)d.setAttribute('content',META.desc[lang]);
         var f=document.querySelector('.widget-card iframe');if(f)f.setAttribute('title',META.frame[lang]);
+        if(window.__bookCal)window.__bookCal(lang);
         btns.forEach(function(b){var on=b.dataset.l===lang;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');});
         try{localStorage.setItem('tvxlang',lang);}catch(e){}
       }
