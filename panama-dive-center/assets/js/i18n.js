@@ -89,6 +89,19 @@ window.PDC_I18N = {
     'contact.cta1': 'Book online', 'contact.cta2': 'WhatsApp us',
     'contact.k1': 'Phone and WhatsApp', 'contact.k2': 'Email', 'contact.k3': 'Shop', 'contact.v3': 'Main street, Santa Catalina, Veraguas, Panamá', 'contact.k4': 'Hours', 'contact.v4': 'Every day, 07:00 to 18:00', 'contact.k5': 'Languages', 'contact.v5': 'Español, English',
 
+    'fauna.eyebrow': 'What you can see', 'fauna.lede': 'Big pelagics most of the year and reef sharks on almost every dive.',
+    'fauna.1': 'Hammerhead shark', 'fauna.1s': 'January to May, Contreras', 'fauna.2': 'Whale shark', 'fauna.2s': 'December to April', 'fauna.3': 'Whitetip reef shark', 'fauna.3s': 'All year', 'fauna.4': 'Turtles', 'fauna.4s': 'All year', 'fauna.5': 'Reef sharks', 'fauna.5s': 'All year',
+    'coiba.cap1': 'Islands of the park from the air', 'coiba.cap2': 'Hammerhead shark',
+    'trips.cap': 'Dolphins often ride along on the crossing', 'tl.2p': 'Around one hour across the Gulf of Chiriquí.',
+    'season.cap': 'The whale shark, the dry season visitor',
+    'about.k1': 'Safety first', 'about.v1': 'Oxygen, first aid and a radio on every boat. Instructors hold current EFR.',
+    'about.v3': 'Regulators and BCDs serviced on schedule, tanks hydrostatically tested.',
+    'c.dsd.p': 'A morning of theory and skills in shallow water, then two real dives in Coiba with your instructor at your side.',
+    'c.ref.p': 'Already finished theory and pool sessions at home? Complete your four open water dives here in two days and certify in Coiba.',
+    'c.aow.p': 'Five adventure dives including Deep and Navigation. Coiba’s best sites sit between 20 and 30 metres with current.',
+    'c.res.p': 'Self-rescue, assisting other divers and Emergency First Response, in real open-water conditions.',
+    'c.dm.p': 'Four to eight weeks living in Santa Catalina and diving Coiba almost every day. Leave as a PADI professional.',
+    'footer.credits': 'Photographs CC BY 2.0 by',
     'footer.tag': 'PADI 5 Star Dive Resort · Santa Catalina, Panamá', 'footer.site': 'Site concept by ThryveX Group'
   }
 };

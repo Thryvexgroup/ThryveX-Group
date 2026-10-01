@@ -12,7 +12,7 @@
   const api = { depth: 0, targetDepth: 0, mouse: [0.5, 0.5], setDepth(d) { api.targetDepth = Math.max(0, Math.min(1, d)); }, setMouse(x, y) { api.mouse = [x, y]; } };
   window.Ocean = api;
 
-  if (!gl) { canvas.remove(); fallback.classList.add('is-on'); return; }
+  if (!gl) { canvas.remove(); fallback && fallback.classList.add('is-on'); return; }
 
   const vert = `
     attribute vec2 p; varying vec2 v;
@@ -104,7 +104,7 @@
     return s;
   }
   const vs = compile(gl.VERTEX_SHADER, vert), fs = compile(gl.FRAGMENT_SHADER, frag);
-  if (!vs || !fs) { canvas.remove(); fallback.classList.add('is-on'); return; }
+  if (!vs || !fs) { canvas.remove(); fallback && fallback.classList.add('is-on'); return; }
   const prog = gl.createProgram(); gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog); gl.useProgram(prog);
 
   const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);

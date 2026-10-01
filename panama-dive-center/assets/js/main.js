@@ -111,17 +111,12 @@
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-  /* ---------- Medios reales: se activan solo si el archivo existe ---------- */
-  const heroMedia = $('#hero-media');
-  if (heroMedia) {
-    const img = heroMedia.querySelector('img'), vid = heroMedia.querySelector('video');
-    img.addEventListener('load', () => heroMedia.classList.add('has-image'), { once: true });
-    img.addEventListener('error', () => img.remove(), { once: true });
-    if (vid) {
-      vid.addEventListener('canplay', () => heroMedia.classList.add('has-video'), { once: true });
-      vid.addEventListener('error', () => vid.remove(), { once: true });
-      const src = vid.querySelector('source'); src && src.addEventListener('error', () => vid.remove(), { once: true });
-    }
+  /* ---------- Medios: el vídeo del hero solo si el archivo existe ---------- */
+  const vid = $('#hero-video');
+  if (vid) {
+    vid.addEventListener('canplay', () => vid.classList.add('is-ready'), { once: true });
+    vid.addEventListener('error', () => vid.remove(), { once: true });
+    const src = vid.querySelector('source'); src && src.addEventListener('error', () => vid.remove(), { once: true });
   }
   $$('.media').forEach(fig => {
     const img = fig.querySelector('img'); if (!img) { fig.classList.add('is-empty'); return; }
@@ -130,10 +125,6 @@
     if (img.complete) { img.naturalWidth ? ok() : fail(); }
     img.addEventListener('load', ok, { once: true }); img.addEventListener('error', fail, { once: true });
   });
-
-  /* ---------- Ticker ---------- */
-  const ticker = $('#ticker');
-  if (ticker) { const clone = ticker.innerHTML; ticker.innerHTML = clone + clone; }
 
   /* ---------- Calendario ---------- */
   $$('.cal__row').forEach(row => {
@@ -172,14 +163,10 @@
     $$('.reveal-group').forEach(g => {
       gsap.from(g.children, { y: 24, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.07, scrollTrigger: { trigger: g, start: 'top 85%', once: true } });
     });
-    $$('[data-count]').forEach(el => {
-      const end = parseFloat(el.dataset.count), suffix = el.dataset.suffix || '';
-      const o = { v: 0 };
-      gsap.to(o, { v: end, duration: 1.6, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true }, onUpdate: () => { el.textContent = Math.round(o.v) + suffix; } });
+    $$('.media--banner img, .media--wide img, .media--tall img, .media--side img').forEach(img => {
+      gsap.fromTo(img, { yPercent: -4 }, { yPercent: 4, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
     });
-    $$('.media img').forEach(img => {
-      gsap.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
-    });
+    gsap.to('.hero__media img', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     window.addEventListener('load', () => ScrollTrigger.refresh());
   } else {
     $$('.reveal, .reveal-group > *').forEach(el => { el.style.opacity = 1; });
