@@ -102,6 +102,7 @@ window.PDC_I18N = {
     'c.res.p': 'Self-rescue, assisting other divers and Emergency First Response, in real open-water conditions.',
     'c.dm.p': 'Four to eight weeks living in Santa Catalina and diving Coiba almost every day. Leave as a PADI professional.',
     'footer.credits': 'Photographs CC BY 2.0 by',
+    'prop.k': 'Redesign proposal', 'prop.v': 'prepared by ThryveX Group for Panama Dive Center. Not the official website. Placeholder photos; prices to be confirmed with the center.',
     'footer.tag': 'PADI 5 Star Dive Resort · Santa Catalina, Panamá', 'footer.site': 'Site concept by ThryveX Group'
   }
 };

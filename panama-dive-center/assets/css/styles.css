@@ -110,6 +110,15 @@ p + p { margin-top: 1em; }
 .btn--sm { padding: 10px 16px; font-size: 14px; }
 .btn--block { width: 100%; }
 
+/* ---------- Aviso de propuesta ---------- */
+.proposal { position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; display: flex; align-items: center; gap: 16px; padding: 10px var(--gutter); background: var(--sun); color: var(--sun-ink); font-size: 13px; line-height: 1.4; }
+.proposal > span { flex: 1; }
+.proposal a { font-weight: 700; text-decoration: underline; white-space: nowrap; }
+.proposal button { font-size: 20px; line-height: 1; padding: 4px 8px; opacity: .7; }
+.proposal button:hover { opacity: 1; }
+.proposal.is-hidden { display: none; }
+body.has-proposal .footer { padding-bottom: 96px; }
+
 /* ---------- Barra ---------- */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 40; display: flex; align-items: center; gap: 28px; padding: 16px var(--gutter); transition: background .5s, padding .5s, border-color .5s; border-bottom: 1px solid transparent; }
 .nav.is-scrolled { background: rgba(6, 36, 60, 0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); padding: 11px var(--gutter); border-color: var(--bone-10); }

@@ -172,6 +172,12 @@
     $$('.reveal, .reveal-group > *').forEach(el => { el.style.opacity = 1; });
   }
 
+  const prop = $('#proposal');
+  if (prop) {
+    let hidden = false; try { hidden = sessionStorage.getItem('pdc-prop') === '1'; } catch (e) {}
+    if (hidden) prop.classList.add('is-hidden'); else document.body.classList.add('has-proposal');
+    $('#proposal-close').addEventListener('click', () => { prop.classList.add('is-hidden'); document.body.classList.remove('has-proposal'); try { sessionStorage.setItem('pdc-prop', '1'); } catch (e) {} });
+  }
   const yr = $('#year'); if (yr) yr.textContent = new Date().getFullYear();
   applyLang(lang);
 })();
