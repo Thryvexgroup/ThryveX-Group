@@ -1,0 +1,92 @@
+/* Spanish dictionary. English lives in the HTML. Keys match data-i18n attributes. */
+window.PDC_I18N = {
+  es: {
+    'skip': 'Ir al contenido',
+    'nav.trips': 'Salidas de buceo', 'nav.courses': 'Cursos', 'nav.sites': 'Sitios', 'nav.season': 'Temporada', 'nav.about': 'Nosotros', 'nav.faq': 'Preguntas', 'nav.contact': 'Contacto', 'nav.book': 'Reservar',
+    'gauge.depth': 'Profundidad', 'gauge.surface': 'Superficie',
+
+    'hero.eyebrow': 'Santa Catalina · Veraguas · Panamá',
+    'hero.l1': 'Bucea', 'hero.l2': 'Coiba.',
+    'hero.lede': 'Salidas diarias a un sitio Patrimonio de la Humanidad, a una hora en lancha desde Santa Catalina. Tiburones ballena, martillos y arrecifes que siguen siendo salvajes.',
+    'hero.cta1': 'Reservar una salida', 'hero.cta2': 'Certifícate', 'hero.scroll': 'Desciende',
+    'trust.padi': 'Primer Dive Resort 5 Estrellas de Santa Catalina', 'trust.ta': 'Nº 1 de cosas que hacer en Santa Catalina', 'trust.lp': 'Top Choice',
+
+    'coiba.eyebrow': 'Por qué Coiba',
+    'coiba.title': 'Las Galápagos a las que llegas antes del almuerzo.',
+    'coiba.p1': 'Coiba fue colonia penal durante casi un siglo, y eso mantuvo intactos sus bosques y arrecifes mientras el resto de la costa del Pacífico se desarrollaba. Hoy es Patrimonio de la Humanidad de la UNESCO y la isla más grande de Centroamérica, protegida junto con 38 islas menores y las aguas que las rodean.',
+    'coiba.p2': 'Las mismas corrientes que alimentan Galápagos pasan por aquí. Pináculos volcánicos suben desde aguas profundas y atraen a los pelágicos: tiburones ballena en la estación seca, jorobadas en la verde, martillos frente a Contreras y tiburones punta blanca en casi cada inmersión.',
+    'coiba.s1': 'islas dentro del parque', 'coiba.s2': 'sitios de buceo al alcance', 'coiba.s3': 'minutos en lancha desde la tienda', 'coiba.s4': 'temperatura del agua durante el año', 'coiba.s5': 'de visibilidad, mejor de mayo a diciembre', 'coiba.s6': 'inscripción como Patrimonio de la Humanidad',
+
+    'trips.eyebrow': 'Para buzos certificados',
+    'trips.title': 'Una lancha. Un parque. Todos los días.',
+    'trips.lede': 'Dos o tres inmersiones dentro del Parque Nacional Coiba con un profesional PADI, equipo completo y almuerzo. Grupos pequeños y sitios elegidos cada mañana según las condiciones y lo que se está moviendo.',
+    'trips.two': '2 inmersiones', 'trips.three': '3 inmersiones',
+    'trips.note': 'Por persona. No incluye la entrada al parque: $20 para extranjeros, $5 para panameños y residentes, en efectivo al parque.',
+    'trips.i1': 'Lancha, capitán y guía PADI', 'trips.i2': 'Equipo completo de alquiler, tanques de aluminio de 12 L', 'trips.i3': 'Almuerzo, agua y fruta a bordo', 'trips.i4': 'La tercera inmersión se puede añadir el mismo día', 'trips.i5': 'Nitrox y guía privado bajo petición',
+    'trips.cta': 'Ver fechas y reservar',
+    'tl.1t': 'Encuentro en la tienda', 'tl.1p': 'Papeleo, prueba de equipo, café. Bajamos juntos a la playa.',
+    'tl.2t': 'Salida de Santa Catalina', 'tl.2p': 'Alrededor de una hora cruzando el Golfo de Chiriquí. Los delfines suelen acompañar la proa.',
+    'tl.3t': 'Primera inmersión', 'tl.3p': 'Normalmente el sitio más profundo y expuesto del día, con energía y aire frescos.',
+    'tl.4t': 'Intervalo en la isla', 'tl.4p': 'Una playa de arena blanca dentro del parque. Monos aulladores en los árboles.',
+    'tl.5t': 'Segunda inmersión', 'tl.5p': 'Un arrecife o estación de limpieza. Tortugas, punta blanca, cardúmenes de jureles.',
+    'tl.6t': 'Almuerzo y tercera inmersión opcional', 'tl.6p': 'Se decide en la lancha. Casi todos dicen que sí.',
+    'tl.7t': 'De vuelta en Santa Catalina', 'tl.7p': 'Enjuagar el equipo, registrar las inmersiones, atardecer desde la punta.',
+
+    'courses.eyebrow': 'Cursos PADI, de principiante a profesional',
+    'courses.title': 'Aprende donde el buceo es bueno de verdad.',
+    'courses.lede': 'La mayoría se certifica en una cantera o en la piscina de un hotel. Aquí tus inmersiones de formación son en un parque nacional con tiburones en el arrecife. Cada curso lo imparte un Instructor PADI en español o inglés, con un máximo de cuatro alumnos por instructor.',
+    'c.dur': 'Duración', 'c.from': 'Desde', 'c.book': 'Reservar', 'c.enquire': 'Consultar', 'c.ask': 'Consúltanos',
+    'c.dsd.tag': 'Sin experiencia', 'c.dsd.t': 'Discover Scuba Diving', 'c.dsd.p': 'Una mañana de teoría y habilidades en aguas poco profundas, y luego dos inmersiones reales en Coiba con tu instructor al lado. El mejor día que puedes pasar en Panamá.', 'c.dsd.d': '1 día',
+    'c.ow.tag': 'El más popular', 'c.ow.t': 'Open Water Diver', 'c.ow.p': 'La certificación que te permite bucear en cualquier parte del mundo. Haz la teoría en línea antes de llegar, luego habilidades en aguas confinadas y cuatro inmersiones en el parque.', 'c.ow.d': '3 a 4 días',
+    'c.ref.tag': 'Referido', 'c.ref.t': 'Open Water Referido', 'c.ref.p': '¿Ya terminaste la teoría y la piscina en casa? Completa tus cuatro inmersiones en aguas abiertas aquí en dos días y certifícate en Coiba en vez de en un lago.', 'c.ref.d': '2 días',
+    'c.aow.tag': 'Recomendado para Coiba', 'c.aow.t': 'Advanced Open Water', 'c.aow.p': 'Cinco inmersiones de aventura, incluidas Profunda y Navegación. Los mejores sitios de Coiba están entre 20 y 30 metros con corriente, así que esta es la tarjeta que abre el parque.', 'c.aow.d': '2 días',
+    'c.res.tag': 'Con EFR', 'c.res.t': 'Rescue Diver', 'c.res.p': 'El curso que, según todos los instructores, cambió su forma de bucear. Autorrescate, asistencia a otros y Emergency First Response, en condiciones reales.', 'c.res.d': '3 días',
+    'c.dm.tag': 'Hazte profesional', 'c.dm.t': 'Divemaster', 'c.dm.p': 'De cuatro a ocho semanas viviendo en Santa Catalina y buceando Coiba casi a diario. Guía grupos reales, asiste cursos reales y sal como profesional PADI.', 'c.dm.d': '4 a 8 semanas',
+    'courses.more': 'También disponibles: especialidades de Nitrox, Profundo, Deriva y Navegación, buceo Tec en Coiba e instrucción privada.',
+
+    'sites.eyebrow': 'Dónde buceamos',
+    'sites.title': 'Treinta y dos sitios. Elegimos los tres correctos cada mañana.',
+    'sites.depth': 'Profundidad', 'sites.see': 'Busca', 'sites.hint': 'Toca un sitio en el mapa.',
+    'sites.disclaimer': 'Mapa estilizado. Posiciones aproximadas, no apto para navegación.',
+    'sites.level.all': 'Todos los niveles', 'sites.level.adv': 'Avanzado', 'sites.level.ow': 'Open Water',
+    'sites.contreras.p': 'Un grupo de islas en el borde norte del parque. Inmersiones profundas de mar abierto en pináculos donde patrullan cardúmenes de martillos en la estación seca. Corriente, termoclinas y los animales más grandes del parque.',
+    'sites.contreras.see': 'Martillos, águilas de mar, jureles',
+
+    'season.eyebrow': 'Cuándo venir',
+    'season.title': 'En Coiba se bucea todo el año. Lo que ves cambia.',
+    'season.lede': 'La estación seca trae afloramientos fríos y ricos en nutrientes, y a los grandes filtradores. La verde trae agua cálida, mar plano, jorobadas y la mejor visibilidad.',
+    'season.ws': 'Tiburones ballena', 'season.hh': 'Cardúmenes de martillos', 'season.hb': 'Ballenas jorobadas', 'season.mr': 'Mantarrayas', 'season.wt': 'Punta blanca, tortugas, jureles', 'season.tc': 'Termoclinas, 20–24 °C', 'season.wm': 'Agua cálida, 26–29 °C', 'season.dry': 'Estación seca, olas en la costa',
+    'season.note': 'La naturaleza no lee calendarios. Estos son los meses con mejores probabilidades, según lo que nuestros guías han registrado durante años.',
+
+    'about.eyebrow': 'Panama Dive Center',
+    'about.title': 'Una tienda pequeña que funciona como una grande.',
+    'about.p1': 'Somos el primer Dive Resort PADI 5 Estrellas de Santa Catalina, a cien metros de la playa de donde salen las lanchas. Nuestros instructores enseñan en español e inglés, nuestros capitanes crecieron en estas aguas y cada salida lleva oxígeno, botiquín, radio y una boya de señalización por buzo.',
+    'about.p2': 'Vamos en grupos pequeños por elección. Cuatro buzos por guía en la lancha, cuatro alumnos por instructor en los cursos. Coiba se siente como un parque avanzado y preferimos que recuerdes los martillos y no la multitud.',
+    'about.k1': 'Seguridad primero, siempre', 'about.v1': 'Oxígeno, botiquín y radio en cada lancha. Cada buzo lleva una boya. Los instructores mantienen su certificación EFR vigente.',
+    'about.k2': 'Grupos pequeños', 'about.v2': 'Máximo cuatro buzos por guía y cuatro alumnos por instructor.',
+    'about.k3': 'Equipo con mantenimiento', 'about.v3': 'Reguladores y BCD revisados según calendario, tanques con prueba visual e hidrostática.',
+    'about.k4': 'Aliados del parque', 'about.v4': 'Seguimos las normas del parque sobre fondeo, distancia a la fauna y tamaño de grupo, y las explicamos a cada buzo.',
+
+    'rev.src': 'Tripadvisor · Nº 1 de cosas que hacer en Santa Catalina', 'rev.sample': 'Ejemplo',
+    'rev.1': '"Vimos un tiburón ballena en la primera inmersión y el guía mantuvo tanta calma que nosotros también. Todo el día estuvo bien organizado."', 'rev.1f': 'Opinión de huésped, ejemplo',
+    'rev.2': '"Hice mi Open Water aquí. Cuatro alumnos, un instructor, e inmersiones de formación con tortugas y tiburones de arrecife. No me imagino hacerlo en una piscina."', 'rev.2f': 'Opinión de huésped, ejemplo',
+    'rev.3': '"El equipo era nuevo, la lancha rápida, el almuerzo bueno. Lo que destaca es lo enfocados que estaban en la seguridad sin ponerse rígidos."', 'rev.3f': 'Opinión de huésped, ejemplo',
+
+    'faq.eyebrow': 'Antes de reservar', 'faq.title': 'Preguntas que respondemos cada mañana.',
+    'faq.q1': '¿Necesito estar certificado para bucear en Coiba?', 'faq.a1': 'Para las salidas diarias, sí: Open Water o equivalente. Si nunca has buceado, reserva Discover Scuba Diving y harás dos inmersiones reales en el parque con un instructor a tu lado. Para los sitios más profundos de Contreras y Canales recomendamos Advanced Open Water.',
+    'faq.q2': '¿Cuánto es la entrada al parque y por qué no está incluida?', 'faq.a2': 'El Parque Nacional Coiba cobra una entrada a cada visitante: $20 por día para extranjeros y $5 para panameños y residentes. La cobran los guardaparques en efectivo, así que no podemos incluirla en el pago en línea. Trae cambio exacto si puedes.',
+    'faq.q3': '¿Cómo llego a Santa Catalina?', 'faq.a3': 'Desde Ciudad de Panamá, unas 5 a 6 horas en carro vía Santiago y Soná, o bus hasta Soná y desde ahí bus local o taxi. De Albrook salen buses a Santiago todo el día. Podemos organizar un traslado privado desde Ciudad de Panamá o David.',
+    'faq.q4': '¿Qué debo traer?', 'faq.a4': 'Tarjeta de certificación, traje de baño, toalla, bloqueador, gorra y efectivo para la entrada al parque. Nosotros ponemos todo el equipo de buceo, incluido el traje. En estación seca incluimos traje de 5 mm porque las termoclinas pueden bajar a 20 °C.',
+    'faq.q5': '¿Pueden venir acompañantes que no bucean?', 'faq.a5': 'Sí. Snorkelers y acompañantes pueden unirse a la salida con tarifa reducida, hacer snorkel en los intervalos en Granito de Oro y pasar el día en la isla mientras el grupo bucea.',
+    'faq.q6': '¿Con cuánta antelación debo reservar?', 'faq.a6': 'En estación seca, de diciembre a abril, las lanchas se llenan con una semana o más de antelación. El resto del año suelen bastar unos días. Los cursos necesitan una fecha de inicio acordada para programar un instructor.',
+    'faq.q7': '¿Tienen Nitrox?', 'faq.a7': 'Sí, bajo petición y con certificación de Nitrox. Avísanos al reservar para tener los tanques listos la noche anterior.',
+    'faq.q8': '¿Cuál es la política de cancelación?', 'faq.a8': 'Las salidas que cancelamos nosotros por clima o estado del mar se reembolsan o reprograman por completo. Las cancelaciones del cliente con más de 48 horas se reembolsan menos gastos de procesamiento. Dentro de las 48 horas hacemos lo posible por reprogramarte.',
+
+    'contact.eyebrow': 'Reserva', 'contact.title': 'La lancha sale a las ocho.',
+    'contact.lede': 'Elige una fecha, paga un depósito y nosotros nos encargamos del resto. ¿Preguntas primero? WhatsApp es la forma más rápida de hablar con la tienda.',
+    'contact.cta1': 'Reservar en línea', 'contact.cta2': 'Escríbenos por WhatsApp',
+    'contact.k1': 'Teléfono y WhatsApp', 'contact.k2': 'Correo', 'contact.k3': 'Tienda', 'contact.v3': 'Calle principal, Santa Catalina, Veraguas, Panamá', 'contact.k4': 'Horario', 'contact.v4': 'Todos los días de 07:00 a 18:00', 'contact.k5': 'Idiomas', 'contact.v5': 'Español, English',
+
+    'footer.tag': 'Dive Resort PADI 5 Estrellas · Santa Catalina, Panamá', 'footer.site': 'Concepto web por ThryveX Group'
+  }
+};

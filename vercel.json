@@ -26,6 +26,15 @@
       ]
     },
     {
+      "source": "/panama-dive-center/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
       "source": "/assets/(.*)",
       "headers": [
         {
@@ -90,6 +99,14 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/panama-dive-center",
+      "destination": "/panama-dive-center/index.html"
+    },
+    {
+      "source": "/panama-dive-center/",
+      "destination": "/panama-dive-center/index.html"
+    },
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"

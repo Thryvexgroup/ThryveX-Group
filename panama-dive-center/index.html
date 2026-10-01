@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Panama Dive Center | Dive Coiba National Park from Santa Catalina</title>
+<meta name="description" content="Daily dive trips and PADI courses into Coiba National Park, a UNESCO World Heritage Site, from Santa Catalina, Panama. The first PADI 5 Star Dive Resort in Santa Catalina." />
+<meta name="theme-color" content="#03182B" />
+<meta property="og:title" content="Panama Dive Center | Dive Coiba National Park" />
+<meta property="og:description" content="Daily dive trips and PADI courses into Coiba National Park from Santa Catalina, Panama." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preload" href="assets/fonts/Fraunces-normal-300.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/Manrope-normal-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/fonts/fonts.css" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Panama Dive Center",
+  "description": "PADI 5 Star Dive Resort in Santa Catalina, Panama. Daily dive trips and PADI courses in Coiba National Park.",
+  "telephone": "+507-6665-7879",
+  "email": "info@panamadivecenter.com",
+  "url": "https://panamadivecenter.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Santa Catalina",
+    "addressRegion": "Veraguas",
+    "addressCountry": "PA"
+  },
+  "priceRange": "$$"
+}
+</script>
+</head>
+<body data-lang="en">
+
+<!-- Ambient ocean. One continuous scene that darkens as you scroll. -->
+<canvas id="ocean" aria-hidden="true"></canvas>
+<div id="ocean-fallback" aria-hidden="true"></div>
+
+<!-- Real footage slot: drop a 10 to 20 second underwater clip at assets/media/hero.mp4 and it fades in behind the hero. -->
+<video id="hero-video" class="hero-video" autoplay muted loop playsinline preload="none" aria-hidden="true">
+  <source src="assets/media/hero.mp4" type="video/mp4" />
+</video>
+
+<a class="skip" href="#trips" data-i18n="skip">Skip to content</a>
+
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Panama Dive Center home">
+    <span class="flag" aria-hidden="true"></span>
+    <span class="nav__name">Panama Dive Center</span>
+  </a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#trips" data-i18n="nav.trips">Dive trips</a>
+    <a href="#courses" data-i18n="nav.courses">Courses</a>
+    <a href="#sites" data-i18n="nav.sites">Dive sites</a>
+    <a href="#season" data-i18n="nav.season">Season</a>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+  </nav>
+  <a class="nav__gauge" id="gauge" href="#top" aria-label="Current depth, back to surface" title="Back to the surface">
+    <span class="gauge__label" data-i18n="gauge.depth">Depth</span>
+    <span class="gauge__num"><b id="gauge-m">0.0</b> m</span>
+    <span class="gauge__zone" id="gauge-zone">Surface</span>
+  </a>
+  <i class="nav__depthline" aria-hidden="true"><b id="gauge-fill"></b></i>
+  <div class="nav__actions">
+    <button class="lang" id="lang" type="button" aria-label="Cambiar a español"><span>EN</span><i>/</i><span>ES</span></button>
+    <a class="btn btn--sun btn--sm" href="https://panamadivecenter.rezdy.com/" target="_blank" rel="noopener" data-i18n="nav.book">Book now</a>
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <a href="#trips" data-i18n="nav.trips">Dive trips</a>
+    <a href="#courses" data-i18n="nav.courses">Courses</a>
+    <a href="#sites" data-i18n="nav.sites">Dive sites</a>
+    <a href="#season" data-i18n="nav.season">Season</a>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--sun" href="https://panamadivecenter.rezdy.com/" target="_blank" rel="noopener" data-i18n="nav.book">Book now</a>
+    <a class="btn btn--ghost" href="https://wa.me/50766657879" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div>
+
+
+<main id="top">
+
+<!-- 0 m : HERO -->
+<section class="hero" id="hero" data-depth="0" data-zone="Surface" data-zone-es="Superficie">
+  <div class="hero__inner">
+    <p class="eyebrow reveal" data-i18n="hero.eyebrow">Santa Catalina · Veraguas · Panamá</p>
+    <h1 class="hero__title">
+      <span class="line"><span data-i18n="hero.l1">Dive</span></span>
+      <span class="line"><em data-i18n="hero.l2">Coiba.</em></span>
+    </h1>
+    <p class="hero__lede reveal" data-i18n="hero.lede">Daily trips into a UNESCO World Heritage Site, one hour by boat from Santa Catalina. Whale sharks, hammerheads, and reefs that are still wild.</p>
+    <div class="hero__cta reveal">
+      <a class="btn btn--sun" href="https://panamadivecenter.rezdy.com/74187/diving-in-coiba-national-park-certified-divers" target="_blank" rel="noopener" data-i18n="hero.cta1">Book a dive trip</a>
+      <a class="btn btn--ghost" href="#courses" data-i18n="hero.cta2">Get certified</a>
+    </div>
+  </div>
+  <ul class="hero__trust reveal" aria-label="Recognition">
+    <li><span class="trust__k">PADI</span><span class="trust__v" data-i18n="trust.padi">First 5 Star Dive Resort in Santa Catalina</span></li>
+    <li><span class="trust__k">Tripadvisor</span><span class="trust__v" data-i18n="trust.ta">No. 1 thing to do in Santa Catalina</span></li>
+    <li><span class="trust__k">Lonely Planet</span><span class="trust__v" data-i18n="trust.lp">Top Choice</span></li>
+  </ul>
+  <div class="hero__scroll" aria-hidden="true">
+    <span data-i18n="hero.scroll">Descend</span>
+    <i></i>
+  </div>
+</section>
+
+<!-- Species ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track" id="ticker">
+    <span>Whale sharks</span><span>Hammerheads</span><span>Humpback whales</span><span>Manta rays</span><span>Whitetip reef sharks</span><span>Sea turtles</span><span>Eagle rays</span><span>Schools of jacks</span><span>Dolphins</span><span>Frogfish</span><span>Seahorses</span><span>Barracuda</span>
+  </div>
+</div>
+
+<!-- 5 m : WHY COIBA -->
+<section class="section coiba" id="coiba" data-depth="5" data-zone="Coiba National Park" data-zone-es="Parque Nacional Coiba">
+  <div class="wrap">
+    <div class="coiba__grid">
+      <div class="coiba__text">
+        <p class="eyebrow reveal" data-i18n="coiba.eyebrow">Why Coiba</p>
+        <h2 class="reveal" data-i18n="coiba.title">The Galápagos you can reach by lunchtime.</h2>
+        <p class="reveal" data-i18n="coiba.p1">Coiba was a penal colony for almost a century, which kept its forests and reefs untouched while the rest of the Pacific coast was developed. Today it is a UNESCO World Heritage Site and the largest island in Central America, protected along with 38 smaller islands and the water around them.</p>
+        <p class="reveal" data-i18n="coiba.p2">The same currents that feed the Galápagos pass here. Volcanic pinnacles rise from deep water and pull in pelagics: whale sharks in the dry season, humpbacks in the green season, hammerheads off Contreras, and whitetip reef sharks on nearly every dive.</p>
+      </div>
+      <ul class="stats reveal-group" aria-label="Coiba in numbers">
+        <li class="stat"><b data-count="38">38</b><span data-i18n="coiba.s1">islands inside the park</span></li>
+        <li class="stat"><b data-count="32" data-suffix="+">32+</b><span data-i18n="coiba.s2">dive sites within reach</span></li>
+        <li class="stat"><b data-count="60">60</b><span data-i18n="coiba.s3">minutes by boat from the shop</span></li>
+        <li class="stat"><b>20–29<small>°C</small></b><span data-i18n="coiba.s4">water temperature through the year</span></li>
+        <li class="stat"><b>10–30<small>m</small></b><span data-i18n="coiba.s5">visibility, best from May to December</span></li>
+        <li class="stat"><b>2005</b><span data-i18n="coiba.s6">UNESCO World Heritage inscription</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 10 m : DIVE TRIPS -->
+<section class="section trips" id="trips" data-depth="10" data-zone="Daily dive trips" data-zone-es="Salidas diarias">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow reveal" data-i18n="trips.eyebrow">For certified divers</p>
+      <h2 class="reveal" data-i18n="trips.title">One boat. One park. Every day.</h2>
+      <p class="lede reveal" data-i18n="trips.lede">Two or three dives inside Coiba National Park with a PADI professional, full equipment and lunch. Small groups, sites chosen on the morning for conditions and what is moving.</p>
+    </div>
+
+    <div class="trip">
+      <div class="trip__card reveal">
+        <div class="trip__price">
+          <div class="price">
+            <span class="price__label" data-i18n="trips.two">2 dives</span>
+            <span class="price__num">$155</span>
+          </div>
+          <div class="price">
+            <span class="price__label" data-i18n="trips.three">3 dives</span>
+            <span class="price__num">$185</span>
+          </div>
+          <p class="price__note" data-i18n="trips.note">Per person. Park entrance fee not included: $20 for foreigners, $5 for Panamanians and residents, paid in cash to the park.</p>
+        </div>
+        <ul class="includes">
+          <li data-i18n="trips.i1">Boat, captain and PADI dive guide</li>
+          <li data-i18n="trips.i2">Full rental equipment, 12 L aluminium tanks</li>
+          <li data-i18n="trips.i3">Lunch, water and fruit on board</li>
+          <li data-i18n="trips.i4">Third dive can be added on the day</li>
+          <li data-i18n="trips.i5">Nitrox and private guide on request</li>
+        </ul>
+        <a class="btn btn--sun btn--block" href="https://panamadivecenter.rezdy.com/74187/diving-in-coiba-national-park-certified-divers" target="_blank" rel="noopener" data-i18n="trips.cta">Check dates and book</a>
+      </div>
+
+      <ol class="timeline reveal-group" aria-label="A typical day">
+        <li><time>07:30</time><div><b data-i18n="tl.1t">Meet at the shop</b><p data-i18n="tl.1p">Paperwork, gear fitting, coffee. Walk down to the beach together.</p></div></li>
+        <li><time>08:00</time><div><b data-i18n="tl.2t">Leave Santa Catalina</b><p data-i18n="tl.2p">Around one hour across the Gulf of Chiriquí. Dolphins often ride the bow.</p></div></li>
+        <li><time>09:15</time><div><b data-i18n="tl.3t">Dive one</b><p data-i18n="tl.3p">Usually the deepest, most exposed site of the day while energy and air are fresh.</p></div></li>
+        <li><time>10:30</time><div><b data-i18n="tl.4t">Surface interval on the island</b><p data-i18n="tl.4p">A white-sand beach inside the park. Howler monkeys in the trees behind you.</p></div></li>
+        <li><time>11:30</time><div><b data-i18n="tl.5t">Dive two</b><p data-i18n="tl.5p">A reef or cleaning station. Turtles, whitetips, schools of jacks.</p></div></li>
+        <li><time>13:00</time><div><b data-i18n="tl.6t">Lunch, then the optional third dive</b><p data-i18n="tl.6p">Decide on the boat. Most people say yes.</p></div></li>
+        <li><time>16:30</time><div><b data-i18n="tl.7t">Back in Santa Catalina</b><p data-i18n="tl.7p">Rinse gear, log the dives, sunset from the point.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 18 m : COURSES -->
+<section class="section courses" id="courses" data-depth="18" data-zone="PADI courses" data-zone-es="Cursos PADI">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow reveal" data-i18n="courses.eyebrow">PADI courses, beginner to professional</p>
+      <h2 class="reveal" data-i18n="courses.title">Learn where the diving is actually good.</h2>
+      <p class="lede reveal" data-i18n="courses.lede">Most people get certified in a quarry or a hotel pool. Here your training dives are in a national park with sharks on the reef. Every course is taught by a PADI Instructor in English or Spanish, with a maximum of four students per instructor.</p>
+    </div>
+
+    <div class="course-grid reveal-group">
+      <article class="course" data-course="dsd">
+        <header><span class="course__depth">12 m</span><span class="course__tag" data-i18n="c.dsd.tag">No experience</span></header>
+        <h3 data-i18n="c.dsd.t">Discover Scuba Diving</h3>
+        <p data-i18n="c.dsd.p">A morning of theory and skills in shallow water, then two real dives in Coiba with your instructor at your side. The best single day you can spend in Panama.</p>
+        <dl><div><dt data-i18n="c.dur">Duration</dt><dd data-i18n="c.dsd.d">1 day</dd></div><div><dt data-i18n="c.from">From</dt><dd>$170</dd></div></dl>
+        <a class="course__link" href="https://panamadivecenter.rezdy.com/" target="_blank" rel="noopener" data-i18n="c.book">Book</a>
+      </article>
+
+      <article class="course course--feature" data-course="ow">
+        <header><span class="course__depth">18 m</span><span class="course__tag" data-i18n="c.ow.tag">Most popular</span></header>
+        <h3 data-i18n="c.ow.t">Open Water Diver</h3>
+        <p data-i18n="c.ow.p">The certification that lets you dive anywhere in the world. Do the theory online before you arrive, then skills in confined water and four ocean dives inside the park.</p>
+        <dl><div><dt data-i18n="c.dur">Duration</dt><dd data-i18n="c.ow.d">3 to 4 days</dd></div><div><dt data-i18n="c.from">From</dt><dd>$550</dd></div></dl>
+        <a class="course__link" href="https://panamadivecenter.rezdy.com/" target="_blank" rel="noopener" data-i18n="c.book">Book</a>
+      </article>
+
+      <article class="course" data-course="ref">
+        <header><span class="course__depth">18 m</span><span class="course__tag" data-i18n="c.ref.tag">Referral</span></header>
+        <h3 data-i18n="c.ref.t">Open Water Referral</h3>
+        <p data-i18n="c.ref.p">Already finished theory and pool sessions at home? Complete your four open water dives here in two days and certify in Coiba instead of a lake.</p>
+        <dl><div><dt data-i18n="c.dur">Duration</dt><dd data-i18n="c.ref.d">2 days</dd></div><div><dt data-i18n="c.from">From</dt><dd>$380</dd></div></dl>
+        <a class="course__link" href="https://panamadivecenter.rezdy.com/202878/partial-padi-ow-open-sessions" target="_blank" rel="noopener" data-i18n="c.book">Book</a>
+      </article>
+
+      <article class="course" data-course="aow">
+        <header><span class="course__depth">30 m</span><span class="course__tag" data-i18n="c.aow.tag">Recommended for Coiba</span></header>
+        <h3 data-i18n="c.aow.t">Advanced Open Water</h3>
+        <p data-i18n="c.aow.p">Five adventure dives including Deep and Navigation. Coiba's best sites sit between 20 and 30 metres with current, so this is the card that opens the park.</p>
+        <dl><div><dt data-i18n="c.dur">Duration</dt><dd data-i18n="c.aow.d">2 days</dd></div><div><dt data-i18n="c.from">From</dt><dd>$550</dd></div></dl>
+        <a class="course__link" href="https://panamadivecenter.rezdy.com/" target="_blank" rel="noopener" data-i18n="c.book">Book</a>
+      </article>
+
+      <article class="course" data-course="rescue">
+        <header><span class="course__depth">30 m</span><span class="course__tag" data-i18n="c.res.tag">With EFR</span></header>
+        <h3 data-i18n="c.res.t">Rescue Diver</h3>
+        <p data-i18n="c.res.p">The course every instructor says changed how they dive. Self-rescue, assisting others, and Emergency First Response, taught in real conditions.</p>
+        <dl><div><dt data-i18n="c.dur">Duration</dt><dd data-i18n="c.res.d">3 days</dd></div><div><dt data-i18n="c.from">From</dt><dd data-i18n="c.ask">Ask us</dd></div></dl>
+        <a class="course__link" href="#contact" data-i18n="c.enquire">Enquire</a>
+      </article>
+
+      <article class="course course--pro" data-course="dm">
+        <header><span class="course__depth">40 m</span><span class="course__tag" data-i18n="c.dm.tag">Go pro</span></header>
+        <h3 data-i18n="c.dm.t">Divemaster</h3>
+        <p data-i18n="c.dm.p">Four to eight weeks living in Santa Catalina and diving Coiba almost every day. Guide real groups, assist real courses, and leave as a PADI professional.</p>
+        <dl><div><dt data-i18n="c.dur">Duration</dt><dd data-i18n="c.dm.d">4 to 8 weeks</dd></div><div><dt data-i18n="c.from">From</dt><dd>$1,680</dd></div></dl>
+        <a class="course__link" href="https://panamadivecenter.rezdy.com/56423/padi-dive-master-certification-course" target="_blank" rel="noopener" data-i18n="c.book">Book</a>
+      </article>
+    </div>
+
+    <p class="courses__more reveal" data-i18n="courses.more">Also available: Nitrox, Deep, Drift and Underwater Navigation specialties, Tec diving in Coiba, and private instruction.</p>
+  </div>
+</section>
+
+<!-- 25 m : DIVE SITES -->
+<section class="section sites" id="sites" data-depth="25" data-zone="Dive sites" data-zone-es="Sitios de buceo">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow reveal" data-i18n="sites.eyebrow">Where we dive</p>
+      <h2 class="reveal" data-i18n="sites.title">Thirty-two sites. We pick the right three each morning.</h2>
+    </div>
+
+    <div class="map reveal">
+      <svg class="map__svg" viewBox="0 0 1000 620" role="img" aria-labelledby="map-title" id="map">
+        <title id="map-title">Stylised map of Coiba National Park and Santa Catalina</title>
+        <defs>
+          <radialGradient id="gShallow" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#3fb9d6" stop-opacity=".35"/><stop offset="1" stop-color="#3fb9d6" stop-opacity="0"/></radialGradient>
+          <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#9fd9e6" stroke-opacity=".25" stroke-width="1"/></pattern>
+        </defs>
+        <!-- bathymetry rings -->
+        <g class="map__depth" fill="none" stroke="#7fd3e6" stroke-opacity=".10">
+          <ellipse cx="520" cy="300" rx="430" ry="260"/>
+          <ellipse cx="520" cy="300" rx="340" ry="200"/>
+          <ellipse cx="520" cy="300" rx="250" ry="140"/>
+        </g>
+        <!-- park boundary -->
+        <path class="map__park" d="M300 110 L820 90 L870 520 L250 560 Z" fill="url(#hatch)" stroke="#9fd9e6" stroke-opacity=".35" stroke-dasharray="4 6"/>
+        <!-- mainland (Santa Catalina) -->
+        <path class="map__land" d="M0 0 H1000 V70 C900 60 820 95 740 80 C660 65 560 110 470 95 C380 80 300 120 200 105 C120 95 60 60 0 70 Z"/>
+        <text class="map__label" x="700" y="44">Santa Catalina</text>
+        <circle class="map__shop" cx="712" cy="56" r="4"/>
+        <!-- Contreras (north) -->
+        <path class="map__land" d="M560 190 l22 -10 l18 14 l-8 18 l-24 4 l-14 -12 z"/>
+        <path class="map__land" d="M610 215 l14 -6 l12 10 l-6 12 l-16 2 z"/>
+        <!-- Canales de Afuera (NE) -->
+        <path class="map__land" d="M690 250 l18 -8 l16 10 l-4 16 l-20 6 l-14 -10 z"/>
+        <path class="map__land" d="M720 285 l10 -4 l10 8 l-4 10 l-12 2 z"/>
+        <!-- Rancheria (small, NE of Coiba) -->
+        <path class="map__land" d="M585 290 l12 -5 l10 8 l-3 11 l-13 3 l-8 -8 z"/>
+        <!-- Coiba (large) -->
+        <path class="map__land map__coiba" d="M400 320 C430 280 480 275 520 300 C560 325 590 330 610 360 C640 400 620 450 580 480 C540 510 500 540 460 530 C410 520 380 480 370 440 C360 400 370 350 400 320 Z"/>
+        <text class="map__label map__label--big" x="465" y="420">Isla Coiba</text>
+        <!-- Jicaron (south) -->
+        <path class="map__land" d="M470 565 l26 -10 l22 14 l-6 20 l-30 6 l-18 -14 z"/>
+        <text class="map__label" x="455" y="612">Jicarón</text>
+        <!-- boat route -->
+        <path class="map__route" d="M712 56 C 700 140 650 200 610 250" fill="none"/>
+        <!-- pins -->
+        <g class="pins">
+          <g class="pin" data-site="contreras" tabindex="0" role="button" aria-label="Contreras"><circle cx="590" cy="170" r="22" fill="url(#gShallow)"/><circle cx="590" cy="170" r="6"/><text x="606" y="166">Contreras</text></g>
+          <g class="pin" data-site="wahoo" tabindex="0" role="button" aria-label="Wahoo Rock"><circle cx="745" cy="235" r="22" fill="url(#gShallow)"/><circle cx="745" cy="235" r="6"/><text x="760" y="231">Wahoo Rock</text></g>
+          <g class="pin" data-site="monalisa" tabindex="0" role="button" aria-label="Mona Lisa"><circle cx="760" cy="300" r="22" fill="url(#gShallow)"/><circle cx="760" cy="300" r="6"/><text x="776" y="305">Mona Lisa</text></g>
+          <g class="pin" data-site="canales" tabindex="0" role="button" aria-label="Canales de Afuera"><circle cx="690" cy="300" r="22" fill="url(#gShallow)"/><circle cx="690" cy="300" r="6"/><text x="566" y="296">Canales de Afuera</text></g>
+          <g class="pin" data-site="frijoles" tabindex="0" role="button" aria-label="Frijoles"><circle cx="520" cy="250" r="22" fill="url(#gShallow)"/><circle cx="520" cy="250" r="6"/><text x="445" y="246">Frijoles</text></g>
+          <g class="pin" data-site="granito" tabindex="0" role="button" aria-label="Granito de Oro"><circle cx="612" cy="318" r="22" fill="url(#gShallow)"/><circle cx="612" cy="318" r="6"/><text x="628" y="340">Granito de Oro</text></g>
+        </g>
+      </svg>
+
+      <div class="map__panel" id="site-panel">
+        <p class="eyebrow" id="site-level" data-i18n="sites.level.adv">Advanced</p>
+        <h3 id="site-name">Contreras</h3>
+        <p id="site-desc" data-i18n="sites.contreras.p">A group of islands at the northern edge of the park. Deep, open-ocean dives on pinnacles where schooling hammerheads patrol in the dry season. Current, thermoclines, and the biggest animals in the park.</p>
+        <dl class="map__meta">
+          <div><dt data-i18n="sites.depth">Depth</dt><dd id="site-depth">18–35 m</dd></div>
+          <div><dt data-i18n="sites.see">Look for</dt><dd id="site-see" data-i18n="sites.contreras.see">Hammerheads, eagle rays, jacks</dd></div>
+        </dl>
+        <p class="map__hint" data-i18n="sites.hint">Tap a site on the map.</p>
+      </div>
+    </div>
+    <p class="map__disclaimer" data-i18n="sites.disclaimer">Stylised map. Positions are approximate and not for navigation.</p>
+  </div>
+</section>
+
+<!-- 30 m : SEASON -->
+<section class="section season" id="season" data-depth="30" data-zone="Season" data-zone-es="Temporada">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow reveal" data-i18n="season.eyebrow">When to come</p>
+      <h2 class="reveal" data-i18n="season.title">Coiba dives all year. What you see changes.</h2>
+      <p class="lede reveal" data-i18n="season.lede">The dry season brings cool, nutrient-rich upwellings and the big filter feeders. The green season brings warm water, flat seas, humpbacks and the best visibility.</p>
+    </div>
+
+    <div class="cal reveal">
+      <div class="cal__head">
+        <span></span>
+        <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+      </div>
+      <div class="cal__row" data-months="12,1,2,3,4"><span class="cal__name" data-i18n="season.ws">Whale sharks</span><span class="cal__bar"></span></div>
+      <div class="cal__row" data-months="1,2,3,4,5"><span class="cal__name" data-i18n="season.hh">Hammerhead schools</span><span class="cal__bar"></span></div>
+      <div class="cal__row" data-months="7,8,9,10"><span class="cal__name" data-i18n="season.hb">Humpback whales</span><span class="cal__bar"></span></div>
+      <div class="cal__row" data-months="5,6,7,8,9,10,11"><span class="cal__name" data-i18n="season.mr">Manta rays</span><span class="cal__bar"></span></div>
+      <div class="cal__row" data-months="1,2,3,4,5,6,7,8,9,10,11,12"><span class="cal__name" data-i18n="season.wt">Whitetip sharks, turtles, jacks</span><span class="cal__bar"></span></div>
+      <div class="cal__row cal__row--cond" data-months="1,2,3,4"><span class="cal__name" data-i18n="season.tc">Thermoclines, 20–24 °C</span><span class="cal__bar"></span></div>
+      <div class="cal__row cal__row--cond" data-months="5,6,7,8,9,10,11,12"><span class="cal__name" data-i18n="season.wm">Warm water, 26–29 °C</span><span class="cal__bar"></span></div>
+      <div class="cal__row cal__row--cond" data-months="12,1,2,3,4,5"><span class="cal__name" data-i18n="season.dry">Dry season, surf on the coast</span><span class="cal__bar"></span></div>
+    </div>
+    <p class="cal__note reveal" data-i18n="season.note">Nature does not read calendars. These are the months with the best odds, based on what our guides have logged over the years.</p>
+  </div>
+</section>
+
+<!-- 35 m : ABOUT -->
+<section class="section about" id="about" data-depth="35" data-zone="The dive center" data-zone-es="El centro">
+  <div class="wrap">
+    <div class="about__grid">
+      <div>
+        <p class="eyebrow reveal" data-i18n="about.eyebrow">Panama Dive Center</p>
+        <h2 class="reveal" data-i18n="about.title">A small shop that runs like a big one.</h2>
+        <p class="reveal" data-i18n="about.p1">We are the first PADI 5 Star Dive Resort in Santa Catalina, a hundred metres from the beach the boats leave from. Our instructors teach in English and Spanish, our captains grew up on this water, and every trip carries oxygen, a first-aid kit, radio and a surface marker on every diver.</p>
+        <p class="reveal" data-i18n="about.p2">We run small groups by choice. Four divers to a guide on the boat, four students to an instructor on a course. Coiba is an advanced-feeling park and we would rather you remember the hammerheads than the crowd.</p>
+      </div>
+      <ul class="pillars reveal-group">
+        <li><b data-i18n="about.k1">Safety first, always</b><span data-i18n="about.v1">Oxygen, first aid and a radio on every boat. Every diver carries an SMB. Instructors hold current EFR certifications.</span></li>
+        <li><b data-i18n="about.k2">Small groups</b><span data-i18n="about.v2">Maximum four divers per guide and four students per instructor.</span></li>
+        <li><b data-i18n="about.k3">Serviced equipment</b><span data-i18n="about.v3">Regulators and BCDs serviced on schedule, tanks visually and hydrostatically tested.</span></li>
+        <li><b data-i18n="about.k4">Park partners</b><span data-i18n="about.v4">We follow the park's rules on anchoring, distance from wildlife and group size, and we brief every diver on them.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews" id="reviews" data-depth="37" data-zone="Guest reviews" data-zone-es="Opiniones">
+  <div class="wrap">
+    <div class="reviews__head reveal">
+      <div class="rating"><span class="rating__num">5.0</span><span class="rating__stars" aria-hidden="true">★★★★★</span><span class="rating__src" data-i18n="rev.src">Tripadvisor · No. 1 of things to do in Santa Catalina</span></div>
+    </div>
+    <div class="quotes reveal-group">
+      <blockquote class="quote"><span class="quote__sample" data-i18n="rev.sample">Sample</span><p data-i18n="rev.1">"We saw a whale shark on the first dive and the guide stayed calm enough that we did too. Everything about the day was run properly."</p><footer data-i18n="rev.1f">Guest review, placeholder</footer></blockquote>
+      <blockquote class="quote"><span class="quote__sample" data-i18n="rev.sample">Sample</span><p data-i18n="rev.2">"Did my Open Water here. Four students, one instructor, and training dives with turtles and reef sharks. I cannot imagine doing it in a pool."</p><footer data-i18n="rev.2f">Guest review, placeholder</footer></blockquote>
+      <blockquote class="quote"><span class="quote__sample" data-i18n="rev.sample">Sample</span><p data-i18n="rev.3">"Gear was new, boat was fast, lunch was good. The thing that stands out is how safety-focused they were without making it stiff."</p><footer data-i18n="rev.3f">Guest review, placeholder</footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq" id="faq" data-depth="38" data-zone="Questions" data-zone-es="Preguntas">
+  <div class="wrap wrap--narrow">
+    <div class="section__head">
+      <p class="eyebrow reveal" data-i18n="faq.eyebrow">Before you book</p>
+      <h2 class="reveal" data-i18n="faq.title">Questions we answer every morning.</h2>
+    </div>
+    <div class="acc reveal-group">
+      <details class="acc__item"><summary data-i18n="faq.q1">Do I need to be certified to dive Coiba?</summary><div><p data-i18n="faq.a1">For the daily trips, yes: Open Water or equivalent. If you have never dived, book Discover Scuba Diving and you will do two real dives in the park with an instructor holding your hand. Advanced Open Water is recommended for the deeper sites at Contreras and Canales.</p></div></details>
+      <details class="acc__item"><summary data-i18n="faq.q2">What is the park fee and why is it not included?</summary><div><p data-i18n="faq.a2">Coiba National Park charges every visitor an entrance fee: $20 per day for foreigners, $5 for Panamanians and residents. It is collected by the park rangers in cash, so we cannot include it in online payments. Bring exact change if you can.</p></div></details>
+      <details class="acc__item"><summary data-i18n="faq.q3">How do I get to Santa Catalina?</summary><div><p data-i18n="faq.a3">From Panama City, drive about 5 to 6 hours via Santiago and Soná, or take the bus to Soná and a local bus or taxi from there. Albrook terminal has buses to Santiago all day. We can arrange a private transfer from Panama City or David.</p></div></details>
+      <details class="acc__item"><summary data-i18n="faq.q4">What should I bring?</summary><div><p data-i18n="faq.a4">Certification card, swimwear, towel, sunscreen, a hat, and cash for the park fee. We provide all dive equipment, including wetsuits. In the dry season a 5 mm suit is included because thermoclines can drop to 20 °C.</p></div></details>
+      <details class="acc__item"><summary data-i18n="faq.q5">Can non-divers come on the boat?</summary><div><p data-i18n="faq.a5">Yes. Snorkellers and companions can join the trip at a reduced rate, snorkel the surface intervals at Granito de Oro, and spend the day on the island while the group dives.</p></div></details>
+      <details class="acc__item"><summary data-i18n="faq.q6">How far ahead should I book?</summary><div><p data-i18n="faq.a6">In the dry season, December to April, boats fill a week or more ahead. The rest of the year a few days is usually enough. Courses need a start date agreed in advance so we can schedule an instructor.</p></div></details>
+      <details class="acc__item"><summary data-i18n="faq.q7">Do you fill Nitrox?</summary><div><p data-i18n="faq.a7">Yes, on request and with a Nitrox certification. Ask when booking so tanks are ready the night before.</p></div></details>
+      <details class="acc__item"><summary data-i18n="faq.q8">What is your cancellation policy?</summary><div><p data-i18n="faq.a8">Trips cancelled by us for weather or sea state are refunded or rebooked in full. Guest cancellations more than 48 hours ahead are refunded minus processing. Within 48 hours we do our best to rebook you.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- 40 m : BOOK / CONTACT -->
+<section class="section contact" id="contact" data-depth="40" data-zone="Book your dive" data-zone-es="Reserva">
+  <div class="wrap">
+    <div class="contact__grid">
+      <div class="contact__text">
+        <p class="eyebrow reveal" data-i18n="contact.eyebrow">Book</p>
+        <h2 class="reveal" data-i18n="contact.title">The boat leaves at eight.</h2>
+        <p class="lede reveal" data-i18n="contact.lede">Pick a date, pay a deposit, and we handle the rest. Questions first? WhatsApp is the fastest way to reach the shop.</p>
+        <div class="contact__cta reveal">
+          <a class="btn btn--sun" href="https://panamadivecenter.rezdy.com/" target="_blank" rel="noopener" data-i18n="contact.cta1">Book online</a>
+          <a class="btn btn--ghost" href="https://wa.me/50766657879" target="_blank" rel="noopener" data-i18n="contact.cta2">WhatsApp us</a>
+        </div>
+      </div>
+      <ul class="contact__list reveal-group">
+        <li><span data-i18n="contact.k1">Phone and WhatsApp</span><a href="tel:+50766657879">+507 6665 7879</a></li>
+        <li><span data-i18n="contact.k2">Email</span><a href="mailto:info@panamadivecenter.com">info@panamadivecenter.com</a></li>
+        <li><span data-i18n="contact.k3">Shop</span><b data-i18n="contact.v3">Main street, Santa Catalina, Veraguas, Panamá</b></li>
+        <li><span data-i18n="contact.k4">Hours</span><b data-i18n="contact.v4">Every day 07:00 to 18:00</b></li>
+        <li><span data-i18n="contact.k5">Languages</span><b data-i18n="contact.v5">English, Español</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__brand">
+      <span class="flag" aria-hidden="true"></span>
+      <b>Panama Dive Center</b>
+      <p data-i18n="footer.tag">PADI 5 Star Dive Resort · Santa Catalina, Panamá</p>
+    </div>
+    <nav class="footer__nav" aria-label="Footer">
+      <a href="#trips" data-i18n="nav.trips">Dive trips</a>
+      <a href="#courses" data-i18n="nav.courses">Courses</a>
+      <a href="#sites" data-i18n="nav.sites">Dive sites</a>
+      <a href="#season" data-i18n="nav.season">Season</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="footer__social">
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.tripadvisor.com/" target="_blank" rel="noopener">Tripadvisor</a>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>© <span id="year">2026</span> Panama Dive Center</span>
+    <span data-i18n="footer.site">Site concept by ThryveX Group</span>
+  </div>
+</footer>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/ocean.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
