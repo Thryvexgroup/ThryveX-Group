@@ -148,6 +148,9 @@
     p.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showSite(p.dataset.site); } });
   });
   showSite('contreras');
+  const mapSvg = $('#map');
+  function fitMap() { if (!mapSvg) return; mapSvg.setAttribute('viewBox', window.innerWidth <= 600 ? '390 30 560 400' : '0 0 1000 620'); }
+  fitMap(); window.addEventListener('resize', fitMap, { passive: true });
 
   /* ---------- Reveals y contadores ---------- */
   if (window.gsap && window.ScrollTrigger && !reduced) {

@@ -47,6 +47,7 @@ html.lenis, html.lenis body { height: auto; }
 
 body { margin: 0; background: var(--deep); color: var(--bone); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 body.menu-open { overflow: hidden; }
+body.menu-open .proposal { display: none; }
 img, svg, video { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
@@ -143,13 +144,13 @@ body.has-proposal .footer { padding-bottom: 96px; }
 
 .nav__gauge { display: grid; grid-template-columns: auto auto; column-gap: 10px; align-items: baseline; font-family: var(--mono); color: var(--bone); margin-left: auto; margin-right: 6px; }
 .gauge__label { grid-column: 1; grid-row: 1; font-family: var(--body); font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--bone-50); line-height: 1; }
-.gauge__num { grid-column: 2; grid-row: 1 / 3; font-size: 19px; letter-spacing: -0.02em; line-height: 1; }
+.gauge__num { grid-column: 2; grid-row: 1 / 3; font-size: 19px; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; }
 .gauge__num b { font-weight: 500; font-variant-numeric: tabular-nums; }
 .gauge__zone { grid-column: 1; grid-row: 2; font-family: var(--body); font-size: 11px; color: var(--aqua); line-height: 1; margin-top: 4px; white-space: nowrap; }
 .nav__depthline { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; pointer-events: none; }
 .nav__depthline b { position: absolute; left: 0; top: 0; height: 100%; width: 100%; background: linear-gradient(90deg, var(--aqua), var(--sun)); transform-origin: left; transform: scaleX(0); transition: transform .25s linear; }
 
-.menu { position: fixed; inset: 0; z-index: 35; background: rgba(4, 22, 38, 0.96); display: flex; flex-direction: column; justify-content: center; padding: 100px var(--gutter) 40px; opacity: 0; pointer-events: none; transition: opacity .4s; }
+.menu { position: fixed; inset: 0; z-index: 35; background: #041626; display: flex; flex-direction: column; justify-content: center; padding: 100px var(--gutter) 40px; opacity: 0; pointer-events: none; transition: opacity .4s; }
 .menu.is-open { opacity: 1; pointer-events: auto; }
 .menu nav { display: flex; flex-direction: column; }
 .menu nav a { font-family: var(--display); font-size: clamp(28px, 7vw, 40px); font-weight: 700; letter-spacing: -0.03em; padding: 12px 0; border-bottom: 1px solid var(--bone-10); transform: translateY(12px); opacity: 0; transition: transform .6s var(--ease), opacity .6s; }
@@ -351,6 +352,7 @@ body.has-proposal .footer { padding-bottom: 96px; }
   .gauge__zone { display: none; }
   .gauge__label { grid-row: 1 / 3; align-self: center; }
   .gauge__num { font-size: 16px; }
+  .nav { gap: 14px; }
   .split, .split--media, .section__head--split { grid-template-columns: 1fr; }
   .hero__trust { grid-template-columns: 1fr; gap: 12px; }
   .hero { padding-bottom: 36px; }
@@ -376,11 +378,18 @@ body.has-proposal .footer { padding-bottom: 96px; }
   .contact__list li { grid-template-columns: 1fr; gap: 4px; }
   .price__num { font-size: 38px; }
   .map__panel { padding: 22px; }
-  .pin text { font-size: 20px; }
-  .map__label { font-size: 17px; }
-  .map__label--big { font-size: 26px; }
   .nav__brand .nav__name { display: none; }
-  .proposal { font-size: 12px; gap: 10px; }
+  .proposal { font-size: 12px; line-height: 1.35; gap: 8px; padding: 9px var(--gutter); }
+  .proposal a { display: none; }
+  .proposal button { padding: 2px 6px; }
+  body.has-proposal .footer { padding-bottom: 80px; }
+  .hero__media img, .hero__media video { object-position: 58% 22%; }
+  .hero { min-height: 92svh; }
+  .pin text { font-size: 28px; }
+  .pin circle:last-of-type { r: 9; }
+  .map__label { font-size: 22px; }
+  .map__label--big { font-size: 34px; }
+  .map__panel h3 { font-size: 28px; }
   .reviews__head { align-items: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {
