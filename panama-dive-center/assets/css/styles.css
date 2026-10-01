@@ -59,7 +59,7 @@ h1, h2, h3, p, dl, dd, blockquote, figure { margin: 0; }
 .hero__media video { opacity: 0; transition: opacity 1.2s ease; }
 .hero__media video.is-ready { opacity: 1; }
 #ocean { position: absolute; inset: 0; width: 100%; height: 100%; mix-blend-mode: screen; opacity: .3; }
-.hero__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,36,60,.55) 0%, rgba(6,36,60,.10) 35%, rgba(6,36,60,.25) 65%, rgba(6,36,60,.92) 100%); }
+.hero__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,36,60,.35) 0%, rgba(6,36,60,.05) 30%, rgba(6,36,60,.35) 65%, rgba(6,36,60,.92) 100%), linear-gradient(90deg, rgba(6,36,60,.45) 0%, rgba(6,36,60,0) 55%); }
 
 main, .footer, .nav, .menu { position: relative; z-index: 1; }
 
