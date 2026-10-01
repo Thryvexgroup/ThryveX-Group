@@ -14,36 +14,30 @@ Está en español e inglés, con las salidas, los cursos, un mapa de sitios y el
 de temporada. Es solo una propuesta, no les pido nada. Si les gusta, lo hablamos cuando
 esté ahí. Un saludo.
 
-## Correo (si prefieren algo más formal)
+## Correo (enviar desde glucas@thryvexgroup.com)
 
 Asunto: Una propuesta de web para Panama Dive Center
 
-Hola,
+Hola, equipo de Panama Dive Center:
 
-Me llamo Gonzalo y dirijo ThryveX Group, un estudio de desarrollo web y automatización
-en Ciudad de Panamá. El mes que viene hago mi Open Water con ustedes en Santa Catalina.
+Me llamo Gonzalo Lucas. A principios de noviembre estaré con ustedes en Santa Catalina para completar la parte práctica de mi certificación Open Water, así que pronto nos conocemos en persona.
 
-Preparando el viaje, pasé bastante tiempo en panamadivecenter.com y vi que la web no está
-a la altura del centro: ustedes son el primer PADI 5 Star de Santa Catalina y el nº 1 de
-Tripadvisor, y la web actual los hace parecer la opción económica. Así que construí una
-propuesta de rediseño por mi cuenta: https://www.thryvexgroup.com/panama-dive-center/
+Preparando el viaje pasé un buen rato en su página web y, da la casualidad de que dirijo ThryveX Group, una empresa de desarrollo web y automatización con IA en Ciudad de Panamá. Me quedé con la sensación de que la web no refleja lo que ustedes son: el primer PADI 5 Star Dive Resort de Santa Catalina y el número 1 en Tripadvisor. Hoy la web es la primera impresión que un buzo tiene del centro, antes de escribir por WhatsApp y mucho antes de subirse a la lancha. Forma parte de la experiencia del cliente tanto como el equipo o la atención a bordo.
 
-Qué incluye:
-- Español como idioma principal, inglés con un clic.
-- Salidas diarias con precio, qué incluye y el día típico.
-- Los seis cursos PADI con duración y precio, enlazados a su Rezdy actual.
-- Mapa interactivo de sitios de buceo y calendario de temporada por especie.
-- Reserva en línea y WhatsApp en toda la página. Carga en menos de un segundo.
+Así que, por iniciativa propia, preparé una muestra de cómo podría verse:
 
-Las fotos son provisionales con licencia abierta; las suyas de Coiba la harían mucho mejor.
-Los precios salen de su Rezdy y de listados públicos, así que habría que confirmarlos.
+https://www.thryvexgroup.com/panama-dive-center/
 
-No les pido nada con esto. Si les interesa, podemos verlo en persona cuando esté en el
-centro y les explico cómo quedaría en su dominio sin tocar sus reservas de Rezdy.
+Es solo un ejemplo, no una versión final. Está en español e inglés, enlaza con su sistema de reservas actual y se puede desarrollar en la dirección que ustedes necesiten: con sus fotos de Coiba, sus precios y lo que quieran destacar.
 
-Un saludo,
-Gonzalo
-ThryveX Group · thryvexgroup.com · +507 6569 3716
+Si les interesa, me encantaría enseñárselo con calma en una llamada o directamente en el centro cuando esté allí en noviembre. Sin compromiso.
+
+Un saludo y hasta pronto,
+
+Gonzalo Lucas
+ThryveX Group · Desarrollo web y automatización con IA
+glucas@thryvexgroup.com · +507 6569 3716
+www.thryvexgroup.com
 
 ## Si preguntan "¿y cuánto cuesta?"
 
