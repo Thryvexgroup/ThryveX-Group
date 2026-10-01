@@ -380,6 +380,8 @@ body.has-proposal .footer { padding-bottom: 96px; }
   .map__label { font-size: 17px; }
   .map__label--big { font-size: 26px; }
   .nav__brand .nav__name { display: none; }
+  .proposal__x { display: none; }
+  .proposal { font-size: 12px; gap: 10px; }
   .reviews__head { align-items: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {
