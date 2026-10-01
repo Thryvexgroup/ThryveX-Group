@@ -4,15 +4,21 @@ Enlace para enviar: https://www.thryvexgroup.com/panama-dive-center/
 Ya está publicado en
 https://www.thryvexgroup.com/panama-dive-center/
 
-## WhatsApp (primer contacto, corto)
+## WhatsApp
 
-Hola, soy Gonzalo, de ThryveX Group. Hago mi curso Open Water con ustedes el mes que
-viene y, mientras preparaba el viaje, estuve en su web. Como me dedico a diseño web,
-me animé a rediseñarla por mi cuenta como ejercicio: https://www.thryvexgroup.com/panama-dive-center/
+Hola, buenas 👋 Soy Gonzalo Lucas. A principios de noviembre voy con ustedes a Santa Catalina a terminar la parte práctica de mi Open Water.
 
-Está en español e inglés, con las salidas, los cursos, un mapa de sitios y el calendario
-de temporada. Es solo una propuesta, no les pido nada. Si les gusta, lo hablamos cuando
-esté ahí. Un saludo.
+Les cuento algo rápido: tengo una empresa de desarrollo web y automatización con IA (ThryveX Group) y, preparando el viaje, estuve en su página. Me pareció que no refleja el centro que son, el primer PADI 5 Star de Santa Catalina y nº 1 en Tripadvisor. Hoy la web es la primera impresión que un buzo tiene de ustedes antes de escribir o reservar.
+
+Así que preparé una muestra de cómo podría verse, por iniciativa propia:
+https://www.thryvexgroup.com/panama-dive-center/
+
+Es solo un ejemplo, no una versión final. Está en español e inglés y se puede desarrollar como ustedes necesiten, con sus fotos y sus precios.
+
+Si les interesa, lo vemos en una llamada o directamente en el centro cuando esté allí en noviembre. Sin compromiso 🙂
+
+Gonzalo Lucas · ThryveX Group
+glucas@thryvexgroup.com · +507 6569 3716
 
 ## Correo (enviar desde glucas@thryvexgroup.com)
 
