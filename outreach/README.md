@@ -1,6 +1,6 @@
 # Prospectos de cold outreach · Panamá
 
-Lista de trabajo en `prospectos-panama.xlsx` (misma carpeta). Esta es la versión de lectura rápida.
+Lista de trabajo en `prospectos-panama.xlsx` (misma carpeta). Esta es la versión de lectura rápida. Los prospectos fáciles de cerrar están en `FACILES.md` y en la hoja `Fáciles`.
 
 **Prioridad A** = negocio fuerte + web débil: hacer mockup y escribir. **B** = negocio fuerte, web aceptable: vender el asistente de IA, no rediseño. **C** = secundario, verificar antes.
 
