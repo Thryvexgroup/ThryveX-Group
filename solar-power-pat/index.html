@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Solar Power Pat · Asistente de WhatsApp 24/7 (demostración)</title>
+<meta name="description" content="Demostración de un asistente de WhatsApp con IA para Solar Power Pat: responde al momento, lee la factura, precotiza y agenda la visita técnica, a cualquier hora." />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#0B1F3A" />
+<link rel="icon" href="../panama-dive-center/assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preload" href="../panama-dive-center/assets/fonts/PlusJakartaSans-700.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="../panama-dive-center/assets/fonts/Inter-400.woff2" as="font" type="font/woff2" crossorigin />
+<style>
+@font-face{font-family:"Plus Jakarta Sans";font-weight:700;font-display:swap;src:url(../panama-dive-center/assets/fonts/PlusJakartaSans-700.woff2) format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:800;font-display:swap;src:url(../panama-dive-center/assets/fonts/PlusJakartaSans-800.woff2) format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:600;font-display:swap;src:url(../panama-dive-center/assets/fonts/PlusJakartaSans-600.woff2) format("woff2")}
+@font-face{font-family:Inter;font-weight:400;font-display:swap;src:url(../panama-dive-center/assets/fonts/Inter-400.woff2) format("woff2")}
+@font-face{font-family:Inter;font-weight:500;font-display:swap;src:url(../panama-dive-center/assets/fonts/Inter-500.woff2) format("woff2")}
+@font-face{font-family:Inter;font-weight:600;font-display:swap;src:url(../panama-dive-center/assets/fonts/Inter-600.woff2) format("woff2")}
+
+:root{
+  --navy:#0B1F3A; --navy-2:#102A4C; --ink:#14213D; --muted:#5B6B82; --line:#E3E8EF;
+  --sun:#F5A623; --sun-2:#FFC557; --paper:#FFFFFF; --cream:#FFF8EC; --bg:#F6F8FB;
+  --wa:#25D366; --wa-dark:#075E54; --wa-bg:#ECE5DD; --wa-me:#DCF8C6;
+  --radius:18px; --head:"Plus Jakarta Sans",system-ui,sans-serif; --body:Inter,system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--head);line-height:1.12;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,4.6vw,3.4rem);font-weight:800}
+h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700}
+h3{font-size:1.08rem;font-weight:700}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{width:min(1120px,calc(100% - 32px));margin:0 auto}
+.eyebrow{display:inline-block;font:600 .78rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--sun);margin-bottom:14px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font:600 .98rem var(--body);text-decoration:none;border:0;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn--sun{background:var(--sun);color:var(--navy);box-shadow:0 10px 30px rgba(245,166,35,.35)}
+.btn--ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.btn--wa{background:var(--wa);color:#073b2b;box-shadow:0 10px 30px rgba(37,211,102,.3)}
+
+/* proposal banner */
+.proposal{position:sticky;top:0;z-index:50;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px 16px;background:var(--cream);border-bottom:1px solid #F3DDB0;font-size:.86rem;color:#6b4e12}
+.proposal a{font-weight:600;color:#6b4e12}
+.proposal button{margin-left:6px;border:0;background:transparent;font-size:1.2rem;line-height:1;cursor:pointer;color:#6b4e12}
+.proposal.hidden{display:none}
+
+/* hero */
+.hero{background:radial-gradient(1200px 600px at 80% -10%,#1b3d6e 0%,var(--navy) 55%,#071527 100%);color:#fff;padding:56px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto -10% -45% auto;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,.35),rgba(245,166,35,0) 65%);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:34px}
+.brand__mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--sun-2),var(--sun));display:grid;place-items:center;color:var(--navy);font:800 1.1rem var(--head)}
+.brand__name{font:700 1.05rem var(--head);letter-spacing:.01em}
+.brand__name small{display:block;font:500 .72rem var(--body);opacity:.7;letter-spacing:.12em;text-transform:uppercase}
+.hero p.lead{font-size:1.12rem;color:rgba(255,255,255,.82);max-width:48ch}
+.hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero__facts{display:flex;gap:26px;flex-wrap:wrap;margin-top:34px;padding-top:26px;border-top:1px solid rgba(255,255,255,.14)}
+.fact b{display:block;font:800 1.5rem var(--head);color:var(--sun-2)}
+.fact span{font-size:.84rem;color:rgba(255,255,255,.7)}
+
+/* phone */
+.phone{width:min(380px,100%);margin:0 auto;background:#111;border-radius:44px;padding:12px;box-shadow:0 40px 90px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06) inset;position:relative}
+.phone::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:120px;height:26px;background:#111;border-radius:0 0 18px 18px;z-index:3}
+.screen{background:var(--wa-bg);color:var(--ink);border-radius:34px;overflow:hidden;display:flex;flex-direction:column;height:680px;position:relative;
+  background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+.wa-status{background:var(--wa-dark);color:#fff;font:600 .72rem var(--body);padding:12px 22px 0;display:flex;justify-content:space-between}
+.wa-head{background:var(--wa-dark);color:#fff;padding:10px 120px 12px 14px;display:flex;align-items:center;gap:10px}
+.wa-head .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--sun-2),var(--sun));display:grid;place-items:center;color:var(--navy);font:800 .9rem var(--head);flex:none}
+.wa-head b{display:block;font:600 .95rem var(--body)}
+.wa-head small{font-size:.74rem;opacity:.85}
+.wa-head .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--wa);margin-right:5px;vertical-align:1px}
+.chat{flex:1;overflow-y:auto;padding:14px 10px 8px;display:flex;flex-direction:column;gap:6px;scroll-behavior:smooth}
+.chat::-webkit-scrollbar{width:0}
+.day{align-self:center;background:#fff;color:#54656f;font-size:.7rem;padding:4px 10px;border-radius:8px;margin-bottom:4px;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.msg{max-width:84%;padding:8px 10px 6px;border-radius:10px;font-size:.88rem;line-height:1.4;box-shadow:0 1px 1px rgba(0,0,0,.08);position:relative;animation:pop .22s ease-out;white-space:pre-line}
+.msg.bot{align-self:flex-start;background:#fff;border-top-left-radius:2px}
+.msg.me{align-self:flex-end;background:var(--wa-me);border-top-right-radius:2px}
+.msg time{display:block;text-align:right;font-size:.64rem;color:#8696a0;margin-top:3px}
+.msg.me time::after{content:" ✓✓";color:#53bdeb}
+.msg .card{margin:6px -2px 4px;background:#F7F9FC;border:1px solid var(--line);border-radius:10px;padding:10px;font-size:.82rem}
+.msg .card b{color:var(--navy)}
+.msg .card .row{display:flex;justify-content:space-between;gap:10px;padding:3px 0;border-bottom:1px dashed var(--line)}
+.msg .card .row:last-child{border:0}
+.msg .card .big{font:800 1.25rem var(--head);color:var(--navy)}
+.msg .att{display:flex;align-items:center;gap:8px;background:#f1f3f5;border-radius:8px;padding:6px 8px;margin-bottom:4px;font-size:.8rem}
+.msg .att i{width:30px;height:30px;border-radius:6px;background:linear-gradient(135deg,#dfe7f1,#b9c7d8);display:grid;place-items:center;font-style:normal}
+.typing{align-self:flex-start;background:#fff;border-radius:10px;padding:10px 12px;display:flex;gap:4px;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.typing i{width:6px;height:6px;border-radius:50%;background:#9aa6b2;animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.chips{padding:6px 10px 4px;display:flex;gap:6px;flex-wrap:wrap;min-height:10px}
+.chip{border:1.5px solid var(--wa-dark);color:var(--wa-dark);background:#fff;border-radius:999px;padding:7px 12px;font:500 .8rem var(--body);cursor:pointer;animation:pop .2s ease-out}
+.chip:hover{background:var(--wa-dark);color:#fff}
+.bar{display:flex;gap:8px;align-items:center;padding:8px 10px 14px;background:#F0F2F5}
+.bar input{flex:1;border:0;border-radius:999px;padding:11px 14px;font:400 .9rem var(--body);outline:0;background:#fff}
+.bar input:disabled{background:#f7f7f7;color:#aaa}
+.bar button{width:42px;height:42px;border-radius:50%;border:0;background:var(--wa-dark);color:#fff;display:grid;place-items:center;cursor:pointer;flex:none}
+.bar button:disabled{opacity:.4;cursor:default}
+.restart{position:absolute;right:14px;top:46px;z-index:2;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 10px;font:500 .7rem var(--body);cursor:pointer;color:#fff}
+
+/* owner notification */
+.notif{margin:18px auto 0;width:min(380px,100%);background:#fff;border-radius:16px;padding:14px 16px;box-shadow:0 20px 50px rgba(0,0,0,.25);display:none;color:var(--ink);animation:pop .3s ease-out}
+.notif.show{display:block}
+.notif .t{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-bottom:6px}
+.notif b{font-family:var(--head)}
+.notif .k{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;font-size:.82rem;margin-top:6px}
+.notif .k span{color:var(--muted)}
+
+/* sections */
+section{padding:72px 0}
+.sec-head{max-width:62ch;margin-bottom:38px}
+.sec-head p{color:var(--muted);font-size:1.05rem}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tcard{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.tcard.bad{border-color:#F3C6C6;background:#FFF7F7}
+.tcard.good{border-color:#BFE8D0;background:#F3FBF6}
+.tcard .when{font:700 .78rem var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.tcard.bad .when{color:#B23B3B}.tcard.good .when{color:#1E7A4A}
+.tcard p{margin:0;color:#334155}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.feat .ic{width:44px;height:44px;border-radius:12px;background:var(--cream);display:grid;place-items:center;font-size:1.3rem;margin-bottom:14px}
+.feat p{margin:0;color:var(--muted);font-size:.95rem}
+.dark{background:var(--navy);color:#fff}
+.dark .sec-head p,.dark .feat p{color:rgba(255,255,255,.72)}
+.dark .feat{background:var(--navy-2);border-color:rgba(255,255,255,.08)}
+.dark .feat .ic{background:rgba(255,255,255,.08)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:relative}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:-14px;left:20px;width:30px;height:30px;border-radius:50%;background:var(--sun);color:var(--navy);font:800 .9rem var(--head);display:grid;place-items:center}
+.step p{margin:0;color:var(--muted);font-size:.93rem}
+.cta{background:linear-gradient(135deg,var(--sun-2),var(--sun));color:var(--navy)}
+.cta .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+.cta p{color:#5a4210;font-size:1.05rem}
+.cta .card{background:rgba(255,255,255,.75);border-radius:var(--radius);padding:24px}
+.cta .card b{font-family:var(--head);font-size:1.1rem;display:block}
+.cta .card a{display:block;color:#3b2d0c;text-decoration:none;margin-top:4px;font-weight:500}
+footer{padding:28px 0 40px;font-size:.82rem;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.assump{font-size:.8rem;color:var(--muted);margin-top:14px}
+
+@media (max-width:900px){
+  .hero .wrap,.cta .wrap{grid-template-columns:1fr}
+  .timeline,.grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .hero{padding:40px 0 56px}
+  .screen{height:640px}
+  section{padding:56px 0}
+}
+@media (max-width:520px){.steps{grid-template-columns:1fr}.phone{border-radius:36px;padding:9px}.screen{border-radius:28px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="proposal" id="proposal" role="note">
+  <span><b>Demostración</b> preparada por ThryveX Group para Solar Power Pat. Es una muestra interactiva, no un producto final.</span>
+  <a href="https://www.thryvexgroup.com" target="_blank" rel="noopener">thryvexgroup.com</a>
+  <button type="button" id="proposal-close" aria-label="Cerrar">×</button>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="brand">
+        <div class="brand__mark">☀</div>
+        <div class="brand__name">Solar Power Pat<small>Asistente de WhatsApp · 24/7</small></div>
+      </div>
+      <span class="eyebrow">Son las 9:47 de la noche de un sábado</span>
+      <h1>Alguien quiere paneles solares y escribe ahora. ¿Quién le contesta?</h1>
+      <p class="lead">Hoy Solar Power Pat atiende de lunes a viernes de 8 a 5. Este asistente responde en segundos a cualquier hora, lee la factura, precotiza el sistema y deja la visita técnica agendada. Pruébelo en el teléfono como si fuera un cliente.</p>
+      <div class="hero__cta">
+        <a class="btn btn--sun" href="#demo">Probar el asistente</a>
+        <a class="btn btn--ghost" href="#como">Cómo funciona</a>
+      </div>
+      <div class="hero__facts">
+        <div class="fact"><b>4 s</b><span>tiempo de respuesta, a cualquier hora</span></div>
+        <div class="fact"><b>100%</b><span>de los leads calificados con factura y visita</span></div>
+        <div class="fact"><b>Su número</b><span>sigue siendo el 6646-3171</span></div>
+      </div>
+    </div>
+
+    <div id="demo">
+      <div class="phone" aria-label="Simulación de conversación de WhatsApp">
+        <div class="screen">
+          <div class="wa-status"><span>21:47</span><span>▲▲▲ ⚡</span></div>
+          <div class="wa-head">
+            <div class="av">SP</div>
+            <div><b>Solar Power Pat</b><small><span class="dot"></span>en línea · responde al instante</small></div>
+          </div>
+          <button class="restart" id="restart" type="button">↻ Empezar de nuevo</button>
+          <div class="chat" id="chat" aria-live="polite"><div class="day">Sábado</div></div>
+          <div class="chips" id="chips"></div>
+          <form class="bar" id="bar" autocomplete="off">
+            <input id="inp" type="text" placeholder="Escriba un mensaje" disabled />
+            <button id="send" type="submit" aria-label="Enviar" disabled>➤</button>
+          </form>
+        </div>
+      </div>
+      <div class="notif" id="notif">
+        <div class="t"><span>Mientras tanto, en el celular de Angelo</span><span>ahora</span></div>
+        <b>Nuevo lead calificado ✅</b>
+        <div class="k" id="notif-k"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">El problema no es el tráfico</span>
+      <h2>Ya pagan por cada lead. Lo que se pierde es lo que pasa después.</h2>
+      <p>Las páginas por ciudad, la promo de financiamiento 0% y las publicaciones en redes traen gente. Pero quien pide precio un viernes a las 8 de la noche hoy recibe respuesta el lunes, y para entonces ya habló con otra empresa.</p>
+    </div>
+    <div class="timeline">
+      <div class="tcard bad">
+        <div class="when">Hoy · viernes 20:10</div>
+        <h3>"Hola, ¿cuánto cuesta un sistema para una casa?"</h3>
+        <p>El mensaje entra al celular. Nadie lo ve hasta el lunes a las 8. El cliente escribió a tres empresas más esa misma noche.</p>
+      </div>
+      <div class="tcard">
+        <div class="when">Lunes · 08:30</div>
+        <h3>"Buenos días, ¿me puede mandar su factura?"</h3>
+        <p>Empieza una conversación de dos o tres días para conseguir la factura, calcular y proponer una visita. El cliente ya tiene una cotización de otro lado.</p>
+      </div>
+      <div class="tcard good">
+        <div class="when">Con el asistente · viernes 20:10</div>
+        <h3>Factura, precotización y visita agendada en 3 minutos</h3>
+        <p>El cliente termina la noche con un número, una fecha y la sensación de que Solar Power Pat es la empresa seria. Angelo recibe el lead ya calificado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="como">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Qué hace</span>
+      <h2>Un vendedor que no duerme, no se olvida y no se cansa de hacer seguimiento.</h2>
+      <p>Entrenado con los precios, productos y procesos de Solar Power Pat. Cuando la conversación necesita a una persona, la pasa al equipo con todo el contexto.</p>
+    </div>
+    <div class="grid">
+      <div class="feat"><div class="ic">⚡</div><h3>Responde en segundos, 24/7</h3><p>Noches, fines de semana y feriados. En español e inglés, para el cliente extranjero que busca en Coronado o Boquete.</p></div>
+      <div class="feat"><div class="ic">🧾</div><h3>Lee la factura y precotiza</h3><p>Pide la foto de la factura, calcula consumo, tamaño del sistema, ahorro estimado y cuota con financiamiento 0%. Siempre como estimado, la visita lo confirma.</p></div>
+      <div class="feat"><div class="ic">📅</div><h3>Agenda la visita técnica</h3><p>Ofrece horarios reales del equipo, confirma, manda recordatorio el día antes y reprograma si el cliente lo pide.</p></div>
+      <div class="feat"><div class="ic">🔁</div><h3>Seguimiento a cotizaciones abiertas</h3><p>A la propuesta que no cerró le escribe a los 3, 7 y 21 días con un mensaje distinto cada vez. Sin que nadie tenga que acordarse.</p></div>
+      <div class="feat"><div class="ic">🧽</div><h3>Vende la limpieza con el robot</h3><p>A cada cliente instalado le propone la limpieza con el SolarCleano F1 cada 6 meses. Ingreso recurrente que hoy depende de que alguien llame.</p></div>
+      <div class="feat"><div class="ic">⭐</div><h3>Pide la reseña en Google</h3><p>Una semana después de instalar, pide la reseña con el enlace directo. Más reseñas, más leads orgánicos, menos pauta.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Cómo se conecta</span>
+      <h2>Mismo número, mismo equipo, cero cambios para el cliente.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Su número actual</h3><p>Se conecta el 6646-3171 a la API oficial de WhatsApp Business. El cliente no nota nada distinto.</p></div>
+      <div class="step"><h3>Entrenamiento</h3><p>Dos sesiones con Angelo: productos, precios, zonas, horarios de visita, preguntas frecuentes y cuándo pasar a una persona.</p></div>
+      <div class="step"><h3>El equipo ve todo</h3><p>Cada conversación aparece en un panel. Cualquiera puede intervenir y el asistente se calla hasta que le devuelvan la palabra.</p></div>
+      <div class="step"><h3>En marcha en 2 semanas</h3><p>Primero en paralelo con el equipo, luego solo. Reporte semanal: leads, visitas agendadas, cotizaciones y cierres.</p></div>
+    </div>
+    <p class="assump">Los números de la demostración son estimados ilustrativos con tarifa de $0.22/kWh, 4.5 horas de sol pico, 80% de rendimiento y un costo instalado de referencia de $1.20 por vatio. En producción el asistente usa los precios y reglas que defina Solar Power Pat.</p>
+  </div>
+</section>
+
+<section class="cta" id="contacto">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" style="color:#7a5410">Siguiente paso</span>
+      <h2>Lo vemos en 20 minutos, en su oficina o por videollamada.</h2>
+      <p>Le enseño el panel, cómo se entrena y qué pasa con una conversación real. Si tiene sentido, en dos semanas está contestando. Sin compromiso.</p>
+      <a class="btn btn--wa" href="https://wa.me/50765693716?text=Hola%20Gonzalo%2C%20vi%20la%20demo%20del%20asistente%20para%20Solar%20Power%20Pat" target="_blank" rel="noopener">Escribir a Gonzalo por WhatsApp</a>
+    </div>
+    <div class="card">
+      <b>Gonzalo Lucas · ThryveX Group</b>
+      <a href="mailto:glucas@thryvexgroup.com">glucas@thryvexgroup.com</a>
+      <a href="tel:+50765693716">+507 6569 3716</a>
+      <a href="https://www.thryvexgroup.com" target="_blank" rel="noopener">www.thryvexgroup.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Demostración preparada por ThryveX Group. Solar Power Pat y su marca pertenecen a sus dueños; esta página no es un sitio oficial.</span>
+    <span>Ciudad de Panamá · 2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // proposal banner
+  var pr=document.getElementById('proposal'),pc=document.getElementById('proposal-close');
+  pc.addEventListener('click',function(){pr.classList.add('hidden')});
+
+  var chat=document.getElementById('chat'),chips=document.getElementById('chips'),bar=document.getElementById('bar'),
+      inp=document.getElementById('inp'),send=document.getElementById('send'),notif=document.getElementById('notif'),notifK=document.getElementById('notif-k');
+  var state={},clock=21*60+47,started=false,onInput=null;
+
+  function tnow(){clock+=1;var h=Math.floor(clock/60)%24,m=clock%60;return (h<10?'0':'')+h+':'+(m<10?'0':'')+m}
+  function scroll(){chat.scrollTop=chat.scrollHeight}
+  function bubble(html,who){var d=document.createElement('div');d.className='msg '+who;d.innerHTML=html+'<time>'+tnow()+'</time>';chat.appendChild(d);scroll();return d}
+  function me(t){bubble(t,'me')}
+  function typing(ms){return new Promise(function(res){var t=document.createElement('div');t.className='typing';t.innerHTML='<i></i><i></i><i></i>';chat.appendChild(t);scroll();setTimeout(function(){t.remove();res()},ms)})}
+  function bot(t,ms){return typing(ms||900).then(function(){bubble(t,'bot')})}
+  function setChips(list){chips.innerHTML='';list.forEach(function(c){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=c.label;b.onclick=function(){chips.innerHTML='';me(c.label);c.go()};chips.appendChild(b)})}
+  function ask(placeholder,fn,type){inp.disabled=false;send.disabled=false;inp.placeholder=placeholder;inp.type=type||'text';inp.value='';inp.focus({preventScroll:true});onInput=fn}
+  function lock(){inp.disabled=true;send.disabled=true;onInput=null;inp.placeholder='Escriba un mensaje'}
+  bar.addEventListener('submit',function(e){e.preventDefault();if(!onInput)return;var v=inp.value.trim();if(!v)return;var fn=onInput;lock();me(v);fn(v)});
+
+  var money=function(n){return '$'+Math.round(n).toLocaleString('es-PA')};
+  function estimate(bill,biz){
+    var tariff=0.22,sunH=4.5,pr=0.8,costW=biz?1.1:1.2;
+    var kwh=bill/tariff, kw=kwh/(sunH*30*pr), panels=Math.ceil(kw*1000/550);
+    kw=Math.round(kw*10)/10;
+    var cost=kw*1000*costW, lo=cost*0.9, hi=cost*1.1, save=bill*0.9, pay=cost/(save*12);
+    var quota=Math.round(cost/48);
+    return {kwh:Math.round(kwh),kw:kw,panels:panels,lo:lo,hi:hi,save:save,pay:Math.round(pay*10)/10,quota:quota};
+  }
+
+  function start(){
+    chat.innerHTML='<div class="day">Sábado</div>';chips.innerHTML='';notif.classList.remove('show');state={};clock=21*60+47;lock();
+    bubble('Hola, ¿cuánto cuesta poner paneles solares en una casa?','me');
+    bot('¡Hola! 👋 Soy el asistente de <b>Solar Power Pat</b>. Con gusto le doy un estimado ahora mismo, en menos de 2 minutos.\n\n¿Es para una casa o para un negocio?',1100).then(function(){
+      setChips([{label:'🏠 Una casa',go:function(){state.biz=false;askBill()}},{label:'🏢 Un negocio',go:function(){state.biz=true;askBill()}}]);
+    });
+  }
+  function askBill(){
+    bot('Perfecto. ¿Cuánto paga de luz al mes, aproximadamente? Puede escribir el monto o mandarme una foto de la factura 📷').then(function(){
+      setChips([{label:'📷 Enviar foto de la factura',go:function(){fakePhoto()}}]);
+      var onBill=function(v){var n=parseFloat(v.replace(/[^0-9.]/g,''));if(!n||n<15){bot('No logré leer el monto 🙈 ¿Me lo escribe en dólares? Por ejemplo: 180').then(function(){ask('Ej. 180',onBill,'tel')});return}chips.innerHTML='';state.bill=n;result()};
+      ask('Ej. 180',onBill,'tel');
+    });
+  }
+  function fakePhoto(){
+    lock();
+    var d=bubble('<div class="att"><i>🧾</i><span>factura_naturgy.jpg</span></div>Aquí está','me');
+    state.bill=state.biz?640:185;
+    bot('Gracias, ya la leí ✅ Veo un consumo de <b>'+Math.round(state.bill/0.22)+' kWh</b> y un total de <b>'+money(state.bill)+'</b> este mes. ¿Correcto?',1400).then(function(){
+      setChips([{label:'Sí, correcto',go:result},{label:'No, es otro monto',go:function(){ask('Monto mensual en $',function(v){state.bill=parseFloat(v.replace(/[^0-9.]/g,''))||state.bill;result()},'tel')}}]);
+    });
+  }
+  function result(){
+    var e=estimate(state.bill,state.biz);state.e=e;
+    var card='Con '+money(state.bill)+' al mes, este sería el sistema aproximado:'+
+      '<div class="card"><div class="row"><span>Sistema</span><b>'+e.kw+' kW · '+e.panels+' paneles</b></div>'+
+      '<div class="row"><span>Inversión estimada</span><b>'+money(e.lo)+' a '+money(e.hi)+'</b></div>'+
+      '<div class="row"><span>Con financiamiento 0% (48 meses)</span><b>≈ '+money(e.quota)+' / mes</b></div>'+
+      '<div class="row"><span>Ahorro estimado</span><span class="big">'+money(e.save)+' / mes</span></div>'+
+      '<div class="row"><span>Se paga solo en</span><b>≈ '+e.pay+' años</b></div></div>'+
+      'Es un estimado. La cifra exacta sale de la visita técnica, que es <b>gratis</b> y dura 30 minutos. ¿Se la agendo?';
+    bot(card,1600).then(function(){
+      setChips([{label:'📅 Sí, agendar visita',go:slots},{label:'❓ Tengo una pregunta',go:faq},{label:'Lo pienso',go:later}]);
+    });
+  }
+  function slots(){
+    bot('Estos son los próximos horarios del equipo técnico. ¿Cuál le queda mejor?').then(function(){
+      setChips([{label:'Lunes 9:00',go:function(){state.slot='lunes 9:00';askName()}},{label:'Lunes 15:00',go:function(){state.slot='lunes 15:00';askName()}},{label:'Martes 10:30',go:function(){state.slot='martes 10:30';askName()}},{label:'Otro horario',go:function(){ask('Ej. miércoles por la tarde',function(v){state.slot=v;askName()})}}]);
+    });
+  }
+  function askName(){
+    bot('Anotado para el <b>'+state.slot+'</b> 🗓️ ¿A nombre de quién y en qué zona está la '+(state.biz?'empresa':'casa')+'?').then(function(){
+      ask('Ej. María Pérez, Costa del Este',function(v){state.who=v;confirm_()});
+    });
+  }
+  function confirm_(){
+    var e=state.e;
+    bot('Listo, <b>'+state.who.split(',')[0].trim()+'</b> ✅\n\nVisita técnica confirmada para el <b>'+state.slot+'</b>. Le mando un recordatorio el día antes y, si algo cambia, me escribe por aquí y la movemos.\n\nAngelo y el equipo ya tienen sus datos y el estimado. ¡Buen fin de semana! ☀️',1500).then(function(){
+      notifK.innerHTML='<span>Tipo</span><b>'+(state.biz?'Negocio':'Casa')+'</b><span>Factura</span><b>'+money(state.bill)+' / mes</b><span>Sistema</span><b>'+e.kw+' kW · '+e.panels+' paneles</b><span>Visita</span><b>'+state.slot+'</b><span>Cliente</span><b>'+state.who+'</b><span>Origen</span><b>WhatsApp · sábado 21:5x</b>';
+      notif.classList.add('show');
+      setChips([{label:'↻ Probar otra vez',go:start}]);
+    });
+  }
+  function faq(){
+    bot('Claro, dígame 🙂 Estas son las más comunes:').then(function(){
+      setChips([
+        {label:'¿Cuánto dura la instalación?',go:function(){bot('Una casa típica se instala en <b>1 o 2 días</b>. Antes, el trámite con la distribuidora (ENSA o Naturgy) para la medición neta toma unas semanas y lo gestionamos nosotros.').then(after)}},
+        {label:'¿Y cuando llueve o de noche?',go:function(){bot('Sigue conectado a la red: de día genera y lo que sobra se acredita con <b>medición neta</b>; de noche o con lluvia usa la red y descuenta ese crédito. Si quiere independencia total, también hay opción con baterías.').then(after)}},
+        {label:'¿Qué garantía tienen los paneles?',go:function(){bot('Trabajamos con <b>Canadian Solar y Jinko</b>: 25 años de garantía de producción. El inversor tiene 10 años y la instalación la respaldamos nosotros.').then(after)}},
+        {label:'¿Hay financiamiento?',go:function(){bot('Sí. Tenemos <b>financiamiento al 0%</b> y además varios bancos ofrecen tasa preferencial para energía solar. En la visita le mostramos las opciones con números reales.').then(after)}}
+      ]);
+    });
+    function after(){setChips([{label:'📅 Agendar la visita',go:slots},{label:'Otra pregunta',go:faq}])}
+  }
+  function later(){
+    bot('Sin problema 👍 Le dejo el estimado guardado. Si quiere, le escribo en unos días por si le surge alguna duda, sin presión.').then(function(){
+      setChips([{label:'Sí, escríbame',go:function(){bot('Perfecto, le escribo el <b>miércoles</b>. Y si antes quiere la visita, solo me dice. ¡Buen fin de semana! ☀️').then(function(){setChips([{label:'↻ Probar otra vez',go:start}])})}},{label:'📅 Mejor agendar ya',go:slots}]);
+    });
+  }
+  document.getElementById('restart').addEventListener('click',start);
+  // start when visible
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(en){if(en[0].isIntersecting&&!started){started=true;start();io.disconnect()}},{threshold:.35}):null;
+  if(io)io.observe(document.querySelector('.phone'));else start();
+  setTimeout(function(){if(!started){started=true;start()}},2500);
+})();
+</script>
+</body>
+</html>
