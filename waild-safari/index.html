@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Waild | Safari the Waild way</title>
+<meta name="description" content="Tailor-made wildlife journeys across Africa, India and beyond. Private safaris, honeymoons and small-group expeditions designed around you." />
+<meta name="theme-color" content="#5b4a1d" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Caveat+Brush&family=Caveat:wght@600;700&family=Special+Elite&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   WAILD — design tokens
+   Swap the four --photo-* variables for the client's real photos.
+   Every photo has a painted fallback underneath, so the page
+   also works fully offline.
+   ============================================================ */
+:root{
+  --brown:#5b4a1d;
+  --brown-deep:#4a3c16;
+  --green:#2e5546;
+  --green-deep:#223f36;
+  --green-ink:#1d3a30;
+  --olive:#7f7a3a;
+  --olive-deep:#6a6a2c;
+  --olive-light:#b9c76b;
+  --cta-olive:#c6d276;
+  --cream:#f4efe4;
+  --cream-dark:#e9e3d3;
+  --sand:#dfd8c4;
+  --pink:#e9b9ea;
+  --pink-deep:#d79bd9;
+  --yellow:#f3e68a;
+  --yellow-deep:#e9d85e;
+  --teal:#b6e1dc;
+  --teal-deep:#8fcdc5;
+  --orange:#e8783f;
+  --lilac:#cdb3e3;
+  --ink:#2b3a2f;
+  --muted:#6e6a5b;
+
+  --serif:'Instrument Serif', 'Times New Roman', serif;
+  --brush:'Caveat Brush', 'Segoe Script', cursive;
+  --hand:'Caveat', 'Segoe Script', cursive;
+  --type:'Special Elite', 'Courier New', monospace;
+  --sans:'Nunito Sans', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+
+  --photo-hero: url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2000&q=80");
+  --photo-elephant: url("https://images.unsplash.com/photo-1564760055775-d63b17a55c44?auto=format&fit=crop&w=2000&q=80");
+  --photo-savanna: url("https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=2000&q=80");
+  --photo-beach: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80");
+
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--sand);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+
+/* ---------- shared ---------- */
+.wrap{width:min(var(--maxw),100% - 32px);margin-inline:auto}
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.05}
+.hand{font-family:var(--hand);font-weight:700;letter-spacing:.01em}
+.brush{font-family:var(--brush)}
+.eyebrow{font-family:var(--type);letter-spacing:.32em;text-transform:uppercase;font-size:.78rem}
+.center{text-align:center}
+.btn{
+  display:inline-block;
+  font-family:var(--sans);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.8rem 1.6rem;border-radius:3px;
+  background:var(--cta-olive);color:var(--brown-deep);
+  transition:transform .18s ease,filter .18s ease;
+}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.btn--yellow{background:var(--yellow)}
+.btn--pink{background:var(--pink)}
+.btn--teal{background:var(--teal)}
+.btn--olive{background:var(--cta-olive)}
+.sun{display:inline-block;width:1em;height:1em;vertical-align:-.15em;margin:0 .5em}
+.sun svg{width:100%;height:100%}
+
+/* ---------- page routing ---------- */
+[data-page]{display:none}
+[data-page].is-active{display:block}
+
+/* ---------- header ---------- */
+.header{background:var(--brown);color:var(--cream);position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.18)}
+.header__top{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:14px 0 10px;
+}
+.header__logo{font-family:var(--brush);font-size:2.1rem;line-height:1;color:var(--cream);justify-self:start}
+.header__emblem{width:58px;height:58px;justify-self:center}
+.header__actions{display:flex;align-items:center;gap:12px;justify-self:end}
+.header__cta{
+  background:var(--pink);color:var(--brown-deep);font-weight:700;font-size:.9rem;
+  padding:.5rem 1.2rem;border-radius:999px;transition:filter .18s;
+}
+.header__cta:hover{filter:brightness(1.06)}
+.lang{display:flex;background:rgba(255,255,255,.14);border-radius:999px;padding:3px;font-size:.75rem;font-weight:700;letter-spacing:.06em}
+.lang button{padding:.3rem .7rem;border-radius:999px;color:var(--cream);opacity:.75}
+.lang button[aria-pressed="true"]{background:var(--cream);color:var(--brown-deep);opacity:1}
+.lang button[data-lang="es"][aria-pressed="true"]{background:var(--cta-olive)}
+.nav{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  padding:6px 0 14px;
+}
+.nav a{
+  font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:.35rem 1rem;border-left:1px solid rgba(255,255,255,.28);
+  transition:color .18s;
+}
+.nav a:first-child{border-left:0}
+.nav a:hover,.nav a.is-current{color:var(--yellow)}
+.nav__burger{display:none}
+
+/* ---------- hero (home) ---------- */
+.hero{
+  position:relative;min-height:520px;display:grid;place-items:center;text-align:center;color:var(--cream);
+  background:
+    var(--photo-hero) center/cover no-repeat,
+    radial-gradient(ellipse at 20% 30%,#9fc3dc 0%,transparent 40%),
+    radial-gradient(ellipse at 80% 20%,#c7e0ec 0%,transparent 35%),
+    linear-gradient(180deg,#6f9bb5 0%,#5e7f45 45%,#2f4a2b 100%);
+  overflow:hidden;
+}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.35))}
+.hero__leaves{position:absolute;inset:auto 0 -40px 0;height:260px;opacity:.9;pointer-events:none}
+.hero__inner{position:relative;z-index:1;padding:40px 16px}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);font-style:italic;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero h1 .brush{font-style:normal;font-size:1.05em}
+.hero .btn{margin-top:1.2rem}
+
+/* ---------- olive marquee band ---------- */
+.band{
+  background:var(--olive-light);color:var(--brown-deep);
+  text-align:center;padding:1.3rem 1rem;
+  font-family:var(--sans);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+}
+.band .hand{text-transform:none;font-size:1.25rem;letter-spacing:0;color:var(--brown-deep)}
+.band .sun{color:var(--brown-deep)}
+
+/* ---------- WAILD acronym ---------- */
+.acronym{background:var(--cream);padding:3.5rem 0 4rem;position:relative}
+.acronym::before{
+  content:"";position:absolute;top:-18px;left:0;right:0;height:40px;
+  background:var(--cream);
+  clip-path:polygon(0 40%,8% 55%,14% 30%,22% 60%,30% 35%,38% 58%,46% 28%,55% 62%,63% 34%,72% 60%,80% 30%,88% 56%,96% 36%,100% 50%,100% 100%,0 100%);
+}
+.letters{display:grid;grid-template-columns:repeat(5,1fr);gap:1.4rem;max-width:960px;margin:0 auto}
+.letter{text-align:center}
+.letter__glyph{
+  font-family:'Nunito Sans',sans-serif;font-weight:900;font-size:clamp(4rem,10vw,7.4rem);line-height:1;
+  display:inline-block;position:relative;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.letter--w .letter__glyph{background-image:repeating-linear-gradient(115deg,var(--olive-deep) 0 14px,var(--yellow) 14px 22px)}
+.letter--a .letter__glyph{background-image:radial-gradient(circle at 30% 30%,var(--orange) 0 9px,transparent 10px),radial-gradient(circle at 70% 70%,var(--orange) 0 7px,transparent 8px),linear-gradient(var(--olive-deep),var(--olive-deep));background-size:34px 34px,34px 34px,auto}
+.letter--i .letter__glyph{background-image:radial-gradient(circle at 50% 50%,var(--lilac) 0 10px,transparent 11px),linear-gradient(var(--olive-deep),var(--olive-deep));background-size:28px 30px,auto}
+.letter--l .letter__glyph{background-image:repeating-radial-gradient(circle at 50% 100%,var(--teal) 0 6px,var(--olive-deep) 6px 16px)}
+.letter--d .letter__glyph{background-image:repeating-linear-gradient(60deg,var(--olive-deep) 0 10px,#9fb24c 10px 18px)}
+.letter__grass{width:70%;margin:-18px auto 0;color:var(--olive-deep)}
+.letter h3{font-family:var(--sans);font-weight:700;font-style:italic;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-top:.6rem;color:var(--brown-deep)}
+.letter p{font-style:italic;font-size:.78rem;color:var(--muted);line-height:1.5;margin-top:.35rem}
+.acronym .btn{margin-top:2.6rem}
+
+/* ---------- trust ---------- */
+.trust{background:var(--cream-dark);padding:3.4rem 0 3rem;text-align:center}
+.trust h2{font-size:clamp(2rem,4.5vw,3rem);color:var(--green);letter-spacing:.02em;text-transform:uppercase;font-family:var(--serif)}
+.trust__grid{display:flex;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.trust__item{flex:1 1 150px;max-width:170px;padding:.6rem 1rem;border-left:1px solid rgba(0,0,0,.14);font-size:.74rem;color:var(--brown-deep);font-weight:600;line-height:1.35}
+.trust__item:first-child{border-left:0}
+.trust__item svg{width:34px;height:34px;margin:0 auto .5rem;color:var(--brown-deep)}
+
+/* ---------- philosophy / three ways ---------- */
+.ways{background:var(--green);color:var(--cream);padding:3.5rem 0 0;position:relative;overflow:hidden;text-align:center}
+.ways h2{font-size:clamp(2rem,4.8vw,3.4rem);max-width:720px;margin:0 auto}
+.ways h2 .hand{color:var(--yellow);font-size:1.1em}
+.ways__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;max-width:960px;margin:2.6rem auto 0;position:relative;z-index:1}
+.card{
+  background:var(--green-deep);padding:2rem 1.5rem 1.6rem;
+  clip-path:polygon(2% 0,98% 1%,100% 97%,1% 100%);
+  display:flex;flex-direction:column;align-items:center;gap:1rem;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+.card .eyebrow{font-size:.62rem;letter-spacing:.3em;margin-bottom:-.9rem}
+.card__name{font-family:var(--brush);font-size:3rem;line-height:1}
+.card--stars .card__name{color:var(--yellow)}
+.card--moons .card__name{color:var(--pink)}
+.card--together .card__name{color:var(--teal)}
+.card p{font-size:.72rem;line-height:1.55;color:rgba(255,255,255,.78);min-height:5.6em}
+.card .btn{font-size:.62rem;padding:.7rem 1.2rem;margin-top:auto}
+.ways__grass{width:min(420px,70%);margin:1.5rem auto -8px;color:var(--olive-light)}
+
+/* ---------- notice strip ---------- */
+.notice{background:var(--cream);text-align:center;padding:1.3rem 1rem;font-family:var(--serif);font-size:1.25rem;color:var(--brown-deep)}
+.notice .hand{font-size:1.15em}
+.notice .hand--pink{color:var(--pink-deep)}
+.notice .hand--olive{color:var(--olive)}
+.notice a{display:block;font-style:italic;text-decoration:underline;text-underline-offset:3px;font-size:1.05rem;margin-top:.1rem}
+.notice--pink{background:var(--pink);color:var(--brown-deep)}
+
+/* ---------- destinations ---------- */
+.dest{background:var(--cream-dark);padding:3.5rem 0 0;text-align:center}
+.dest h2{font-size:clamp(2.4rem,5vw,3.4rem);color:var(--olive)}
+.dest__lead{max-width:600px;margin:.8rem auto 0;font-size:.82rem;color:var(--muted)}
+.dest__tag{font-style:italic;font-size:.8rem;color:var(--muted);margin-top:1rem}
+.dest .btn{margin-top:1rem;font-size:.62rem}
+.carousel{position:relative;margin-top:2.6rem}
+.carousel__track{
+  display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 16px 24px;
+  scrollbar-width:none;
+}
+.carousel__track::-webkit-scrollbar{display:none}
+.dcard{
+  flex:0 0 min(260px,78vw);scroll-snap-align:start;text-align:center;
+}
+.dcard__art{height:200px;background:#fff;position:relative;overflow:hidden;display:grid;place-items:center}
+.dcard__art svg{width:78%;height:78%}
+.dcard__body{background:var(--cream);padding:1rem .9rem 1.2rem;min-height:110px}
+.dcard h3{font-family:var(--serif);font-style:italic;font-size:1.7rem;color:var(--brown-deep);line-height:1}
+.dcard p{font-size:.68rem;color:var(--muted);margin-top:.4rem;line-height:1.45}
+.carousel__btn{
+  position:absolute;top:40%;width:40px;height:40px;border-radius:50%;background:#fff;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);display:grid;place-items:center;color:var(--brown-deep);z-index:2;
+}
+.carousel__btn--prev{left:6px}
+.carousel__btn--next{right:6px}
+
+/* ---------- keep it waild ---------- */
+.keep{background:var(--brown);color:var(--cream);text-align:center;padding:3.2rem 0 3.4rem}
+.keep__emblem{width:190px;height:190px;margin:0 auto 1.2rem}
+.keep h2{font-size:clamp(2.4rem,5.4vw,4rem);max-width:720px;margin:0 auto}
+.keep h2 .hand{color:var(--cta-olive);font-size:1.05em}
+.keep p{max-width:660px;margin:1rem auto 0;font-size:.82rem;color:rgba(255,255,255,.78)}
+.keep .btn{margin-top:1.6rem}
+.photo-band{height:clamp(260px,38vw,460px);position:relative;overflow:hidden}
+.scene{position:absolute;inset:0;width:100%;height:100%}
+.photo{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat}
+.photo-band .photo{background-image:var(--photo-elephant)}
+.photo-band::after{
+  content:"";position:absolute;left:0;right:0;bottom:-2px;height:60px;background:var(--cream);
+  clip-path:polygon(0 70%,6% 40%,12% 72%,20% 35%,27% 68%,36% 45%,44% 75%,52% 38%,60% 70%,68% 42%,76% 74%,84% 40%,92% 66%,100% 45%,100% 100%,0 100%);
+}
+
+/* ---------- calling CTA ---------- */
+.calling{background:var(--cream);text-align:center;padding:3.4rem 0 3.8rem}
+.calling h2{font-size:clamp(2.4rem,5.4vw,4rem);color:var(--green)}
+.calling h2 .hand{color:var(--pink-deep)}
+.calling .btn{margin-top:1.4rem}
+
+/* ---------- footer ---------- */
+.footer{background:var(--green);color:var(--cream);padding:3.2rem 0 1.6rem;position:relative;overflow:hidden}
+.footer__bg{position:absolute;inset:0;opacity:.07;pointer-events:none}
+.footer__bg svg{position:absolute}
+.footer__sun{width:84px;height:84px;margin:0 auto 2rem;color:var(--cream)}
+.footer__cols{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;max-width:900px;margin:0 auto;position:relative;z-index:1;
+}
+.footer__col{padding:0 1.4rem;text-align:left}
+.footer__col:nth-child(2){border-inline:1px solid rgba(255,255,255,.35);text-align:center}
+.footer__col h3{font-family:var(--serif);font-size:1.7rem;line-height:1.1;margin-bottom:1.6rem}
+.footer__col h3 .hand{color:var(--cta-olive)}
+.footer__col h4{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem}
+.footer__col h4.pink{color:var(--pink)}
+.footer__col a{display:block;font-size:.74rem;text-decoration:underline;text-underline-offset:3px;margin:.25rem 0}
+.footer__col .plain a{text-decoration:none;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.72rem;margin:.5rem 0}
+.footer__col:nth-child(2) h3{font-family:var(--sans);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.footer__social{display:flex;justify-content:center;gap:1.4rem;margin-top:2.6rem}
+.footer__social svg{width:20px;height:20px;color:var(--cream)}
+.footer__legal{text-align:center;font-size:.62rem;color:rgba(255,255,255,.72);margin-top:1.2rem;line-height:1.7;position:relative;z-index:1}
+.footer__legal b{color:var(--cream)}
+.footer__legal a{text-decoration:underline;text-underline-offset:2px;margin:0 .25rem}
+
+/* ---------- sub pages (Stars / Moons / Together) ---------- */
+.sub{position:relative;padding:48px 16px 70px;overflow:hidden}
+.sub__bg{
+  position:absolute;inset:0;z-index:0;
+}
+.sub--stars .sub__bg .photo{background-image:var(--photo-savanna)}
+.sub--moons .sub__bg .photo{background-image:var(--photo-beach)}
+.sub--together .sub__bg .photo{background-image:var(--photo-hero)}
+.sub__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.22))}
+.sub__title{
+  position:relative;z-index:2;display:flex;justify-content:center;color:#fff;
+  font-family:var(--brush);font-size:clamp(4.6rem,14vw,10rem);line-height:.8;
+  text-shadow:0 6px 30px rgba(0,0,0,.25);margin-bottom:-.32em;pointer-events:none;
+}
+.sub__title > span{display:inline-block;text-align:left}
+.sub__title small{display:block;font-family:var(--type);font-size:.24em;letter-spacing:.3em;line-height:1;text-align:right;margin-bottom:-.1em;padding-right:.4em}
+.star{font-size:.55em;vertical-align:.5em;margin-left:-.1em}
+.sub__panel{
+  position:relative;z-index:1;max-width:980px;margin:0 auto;border-radius:34px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);background:var(--cream);
+}
+.sub__head{padding:7rem 1.5rem 2.8rem;text-align:center;color:var(--cream);position:relative}
+.sub__head::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:48px;background:var(--cream);border-radius:50% 50% 0 0/100% 100% 0 0}
+.sub--stars .sub__head{background:var(--olive) radial-gradient(circle at 20% 20%,rgba(255,255,255,.08) 0 20px,transparent 21px) 0 0/90px 90px}
+.sub--moons .sub__head{background:var(--green) repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 6px,transparent 6px 14px)}
+.sub--together .sub__head{background:var(--green-deep) radial-gradient(circle,rgba(255,255,255,.06) 0 2px,transparent 3px) 0 0/22px 22px}
+.sub__logo{font-family:var(--brush);font-size:4.2rem;line-height:.9;display:inline-block;position:relative}
+.sub__logo small{display:block;font-family:var(--type);font-size:.3em;letter-spacing:.3em;text-align:right;color:var(--cream);margin-bottom:-.15em;padding-right:.3em}
+.sub--stars .sub__logo{color:var(--yellow)}
+.sub--moons .sub__logo{color:var(--pink)}
+.sub--together .sub__logo{color:var(--teal)}
+.sub__head p{max-width:600px;margin:1.2rem auto 0;font-size:.8rem;color:rgba(255,255,255,.88)}
+.sub__head p b{display:block;font-style:italic}
+.sub__head .btn{margin-top:1.6rem;position:relative;z-index:1}
+.sub__body{padding:1.6rem 1.5rem 3rem;text-align:center}
+.sub__body h2{font-size:clamp(2.2rem,5vw,3.2rem);color:var(--green)}
+.sub--stars .sub__body h2 .hand{color:var(--green)}
+.sub--moons .sub__body h2 .hand{color:var(--pink-deep)}
+.sub--together .sub__body h2 .hand{color:var(--teal-deep)}
+.sub__body > p{font-style:italic;font-size:.8rem;color:var(--muted);max-width:620px;margin:.5rem auto 0}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;max-width:760px;margin:2.6rem auto 0}
+.cols3 h3{display:inline-block;font-family:var(--type);font-size:.7rem;letter-spacing:.12em;padding:.15rem .5rem;color:var(--brown-deep)}
+.sub--stars .cols3 h3{background:var(--yellow)}
+.sub--moons .cols3 h3{background:var(--pink)}
+.sub--together .cols3 h3{background:var(--teal)}
+.cols3 p{font-size:.74rem;color:var(--muted);margin-top:.6rem;line-height:1.5}
+.sub__body .btn{margin-top:2.2rem}
+.sub__ghost{position:absolute;left:50%;top:0;transform:translateX(-50%);width:160px;opacity:.35;pointer-events:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .letters{grid-template-columns:repeat(3,1fr)}
+  .ways__grid,.cols3{grid-template-columns:1fr;max-width:420px}
+  .footer__cols{grid-template-columns:1fr;max-width:420px;text-align:center}
+  .footer__col{text-align:center}
+  .footer__col:nth-child(2){border-inline:0;border-block:1px solid rgba(255,255,255,.35);padding-block:1.6rem}
+}
+@media (max-width:640px){
+  .header__top{grid-template-columns:auto 1fr auto;gap:10px}
+  .header__emblem{width:44px;height:44px}
+  .header__logo{font-size:1.7rem}
+  .header__cta{font-size:.78rem;padding:.4rem .9rem}
+  .nav{display:none;flex-direction:column;padding-bottom:12px}
+  .nav.is-open{display:flex}
+  .nav a{border-left:0;padding:.55rem 0}
+  .nav__burger{display:block;position:absolute;right:16px;top:70px;color:var(--cream);font-size:.7rem;letter-spacing:.14em;font-weight:700}
+  .header{padding-bottom:30px}
+  .letters{grid-template-columns:repeat(2,1fr)}
+  .trust__item{border-left:0;border-top:1px solid rgba(0,0,0,.1)}
+  .sub__panel{border-radius:22px}
+  .sub__title{margin-bottom:-.4em}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER (shared by every page)
+     ============================================================ -->
+<header class="header">
+  <div class="wrap">
+    <div class="header__top">
+      <a class="header__logo" href="#home">Waild</a>
+      <a class="header__emblem" href="#home" aria-label="Waild home">
+        <!-- tiger emblem -->
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <circle cx="32" cy="34" r="22" fill="#f4efe4"/>
+          <circle cx="14" cy="18" r="8" fill="#f4efe4"/><circle cx="50" cy="18" r="8" fill="#f4efe4"/>
+          <circle cx="14" cy="18" r="4" fill="#5b4a1d"/><circle cx="50" cy="18" r="4" fill="#5b4a1d"/>
+          <path d="M20 24c3-5 6-6 12-6s9 1 12 6M22 42c2 6 6 8 10 8s8-2 10-8" stroke="#5b4a1d" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M32 14v8M24 16l3 7M40 16l-3 7M12 32h8M44 32h8M14 40l7-3M50 40l-7-3" stroke="#5b4a1d" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="25" cy="31" r="2.6" fill="#5b4a1d"/><circle cx="39" cy="31" r="2.6" fill="#5b4a1d"/>
+          <path d="M29 38h6l-3 3z" fill="#5b4a1d"/>
+        </svg>
+      </a>
+      <div class="header__actions">
+        <a class="header__cta" href="#plan" data-en="Plan your trip" data-es="Planifica tu viaje">Plan your trip</a>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        </div>
+      </div>
+    </div>
+    <button class="nav__burger" type="button" aria-expanded="false" aria-controls="nav">MENU</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#destinations" data-en="Destinations" data-es="Destinos">Destinations</a>
+      <a href="#stars" data-en="Private trips" data-es="Viajes privados">Private trips</a>
+      <a href="#moons" data-en="Honeymoons" data-es="Lunas de miel">Honeymoons</a>
+      <a href="#together" data-en="Group trips" data-es="Viajes en grupo">Group trips</a>
+      <a href="#about" data-en="About Waild" data-es="Sobre Waild">About Waild</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================
+     HOME
+     ============================================================ -->
+<section data-page="home" id="page-home">
+
+  <div class="hero" id="top">
+    <svg class="hero__leaves" viewBox="0 0 1200 260" preserveAspectRatio="none" aria-hidden="true">
+      <g fill="#2f4a2b">
+        <path d="M0 260 C120 160 220 190 300 120 C360 70 420 60 470 110 C500 150 480 210 520 260Z"/>
+        <path d="M400 260 C470 180 560 160 640 190 C700 210 720 240 760 260Z"/>
+        <path d="M700 260 C760 200 820 150 940 160 C1020 170 1060 210 1200 150 L1200 260Z"/>
+      </g>
+      <g fill="#3f6a3a" opacity=".9">
+        <path d="M80 260 C140 220 160 180 240 200 C300 215 330 240 360 260Z"/>
+        <path d="M880 260 C930 230 990 220 1040 230 C1100 245 1140 255 1200 260Z"/>
+      </g>
+    </svg>
+    <div class="hero__inner">
+      <h1 class="serif" data-en='Safari the <span class="brush">Waild</span> way' data-es='Safari a la manera <span class="brush">Waild</span>'>Safari the <span class="brush">Waild</span> way</h1>
+      <a class="btn btn--yellow" href="#plan" data-en="Start your Waild journey" data-es="Empieza tu viaje Waild">Start your Waild journey</a>
+    </div>
+  </div>
+
+  <div class="band">
+    <span class="sun"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 4.1L18 4.6l-1.5 4.3L21 12l-4.5 3.1L18 19.4l-4.4-1.5L12 22l-1.6-4.1L6 19.4l1.5-4.3L3 12l4.5-3.1L6 4.6l4.4 1.5z"/></svg></span>
+    <span data-en='Tailor-made wildlife journeys across <span class="hand">Africa, India,</span> and <span class="hand">beyond</span> · bespoke experiences closer to nature and further from the expected.' data-es='Viajes de vida salvaje a medida por <span class="hand">África, India</span> y <span class="hand">más allá</span> · experiencias únicas, más cerca de la naturaleza y lejos de lo esperado.'>Tailor-made wildlife journeys across <span class="hand">Africa, India,</span> and <span class="hand">beyond</span> · bespoke experiences closer to nature and further from the expected.</span>
+    <span class="sun"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 4.1L18 4.6l-1.5 4.3L21 12l-4.5 3.1L18 19.4l-4.4-1.5L12 22l-1.6-4.1L6 19.4l1.5-4.3L3 12l4.5-3.1L6 4.6l4.4 1.5z"/></svg></span>
+  </div>
+
+  <!-- W A I L D -->
+  <section class="acronym">
+    <div class="wrap">
+      <div class="letters">
+        <div class="letter letter--w">
+          <span class="letter__glyph">W</span>
+          <svg class="letter__grass" viewBox="0 0 100 24" fill="currentColor" aria-hidden="true"><path d="M5 24 C10 14 12 8 10 0 C16 6 18 14 16 24Z M28 24 C30 12 34 6 40 2 C36 10 36 18 36 24Z M52 24 C50 12 48 6 44 0 C52 4 56 14 58 24Z M74 24 C76 14 80 8 88 4 C82 12 82 18 82 24Z"/></svg>
+          <h3>Wild</h3>
+          <p>Remote landscapes, untamed nature, wildlife on its own terms. We go where the wild still feels real — safaris far from crowds, closer to what matters.</p>
+        </div>
+        <div class="letter letter--a">
+          <span class="letter__glyph">A</span>
+          <svg class="letter__grass" viewBox="0 0 100 24" fill="currentColor" aria-hidden="true"><path d="M5 24 C10 14 12 8 10 0 C16 6 18 14 16 24Z M28 24 C30 12 34 6 40 2 C36 10 36 18 36 24Z M52 24 C50 12 48 6 44 0 C52 4 56 14 58 24Z M74 24 C76 14 80 8 88 4 C82 12 82 18 82 24Z"/></svg>
+          <h3>Alive</h3>
+          <p>Safari isn't just something you watch from a vehicle. We walk, paddle, track, and explore — travel that feels alive, not rehearsed.</p>
+        </div>
+        <div class="letter letter--i">
+          <span class="letter__glyph">I</span>
+          <svg class="letter__grass" viewBox="0 0 100 24" fill="currentColor" aria-hidden="true"><path d="M5 24 C10 14 12 8 10 0 C16 6 18 14 16 24Z M28 24 C30 12 34 6 40 2 C36 10 36 18 36 24Z M52 24 C50 12 48 6 44 0 C52 4 56 14 58 24Z M74 24 C76 14 80 8 88 4 C82 12 82 18 82 24Z"/></svg>
+          <h3>Immersive</h3>
+          <p>Deeper, not faster. Slow mornings, unexpected encounters, time that stretches. The kind of travel that gets under your skin.</p>
+        </div>
+        <div class="letter letter--l">
+          <span class="letter__glyph">L</span>
+          <svg class="letter__grass" viewBox="0 0 100 24" fill="currentColor" aria-hidden="true"><path d="M5 24 C10 14 12 8 10 0 C16 6 18 14 16 24Z M28 24 C30 12 34 6 40 2 C36 10 36 18 36 24Z M52 24 C50 12 48 6 44 0 C52 4 56 14 58 24Z M74 24 C76 14 80 8 88 4 C82 12 82 18 82 24Z"/></svg>
+          <h3>Lived</h3>
+          <p>We've been there. Walked it, slept in it, felt it — then chosen it because it stayed with us.</p>
+        </div>
+        <div class="letter letter--d">
+          <span class="letter__glyph">D</span>
+          <svg class="letter__grass" viewBox="0 0 100 24" fill="currentColor" aria-hidden="true"><path d="M5 24 C10 14 12 8 10 0 C16 6 18 14 16 24Z M28 24 C30 12 34 6 40 2 C36 10 36 18 36 24Z M52 24 C50 12 48 6 44 0 C52 4 56 14 58 24Z M74 24 C76 14 80 8 88 4 C82 12 82 18 82 24Z"/></svg>
+          <h3>Designed around you</h3>
+          <p>Adventure should feel wild. Planning shouldn't. Bespoke wildlife travel designed around you.</p>
+        </div>
+      </div>
+      <div class="center"><a class="btn btn--olive" href="#stars" style="background:var(--olive);color:var(--cream)">Discover our journeys</a></div>
+    </div>
+  </section>
+
+  <!-- trust -->
+  <section class="trust">
+    <div class="wrap">
+      <h2 data-en="You are in good hands" data-es="Estás en buenas manos">You are in good hands</h2>
+      <div class="trust__grid">
+        <div class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2zM9 4v14M15 6v14"/></svg>
+          85+ countries explored firsthand
+        </div>
+        <div class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>
+          5-star rated by our travelers
+        </div>
+        <div class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M2 16l8-2 4-8 3 1-2 8 7 2-1 2-7-1-4 3-2-1 2-3-7-1z"/></svg>
+          Premium travel insurance included
+        </div>
+        <div class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 13a8 8 0 0116 0M4 13v4a2 2 0 002 2h2v-6H4zM20 13v4a2 2 0 01-2 2h-2v-6h4zM12 21h4"/></svg>
+          On-the-ground assistance
+        </div>
+        <div class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 5h5l2 2h9v12H4zM8 11h8M8 15h5"/></svg>
+          Safari specialists
+        </div>
+        <div class="trust__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 13l5 5L20 7"/></svg>
+          Personally vetted partners only
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- three ways -->
+  <section class="ways" id="journeys">
+    <div class="wrap">
+      <h2 class="serif" data-en='One philosophy. <span class="hand">Three</span> ways to experience the wild.' data-es='Una filosofía. <span class="hand">Tres</span> formas de vivir lo salvaje.'>One philosophy. <span class="hand">Three</span> ways to experience the wild.</h2>
+      <div class="ways__grid">
+        <article class="card card--stars">
+          <span class="eyebrow">Waild</span>
+          <span class="card__name">Stars<span class="star">✦</span></span>
+          <p>Private safaris and wildlife journeys are shaped around you. No templates. No fixed routes. Just experiences built from real exploration and designed to feel special.</p>
+          <a class="btn btn--yellow" href="#stars">Explore Waild Stars</a>
+        </article>
+        <article class="card card--moons">
+          <span class="eyebrow">Waild</span>
+          <span class="card__name">Moons</span>
+          <p>Honeymoon journeys shaped by discovery, where wild landscapes, remote islands and authentic cultural encounters become part of your story. Thoughtfully designed, quietly adventurous, and entirely yours.</p>
+          <a class="btn btn--pink" href="#moons">Begin your Waild Moon</a>
+        </article>
+        <article class="card card--together">
+          <span class="eyebrow">Waild</span>
+          <span class="card__name">Together</span>
+          <p>Shared journeys. Real connection. Small expeditions into the world's wildest corners, where curious strangers rarely stay strangers, plans loosen, and the best moments are never the ones you expected.</p>
+          <a class="btn btn--teal" href="#together">Join a Waild Together journey</a>
+        </article>
+      </div>
+      <svg class="ways__grass" viewBox="0 0 400 140" fill="currentColor" aria-hidden="true">
+        <path d="M200 140 C190 100 170 60 120 20 C160 50 180 90 190 140Z"/>
+        <path d="M205 140 C210 90 230 50 300 10 C250 50 225 95 215 140Z"/>
+        <path d="M196 140 C185 110 150 90 90 80 C150 95 180 115 192 140Z"/>
+        <path d="M212 140 C225 110 260 95 330 85 C270 100 235 118 218 140Z"/>
+        <path d="M202 140 C200 90 198 50 200 0 C206 50 206 95 206 140Z"/>
+        <path d="M190 140 C180 120 140 110 60 115 C140 115 175 125 188 140Z"/>
+        <path d="M216 140 C230 120 270 110 350 118 C270 118 235 128 220 140Z"/>
+      </svg>
+    </div>
+  </section>
+
+  <div class="notice">
+    <span class="sun"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 4.1L18 4.6l-1.5 4.3L21 12l-4.5 3.1L18 19.4l-4.4-1.5L12 22l-1.6-4.1L6 19.4l1.5-4.3L3 12l4.5-3.1L6 4.6l4.4 1.5z"/></svg></span>
+    Our <span class="hand hand--olive">Waild</span> <span class="hand hand--pink">Moon</span> slots are limited and booked well in advance.
+    <span class="sun"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 4.1L18 4.6l-1.5 4.3L21 12l-4.5 3.1L18 19.4l-4.4-1.5L12 22l-1.6-4.1L6 19.4l1.5-4.3L3 12l4.5-3.1L6 4.6l4.4 1.5z"/></svg></span>
+    <a href="#moons">Plan for yours.</a>
+  </div>
+
+  <!-- destinations -->
+  <section class="dest" id="destinations">
+    <div class="wrap">
+      <h2 class="serif" data-en="Destinations" data-es="Destinos">Destinations</h2>
+      <p class="dest__lead">Africa safaris, India wildlife journeys, remote islands, and hidden corners of the world — each destination chosen firsthand for what it feels like once you arrive.</p>
+      <p class="dest__tag">Somewhere out there, a Waild journey is already waiting.</p>
+      <a class="btn btn--olive" href="#plan" data-en="Follow the call" data-es="Sigue la llamada">Follow the call</a>
+    </div>
+    <div class="carousel">
+      <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous destinations">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <div class="carousel__track" id="dest-track">
+        <!-- Kenya · zebra -->
+        <article class="dcard">
+          <div class="dcard__art">
+            <svg viewBox="0 0 200 160" aria-hidden="true">
+              <ellipse cx="110" cy="80" rx="80" ry="50" fill="#b9c76b" opacity=".85"/>
+              <ellipse cx="60" cy="110" rx="46" ry="30" fill="#cdb3e3" opacity=".85"/>
+              <path d="M60 140 c0-30 20-50 50-55 l6-20 12 4 10-14 10 12 -6 22 c22 2 34 18 34 40 v16 h-10 v-14 h-14 v14 h-12 v-14 h-20 v14 h-12 v-14 h-18 v14z" fill="#6a6a2c"/>
+              <path d="M78 94l12 24M90 90l12 26M104 90l10 24M118 92l8 22M132 98l6 18M126 72l8 10M116 66l8 10" stroke="#e8783f" stroke-width="5" stroke-linecap="round"/>
+              <path d="M30 140 c6-16 8-28 6-40 c6 10 8 22 6 40z M170 140 c-4-14-2-26 4-38 c-2 12 0 26 4 38z" fill="#6a6a2c"/>
+            </svg>
+          </div>
+          <div class="dcard__body"><h3>Kenya</h3><p>Dawn breaks over the Mara: lions, dust, and nothing else for miles.</p></div>
+        </article>
+        <!-- Madagascar · lemur -->
+        <article class="dcard">
+          <div class="dcard__art">
+            <svg viewBox="0 0 200 160" aria-hidden="true">
+              <ellipse cx="100" cy="90" rx="78" ry="52" fill="#e8783f" opacity=".8"/>
+              <ellipse cx="140" cy="60" rx="40" ry="30" fill="#cdb3e3" opacity=".85"/>
+              <path d="M70 140 c-6-30 8-56 34-62 c-12-10-10-26 4-30 c8-4 18 0 20 10 c10 2 14 10 10 20 c20 10 26 36 22 62z" fill="#6a6a2c"/>
+              <circle cx="104" cy="62" r="5" fill="#f4efe4"/><circle cx="122" cy="58" r="5" fill="#f4efe4"/>
+              <path d="M150 130 c20-10 30-30 26-56 c-2 24-10 40-26 50z" fill="#6a6a2c"/>
+              <path d="M152 126 c6-8 12-16 16-28 M160 110 c4-8 8-14 12-22" stroke="#f4efe4" stroke-width="5" stroke-linecap="round"/>
+              <path d="M20 140 c8-18 10-30 6-44 c8 12 10 26 6 44z" fill="#6a6a2c"/>
+            </svg>
+          </div>
+          <div class="dcard__body"><h3>Madagascar</h3><p>Lemurs leaping through forests found nowhere else on Earth.</p></div>
+        </article>
+        <!-- Namibia · rhino -->
+        <article class="dcard">
+          <div class="dcard__art">
+            <svg viewBox="0 0 200 160" aria-hidden="true">
+              <ellipse cx="100" cy="80" rx="82" ry="48" fill="#e8783f" opacity=".85"/>
+              <ellipse cx="150" cy="100" rx="40" ry="34" fill="#b9c76b" opacity=".85"/>
+              <path d="M40 130 c-4-30 10-56 46-60 c22-2 44 4 60 18 l20-6 -2 12 14 6 -14 6 c6 10 8 20 8 24 h-10 v-14 h-22 v14 h-12 v-14 h-20 v14 h-12 v-14 h-18 v14z" fill="#4a3c16"/>
+              <circle cx="128" cy="86" r="3" fill="#f4efe4"/>
+              <path d="M180 100 c6-10 12-16 18-20" stroke="#f4efe4" stroke-width="2"/>
+              <path d="M170 134 c2-14 0-26-6-38 c10 10 14 24 10 38z M24 134 c-2-14 2-26 8-36 c-4 12-4 24 0 36z" fill="#6a6a2c"/>
+            </svg>
+          </div>
+          <div class="dcard__body"><h3>Namibia</h3><p>Infinite dunes, star-filled skies, and desert rhinos moving quietly through the wilderness.</p></div>
+        </article>
+        <!-- Nepal · tiger & rhino -->
+        <article class="dcard">
+          <div class="dcard__art">
+            <svg viewBox="0 0 200 160" aria-hidden="true">
+              <ellipse cx="96" cy="86" rx="80" ry="50" fill="#cdb3e3" opacity=".85"/>
+              <ellipse cx="60" cy="60" rx="40" ry="30" fill="#b9c76b" opacity=".9"/>
+              <path d="M44 132 c0-26 14-46 40-50 l-4-16 14 6 8-12 8 12 14-6 -4 16 c24 4 36 24 36 50 h-10 v-12 h-18 v12 h-12 v-12 h-20 v12 h-12 v-12 h-18 v12z" fill="#6a6a2c"/>
+              <path d="M70 100l8 20M86 96l8 24M104 96l6 24M120 100l6 20M90 72l6 10M108 70l-4 10" stroke="#f3e68a" stroke-width="5" stroke-linecap="round"/>
+              <circle cx="92" cy="78" r="2.5" fill="#f4efe4"/><circle cx="108" cy="78" r="2.5" fill="#f4efe4"/>
+            </svg>
+          </div>
+          <div class="dcard__body"><h3>Nepal</h3><p>Rhinos and tigers emerging from the mist of the Terai lowlands.</p></div>
+        </article>
+        <!-- Botswana · elephant -->
+        <article class="dcard">
+          <div class="dcard__art">
+            <svg viewBox="0 0 200 160" aria-hidden="true">
+              <ellipse cx="104" cy="84" rx="82" ry="50" fill="#b9c76b" opacity=".9"/>
+              <ellipse cx="50" cy="100" rx="42" ry="30" fill="#e8783f" opacity=".8"/>
+              <path d="M50 134 c-2-34 16-60 50-64 c26-2 46 10 54 32 c6 14 4 26 0 34 h-10 v-14 h-22 v14 h-12 v-14 h-20 v14 h-12 v-14 h-18 v14z" fill="#4a3c16"/>
+              <path d="M150 90 c10 10 10 26 2 44 c-2-14-6-26-14-36" fill="#4a3c16"/>
+              <path d="M118 70 c-10-14-2-28 12-28 c8 0 12 8 10 16 c-4-6-10-8-16-4" fill="#4a3c16"/>
+              <circle cx="134" cy="82" r="3" fill="#f4efe4"/>
+              <path d="M24 134 c-2-14 2-26 8-36 c-4 12-4 24 0 36z" fill="#6a6a2c"/>
+            </svg>
+          </div>
+          <div class="dcard__body"><h3>Botswana</h3><p>Elephants wading the Okavango at golden hour, water to the horizon.</p></div>
+        </article>
+        <!-- India · tiger -->
+        <article class="dcard">
+          <div class="dcard__art">
+            <svg viewBox="0 0 200 160" aria-hidden="true">
+              <ellipse cx="100" cy="86" rx="82" ry="50" fill="#e8783f" opacity=".85"/>
+              <ellipse cx="146" cy="56" rx="38" ry="28" fill="#cdb3e3" opacity=".85"/>
+              <path d="M40 132 c0-30 18-52 50-54 l-2-20 14 10 12-10 12 10 14-10 -2 20 c30 4 46 26 46 54 h-10 v-14 h-20 v14 h-12 v-14 h-20 v14 h-12 v-14 h-18 v14z" fill="#4a3c16"/>
+              <path d="M66 100l8 22M84 94l8 26M104 92l6 28M124 96l6 24M144 102l6 18M92 72l6 10M112 70l-4 10" stroke="#f3e68a" stroke-width="5" stroke-linecap="round"/>
+              <circle cx="94" cy="78" r="2.5" fill="#f4efe4"/><circle cx="110" cy="78" r="2.5" fill="#f4efe4"/>
+            </svg>
+          </div>
+          <div class="dcard__body"><h3>India</h3><p>Tigers in the sal forests, temples at dusk, and chai at first light.</p></div>
+        </article>
+      </div>
+      <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next destinations">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- keep it waild -->
+  <section class="keep" id="about">
+    <div class="wrap">
+      <svg class="keep__emblem" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><path id="keep-arc" d="M30 100 a70 70 0 0 0 140 0"/></defs>
+        <circle cx="100" cy="88" r="58" fill="#6a5a24"/>
+        <path d="M60 70 c20-14 50-14 80 0 c-10 20-10 40 0 54 c-30 10-50 10-80 0 c10-14 10-34 0-54z" fill="#4a3c16" opacity=".6"/>
+        <!-- animal silhouettes around the globe -->
+        <path d="M78 36 c6-8 14-10 22-8 l4-6 4 6 c6 0 10 4 12 10 h-8 v6 h-4 v-6 h-18 v6 h-4 v-6 h-10z" fill="#f4efe4"/>
+        <path d="M44 66 c4-6 10-8 16-6 l2-4 2 4 c6 2 8 6 8 10 h-4 v4 h-3 v-4 h-12 v4 h-3 v-4 h-8z" fill="#e9b9ea"/>
+        <path d="M134 62 c4-4 8-4 12-2 l6-8 2 2 -4 8 c4 2 6 6 6 10 h-4 v4 h-3 v-4 h-10 v4 h-3 v-4 h-6z" fill="#cdb3e3"/>
+        <path d="M60 128 c4-6 12-8 20-6 l2-4 2 4 c8 2 10 8 10 12 h-4 v4 h-3 v-4 h-14 v4 h-3 v-4 h-12z" fill="#e8783f"/>
+        <path d="M130 124 c2-12 6-16 8-26 c2 10 6 14 8 26 c-2 4-4 8-6 12 h-4 c-2-4-4-8-6-12z" fill="#b9c76b"/>
+        <path d="M100 100 l5 12 12 2 -9 8 2 12 -10-6 -10 6 2-12 -9-8 12-2z" fill="#f3e68a"/>
+        <circle cx="100" cy="88" r="58" fill="none" stroke="#f4efe4" stroke-width="1.5" stroke-dasharray="3 5"/>
+        <text font-family="Nunito Sans, sans-serif" font-size="14" font-weight="700" letter-spacing="6" fill="#f4efe4">
+          <textPath href="#keep-arc" startOffset="50%" text-anchor="middle">KEEP IT WAILD</textPath>
+        </text>
+      </svg>
+      <h2 class="serif" data-en='Travel should leave places as <span class="hand">wild</span> as it found them.' data-es='Viajar debería dejar los lugares tan <span class="hand">salvajes</span> como los encontró.'>Travel should leave places as <span class="hand">wild</span> as it found them.</h2>
+      <p>Keep It WAILD is our commitment to travel thoughtfully: protecting wildlife, supporting local communities, and ensuring the wild remains truly wild long after we leave.</p>
+      <a class="btn btn--olive" href="#about" data-en="Discover Keep It Waild" data-es="Descubre Keep It Waild">Discover Keep It Waild</a>
+    </div>
+  </section>
+  <div class="photo-band" role="img" aria-label="An elephant wading through golden marsh grass">
+    <svg class="scene" viewBox="0 0 1200 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky-e" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9d9b0"/><stop offset="1" stop-color="#e9e1a8"/></linearGradient>
+        <linearGradient id="grass-e" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9c05a"/><stop offset="1" stop-color="#8d9a3a"/></linearGradient>
+        <linearGradient id="water-e" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9db6a6"/><stop offset="1" stop-color="#6f8f7e"/></linearGradient>
+      </defs>
+      <rect width="1200" height="460" fill="url(#sky-e)"/>
+      <path d="M0 150 Q120 120 240 140 T480 135 T720 145 T960 130 T1200 142 V460 H0Z" fill="#6f7a3a" opacity=".55"/>
+      <path d="M0 165 h1200 V460 H0Z" fill="url(#grass-e)"/>
+      <path d="M0 250 C200 230 300 270 520 255 C700 245 820 275 1200 250 V330 C900 345 700 315 520 330 C300 345 150 320 0 335Z" fill="url(#water-e)"/>
+      <path d="M0 300 C200 285 300 320 520 305 C700 295 820 325 1200 300 V330 C900 345 700 315 520 330 C300 345 150 320 0 335Z" fill="#b9bb5e" opacity=".5"/>
+      <!-- elephant -->
+      <g fill="#4d4a44">
+        <ellipse cx="640" cy="290" rx="125" ry="82"/>
+        <circle cx="512" cy="262" r="58"/>
+        <ellipse cx="540" cy="268" rx="30" ry="42" fill="#3f3c37"/>
+        <path d="M470 286 c-22 22-30 54-26 86 c2 14 8 24 16 30 l12-8 c-10-14-12-40-4-62 c6-16 12-26 18-34z"/>
+        <path d="M476 300 c-10 2-18 10-20 18 c6 2 12 2 18 0z" fill="#e9e1c4"/>
+        <path d="M540 322 c0 24-2 44-6 60 h16 c2-20 4-38 4-60z M586 336 c-2 20-2 36 0 50 h16 c0-16 0-32 2-50z M672 340 c0 18 0 36 2 48 h16 c0-14 0-30-2-48z M726 326 c2 18 4 36 6 48 h16 c-2-16-4-32-8-48z"/>
+      </g>
+      <!-- reeds -->
+      <g fill="#6f7f2f">
+        <path d="M0 460 c20-60 30-110 20-170 c20 50 24 110 12 170z M60 460 c6-50 18-90 44-130 c-16 46-24 86-26 130z M120 460 c-6-60 0-110 20-150 c-6 50-6 100 0 150z M1040 460 c-4-60 4-110 28-160 c-12 50-14 100-10 160z M1110 460 c10-54 10-100 0-150 c22 44 26 96 20 150z M1160 460 c-6-50 2-96 24-140 c-10 46-12 92-6 140z"/>
+      </g>
+      <path d="M0 400 h1200 V460 H0Z" fill="#7f8f3a"/>
+    </svg>
+    <div class="photo"></div>
+  </div>
+
+  <section class="calling" id="plan">
+    <div class="wrap">
+      <h2 class="serif" data-en='The <span class="hand">wild</span> is calling.<br>You already know it.' data-es='Lo <span class="hand">salvaje</span> te llama.<br>Ya lo sabes.'>The <span class="hand">wild</span> is calling.<br>You already know it.</h2>
+      <a class="btn btn--olive" href="mailto:info@waildtravel.com" data-en="Follow the call" data-es="Sigue la llamada">Follow the call</a>
+    </div>
+  </section>
+
+</section>
+
+<!-- ============================================================
+     WAILD STARS · private trips
+     ============================================================ -->
+<section data-page="stars" id="page-stars">
+  <div class="sub sub--stars">
+    <div class="sub__bg" role="img" aria-label="A couple at a sundowner on the Maasai Mara at dusk">
+      <svg class="scene" viewBox="0 0 1200 820" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><linearGradient id="sky-s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6a35c"/><stop offset=".45" stop-color="#f0c383"/><stop offset=".72" stop-color="#e9a95a"/><stop offset="1" stop-color="#7a5a2c"/></linearGradient></defs>
+      <rect width="1200" height="820" fill="url(#sky-s)"/>
+      <circle cx="600" cy="560" r="150" fill="#f6d78c" opacity=".55"/>
+      <ellipse cx="300" cy="120" rx="260" ry="50" fill="#d98f4e" opacity=".35"/>
+      <ellipse cx="900" cy="230" rx="320" ry="40" fill="#d98f4e" opacity=".3"/>
+      <path d="M0 640 C300 625 700 650 1200 630 V820 H0Z" fill="#3d3220"/>
+      <!-- acacia -->
+      <g fill="#2e2615">
+        <path d="M1040 640 c-6-60-4-120 10-180 h12 c-8 60-10 120-6 180z"/>
+        <path d="M900 430 c40-70 200-80 290-20 c-40 20-70 30-110 30 c-60 0-120-10-180-10z"/>
+        <path d="M960 410 c30-50 160-60 230-20 c-50 10-90 10-130 10 c-40 0-70-5-100 10z"/>
+      </g>
+      <!-- jeep -->
+      <g fill="#2e2615">
+        <path d="M960 600 h150 l14-30 h60 l10 30 h12 v40 h-16 a22 22 0 0 1-44 0 h-90 a22 22 0 0 1-44 0 h-52z"/>
+        <circle cx="1036" cy="640" r="12" fill="#7a5a2c"/><circle cx="1172" cy="640" r="12" fill="#7a5a2c"/>
+      </g>
+      <!-- couple + guide + table -->
+      <g fill="#2e2615">
+        <path d="M250 560 c8 0 12 6 12 12 v70 h-24 v-70 c0-6 4-12 12-12z M250 548 a9 9 0 1 1 0 .1z"/>
+        <path d="M276 566 c8 0 12 6 12 12 v64 h-24 v-64 c0-6 4-12 12-12z M276 554 a9 9 0 1 1 0 .1z"/>
+        <path d="M700 548 c10 0 14 8 14 14 v80 h-28 v-80 c0-6 4-14 14-14z M700 536 a10 10 0 1 1 0 .1z"/>
+        <path d="M560 600 h120 v8 h-8 v34 h-6 v-34 h-92 v34 h-6 v-34 h-8z"/>
+      </g>
+      <path d="M0 700 C300 690 700 710 1200 696 V820 H0Z" fill="#2a2214"/>
+    </svg>
+      <div class="photo"></div>
+    </div>
+    <h1 class="sub__title"><span><small>WAILD</small>Stars<span class="star">✦</span></span></h1>
+    <div class="sub__panel">
+      <div class="sub__head">
+        <div class="sub__logo"><small>WAILD</small>Stars<span class="star">✦</span></div>
+        <p>That quiet pull toward somewhere wild? Follow it.<br><b>Waild Stars are private, tailor-made safaris built from real exploration — walked, slept in and felt firsthand. The kind that stay with you long after you're back.</b></p>
+        <a class="btn btn--yellow" href="#plan">Start your Waild journey</a>
+      </div>
+      <div class="sub__body">
+        <h2 class="serif">Where the <span class="hand">wild</span> takes you</h2>
+        <p>Private, tailor-made safaris for curious travellers who want to feel the world — not just visit it.</p>
+        <div class="cols3">
+          <div><h3>WHO IS IT FOR</h3><p>Solo travelers, couples, families — anyone looking for a private safari that feels personal and real from the very first conversation.</p></div>
+          <div><h3>HOW IT WORKS</h3><p>Every route starts with journeys we've taken ourselves — shaped alongside guides, landscapes and people we trust deeply.</p></div>
+          <div><h3>WHAT YOU GET</h3><p>A tailor-made safari, never over-scripted. Remarkable lodges, private concessions, rare access — and someone who's already walked the path before you.</p></div>
+        </div>
+        <a class="btn btn--yellow" href="#plan">Start your Waild journey</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WAILD MOONS · honeymoons
+     ============================================================ -->
+<section data-page="moons" id="page-moons">
+  <div class="sub sub--moons">
+    <div class="sub__bg" role="img" aria-label="A dhow sailing over turquoise water off Zanzibar">
+      <svg class="scene" viewBox="0 0 1200 820" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4ea2dc"/><stop offset="1" stop-color="#bfe3f3"/></linearGradient>
+        <linearGradient id="sea-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2ab7d6"/><stop offset=".5" stop-color="#43d1dc"/><stop offset="1" stop-color="#7fe3e6"/></linearGradient>
+      </defs>
+      <rect width="1200" height="820" fill="url(#sky-b)"/>
+      <ellipse cx="260" cy="110" rx="160" ry="34" fill="#fff" opacity=".8"/><ellipse cx="820" cy="80" rx="120" ry="26" fill="#fff" opacity=".7"/>
+      <path d="M0 300 C200 290 400 310 1200 300 V820 H0Z" fill="url(#sea-b)"/>
+      <path d="M0 296 C200 286 400 300 1200 290 V320 C900 316 300 330 0 322Z" fill="#f4ecd4"/>
+      <path d="M0 290 C100 270 300 262 500 278 C700 290 900 270 1200 282 V300 H0Z" fill="#3b8a3a" opacity=".8"/>
+      <g stroke="#fff" stroke-width="3" opacity=".5" fill="none"><path d="M100 420 q40-10 80 0 t80 0"/><path d="M700 520 q40-10 80 0 t80 0"/><path d="M300 640 q40-10 80 0 t80 0"/><path d="M900 700 q40-10 80 0 t80 0"/></g>
+      <!-- dhow -->
+      <g>
+        <path d="M60 640 l40-300 l220 300z" fill="#fdfbf4"/>
+        <path d="M100 340 l-10 320" stroke="#4a3b22" stroke-width="6"/>
+        <path d="M20 660 h330 l-40 40 h-250z" fill="#5b4a1d"/>
+        <path d="M0 640 c40-20 80-20 120 0 c40 20 80 20 120 0" fill="none" stroke="#fff" stroke-width="3" opacity=".6"/>
+      </g>
+    </svg>
+      <div class="photo"></div>
+    </div>
+    <h1 class="sub__title"><span><small>WAILD</small>Moons</span></h1>
+    <div class="sub__panel">
+      <div class="sub__head">
+        <div class="sub__logo"><small>WAILD</small>Moons</div>
+        <p><b>Not every honeymoon changes you. The right one does.</b>Somewhere between wild landscapes, slow mornings, and moments that feel yours quietly, something shifts. Tailor-made honeymoon for couples who want more than the obvious.</p>
+        <a class="btn btn--pink" href="#plan">Discover your Waild Moon</a>
+      </div>
+      <div class="sub__body">
+        <h2 class="serif">A <span class="hand">honeymoon</span> you won't forget</h2>
+        <p>Tailor-made honeymoon safaris and wildlife journeys for couples who want something wild — and deeply personal. Safari specialists. Island escapes. Cultural adventures.</p>
+        <div class="cols3">
+          <div><h3>WHO IS IT FOR</h3><p>Couples who want a honeymoon that feels personal, adventurous and soulful — safari, islands, culture, or all three together.</p></div>
+          <div><h3>HOW IT WORKS</h3><p>Every Waild Moon is bespoke — designed from scratch around the right places, the right pace and the right moments for you.</p></div>
+          <div><h3>WHAT YOU GET</h3><p>Exceptional lodges, special honeymoon experiences hard to find anywhere else, thoughtful surprises — and a journey that feels deeply yours from start to finish.</p></div>
+        </div>
+        <a class="btn btn--teal" href="#plan">Tailor-make your honeymoon</a>
+      </div>
+      <div class="notice notice--pink">
+        <span class="sun"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 4.1L18 4.6l-1.5 4.3L21 12l-4.5 3.1L18 19.4l-4.4-1.5L12 22l-1.6-4.1L6 19.4l1.5-4.3L3 12l4.5-3.1L6 4.6l4.4 1.5z"/></svg></span>
+        Our Waild Moon slots are limited and booked well in advance.
+        <span class="sun"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 4.1L18 4.6l-1.5 4.3L21 12l-4.5 3.1L18 19.4l-4.4-1.5L12 22l-1.6-4.1L6 19.4l1.5-4.3L3 12l4.5-3.1L6 4.6l4.4 1.5z"/></svg></span>
+        <a href="#plan">Plan for yours.</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WAILD TOGETHER · group trips (built on the same template)
+     ============================================================ -->
+<section data-page="together" id="page-together">
+  <div class="sub sub--together">
+    <div class="sub__bg" role="img" aria-label="Dense green forest canopy">
+      <svg class="scene" viewBox="0 0 1200 820" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><linearGradient id="sky-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9c6b3"/><stop offset=".5" stop-color="#5f8a6a"/><stop offset="1" stop-color="#2e5546"/></linearGradient></defs>
+      <rect width="1200" height="820" fill="url(#sky-f)"/>
+      <g fill="#2f4a2b" opacity=".9">
+        <path d="M0 820 C120 620 220 690 300 520 C360 420 420 410 470 500 C500 560 480 700 520 820Z"/>
+        <path d="M400 820 C470 700 560 660 640 700 C700 730 720 790 760 820Z"/>
+        <path d="M700 820 C760 700 820 600 940 620 C1020 640 1060 720 1200 600 L1200 820Z"/>
+      </g>
+      <g fill="#3f6a3a" opacity=".85">
+        <path d="M80 820 C140 760 160 700 240 720 C300 740 330 790 360 820Z"/>
+        <path d="M880 820 C930 770 990 760 1040 770 C1100 790 1140 810 1200 820Z"/>
+      </g>
+      <ellipse cx="600" cy="140" rx="140" ry="36" fill="#fff" opacity=".35"/>
+    </svg>
+      <div class="photo"></div>
+    </div>
+    <h1 class="sub__title"><span><small>WAILD</small>Together</span></h1>
+    <div class="sub__panel">
+      <div class="sub__head">
+        <div class="sub__logo"><small>WAILD</small>Together</div>
+        <p><b>Shared journeys. Real connection.</b>Small expeditions into the world's wildest corners, where curious strangers rarely stay strangers, plans loosen, and the best moments are never the ones you expected.</p>
+        <a class="btn btn--teal" href="#plan">Join a Waild Together journey</a>
+      </div>
+      <div class="sub__body">
+        <h2 class="serif">Go <span class="hand">further</span>, together</h2>
+        <p>Small-group wildlife expeditions led by people who've walked the route before — for travellers who'd rather share the fire than sit alone by it.</p>
+        <div class="cols3">
+          <div><h3>WHO IS IT FOR</h3><p>Solo travellers, friends and curious minds who want a wild journey with good company, without the planning.</p></div>
+          <div><h3>HOW IT WORKS</h3><p>Fixed dates, tiny groups, one Waild host. Every expedition follows a route we've explored and refined ourselves.</p></div>
+          <div><h3>WHAT YOU GET</h3><p>Remarkable camps, rare access, slow mornings and shared sundowners — and friendships that outlast the trip.</p></div>
+        </div>
+        <a class="btn btn--teal" href="#plan">See upcoming departures</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER (shared)
+     ============================================================ -->
+<footer class="footer">
+  <div class="footer__bg" aria-hidden="true">
+    <svg viewBox="0 0 300 300" style="left:-60px;bottom:-40px;width:380px" fill="#f4efe4">
+      <circle cx="150" cy="150" r="110"/>
+    </svg>
+    <svg viewBox="0 0 200 200" style="right:40px;bottom:30px;width:160px" fill="#f4efe4">
+      <path d="M100 10l10 28 28 2-22 18 8 28-24-16-24 16 8-28-22-18 28-2z"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <svg class="footer__sun" viewBox="0 0 100 100" aria-hidden="true">
+      <g fill="currentColor">
+        <path d="M50 4l4 14-4 6-4-6zM50 96l-4-14 4-6 4 6zM4 50l14-4 6 4-6 4zM96 50l-14 4-6-4 6-4zM17 17l13 7 1 7-7-1zM83 83l-13-7-1-7 7 1zM17 83l7-13 7-1-1 7zM83 17l-7 13-7 1 1-7z"/>
+        <path d="M30 8l10 11 1 6-6-1zM70 92l-10-11-1-6 6 1zM8 70l11-10 6-1-1 6zM92 30l-11 10-6 1 1-6zM8 30l13 3 4 5-6 2zM92 70l-13-3-4-5 6-2zM30 92l3-13 5-4 2 6zM70 8l-3 13-5 4-2-6z"/>
+      </g>
+      <text x="50" y="62" text-anchor="middle" font-family="Caveat Brush, cursive" font-size="40" fill="currentColor">W</text>
+    </svg>
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h3>Plan your <span class="hand">journey</span></h3>
+        <h4>Contact us:</h4>
+        <a href="https://wa.me/17874685702">WhatsApp: +1 787 468 5702</a>
+        <a href="mailto:info@waildtravel.com">info@waildtravel.com</a>
+        <a href="#plan">Schedule your intro call here</a>
+      </div>
+      <div class="footer__col">
+        <h3>About us</h3>
+        <div class="plain">
+          <h4 class="pink" style="font-size:.72rem;letter-spacing:.1em">Our destinations</h4>
+          <a href="#destinations" style="display:none"></a>
+          <a href="#together">The Waild Circle</a>
+          <a href="#about">Keep It Waild project</a>
+          <a href="#about">Our blog</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h3>Partner with <span class="hand">Waild</span></h3>
+        <h4>Get in touch with us:</h4>
+        <a href="mailto:partnerships@waildtravel.com">partnerships@waildtravel.com</a>
+        <a href="#about">Explore our collaboration model</a>
+        <a href="#about">Request our partnership kit</a>
+      </div>
+    </div>
+    <div class="footer__social">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <a href="tel:+17874685702" aria-label="Call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 006 6L16 13l5 2v4a2 2 0 01-2 2A17 17 0 013 5a2 2 0 012-2z"/></svg></a>
+      <a href="#about" aria-label="Blog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5h7a3 3 0 013 3v12a2 2 0 00-2-2H3zM21 5h-7a3 3 0 00-3 3v12a2 2 0 012-2h8z"/></svg></a>
+    </div>
+    <div class="footer__legal">
+      <b>Waild LLC, DBA Waild Travel</b><br>
+      Registered in the United States<br>
+      Operating globally as a registered travel agency through trusted destination partners<br>
+      <a href="#">Legal Notice</a> <a href="#">Terms &amp; Conditions</a> <a href="#">Privacy Policy</a> and <a href="#">Cookie Policy</a><br>
+      © 2026 WAILD Travel
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- hash router ---------- */
+  var pages = {home:'page-home', stars:'page-stars', moons:'page-moons', together:'page-together'};
+  var homeAnchors = {destinations:true, about:true, plan:true, journeys:true, top:true};
+  var navLinks = document.querySelectorAll('.nav a');
+
+  function route(){
+    var hash = (location.hash || '#home').slice(1);
+    var page = pages[hash] ? hash : 'home';
+    var anchor = homeAnchors[hash] ? hash : null;
+
+    Object.keys(pages).forEach(function(k){
+      document.getElementById(pages[k]).classList.toggle('is-active', k === page);
+    });
+    navLinks.forEach(function(a){
+      a.classList.toggle('is-current', a.getAttribute('href') === '#' + hash);
+    });
+    document.getElementById('nav').classList.remove('is-open');
+
+    if (anchor){
+      var el = document.getElementById(anchor);
+      if (el){ requestAnimationFrame(function(){ el.scrollIntoView({behavior:'smooth', block:'start'}); }); }
+    } else {
+      window.scrollTo({top:0, behavior:'auto'});
+    }
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  /* ---------- mobile menu ---------- */
+  var burger = document.querySelector('.nav__burger');
+  burger.addEventListener('click', function(){
+    var nav = document.getElementById('nav');
+    var open = nav.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  /* ---------- EN / ES toggle ---------- */
+  var langButtons = document.querySelectorAll('.lang button');
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    langButtons.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'); });
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var val = el.getAttribute('data-' + lang);
+      if (val !== null){ el.innerHTML = val; }
+    });
+    try { localStorage.setItem('waild-lang', lang); } catch(e){}
+  }
+  langButtons.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+  try { var saved = localStorage.getItem('waild-lang'); if (saved === 'es') setLang('es'); } catch(e){}
+
+  /* ---------- destinations carousel ---------- */
+  var track = document.getElementById('dest-track');
+  function step(){ var card = track.querySelector('.dcard'); return card ? card.getBoundingClientRect().width + 16 : 280; }
+  document.querySelector('.carousel__btn--prev').addEventListener('click', function(){ track.scrollBy({left:-step(), behavior:'smooth'}); });
+  document.querySelector('.carousel__btn--next').addEventListener('click', function(){ track.scrollBy({left: step(), behavior:'smooth'}); });
+})();
+</script>
+</body>
+</html>

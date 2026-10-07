@@ -108,6 +108,14 @@
       "destination": "/panama-dive-center/index.html"
     },
     {
+      "source": "/waild-safari",
+      "destination": "/waild-safari/index.html"
+    },
+    {
+      "source": "/waild-safari/",
+      "destination": "/waild-safari/index.html"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },
