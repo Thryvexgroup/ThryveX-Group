@@ -6,9 +6,9 @@ _Last updated 2026-10-08._
 - Brand kit for documents (`brand.css`): blend palette, Space Grotesk / Inter / JetBrains Mono, bilingual labels EN first.
 - Invoice template (`templates/invoice.js`), PDF renderer (`render.mjs`), Canva-editable PPTX builder (`build-pptx.mjs`).
 - Invoice **TXG-2026-001** · SOHBEL Management, S.A. · 600 USD · paid 08/10/2026. Filed on Gonzalo's Mac under
-  `Facturas ThryveX Group/01 Clientes/SOHBEL Management/`.
+  `Facturas ThryveX Group/Clientes/SOHBEL Management/`.
 - Invoice register `Registro de facturas.xlsx` (root of the Mac folder) with the ITBMS B/. 36,000 threshold tracker.
-- Mac folder structure: `01 Clientes` · `02 Gastos` · `03 Plantillas` · `Registro de facturas.xlsx`.
+- Mac folder structure (verified 08/10): `Clientes` · `Gastos` · `Plantillas` · `Registro de facturas.xlsx`. Optional: prefix month folders in Gastos with `YYYY-MM` so they sort by date.
 
 ## Tomorrow
 1. **Intermediary bank details** — Gonzalo looks them up for the BAC account; add to `data/issuer.json` → `intermediaries[]`
