@@ -73,7 +73,7 @@ text([{ text: 'No.  ', options: { color: GREY } }, { text: inv.number, options: 
 // --- meta row --------------------------------------------------------------
 let y = 1.55; hline(y, M, W, LINE2);
 const cols = [[0, 1.55], [1.62, 1.62], [3.3, 1.7], [5.05, 2.22]];
-const meta = [['Issued', 'Fecha de emisión', inv.issued, MONO], ['Due', 'Fecha de vencimiento', inv.due, MONO], ['Terms', 'Condición de pago', inv.terms, HEAD], ['Billing period', 'Periodo de facturación', `${inv.period.from}  →  ${inv.period.to}`, MONO]];
+const meta = [['Issued', 'Fecha de emisión', inv.issued, MONO], ['Due', 'Fecha de vencimiento', inv.due, MONO], ['Terms', 'Condición de pago', inv.terms, HEAD], ['Billing period', 'Periodo de facturación', typeof inv.period === 'string' ? inv.period : inv.period ? `${inv.period.from}  →  ${inv.period.to}` : '—', typeof inv.period === 'string' ? HEAD : MONO]];
 meta.forEach(([en, es, v, f], i) => {
   const [cx, cw] = cols[i];
   label(en, es, { x: M + cx, y: y + 0.12, w: cw, h: 0.16, fontSize: 6.5, charSpacing: 0 });

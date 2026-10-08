@@ -57,7 +57,7 @@ export function render(inv, issuer, { logo = '../../logo.png', css = '../brand.c
   <div><div class="ey">Issued <i>/</i> Fecha de emisión</div><div class="v m">${esc(inv.issued)}</div></div>
   <div><div class="ey">Due <i>/</i> Fecha de vencimiento</div><div class="v m">${esc(inv.due)}</div></div>
   <div><div class="ey">Terms <i>/</i> Condición de pago</div><div class="v">${esc(inv.terms)}</div></div>
-  <div><div class="ey">Billing period <i>/</i> Periodo de facturación</div><div class="v m">${esc(inv.period.from)} <span class="dash">→</span> ${esc(inv.period.to)}</div></div>
+  <div><div class="ey">Billing period <i>/</i> Periodo de facturación</div><div class="v${typeof inv.period === 'string' ? '' : ' m'}">${typeof inv.period === 'string' ? esc(inv.period) : inv.period ? `${esc(inv.period.from)} <span class="dash">→</span> ${esc(inv.period.to)}` : '—'}</div></div>
  </div></div>
 
  <div class="parties">

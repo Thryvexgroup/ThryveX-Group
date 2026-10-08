@@ -1,35 +1,13 @@
 {
   "name": "ThryveX Group",
   "tagline": "AI automation · Web · Meta Ads · Panama",
-  "legalName": "ThryveX Group",
-  "vat": "000000-0-000000",
-  "address": "Panama City, Panama",
-  "phone": "(+507) 0000-0000",
+  "legalName": "ThryveX Group, S.A.",
+  "vat": "155783960-2-2026 DV 37",
+  "address": "P.H. SL 55, Piso 22, Ciudad de Panamá, Panamá",
+  "phone": "",
   "email": "services@thryvexgroup.com",
   "web": "thryvexgroup.com",
   "city": "Panama City",
   "signoff": "Always on.",
-  "banks": [
-    {
-      "name": "Wise",
-      "tag": "Option A · SEPA / SWIFT",
-      "fields": [
-        ["Beneficiary / Beneficiario", "ThryveX Group"],
-        ["IBAN", "BE00 0000 0000 0000", "mono"],
-        ["BIC / SWIFT", "TRWIBEB1XXX", "mono"],
-        ["Bank address / Dirección", "Rue du Trône 100, 1050 Brussels, Belgium"]
-      ]
-    },
-    {
-      "name": "Citibank N.A.",
-      "tag": "Option B · via intermediary",
-      "fields": [
-        ["Beneficiary / Beneficiario", "ThryveX Group"],
-        ["ABA", "021000089", "mono"],
-        ["BIC / SWIFT", "CITIUS33XXX", "mono"],
-        ["Bank address / Dirección", "111 Wall St., New York, NY 10043"],
-        ["Final bank / Banco final", "BAALPAPAXXX", "mono"]
-      ]
-    }
-  ]
+  "banks": []
 }

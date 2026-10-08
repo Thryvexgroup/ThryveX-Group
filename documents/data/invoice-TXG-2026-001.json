@@ -1,0 +1,24 @@
+{
+  "number": "TXG-2026-001",
+  "issued": "08 / 10 / 2026",
+  "due": "22 / 10 / 2026",
+  "terms": "Bank transfer · 14 days",
+  "period": "Website project · 2026",
+  "currency": "USD · B/.",
+  "taxRate": 0.07,
+  "taxLabel": "ITBMS 7%",
+  "client": {
+    "name": "SOHBEL Management",
+    "legalName": "SOHBEL Management, S.A.",
+    "vat": "155775296-2-2025",
+    "address": "Santa María Business District, Edificio BLOC, piso 7, Corregimiento Juan Díaz, Ciudad de Panamá"
+  },
+  "items": [
+    { "unit": "SRV", "title": "Website design & development", "detail": "Design, build and launch of the SOHBEL Management website", "qty": 1, "price": 600, "discount": 0, "taxable": false }
+  ],
+  "notes": {
+    "en": "Please quote <b class=\"mono\">{{number}}</b> in your bank transfer. Thank you for working with ThryveX Group.",
+    "es": "Indique la referencia {{number}} en su transferencia bancaria. Gracias por trabajar con ThryveX Group."
+  },
+  "banks": "all"
+}
