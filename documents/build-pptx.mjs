@@ -135,7 +135,8 @@ text([{ text: money(t.total), options: { fontFace: HEAD, fontSize: 17, bold: tru
 y += bh + 0.12;
 
 // --- payment details ----------------------------------------------------------
-const banks = inv.banks === 'all' ? issuer.banks : Array.isArray(inv.banks) ? issuer.banks.filter(b => inv.banks.includes(b.name)) : [];
+const pickB = list => inv.banks === 'all' ? list : Array.isArray(inv.banks) ? list.filter(b => inv.banks.includes(b.name)) : [];
+const banks = [...pickB(issuer.banks || []), ...pickB(issuer.intermediaries || [])];
 if (banks.length) {
   const cw = (W - 0.34) / banks.length, bvw = cw - 0.3 - 1.45;
   const bhh = 0.7 + Math.max(...banks.map(b => kv(0, 0, b.fields, 1.45, bvw, true))) + 0.06;

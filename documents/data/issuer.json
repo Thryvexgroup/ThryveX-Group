@@ -29,5 +29,10 @@
         ]
       ]
     }
-  ]
+  ],
+  "intermediaries": [],
+  "intermediaryPlaceholder": {
+    "en": "Not required for local transfers within Panama. Details for international wires available on request.",
+    "es": "No requerido para transferencias locales en Panamá. Datos para transferencias internacionales disponibles a solicitud."
+  }
 }

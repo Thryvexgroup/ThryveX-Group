@@ -116,6 +116,9 @@ td.r.tt{color:var(--ink);font-weight:500}
 .pay .cols>div+div{border-left:1px solid var(--line2);padding-left:24px}
 .pay .cols.one{grid-template-columns:1fr}
 .pay .bk{font:600 11.5px var(--font-head);margin-bottom:6px}
+.pay .f+.bk{margin-top:10px}
+.pay .ph{font-size:10px;line-height:1.5;color:var(--mute)}
+.pay .ph+.ph{margin-top:6px}
 .pay .bk small{font:500 9px var(--font-mono);color:var(--mute);letter-spacing:.08em;margin-left:6px;text-transform:uppercase}
 
 /* footer */

@@ -1,8 +1,8 @@
 {
   "number": "TXG-2026-001",
   "issued": "08 / 10 / 2026",
-  "due": "22 / 10 / 2026",
-  "terms": "Bank transfer · 14 days",
+  "due": "08 / 10 / 2026",
+  "terms": "Bank transfer",
   "period": "Website project · 2026",
   "currency": "USD · B/.",
   "taxRate": 0.07,
@@ -27,8 +27,8 @@
     }
   ],
   "notes": {
-    "en": "Please quote <b class=\"mono\">{{number}}</b> in your bank transfer. Thank you for working with ThryveX Group.",
-    "es": "Indique la referencia {{number}} en su transferencia bancaria. Gracias por trabajar con ThryveX Group."
+    "en": "<b>ITBMS not applicable:</b> ThryveX Group, S.A. is below the annual B/. 36,000 ITBMS registration threshold. Please quote <b class=\"mono\">{{number}}</b> in your bank transfer. Thank you for working with ThryveX Group.",
+    "es": "<b>ITBMS no aplicable:</b> ThryveX Group, S.A. se encuentra por debajo del umbral anual de B/. 36,000 para inscripción en ITBMS. Indique la referencia {{number}} en su transferencia bancaria. Gracias por trabajar con ThryveX Group."
   },
   "banks": "all"
 }
