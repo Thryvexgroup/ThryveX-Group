@@ -1,0 +1,26 @@
+{
+  "number": "TXG-2026-000",
+  "issued": "DD / MM / YYYY",
+  "due": "DD / MM / YYYY",
+  "terms": "Bank transfer",
+  "period": "Project · YYYY",
+  "currency": "USD · B/.",
+  "taxRate": 0.07,
+  "taxLabel": "ITBMS 7%",
+  "client": {
+    "name": "Client name",
+    "legalName": "Client legal name, S.A.",
+    "vat": "000000-0-000000",
+    "address": "Street, building, floor, corregimiento, city, country",
+    "phone": "+000 000 000 000",
+    "email": "billing@client.com"
+  },
+  "items": [
+    { "unit": "SRV", "title": "Service title", "detail": "One line describing what was delivered", "qty": 1, "price": 0, "discount": 0, "taxable": false }
+  ],
+  "notes": {
+    "en": "<b>ITBMS not applicable:</b> ThryveX Group, S.A. is below the B/. 36,000 ITBMS registration threshold. Thank you for working with ThryveX Group.",
+    "es": "<b>ITBMS no aplicable:</b> ThryveX Group, S.A. se encuentra por debajo del umbral de B/. 36,000 para inscripción en ITBMS. Gracias por trabajar con ThryveX Group."
+  },
+  "banks": "all"
+}
