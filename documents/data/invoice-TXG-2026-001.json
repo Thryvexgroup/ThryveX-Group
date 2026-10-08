@@ -31,5 +31,6 @@
     "es": "<b>ITBMS no aplicable:</b> ThryveX Group, S.A. se encuentra por debajo del umbral de B/. 36,000 para inscripción en ITBMS. Gracias por trabajar con ThryveX Group."
   },
   "banks": "all",
-  "intermediaries": false
+  "intermediaries": false,
+  "status": "paid"
 }

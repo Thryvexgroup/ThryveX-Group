@@ -129,8 +129,8 @@ s.addShape(pres.ShapeType.roundRect, { x: tx, y, w: tw, h: bh, rectRadius: 0.12,
   text(money(v), { x: tx + tw - 1.3 - 0.17, y: ry, w: 1.3, h: 0.2, fontFace: MONO, fontSize: 8.5, align: 'right' });
 });
 hline(y + 0.94, tx + 0.17, tw - 0.34, INK);
-text('Total due', { x: tx + 0.17, y: y + 1.06, w: 0.9, h: 0.2, fontFace: HEAD, fontSize: 9, bold: true });
-label('Total a pagar', '', { x: tx + 0.17, y: y + 1.28, w: 0.9, h: 0.16, fontSize: 6.5, charSpacing: 0.5 });
+text(inv.status === 'paid' ? 'Total paid' : 'Total due', { x: tx + 0.17, y: y + 1.06, w: 0.9, h: 0.2, fontFace: HEAD, fontSize: 9, bold: true });
+label(inv.status === 'paid' ? 'Total pagado' : 'Total a pagar', '', { x: tx + 0.17, y: y + 1.28, w: 0.9, h: 0.16, fontSize: 6.5, charSpacing: 0.5 });
 text([{ text: money(t.total), options: { fontFace: HEAD, fontSize: 17, bold: true } }, { text: '  ' + inv.currency, options: { fontSize: 7, color: GREY } }], { x: tx + 1.05, y: y + 1.02, w: tw - 1.22, h: 0.4, align: 'right', valign: 'middle', fit: 'shrink' });
 y += bh + 0.12;
 

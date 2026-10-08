@@ -80,7 +80,7 @@ export function render(inv, issuer, { logo = '../../logo.png', css = '../brand.c
    <div class="row"><span>Subtotal</span><span class="n">${money(t.subtotal)}</span></div>
    <div class="row"><span>Discount <i>/</i> Descuento</span><span class="n">${money(t.discount)}</span></div>
    <div class="row"><span>${esc(inv.taxLabel)}</span><span class="n">${money(t.tax)}</span></div>
-   <div class="due"><span class="l">Total due<small>Total a pagar</small></span><span class="n">${money(t.total)}<small>${esc(inv.currency)}</small></span></div>
+   <div class="due"><span class="l">${inv.status === 'paid' ? 'Total paid<small>Total pagado</small>' : 'Total due<small>Total a pagar</small>'}</span><span class="n">${money(t.total)}<small>${esc(inv.currency)}</small></span></div>
   </div>
  </div>
 
