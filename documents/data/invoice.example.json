@@ -1,0 +1,28 @@
+{
+  "number": "TXG-2026-014",
+  "issued": "07 / 10 / 2026",
+  "due": "21 / 10 / 2026",
+  "terms": "Credit · 14 days",
+  "period": { "from": "01/09/2026", "to": "30/09/2026" },
+  "currency": "USD · B/.",
+  "taxRate": 0.07,
+  "taxLabel": "ITBMS 7%",
+  "client": {
+    "name": "Sclavo Diagnostics International S.p.A.",
+    "legalName": "Sclavo Diagnostics International S.p.A.",
+    "vat": "IT 00000000000",
+    "address": "Via Po 26/28, Pian dei Mori, 53018 Sovicille (SI), Italy",
+    "phone": "+39 0577 000000",
+    "email": "finance@sclavo.it"
+  },
+  "items": [
+    { "unit": "SRV", "title": "AI front desk · monthly operation", "detail": "24/7 agent on WhatsApp and web · September 2026", "qty": 1, "price": 1800, "discount": 0, "taxable": false },
+    { "unit": "SRV", "title": "Lead follow-up automation · phase 2", "detail": "WhatsApp + email sequences, CRM sync, qualification logic", "qty": 1, "price": 3250, "discount": 0, "taxable": false },
+    { "unit": "HR", "title": "Strategy & optimisation hours", "qty": 6, "price": 130, "discount": 0, "taxable": false }
+  ],
+  "notes": {
+    "en": "Services rendered to a client outside Panama; <b>ITBMS not applicable</b>. Please quote <b class=\"mono\">{{number}}</b> in your transfer. Bank charges are borne by the client.",
+    "es": "Servicios prestados a cliente en el exterior; ITBMS no aplicable. Indique la referencia en su transferencia. Los gastos bancarios corren por cuenta del cliente."
+  },
+  "banks": "all"
+}
