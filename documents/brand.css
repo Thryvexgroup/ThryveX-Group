@@ -111,7 +111,7 @@ td.r.tt{color:var(--ink);font-weight:500}
 .pay{margin-top:12px;background:var(--panel);border-radius:12px;padding:14px 16px}
 .pay .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .pay .hd .ey{margin:0}
-.pay .hd .tag{font:500 9px var(--font-mono);letter-spacing:.08em;color:var(--grey);text-transform:uppercase}
+.pay .hd .tag{font:600 9px var(--font-mono);letter-spacing:.1em;color:var(--ink);text-transform:uppercase;background:var(--card);border:1px solid var(--line2);border-radius:999px;padding:5px 11px}
 .pay .cols{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
 .pay .cols>div+div{border-left:1px solid var(--line2);padding-left:24px}
 .pay .cols.one{grid-template-columns:1fr}

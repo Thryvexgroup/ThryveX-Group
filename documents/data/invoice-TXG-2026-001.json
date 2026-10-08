@@ -11,10 +11,20 @@
     "name": "SOHBEL Management",
     "legalName": "SOHBEL Management, S.A.",
     "vat": "155775296-2-2025",
-    "address": "Santa María Business District, Edificio BLOC, piso 7, Corregimiento Juan Díaz, Ciudad de Panamá"
+    "address": "Santa María Business District, Edificio BLOC, piso 7, Corregimiento Juan Díaz, Ciudad de Panamá",
+    "email": "sovereignindividual@sohbel.com",
+    "phone": "+34 609 246 066"
   },
   "items": [
-    { "unit": "SRV", "title": "Website design & development", "detail": "Design, build and launch of the SOHBEL Management website", "qty": 1, "price": 600, "discount": 0, "taxable": false }
+    {
+      "unit": "SRV",
+      "title": "Website design & development",
+      "detail": "Design, build and launch of the SOHBEL Management website",
+      "qty": 1,
+      "price": 600,
+      "discount": 0,
+      "taxable": false
+    }
   ],
   "notes": {
     "en": "Please quote <b class=\"mono\">{{number}}</b> in your bank transfer. Thank you for working with ThryveX Group.",

@@ -4,10 +4,30 @@
   "legalName": "ThryveX Group, S.A.",
   "vat": "155783960-2-2026 DV 37",
   "address": "P.H. SL 55, Piso 22, Ciudad de Panamá, Panamá",
-  "phone": "",
+  "phone": "+507 6569 3716",
   "email": "services@thryvexgroup.com",
   "web": "thryvexgroup.com",
   "city": "Panama City",
   "signoff": "Always on.",
-  "banks": []
+  "banks": [
+    {
+      "name": "BAC Credomatic",
+      "tag": "Panama · local transfer / ACH",
+      "fields": [
+        [
+          "Account holder / Titular",
+          "Gonzalo Lucas"
+        ],
+        [
+          "Bank / Banco",
+          "BAC Credomatic, Panamá"
+        ],
+        [
+          "Account no. / Nº de cuenta",
+          "118834316",
+          "mono"
+        ]
+      ]
+    }
+  ]
 }
