@@ -27,8 +27,9 @@
     }
   ],
   "notes": {
-    "en": "<b>ITBMS not applicable:</b> ThryveX Group, S.A. is below the annual B/. 36,000 ITBMS registration threshold. Please quote <b class=\"mono\">{{number}}</b> in your bank transfer. Thank you for working with ThryveX Group.",
-    "es": "<b>ITBMS no aplicable:</b> ThryveX Group, S.A. se encuentra por debajo del umbral anual de B/. 36,000 para inscripción en ITBMS. Indique la referencia {{number}} en su transferencia bancaria. Gracias por trabajar con ThryveX Group."
+    "en": "<b>ITBMS not applicable:</b> ThryveX Group, S.A. is below the B/. 36,000 ITBMS registration threshold. Thank you for working with ThryveX Group.",
+    "es": "<b>ITBMS no aplicable:</b> ThryveX Group, S.A. se encuentra por debajo del umbral de B/. 36,000 para inscripción en ITBMS. Gracias por trabajar con ThryveX Group."
   },
-  "banks": "all"
+  "banks": "all",
+  "intermediaries": false
 }

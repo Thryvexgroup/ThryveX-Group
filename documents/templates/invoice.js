@@ -86,13 +86,13 @@ export function render(inv, issuer, { logo = '../../logo.png', css = '../brand.c
 
  ${banks.length ? `<div class="pay">
   <div class="hd"><div class="ey">Payment details <i>/</i> Medios de pago</div><span class="tag">Bank transfer · ${esc(inv.currency.split(' ')[0])}</span></div>
-  <div class="cols">
+  <div class="cols${inv.intermediaries === false ? ' one' : ''}">
    <div><div class="ey" style="margin-bottom:8px">Beneficiary bank <i>/</i> Banco beneficiario</div>
     ${banks.map(b => `<div class="bk">${esc(b.name)}<small>${esc(b.tag || '')}</small></div><div class="f">${fields(b.fields)}</div>`).join('\n    ')}</div>
-   <div><div class="ey" style="margin-bottom:8px">Intermediary bank <i>/</i> Banco intermediario</div>
+   ${inv.intermediaries === false ? '' : `<div><div class="ey" style="margin-bottom:8px">Intermediary bank <i>/</i> Banco intermediario</div>
     ${inters.length
       ? inters.map(b => `<div class="bk">${esc(b.name)}<small>${esc(b.tag || '')}</small></div><div class="f">${fields(b.fields)}</div>`).join('\n    ')
-      : `<p class="ph">${esc(issuer.intermediaryPlaceholder?.en || '')}</p><p class="ph">${esc(issuer.intermediaryPlaceholder?.es || '')}</p>`}</div>
+      : `<p class="ph">${esc(issuer.intermediaryPlaceholder?.en || '')}</p><p class="ph">${esc(issuer.intermediaryPlaceholder?.es || '')}</p>`}</div>`}
   </div>
  </div>` : ''}
 
