@@ -310,6 +310,7 @@
         (function(){
           var f=document.querySelector('.widget-card iframe');
           var lang='en';try{if(localStorage.getItem('tvxlang')==='es')lang='es';}catch(e){}
+          try{var q=new URLSearchParams(location.search).get('lang');if(q==='es'||q==='en')lang=q;}catch(e){}
           window.__bookCal=function(l){
             var id=f.getAttribute('data-cal-'+l);if(!id||f.id===id+'_book')return;
             var w=document.getElementById('wload');if(w)w.classList.remove('hidden');
@@ -416,8 +417,10 @@
         try{localStorage.setItem('tvxlang',lang);}catch(e){}
       }
       btns.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l);});});
+      // ?lang= in the link wins; otherwise the preference saved on the site
+      var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}
       var saved=null;try{saved=localStorage.getItem('tvxlang');}catch(e){}
-      if(saved==='es')setLang('es');
+      if(q==='es'||q==='en')setLang(q);else if(saved==='es')setLang('es');
     })();
   </script>
 </body>
