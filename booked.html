@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your strategy call with ThryveX Group is booked. Confirm your slot by email or WhatsApp to lock it in.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#fbfbfd">
+  <title>You're Booked | ThryveX Group</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=5">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=5">
+
+  <link href="/assets/fonts.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --w: #fbfbfd;
+      --ink: #11131a;
+      --grey: #6b7180;
+      --blue: #0071e3;
+      --green: #1f9d55;
+      --grad: linear-gradient(100deg, #3F9FE6, #9FB4E8 38%, #E9B6C6 68%, #F4C9A1);
+      --gutter: clamp(1.25rem, 5vw, 4rem);
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: radial-gradient(82% 74% at 50% 32%, #ffffff 0%, #eaeef6 60%, #d7dded 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .bg-grid {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(63,159,230,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(63,159,230,.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+      -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 20%, #000, transparent 75%);
+      mask-image: radial-gradient(ellipse 85% 70% at 50% 20%, #000, transparent 75%);
+    }
+
+    .pill {
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(17,19,26,.08);
+      border-radius: 999px;
+      box-shadow: 0 8px 26px -12px rgba(20,30,60,.3);
+    }
+
+    /* Top bar */
+    .topbar {
+      position: relative; z-index: 10;
+      max-width: 1120px; margin: 0 auto;
+      padding: .9rem var(--gutter);
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.05rem;
+      letter-spacing: -.02em; color: var(--ink);
+      padding: .42rem 1rem .42rem .5rem;
+    }
+    .brand img { width: 30px; height: 30px; object-fit: contain; }
+    .back {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .6rem 1.15rem;
+      font-family: 'Space Grotesk'; font-size: .84rem; font-weight: 600; color: var(--ink);
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .back:hover { transform: translateY(-1px); box-shadow: 0 12px 30px -12px rgba(20,30,60,.35); }
+    .back svg { width: 15px; height: 15px; }
+    .topright { display: flex; align-items: center; gap: .6rem; }
+    .lang { display: flex; gap: .1rem; padding: .28rem; }
+    .lang button {
+      border: 0; background: none; cursor: pointer;
+      font-family: 'Space Grotesk'; font-weight: 600; font-size: .8rem; letter-spacing: .02em;
+      color: var(--grey); padding: .42rem .7rem; border-radius: 999px;
+      transition: background .2s, color .2s;
+    }
+    .lang button:hover { color: var(--ink); }
+    .lang button.on { background: var(--ink); color: #fff; }
+
+    /* Progress: overview → book → confirmed */
+    .steps {
+      position: relative; z-index: 10;
+      display: flex; align-items: center; justify-content: center; gap: 0;
+      max-width: 560px; margin: 1.6rem auto 0; padding: 0 var(--gutter);
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--grey);
+    }
+    .step { display: flex; align-items: center; gap: .5rem; white-space: nowrap; }
+    .step i {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: rgba(17,19,26,.18); display: inline-block;
+    }
+    .step.done i { background: linear-gradient(100deg, #5FB1E6, #9FB4E8); }
+    .step.now { color: var(--ink); }
+    .step.now i { background: var(--green); box-shadow: 0 0 0 4px rgba(31,157,85,.14); }
+    .steps hr { flex: 1 1 auto; max-width: 70px; height: 1px; border: 0; background: rgba(17,19,26,.14); margin: 0 .7rem; }
+
+    /* Header */
+    .head {
+      position: relative; z-index: 10;
+      max-width: 760px; margin: 0 auto;
+      padding: 2.2rem var(--gutter) .5rem; text-align: center;
+    }
+    .check {
+      width: 76px; height: 76px; margin: 0 auto 1.4rem; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: #fff; border: 2px solid var(--green);
+      box-shadow: 0 0 0 10px rgba(31,157,85,.08), 0 18px 40px -22px rgba(31,157,85,.5);
+      animation: pop .7s var(--ease) both;
+    }
+    .check svg { width: 34px; height: 34px; stroke: var(--green); }
+    .check svg path {
+      stroke-dasharray: 40; stroke-dashoffset: 40;
+      animation: draw .6s .35s var(--ease) forwards;
+    }
+    @keyframes pop { from { transform: scale(.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .eyb {
+      display: inline-flex; align-items: center; gap: .55rem;
+      font-family: 'Space Grotesk'; font-size: .74rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--green);
+      margin-bottom: 1.4rem; padding: .55rem 1.05rem;
+      background: rgba(255,255,255,.85); border: 1px solid rgba(31,157,85,.28);
+      border-radius: 999px; box-shadow: 0 8px 22px -12px rgba(20,30,60,.22);
+    }
+    .eyb::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+      animation: pulse2 2.2s infinite;
+    }
+    @keyframes pulse2 {
+      0% { box-shadow: 0 0 0 0 rgba(31,157,85,.5); }
+      70% { box-shadow: 0 0 0 7px rgba(31,157,85,0); }
+      100% { box-shadow: 0 0 0 0 rgba(31,157,85,0); }
+    }
+    .head h1 {
+      font-family: 'Space Grotesk'; font-weight: 700;
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      line-height: 1.05; letter-spacing: -.03em; color: var(--ink);
+      margin-bottom: 1.1rem;
+    }
+    .head h1 .gw {
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .head p {
+      font-size: clamp(1rem, 2vw, 1.12rem); color: var(--grey);
+      max-width: 580px; margin: 0 auto; line-height: 1.7;
+    }
+    .head p b { color: var(--ink); font-weight: 600; }
+
+    /* Content column */
+    .col {
+      position: relative; z-index: 10;
+      max-width: 720px; margin: 2rem auto 3rem; padding: 0 var(--gutter);
+      display: grid; gap: 1.1rem;
+    }
+
+    /* Action box */
+    .act {
+      position: relative; overflow: hidden;
+      background: #fff; border: 1px solid rgba(63,159,230,.35);
+      border-radius: 20px; padding: 1.35rem 1.4rem 1.35rem 1.5rem;
+      box-shadow: 0 30px 70px -44px rgba(20,30,60,.45);
+      display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;
+    }
+    .act::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--grad); }
+    .act-ico {
+      width: 38px; height: 38px; border-radius: 50%; flex: none;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #3F9FE6, #9FB4E8); color: #fff;
+      font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.1rem;
+      box-shadow: 0 8px 18px -8px rgba(63,159,230,.7);
+    }
+    .act h2 {
+      font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.08rem;
+      letter-spacing: -.01em; color: var(--ink); margin-bottom: .3rem;
+    }
+    .act p { color: var(--grey); font-size: .95rem; line-height: 1.65; }
+    .act p b { color: var(--ink); font-weight: 600; }
+
+    /* Next steps */
+    .next-lbl {
+      display: flex; align-items: center; gap: .7rem; margin-top: 1rem;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--grey);
+    }
+    .next-lbl::before { content: ""; width: 26px; height: 2px; background: var(--grad); border-radius: 2px; }
+    .ns {
+      display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;
+      background: rgba(255,255,255,.85); border: 1px solid rgba(17,19,26,.08);
+      border-radius: 18px; padding: 1.2rem 1.3rem;
+      box-shadow: 0 14px 40px -28px rgba(20,30,60,.4);
+      transition: transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .ns:hover {
+      transform: translateY(-2px); border-color: rgba(63,159,230,.4);
+      box-shadow: 0 22px 50px -26px rgba(63,159,230,.5);
+    }
+    .ns.key { border-color: rgba(63,159,230,.35); }
+    .ns-n {
+      width: 34px; height: 34px; border-radius: 50%; flex: none;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+      color: var(--ink); background: #fff; border: 1px solid rgba(17,19,26,.12);
+    }
+    .ns.key .ns-n { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .ns h3 { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1rem; letter-spacing: -.01em; margin-bottom: .2rem; }
+    .ns p { color: var(--grey); font-size: .93rem; line-height: 1.6; }
+    .ns p b { color: var(--ink); font-weight: 600; }
+
+    .resch {
+      text-align: center; color: var(--grey); font-size: .9rem; margin-top: .6rem; line-height: 1.6;
+    }
+
+    /* Contact */
+    .book-contact {
+      position: relative; z-index: 10;
+      max-width: 920px; margin: 0 auto; padding: .5rem var(--gutter) 1rem; text-align: center;
+    }
+    .book-contact h2 {
+      font-family: 'Space Grotesk'; font-weight: 700;
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      color: var(--ink); letter-spacing: -.02em; margin-bottom: .4rem;
+    }
+    .book-contact > p { color: var(--grey); font-size: .98rem; margin-bottom: 1.4rem; }
+    .book-contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 300px)); justify-content: center; gap: 1rem; }
+    .bc-card {
+      display: flex; flex-direction: column; align-items: center; gap: .35rem;
+      padding: 1.4rem 1.1rem; border-radius: 18px;
+      background: rgba(255,255,255,.85); border: 1px solid rgba(17,19,26,.08);
+      box-shadow: 0 14px 40px -28px rgba(20,30,60,.4);
+      transition: transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .bc-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(63,159,230,.4);
+      box-shadow: 0 22px 50px -26px rgba(63,159,230,.5);
+    }
+    .bc-ico {
+      width: 46px; height: 46px; border-radius: 14px; margin-bottom: .4rem;
+      display: flex; align-items: center; justify-content: center; color: #fff;
+      box-shadow: 0 6px 16px -8px rgba(20,30,60,.55);
+    }
+    .bc-ico svg { width: 21px; height: 21px; }
+    .bc-ico.ico-mail { background: linear-gradient(180deg, #3FBDFF 0%, #1E86F7 52%, #0B62E8 100%); }
+    .bc-ico.ico-mail svg { width: 24px; height: 24px; }
+    .bc-ico.ico-wa { background: #25D366; }
+    .bc-ico.ico-wa svg { width: 20px; height: 20px; }
+    .bc-lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--grey);
+    }
+    .bc-val { font-size: 14px; color: var(--ink); font-weight: 500; word-break: break-word; }
+
+    /* Footer */
+    .foot {
+      position: relative; z-index: 10;
+      max-width: 1120px; margin: 0 auto;
+      padding: 1.6rem var(--gutter) 2.4rem;
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(17,19,26,.08);
+      color: var(--grey);
+      font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
+    }
+    .foot a { color: var(--ink); transition: color .2s; }
+    .foot a:hover { color: var(--blue); }
+
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+
+    @media (max-width: 600px) {
+      .brand span { display: none; }
+      .back span { display: none; }
+      .back { padding: .6rem .8rem; }
+      .steps { font-size: 10px; }
+      .steps hr { max-width: 28px; margin: 0 .4rem; }
+      .head { padding-top: 1.6rem; }
+      .act { grid-template-columns: 1fr; padding: 1.2rem 1.1rem 1.2rem 1.3rem; }
+      .book-contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .eyb::before, .check, .check svg path { animation: none; }
+      .check svg path { stroke-dashoffset: 0; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <a class="brand pill" href="/" aria-label="ThryveX Group home">
+      <img src="/ThryveX%20Group%20Logo%20No%20BG.png" alt="ThryveX Group">
+      <span>ThryveX Group</span>
+    </a>
+    <div class="topright">
+      <div class="lang pill" role="group" aria-label="Language">
+        <button type="button" data-l="en" class="on" aria-pressed="true">EN</button>
+        <button type="button" data-l="es" aria-pressed="false">ES</button>
+      </div>
+      <a class="back pill" href="/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        <span>Back to site</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Progress -->
+  <nav class="steps" aria-label="Booking progress">
+    <span class="step done"><i aria-hidden="true"></i>Overview</span>
+    <hr aria-hidden="true">
+    <span class="step done"><i aria-hidden="true"></i>Book your call</span>
+    <hr aria-hidden="true">
+    <span class="step now" aria-current="step"><i aria-hidden="true"></i>Confirmed</span>
+  </nav>
+
+  <!-- Header -->
+  <section class="head">
+    <div class="check" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12.5l4.5 4.5L19 7.5" />
+      </svg>
+    </div>
+    <div class="eyb">Booking received</div>
+    <h1>You're booked. <span class="gw">See you on the call.</span></h1>
+    <p>Gonzalo is looking forward to speaking with you. Check your email and WhatsApp now. <b>You'll need to confirm your booking to lock in your slot.</b></p>
+  </section>
+
+  <div class="col">
+    <!-- Action required -->
+    <div class="act" role="status">
+      <div class="act-ico" aria-hidden="true">!</div>
+      <div>
+        <h2>Action required: confirm your slot</h2>
+        <p>We've sent you a confirmation by <b>email and WhatsApp</b>. <b>You must confirm to keep your booking.</b> Unconfirmed slots are released to the next business in line. If nothing has arrived, check your spam folder or your WhatsApp inbox.</p>
+      </div>
+    </div>
+
+    <div class="next-lbl">What happens next</div>
+
+    <div class="ns key">
+      <div class="ns-n">01</div>
+      <div>
+        <h3>Confirm your booking</h3>
+        <p>Tap the button in the <b>email</b> or reply to the <b>WhatsApp</b> message you've just received. This is required.</p>
+      </div>
+    </div>
+    <div class="ns">
+      <div class="ns-n">02</div>
+      <div>
+        <h3>Make sure all decision makers are on the call</h3>
+        <p>To get the most out of the session, every owner or key decision maker should be in the room.</p>
+      </div>
+    </div>
+    <div class="ns">
+      <div class="ns-n">03</div>
+      <div>
+        <h3>Show up and get your growth plan</h3>
+        <p>Gonzalo will walk you through exactly how an AI acquisition system would work for your business. No pressure, just clarity.</p>
+      </div>
+    </div>
+
+    <p class="resch">Need to reschedule? Use the link in your confirmation email, or reply to the WhatsApp with a day and time that works for you.</p>
+  </div>
+
+  <!-- Contact -->
+  <section class="book-contact">
+    <h2>Didn't receive anything?</h2>
+    <p>Reach out directly. We reply fast.</p>
+    <div class="book-contact-grid">
+      <a class="bc-card" href="mailto:services@thryvexgroup.com">
+        <div class="bc-ico ico-mail" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="5" width="20" height="14" rx="3.4" />
+            <path d="M3.4 7.4 12 13.4l8.6-6" />
+          </svg>
+        </div>
+        <span class="bc-lbl">Email</span>
+        <span class="bc-val">services@thryvexgroup.com</span>
+      </a>
+      <a class="bc-card" href="https://wa.me/50765693716" target="_blank" rel="noopener">
+        <div class="bc-ico ico-wa" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+          </svg>
+        </div>
+        <span class="bc-lbl">WhatsApp</span>
+        <span class="bc-val">+507 6569-3716</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <span>© 2026 ThryveX Group. All rights reserved.</span>
+    <a href="/">&larr; Back to site</a>
+  </footer>
+
+  <script>
+    // Spanish. Same mechanism and the same saved preference as /book, plus ?lang=es
+    // so each GHL calendar can redirect straight to its own language.
+    (function(){
+      var ES={
+        "Back to site":"Volver al sitio",
+        "← Back to site":"← Volver al sitio",
+        "Overview":"Resumen",
+        "Book your call":"Reserva tu llamada",
+        "Confirmed":"Confirmado",
+        "Booking received":"Reserva recibida",
+        "You're booked.":"Reserva hecha.",
+        "See you on the call.":"Nos vemos en la llamada.",
+        "Gonzalo is looking forward to speaking with you. Check your email and WhatsApp now.":"Gonzalo tiene muchas ganas de hablar contigo. Revisa tu correo y tu WhatsApp ahora.",
+        "You'll need to confirm your booking to lock in your slot.":"Necesitas confirmar tu reserva para asegurar tu horario.",
+        "Action required: confirm your slot":"Acción requerida: confirma tu horario",
+        "We've sent you a confirmation by":"Te enviamos una confirmación por",
+        "email and WhatsApp":"correo y WhatsApp",
+        "You must confirm to keep your booking.":"Debes confirmar para mantener tu reserva.",
+        "Unconfirmed slots are released to the next business in line. If nothing has arrived, check your spam folder or your WhatsApp inbox.":"Los horarios sin confirmar se liberan para el siguiente negocio en lista. Si no te ha llegado nada, revisa tu carpeta de spam o tu bandeja de WhatsApp.",
+        "What happens next":"Qué sigue",
+        "Confirm your booking":"Confirma tu reserva",
+        "Tap the button in the":"Toca el botón en el",
+        "email":"correo",
+        "or reply to the":"o responde al mensaje de",
+        "WhatsApp":"WhatsApp",
+        "message you've just received. This is required.":"que acabas de recibir. Este paso es obligatorio.",
+        "Make sure all decision makers are on the call":"Asegúrate de que todos los que deciden estén en la llamada",
+        "To get the most out of the session, every owner or key decision maker should be in the room.":"Para aprovechar la sesión al máximo, todos los dueños o personas clave en la decisión deben estar presentes.",
+        "Show up and get your growth plan":"Preséntate y recibe tu plan de crecimiento",
+        "Gonzalo will walk you through exactly how an AI acquisition system would work for your business. No pressure, just clarity.":"Gonzalo te mostrará exactamente cómo funcionaría un sistema de adquisición con IA para tu negocio. Sin presión, solo claridad.",
+        "Need to reschedule? Use the link in your confirmation email, or reply to the WhatsApp with a day and time that works for you.":"¿Necesitas reprogramar? Usa el enlace de tu correo de confirmación, o responde al WhatsApp con un día y una hora que te funcionen.",
+        "Didn't receive anything?":"¿No recibiste nada?",
+        "Reach out directly. We reply fast.":"Escríbenos directamente. Respondemos rápido.",
+        "Email":"Correo",
+        "© 2026 ThryveX Group. All rights reserved.":"© 2026 ThryveX Group. Todos los derechos reservados."
+      };
+      var META={
+        title:{en:"You're Booked | ThryveX Group",es:"Reserva hecha | ThryveX Group"},
+        desc:{en:"Your strategy call with ThryveX Group is booked. Confirm your slot by email or WhatsApp to lock it in.",
+              es:"Tu llamada estratégica con ThryveX Group está reservada. Confirma tu horario por correo o WhatsApp para asegurarlo."}
+      };
+      var norm=function(s){return s.replace(/\s+/g,' ').trim();};
+      var T=[];
+      var tw=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+        if(!n.nodeValue.trim())return NodeFilter.FILTER_REJECT;
+        var p=n.parentElement;if(!p||p.closest('script,style'))return NodeFilter.FILTER_REJECT;
+        return ES[norm(n.nodeValue)]!==undefined?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
+      var n;while(n=tw.nextNode()){
+        var v=n.nodeValue,lead=v.match(/^\s*/)[0],trail=v.match(/\s*$/)[0];
+        T.push({node:n,en:v,es:lead+ES[norm(v)]+trail});
+      }
+      var btns=document.querySelectorAll('.lang button');
+      function setLang(lang){
+        var es=lang==='es';
+        T.forEach(function(o){o.node.nodeValue=es?o.es:o.en;});
+        document.documentElement.lang=lang;
+        document.title=META.title[lang];
+        var d=document.querySelector('meta[name=description]');if(d)d.setAttribute('content',META.desc[lang]);
+        btns.forEach(function(b){var on=b.dataset.l===lang;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');});
+        try{localStorage.setItem('tvxlang',lang);}catch(e){}
+      }
+      btns.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l);});});
+      // ?lang= from the calendar redirect wins; otherwise the preference saved on the site
+      var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}
+      var saved=null;try{saved=localStorage.getItem('tvxlang');}catch(e){}
+      if(q==='es'||q==='en')setLang(q);else if(saved==='es')setLang('es');
+    })();
+  </script>
+</body>
+
+</html>

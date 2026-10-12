@@ -120,6 +120,14 @@
       "destination": "/book.html"
     },
     {
+      "source": "/booked",
+      "destination": "/booked.html"
+    },
+    {
+      "source": "/booked.html",
+      "destination": "/booked.html"
+    },
+    {
       "source": "/((?!api/)(?:[^.]+|.+\\.html)$)",
       "destination": "/index.html"
     }
