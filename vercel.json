@@ -100,6 +100,16 @@
   ],
   "redirects": [
     {
+      "source": "/propuesta",
+      "destination": "https://source.thryvexgroup.com/widget/bookings/reunion-propuesta",
+      "permanent": false
+    },
+    {
+      "source": "/proposal",
+      "destination": "https://source.thryvexgroup.com/widget/bookings/thryvex-proposal",
+      "permanent": false
+    },
+    {
       "source": "/reprogramar/:e([A-Za-z0-9_-]+)",
       "destination": "https://source.thryvexgroup.com/widget/booking/Xk4R0IAoI7kfu7iGSHNw?event_id=:e",
       "permanent": false
