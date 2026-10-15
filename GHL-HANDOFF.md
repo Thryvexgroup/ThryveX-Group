@@ -73,6 +73,33 @@ booked. Manual moves: Call held, Proposal pending, Won, Lost. If the proposal
 meeting is booked during the discovery call, drag the card straight to
 Proposal meeting booked and skip Proposal pending.
 
+## Instagram DMs: Conversation AI agent
+
+Instagram is connected (LeadConnector-IG on the thryvexgroup Page, message
+access on, only app in Advanced messaging). Inbound DMs land in
+Conversations and are answered by a Conversation AI agent.
+
+- Agent: **ThryveX Assistant** (AI Agents → Conversation AI). Model OpenAI
+  GPT 4.1, Business Name `ThryveX Group`.
+- Mode: Auto-pilot. Deploy tab → Instagram channel assigned to the
+  thryvexgroup page, no tag filters. Legacy workflow channels: Instagram
+  only.
+- Timing: 15 s wait before replying, 75 messages max per conversation.
+  Sleeps when a manual message is sent, reactivates after 24 h.
+- Prompt (Spanish, ~750 words): identity as "asistente de ThryveX",
+  replies in the contact's language, one question per message, no gender
+  assumptions, no prices, never describes things by what they are not. Goal
+  is the free diagnostic call: ES link `/book?lang=es`, EN link `/book`.
+  After the call Gonzalo prepares the proposal and reviews it with the
+  client. Hands off to Gonzalo when someone asks for a person, is an
+  existing client with an issue, asks about contracts or payments, or gets
+  annoyed. Only three reference projects may be mentioned (dive centre
+  website, real-estate listing monitor, contract automation platform).
+- Examples in the prompt are style references and are marked as such;
+  earlier versions copied them verbatim.
+- To keep the bot out of existing clients' DMs, add the `client` tag under
+  "Doesn't have tags" on the Instagram deploy dialog.
+
 ## Open items
 
 1. **WhatsApp** — add-on not activated yet (number issue). When live: create
@@ -80,11 +107,8 @@ Proposal meeting booked and skip Proposal pending.
    recordatorio_24h / reminder_24h, recordatorio_1h / reminder_1h, Utility
    category, one per language) and add a *Send WhatsApp* step after each
    email in the confirmation and reminder workflows.
-2. **Instagram DMs** — LeadConnector-IG is connected, message access is on,
-   it is the only app on the Page, but inbound DMs do not reach
-   Conversations. Pending GHL support.
-3. **1-hour reminder** — undecided. Would be a second Wait (1 h before) plus
+2. **1-hour reminder** — undecided. Would be a second Wait (1 h before) plus
    a message on both branches of each reminder workflow.
-4. **Zoom** — replaced by Google Meet (free plan caps Zoom at 40 min). If
+3. **Zoom** — replaced by Google Meet (free plan caps Zoom at 40 min). If
    Zoom is wanted again: Zoom Pro, remove LeadConnector in Zoom Marketplace,
    reconnect in Settings → Calendars → Connections, set calendar location.
