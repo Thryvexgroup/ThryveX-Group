@@ -56,9 +56,10 @@ Settings shared by all four: owner Gonzalo Lucas, location Google Meet
 | No show | Appointment status → No Show | Adds `no-show`, moves card to **No show**, sends rebook email (`/book?lang=es` or `/book`), clears tags. |
 | Pipeline: call booked | Booked on either discovery calendar | Creates/updates the opportunity in **Sales → Call booked** (previous-stage toggle **on**, so a no-show who rebooks comes back). |
 | Pipeline: proposal booked | Booked on either proposal calendar | Moves card to **Proposal meeting booked**. |
+| Deciding follow-up (ES/EN) | Card moved to **Deciding** | Wait 2 d, If/Else on Language, then on each branch: email 1 (questions about the proposal?), wait 5 d, email 2 (one-line check-in), wait 7 d, email 3 (terms hold two weeks, last email). From Gonzalo Lucas. *Stop on response* on. Removed by the Lost workflow. |
 | Proposal pending | Card moved to **Proposal pending** | Emails the proposal booking link (`/propuesta` or `/proposal`). Used only when the proposal meeting was *not* booked on the call. |
 | Won | Card moved to **Won** | Adds `client`, sends welcome email. The three "what happens next" lines are still placeholders (see Open items). |
-| Lost | Card moved to **Lost** | Adds `lost`, sends a polite close-out with the booking link. |
+| Lost | Card moved to **Lost** | Removes contact from Deciding follow-up, adds `lost`, sends a polite close-out with the booking link. |
 
 Email sender for all: `services@thryvexgroup.com` via the verified dedicated
 domain `info.thryvexgroup.com`.
@@ -69,10 +70,12 @@ Tone: client emails sign off as "ThryveX Group" and do **not** carry an
 ## Pipeline: Sales
 
 `Call booked → Call confirmed → No show → Call held → Proposal pending →
-Proposal meeting booked → Won → Lost`
+Proposal meeting booked → Deciding → Agreement sent → Won → Lost`
 
 Automatic moves: Call booked, Call confirmed, No show, Proposal meeting
-booked. Manual moves: Call held, Proposal pending, Won, Lost. If the proposal
+booked. Manual moves: Call held, Proposal pending, Deciding, Agreement
+sent, Won, Lost. Deciding is for prospects who want to think after the
+proposal call; Agreement sent has no workflow yet. If the proposal
 meeting is booked during the discovery call, drag the card straight to
 Proposal meeting booked and skip Proposal pending.
 
@@ -134,23 +137,15 @@ materials, contact person), step 2 book the kickoff call (new calendar,
 clean links `/kickoff` and `/arranque`), closing line "from there you follow
 the project in your client portal (timeline, files, monthly reports)".
 
-**Stage "Deciding"** (new, between Proposal meeting booked and Agreement
-sent) for prospects who want to think about it after the proposal call.
-Follow-up workflow (ES/EN) on entering the stage: day 2 short email (thanks,
-happy to answer questions, reply or book 15 min), day 7 one-liner check-in,
-day 14 last touch (proposal valid until a date, door open). Moving the card
-to Agreement sent or Lost removes the contact from the workflow. Silence
-after day 14: Gonzalo moves the card to Lost by hand.
-
-Target pipeline: Call booked → Call confirmed → No show → Call held →
-Proposal pending → Proposal meeting booked → Deciding → Agreement sent →
-Won → Lost.
+**Stage "Deciding"** — built (see the workflow table). Silence after the
+third email: Gonzalo moves the card to Lost by hand. The Agreement sent
+workflow, once built, must also remove the contact from Deciding follow-up.
 
 Split of work: Gonzalo builds the agreement template (Documents &
 Contracts with signature and deposit), the invoice and the intake form
 himself. Automations to build in GHL, in order:
 
-1. Deciding stage + follow-up workflow (ES/EN). No dependencies.
+1. ~~Deciding stage + follow-up workflow~~ done.
 2. Kickoff calendar + clean links `/kickoff` (EN) and `/arranque` (ES) in
    `vercel.json`. No dependencies.
 3. Agreement sent stage + email 1 (ES/EN). Needs the agreement and invoice
