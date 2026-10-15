@@ -84,7 +84,7 @@ Conversations and are answered by a Conversation AI agent.
 - Mode: Auto-pilot. Deploy tab → Instagram channel assigned to the
   thryvexgroup page, no tag filters. Legacy workflow channels: Instagram
   only.
-- Timing: 15 s wait before replying, 75 messages max per conversation.
+- Timing: 30 s wait before replying, 75 messages max per conversation.
   Sleeps when a manual message is sent, reactivates after 24 h.
 - Prompt (Spanish, ~750 words): identity as "asistente de ThryveX",
   replies in the contact's language, one question per message, no gender
