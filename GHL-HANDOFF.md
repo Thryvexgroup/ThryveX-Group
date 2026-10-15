@@ -111,10 +111,25 @@ Conversations and are answered by a Conversation AI agent.
    category, one per language) and add a *Send WhatsApp* step after each
    email in the confirmation and reminder workflows.
 2. **Won email** — the three "what happens next" lines are placeholders.
-   Gonzalo is defining the onboarding process first (agreement and first
-   payment, kickoff call, accesses to collect, weekly update, launch and
-   training). Rewrite the ES and EN emails in **Won (ES/EN)** once that is
-   decided. Draft wording is in the session notes.
+   Rewrite the ES and EN emails in **Won (ES/EN)** around the onboarding
+   process below once it is built.
+
+## Client onboarding process (planned, not built)
+
+Gonzalo's plan for what happens after a card moves to **Won**, in order:
+
+1. Contract.
+2. Welcome doc.
+3. Invoice.
+4. "What we need from you" (accesses and materials the client provides).
+5. Kickoff call.
+6. Client portal with the project timeline.
+7. Fulfillment: Google Drive for files plus the client portal.
+8. Monthly reports inside the client portal.
+
+Nothing of this exists in GHL yet. When it is built, the Won email should
+walk the client through steps 1 to 5, and the portal (6 to 8) is where they
+follow the project afterwards.
 3. **Zoom** — replaced by Google Meet (free plan caps Zoom at 40 min). If
    Zoom is wanted again: Zoom Pro, remove LeadConnector in Zoom Marketplace,
    reconnect in Settings → Calendars → Connections, set calendar location.
