@@ -110,6 +110,16 @@
       "permanent": false
     },
     {
+      "source": "/onboarding-es",
+      "destination": "https://source.thryvexgroup.com/widget/bookings/llamada-onboarding",
+      "permanent": false
+    },
+    {
+      "source": "/onboarding",
+      "destination": "https://source.thryvexgroup.com/widget/bookings/thryvex-onboarding",
+      "permanent": false
+    },
+    {
       "source": "/reprogramar/:e([A-Za-z0-9_-]+)",
       "destination": "https://source.thryvexgroup.com/widget/booking/Xk4R0IAoI7kfu7iGSHNw?event_id=:e",
       "permanent": false

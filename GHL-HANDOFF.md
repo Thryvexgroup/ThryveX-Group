@@ -12,6 +12,7 @@ maintained or extended without re-discovering it.
 | `/booked` | Shown after a booking (calendar redirect). `?lang=es` for Spanish. Tells the visitor to confirm by email/WhatsApp. |
 | `/confirmed` | Shown after the contact clicks the confirm link in the email. `?lang=es` for Spanish. |
 | `/propuesta`, `/proposal` | Forward to the Spanish / English proposal-meeting calendars. |
+| `/onboarding-es`, `/onboarding` | Forward to the Spanish / English onboarding-call calendars (kickoff after signing). |
 | `/reprogramar/ID`, `/reschedule/ID` | Forward to the GHL reschedule page for appointment `ID` (Spanish / English calendar). |
 | `/cancelar/ID`, `/cancel/ID` | Forward to the GHL cancel page for appointment `ID`. |
 
@@ -25,8 +26,10 @@ All forwards are temporary (307) so targets can change without browser caching.
 | ThryveX Group Discovery Call | `GoaSvdUc3KUaJwvNIsMr` | EN | `/booked` |
 | Reunión de propuesta | slug `reunion-propuesta` | ES | `/booked?lang=es` |
 | Proposal meeting | slug `thryvex-proposal` | EN | `/booked` |
+| Llamada de onboarding | slug `llamada-onboarding` | ES | `/booked?lang=es` |
+| Onboarding call | slug `thryvex-onboarding` | EN | `/booked` |
 
-Settings shared by all four: owner Gonzalo Lucas, location Google Meet
+Settings shared by all six: owner Gonzalo Lucas, location Google Meet
 (Google Calendar connected under services@thryvexgroup.com), built-in
 "Appointment booked (Confirmed)" email **off** (workflows send it instead),
 1-day minimum notice. Conflict calendars: the Google account plus the iCloud
@@ -133,8 +136,8 @@ an email with what we need from you and a link to book the kickoff".
 
 **Stage "Won"** then means signed **and** paid. Moving the card there sends
 email 2 (ES/EN): step 1 fill in the "what we need from you" form (accesses,
-materials, contact person), step 2 book the kickoff call (new calendar,
-clean links `/kickoff` and `/arranque`), closing line "from there you follow
+materials, contact person), step 2 book the onboarding call (`/onboarding-es` or
+`/onboarding`), closing line "from there you follow
 the project in your client portal (timeline, files, monthly reports)".
 
 **Stage "Deciding"** — built (see the workflow table). Silence after the
@@ -146,8 +149,7 @@ Contracts with signature and deposit), the invoice and the intake form
 himself. Automations to build in GHL, in order:
 
 1. ~~Deciding stage + follow-up workflow~~ done.
-2. Kickoff calendar + clean links `/kickoff` (EN) and `/arranque` (ES) in
-   `vercel.json`. No dependencies.
+2. ~~Onboarding calendars + clean links `/onboarding` and `/onboarding-es`~~ done.
 3. Agreement sent stage + email 1 (ES/EN). Needs the agreement and invoice
    links.
 4. Won email 2 rewrite (ES/EN). Needs the intake form link.
