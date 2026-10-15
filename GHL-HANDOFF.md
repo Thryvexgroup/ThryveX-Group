@@ -51,7 +51,7 @@ Settings shared by all four: owner Gonzalo Lucas, location Google Meet
 |---|---|---|
 | Booking confirmation (ES) / (EN) | Appointment booked on the ES / EN discovery **or** proposal calendar | Sets Language, adds `pendiente-confirmacion`, sends confirmation email with the confirm trigger link. Re-entry on. |
 | Confirmation received | Trigger link clicked (either language) | Swaps tags, sets appointment status Confirmed, moves pipeline card to **Call confirmed** (previous-stage toggle **off**). |
-| Appointment reminder (ES) / (EN) | Same calendars as above | Waits until 1 day before. If `cita-confirmada`: plain reminder. Else: reminder with the confirm link again. 2 h after the call: removes both tags. Re-entry on. |
+| Appointment reminder (ES) / (EN) | Same calendars as above | Waits until 1 day before. If `cita-confirmada`: plain reminder. Else: reminder with the confirm link again. Then on both branches: Wait until 1 h before (skip outbound if already passed) and a short "In 1 hour" email with the Meet link and reschedule link. 2 h after the call: removes both tags. Re-entry on. |
 | Appointment cancelled | Appointment status → Cancelled | Removes contact from both reminder workflows, clears tags. |
 | No show | Appointment status → No Show | Adds `no-show`, moves card to **No show**, sends rebook email (`/book?lang=es` or `/book`), clears tags. |
 | Pipeline: call booked | Booked on either discovery calendar | Creates/updates the opportunity in **Sales → Call booked** (previous-stage toggle **on**, so a no-show who rebooks comes back). |
@@ -62,6 +62,9 @@ Settings shared by all four: owner Gonzalo Lucas, location Google Meet
 
 Email sender for all: `services@thryvexgroup.com` via the verified dedicated
 domain `info.thryvexgroup.com`.
+
+Tone: client emails sign off as "ThryveX Group" and do **not** carry an
+"automated message" line. Keep them reading like a person's short email.
 
 ## Pipeline: Sales
 
@@ -107,8 +110,6 @@ Conversations and are answered by a Conversation AI agent.
    recordatorio_24h / reminder_24h, recordatorio_1h / reminder_1h, Utility
    category, one per language) and add a *Send WhatsApp* step after each
    email in the confirmation and reminder workflows.
-2. **1-hour reminder** — undecided. Would be a second Wait (1 h before) plus
-   a message on both branches of each reminder workflow.
-3. **Zoom** — replaced by Google Meet (free plan caps Zoom at 40 min). If
+2. **Zoom** — replaced by Google Meet (free plan caps Zoom at 40 min). If
    Zoom is wanted again: Zoom Pro, remove LeadConnector in Zoom Marketplace,
    reconnect in Settings → Calendars → Connections, set calendar location.
