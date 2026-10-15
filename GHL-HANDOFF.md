@@ -114,22 +114,32 @@ Conversations and are answered by a Conversation AI agent.
    Rewrite the ES and EN emails in **Won (ES/EN)** around the onboarding
    process below once it is built.
 
-## Client onboarding process (planned, not built)
-
-Gonzalo's plan for what happens after a card moves to **Won**, in order:
-
-1. Contract.
-2. Welcome doc.
-3. Invoice.
-4. "What we need from you" (accesses and materials the client provides).
-5. Kickoff call.
-6. Client portal with the project timeline.
-7. Fulfillment: Google Drive for files plus the client portal.
-8. Monthly reports inside the client portal.
-
-Nothing of this exists in GHL yet. When it is built, the Won email should
-walk the client through steps 1 to 5, and the portal (6 to 8) is where they
-follow the project afterwards.
 3. **Zoom** — replaced by Google Meet (free plan caps Zoom at 40 min). If
    Zoom is wanted again: Zoom Pro, remove LeadConnector in Zoom Marketplace,
    reconnect in Settings → Calendars → Connections, set calendar location.
+
+## Client onboarding process (planned, not built)
+
+Decided structure, two emails at two moments:
+
+**Stage "Agreement sent"** (new pipeline stage between Proposal meeting
+booked and Won). Gonzalo moves the card here right after the proposal call.
+Trigger sends email 1 (ES/EN): welcome, step 1 sign the agreement (link),
+step 2 pay the invoice (link), closing line "once both are done you'll get
+an email with what we need from you and a link to book the kickoff".
+
+**Stage "Won"** then means signed **and** paid. Moving the card there sends
+email 2 (ES/EN): step 1 fill in the "what we need from you" form (accesses,
+materials, contact person), step 2 book the kickoff call (new calendar,
+clean links `/kickoff` and `/arranque`), closing line "from there you follow
+the project in your client portal (timeline, files, monthly reports)".
+
+Pieces to build: agreement template (GHL Documents & Contracts), invoice
+template, intake form, kickoff calendar, the new stage, both emails in both
+languages. Later the signed/paid events can move the card to Won
+automatically.
+
+Gonzalo's original eight-step list, for reference: contract, welcome doc,
+invoice, what we need from you, kickoff call, client portal with project
+timeline, fulfillment via Google Drive plus the portal, monthly reports in
+the portal.
