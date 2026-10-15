@@ -134,10 +134,30 @@ materials, contact person), step 2 book the kickoff call (new calendar,
 clean links `/kickoff` and `/arranque`), closing line "from there you follow
 the project in your client portal (timeline, files, monthly reports)".
 
-Pieces to build: agreement template (GHL Documents & Contracts), invoice
-template, intake form, kickoff calendar, the new stage, both emails in both
-languages. Later the signed/paid events can move the card to Won
-automatically.
+**Stage "Deciding"** (new, between Proposal meeting booked and Agreement
+sent) for prospects who want to think about it after the proposal call.
+Follow-up workflow (ES/EN) on entering the stage: day 2 short email (thanks,
+happy to answer questions, reply or book 15 min), day 7 one-liner check-in,
+day 14 last touch (proposal valid until a date, door open). Moving the card
+to Agreement sent or Lost removes the contact from the workflow. Silence
+after day 14: Gonzalo moves the card to Lost by hand.
+
+Target pipeline: Call booked → Call confirmed → No show → Call held →
+Proposal pending → Proposal meeting booked → Deciding → Agreement sent →
+Won → Lost.
+
+Split of work: Gonzalo builds the agreement template (Documents &
+Contracts with signature and deposit), the invoice and the intake form
+himself. Automations to build in GHL, in order:
+
+1. Deciding stage + follow-up workflow (ES/EN). No dependencies.
+2. Kickoff calendar + clean links `/kickoff` (EN) and `/arranque` (ES) in
+   `vercel.json`. No dependencies.
+3. Agreement sent stage + email 1 (ES/EN). Needs the agreement and invoice
+   links.
+4. Won email 2 rewrite (ES/EN). Needs the intake form link.
+
+Later the signed/paid events can move the card to Won automatically.
 
 Gonzalo's original eight-step list, for reference: contract, welcome doc,
 invoice, what we need from you, kickoff call, client portal with project
