@@ -57,7 +57,7 @@ Settings shared by all four: owner Gonzalo Lucas, location Google Meet
 | Pipeline: call booked | Booked on either discovery calendar | Creates/updates the opportunity in **Sales → Call booked** (previous-stage toggle **on**, so a no-show who rebooks comes back). |
 | Pipeline: proposal booked | Booked on either proposal calendar | Moves card to **Proposal meeting booked**. |
 | Proposal pending | Card moved to **Proposal pending** | Emails the proposal booking link (`/propuesta` or `/proposal`). Used only when the proposal meeting was *not* booked on the call. |
-| Won | Card moved to **Won** | Adds `client`, sends welcome email. Edit the three "what happens next" lines to match real onboarding. |
+| Won | Card moved to **Won** | Adds `client`, sends welcome email. The three "what happens next" lines are still placeholders (see Open items). |
 | Lost | Card moved to **Lost** | Adds `lost`, sends a polite close-out with the booking link. |
 
 Email sender for all: `services@thryvexgroup.com` via the verified dedicated
@@ -105,11 +105,16 @@ Conversations and are answered by a Conversation AI agent.
 
 ## Open items
 
-1. **WhatsApp** — add-on not activated yet (number issue). When live: create
+1. **WhatsApp** — Meta is reviewing the business account. When live: create
    the Meta templates (confirmacion_cita / booking_confirmation,
    recordatorio_24h / reminder_24h, recordatorio_1h / reminder_1h, Utility
    category, one per language) and add a *Send WhatsApp* step after each
    email in the confirmation and reminder workflows.
-2. **Zoom** — replaced by Google Meet (free plan caps Zoom at 40 min). If
+2. **Won email** — the three "what happens next" lines are placeholders.
+   Gonzalo is defining the onboarding process first (agreement and first
+   payment, kickoff call, accesses to collect, weekly update, launch and
+   training). Rewrite the ES and EN emails in **Won (ES/EN)** once that is
+   decided. Draft wording is in the session notes.
+3. **Zoom** — replaced by Google Meet (free plan caps Zoom at 40 min). If
    Zoom is wanted again: Zoom Pro, remove LeadConnector in Zoom Marketplace,
    reconnect in Settings → Calendars → Connections, set calendar location.
