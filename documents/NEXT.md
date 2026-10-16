@@ -1,6 +1,6 @@
 # Documents · next steps
 
-_Last updated 2026-10-08._
+_Last updated 2026-10-16._
 
 ## Done
 - Brand kit for documents (`brand.css`): blend palette, Space Grotesk / Inter / JetBrains Mono, bilingual labels EN first.
@@ -23,3 +23,24 @@ _Last updated 2026-10-08._
 - Gonzalo sends: client (legal name, RUC/VAT, address, e-mail, phone), line items with amounts, dates, whether paid.
 - Claude renders the PDF, names it `YYYY-MM-DD - TXG-YYYY-NNN - Client - Amount USD.pdf`, and gives the register row.
 - Next number: **TXG-2026-002**.
+
+## Onboarding process (agreed 16/10)
+1. Contract: master agreement (Contrato Marco) + one Anexo de Servicio per service · 2. Welcome doc · 3. Invoice ·
+4. "What we need from you" doc · 5. Kickoff call · 6. Client portal / project timeline · 7. Fulfilment (Google Drive + portal) ·
+8. Monthly reports inside the portal.
+
+## Contract decisions so far
+- Master + annexes; each annex references the master by parties and date, annex prevails only for its own service.
+- Termination: 60 days' notice both ways. Mid-build cancellation: kill fee, not notice.
+- Recurring payments: card-on-file with tokenisation via a Panamanian gateway (PagueloFacil / Banistmo / BAC) plus a
+  signed recurring-charge authorisation annex. Research providers when drafting that clause. Direct debit (ACH) later.
+- Spanish governing text with English column; e-signature valid (Ley 51/2008, Ley 82/2012); check timbre fiscal with accountant.
+- Still needed from Gonzalo: legal representative details, services for first annexes, grace period / late interest /
+  suspension day, hosting location after launch, Panamanian lawyer for one review pass.
+
+## Later: client operations system (do not forget)
+Gonzalo wants one place that shows, per client: services currently contracted, start date, renewal date, fee,
+annex numbers, status (active / notice given / expiring on X / cancelled), plus the client's files (contract, annexes,
+invoices, briefs). Must answer "this client has X, Y, Z since DATE" at a glance and track cancellation notices to their
+expiry date. Candidates: the client portal itself, a Notion/Airtable base, or a sheet in the repo; decide when we build
+the portal (step 6).
